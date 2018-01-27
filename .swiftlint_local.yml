@@ -1,0 +1,35 @@
+included:
+  - Straal
+  - StraalTests
+excluded:
+  - Pods
+
+opt_in_rules:
+  - empty_count
+  - missing_docs
+
+disabled_rules:
+  - line_length
+
+identifier_name:
+  excluded:
+    - id
+
+custom_rules:
+  no_focused_tests:
+    name: "No Focused Tests"
+    regex: f(describe|it|context)\(
+    match_kinds:
+      - identifier
+    message: "Y U focus tests? 😱"
+    severity: warning
+
+  no_excluded_tests:
+    name: "No Excluded Tests"
+    regex: x(describe|it|context)\(
+    match_kinds:
+      - identifier
+    message: "Y U exclude tests? 😱"
+    severity: warning
+
+reporter: xcode

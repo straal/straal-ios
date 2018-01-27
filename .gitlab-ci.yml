@@ -1,0 +1,47 @@
+stages:
+  - prepare
+  - lint
+  - test
+
+cache:
+  paths:
+    - Pods/
+
+install_gems:
+  stage: prepare
+  script:
+    - bundle install
+  tags:
+    - ios
+
+install_pods:
+  stage: prepare
+  script:
+    - bundle exec pod install
+  tags:
+    - ios
+
+lint:
+  stage: lint
+  script:
+    - mkdir -p ./outputs
+    - Pods/SwiftLint/swiftlint lint --config .swiftlint_ci.yml > outputs/lint.html
+  tags:
+    - ios
+  artifacts:
+    when: always
+    expire_in: 4 weeks
+    paths:
+      - outputs/lint.html
+
+test:
+  stage: test
+  artifacts:
+    when: always
+    expire_in: 10 weeks
+    paths:
+      - outputs/report.html
+  script:
+    - pod install
+    - mkdir -p outputs
+    - xcodebuild build test -workspace Straal.xcworkspace -scheme Straal -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 8' -sdk iphonesimulator | xcpretty -c --report html --output outputs/report.html && exit ${PIPESTATUS[0]}

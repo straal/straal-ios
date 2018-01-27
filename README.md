@@ -1,10 +1,11 @@
 # Straal
 
+![Platform](https://img.shields.io/badge/platform-iOS-blue.svg?style=flat)
 [![Twitter](https://img.shields.io/badge/twitter-@Straal_-blue.svg?style=flat)](http://twitter.com/straal_)
-[![Travis](https://img.shields.io/travis/straal/straal-ios/master.svg?style=flat)](https://travis-ci.org/straal/straal-ios)
-![Platforms](https://img.shields.io/badge/platforms-iOS-blue.svg)
-[![pod](https://img.shields.io/cocoapods/v/Straal.svg)](https://cocoapods.org/pods/Straal)
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![Travis](https://travis-ci.org/straal/straal-ios.svg?branch=master&style=flat)](https://travis-ci.org/straal/straal-ios)
+[![codebeat badge](https://codebeat.co/badges/73ab7e38-7c7e-4b48-8e20-376e04a93774?style=flat)](https://codebeat.co/projects/github-com-straal-straal-ios-master)
+[![pod](https://img.shields.io/cocoapods/v/Straal.svg?style=flat)](https://cocoapods.org/pods/Straal)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat)](LICENSE)
 
 > Straal SDK for iOS written in Swift.
 > A brilliant payment solution for disruptive businesses.
@@ -153,4 +154,4 @@ Any suggestions or reports of technical issues are welcome! Contact us via [emai
 
 ## Licence
 
-This library is released under Apache License 2.0. See [LICENSE](LICENSE).
+This library is released under Apache License 2.0. See [LICENSE](LICENSE) for more info.

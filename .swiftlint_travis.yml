@@ -1,0 +1,18 @@
+included:
+  - Straal
+  - StraalTests
+excluded:
+  - Pods
+
+opt_in_rules:
+  - empty_count
+  - missing_docs
+
+disabled_rules:
+  - line_length
+
+identifier_name:
+  excluded:
+    - id
+
+reporter: emoji

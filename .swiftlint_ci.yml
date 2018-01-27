@@ -3,7 +3,7 @@ included:
   - StraalTests
 excluded:
   - Pods
-  
+
 opt_in_rules:
   - empty_count
   - missing_docs

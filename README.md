@@ -59,9 +59,9 @@ Then run `pod install`.
 
 ### Overview
 
-To use [Straal](https://straal.com/) for iOS you need an iOS (in which you want to accept payments), as well as you own backend service.
+To use [Straal](https://straal.com/) for iOS you need an iOS app (in which you want to accept payments), as well as your own backend service.
 
-This SDK let's you implement a secure payment process in your app. User's sensitive data (as credit card numbers) is sent directly from mobile application, so no card data will hit your servers, which results in improved security and fewer PCI compliance requirements.
+This SDK lets you implement a secure payment process in your app. User's sensitive data (as credit card numbers) is sent directly from mobile application, so no card data will hit your servers, which results in improved security and fewer PCI compliance requirements.
 
 The security of this process is ensured by a `CryptKey` mechanism. Your merchant backend service is responsible for **authorizing** the app user for a specific CryptKey operation. This is done via `headers` in configuration.
 
@@ -142,7 +142,7 @@ straal.perform(operation: transactionWithCardOperation) { (response, error) in
 }
 ```
 
-> It is your backend's responsibility to verify the transaction amounts (possibly pairing it with an order using `reference`), and to authorize the user using request headers.
+> It is your backend's responsibility to verify the transaction amount (possibly pairing it with an order using `reference`), and to authorize the user using request headers.
 
 ## Validation
 
@@ -152,6 +152,6 @@ straal.perform(operation: transactionWithCardOperation) { (response, error) in
 
 Any suggestions or reports of technical issues are welcome! Contact us via [email](mailto:devteam@straal.com).
 
-## Licence
+## License
 
 This library is released under Apache License 2.0. See [LICENSE](LICENSE) for more info.

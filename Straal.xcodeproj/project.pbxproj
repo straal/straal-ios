@@ -96,6 +96,7 @@
 		B4742AA72022006600EAD828 /* UATP.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742AA62022006600EAD828 /* UATP.swift */; };
 		B4F4BCED2020A44D003C014C /* CardsParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */; };
 		B4F4BCF12020B90E003C014C /* VisaElectron.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCF02020B90E003C014C /* VisaElectron.swift */; };
+		B4F4BCEF2020B41E003C014C /* CardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCEE2020B41E003C014C /* CardValidator.swift */; };
 		C17495B1A54359B3F718E387 /* Pods_Straal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5574E406B430FA7F1707BB80 /* Pods_Straal.framework */; };
 /* End PBXBuildFile section */
 
@@ -205,6 +206,7 @@
 		B4742AA62022006600EAD828 /* UATP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UATP.swift; sourceTree = "<group>"; };
 		B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsParserSpec.swift; sourceTree = "<group>"; };
 		B4F4BCF02020B90E003C014C /* VisaElectron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisaElectron.swift; sourceTree = "<group>"; };
+		B4F4BCEE2020B41E003C014C /* CardValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardValidator.swift; sourceTree = "<group>"; };
 		D03E263B338F057044F7AAE9 /* Pods_Straal_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Straal_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB66FA318C1830F344DFA243 /* Pods-Straal_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straal_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Straal_Example/Pods-Straal_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E3533DFD537ECBC3D2CA1193 /* Pods-StraalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StraalTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StraalTests/Pods-StraalTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 				A30801A42018FD0000A1060A /* CardValidation.swift */,
 				A30801A52018FD0000A1060A /* Luhn.swift */,
 				A30801A62018FD0000A1060A /* ValidationResult.swift */,
+				B4F4BCEE2020B41E003C014C /* CardValidator.swift */,
 			);
 			path = Validation;
 			sourceTree = "<group>";
@@ -879,6 +882,7 @@
 				A30801C02018FD0000A1060A /* HttpCallable.swift in Sources */,
 				B4F4BCF12020B90E003C014C /* VisaElectron.swift in Sources */,
 				A30801DE2018FD0100A1060A /* MoneyAmount.swift in Sources */,
+				B4F4BCEF2020B41E003C014C /* CardValidator.swift in Sources */,
 				A30801CF2018FD0100A1060A /* Card.swift in Sources */,
 				A30801EF2018FD0100A1060A /* Straal.swift in Sources */,
 				A30801BB2018FD0000A1060A /* AnyCallable.swift in Sources */,

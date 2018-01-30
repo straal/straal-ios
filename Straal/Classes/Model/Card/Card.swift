@@ -57,7 +57,7 @@ public struct Card: Validating {
 		var result: ValidationResult = []
 
 		if let cardBrand = CardsParser.cardBrand(for: number) {
-			result.insert(cardBrand.validate(cvv: cvv))
+			result.insert(CVVValidator().validate(card: self))
 			result.insert(cardBrand.validate(number: number))
 		} else {
 			result.insert(.numberDoesNotMatchType)

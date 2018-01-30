@@ -38,7 +38,7 @@ public struct CardholderName: Validating {
 		if !firstName.isEmpty && !surname.isEmpty {
 			return []
 		} else {
-			return .invalidName
+			return .nameInvalid
 		}
 	}
 

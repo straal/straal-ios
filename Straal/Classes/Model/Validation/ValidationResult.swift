@@ -57,16 +57,16 @@ public struct ValidationResult: OptionSet {
 	public static let luhnTestFailed          = ValidationResult(rawValue: 1 << 5)
 
 	/// Indicates cardholder name is invalid.
-	public static let invalidName             = ValidationResult(rawValue: 1 << 6)
+	public static let nameInvalid             = ValidationResult(rawValue: 1 << 6)
 
 	/// Invalid Card Verificaiton Code.
-	public static let invalidCVV              = ValidationResult(rawValue: 1 << 7)
+	public static let CVVInvalid              = ValidationResult(rawValue: 1 << 7)
 
 	/// The Card Verification Code is too short.
-	public static let incompleteCVV           = ValidationResult(rawValue: 1 << 8)
+	public static let CVVIncomplete           = ValidationResult(rawValue: 1 << 8)
 
 	/// Indicates that the expiry is invalid
-	public static let invalidExpiry           = ValidationResult(rawValue: 1 << 9)
+	public static let expiryInvalid           = ValidationResult(rawValue: 1 << 9)
 
 	/// The card has already expired.
 	public static let cardExpired             = ValidationResult(rawValue: 1 << 10)
@@ -87,10 +87,10 @@ extension ValidationResult: CustomStringConvertible {
 		if isSuperset(of: .numberIncomplete) {		 strings.append("Card number seems to be incomplete") }
 		if isSuperset(of: .numberTooLong) {			 strings.append("Card number is too long") }
 		if isSuperset(of: .luhnTestFailed) {		 strings.append("Luhn test failed for card number") }
-		if isSuperset(of: .invalidName) {			 strings.append("Name or surname is invalid") }
-		if isSuperset(of: .invalidCVV) {			 strings.append("CVV is invalid") }
-		if isSuperset(of: .incompleteCVV) {			 strings.append("CVV is too short") }
-		if isSuperset(of: .invalidExpiry) {			 strings.append("Expiration date is not valid") }
+		if isSuperset(of: .nameInvalid) {			 strings.append("Name or surname is invalid") }
+		if isSuperset(of: .CVVInvalid) {			 strings.append("CVV is invalid") }
+		if isSuperset(of: .CVVIncomplete) {			 strings.append("CVV is too short") }
+		if isSuperset(of: .expiryInvalid) {			 strings.append("Expiration date is not valid") }
 		if isSuperset(of: .cardExpired) {			 strings.append("Card has expired") }
 		return strings
 	}

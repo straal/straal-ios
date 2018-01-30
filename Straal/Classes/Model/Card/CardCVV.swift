@@ -21,7 +21,7 @@
 import Foundation
 
 /// Represents Card Verification Value
-public struct CVV: RawRepresentable, Validating, Encodable {
+public struct CVV: RawRepresentable, Encodable {
 
 	public typealias RawValue = String
 
@@ -31,15 +31,6 @@ public struct CVV: RawRepresentable, Validating, Encodable {
 	/// The count of digits in the CVV.
 	public var length: Int {
 		return rawValue.count
-	}
-
-	/// Validation property: checks if CVV code is numeric
-	internal var validation: ValidationResult {
-		if rawValue.isNumeric {
-			return []
-		} else {
-			return .invalidCVV
-		}
 	}
 
 	/**

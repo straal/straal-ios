@@ -43,7 +43,7 @@ public struct Expiry: RawRepresentable, Validating {
 	/// Validation property: checks date is valid and if card is expired
 	public var validation: ValidationResult {
 		if !isValidDate {
-			return .invalidExpiry
+			return .expiryInvalid
 		} else if expired {
 			return .cardExpired
 		} else {

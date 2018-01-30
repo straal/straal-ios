@@ -94,13 +94,13 @@ class CardSpec: QuickSpec {
 
 				it("should return correct result when AmEx card with incomplete number and incomplete CVV") {
 					let card = Card(name: CardholderName(firstName: "Jan", surname: "Kowalski"), number: CardNumber(rawValue: "3400 0000 0000"), cvv: CVV(rawValue: "123"), expiry: Expiry(rawValue: (month: 12, year: 2018)))
-					let result: ValidationResult = [.numberIncomplete, .incompleteCVV]
+					let result: ValidationResult = [.numberIncomplete, .CVVIncomplete]
 					expect(card.validation).to(equal(result))
 				}
 
 				it("should return correct result when MasterCard card too long number and CVV") {
 					let card = Card(name: CardholderName(firstName: "Jan", surname: "Kowalski"), number: CardNumber(rawValue: "5555 5555 5555 444444"), cvv: CVV(rawValue: "1234"), expiry: Expiry(rawValue: (month: 12, year: 2018), dateSource: dateSourceFake))
-					let result: ValidationResult = [.numberTooLong, .invalidCVV]
+					let result: ValidationResult = [.numberTooLong, .CVVInvalid]
 					expect(card.validation).to(equal(result))
 				}
 
@@ -112,31 +112,31 @@ class CardSpec: QuickSpec {
 
 				it("should return correct result when a card with letters in CVV") {
 					let card = Card(name: CardholderName(firstName: "Jan", surname: "Kowalski"), number: CardNumber(rawValue: "5555 5555 5555 4444"), cvv: CVV(rawValue: "abs"), expiry: Expiry(rawValue: (month: 12, year: 2018), dateSource: dateSourceFake))
-					let result: ValidationResult = [.invalidCVV]
+					let result: ValidationResult = [.CVVInvalid]
 					expect(card.validation).to(equal(result))
 				}
 
 				it("should return correct result when a card with letters in expiry date") {
 					let card = Card(name: CardholderName(firstName: "Jan", surname: "Kowalski"), number: CardNumber(rawValue: "5555 5555 5555 4444"), cvv: CVV(rawValue: "123"), expiry: Expiry(month: "month", year: "year", dateSource: dateSourceFake))
-					let result: ValidationResult = [.invalidExpiry]
+					let result: ValidationResult = [.expiryInvalid]
 					expect(card.validation).to(equal(result))
 				}
 
 				it("should return correct result when a card with empty name") {
 					let card = Card(name: CardholderName(firstName: "", surname: "Kowalski"), number: CardNumber(rawValue: "5555 5555 5555 4444"), cvv: CVV(rawValue: "123"), expiry: Expiry(rawValue: (month: 12, year: 2020), dateSource: dateSourceFake))
-					let result: ValidationResult = [.invalidName]
+					let result: ValidationResult = [.nameInvalid]
 					expect(card.validation).to(equal(result))
 				}
 
 				it("should return correct result when a card initialized with full name and invalid separator") {
 					let card = Card(name: CardholderName(fullName: "Jan/Kowalski"), number: CardNumber(rawValue: "5555 5555 5555 4444"), cvv: CVV(rawValue: "123"), expiry: Expiry(rawValue: (month: 12, year: 2020), dateSource: dateSourceFake))
-					let result: ValidationResult = [.invalidName]
+					let result: ValidationResult = [.nameInvalid]
 					expect(card.validation).to(equal(result))
 				}
 
 				it("should return correct result name when a card initialized with full name but without surname") {
 					let card = Card(name: CardholderName(fullName: "Jan"), number: CardNumber(rawValue: "5555 5555 5555 4444"), cvv: CVV(rawValue: "123"), expiry: Expiry(rawValue: (month: 12, year: 2020), dateSource: dateSourceFake))
-					let result: ValidationResult = [.invalidName]
+					let result: ValidationResult = [.nameInvalid]
 					expect(card.validation).to(equal(result))
 				}
 			}

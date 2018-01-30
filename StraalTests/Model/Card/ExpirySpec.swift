@@ -91,7 +91,7 @@ class ExpirySpec: QuickSpec {
 				context("when passed incorrect string") {
 
 					it("should validate with invalid date") {
-						let result: ValidationResult = [.invalidExpiry]
+						let result: ValidationResult = [.expiryInvalid]
 						expect(Expiry(month: "", year: "", dateSource: dateSourceFake).validation).to(equal(result))
 						expect(Expiry(month: "abc", year: "def", dateSource: dateSourceFake).validation).to(equal(result))
 					}
@@ -100,7 +100,7 @@ class ExpirySpec: QuickSpec {
 				context("when passed correct string with incorrect date") {
 
 					it("should validate with invalid date") {
-						let result: ValidationResult = [.invalidExpiry]
+						let result: ValidationResult = [.expiryInvalid]
 						expect(Expiry(month: "13", year: "2012", dateSource: dateSourceFake).validation).to(equal(result))
 						expect(Expiry(month: "-1", year: "30", dateSource: dateSourceFake).validation).to(equal(result))
 						expect(Expiry(month: "12", year: "1999", dateSource: dateSourceFake).validation).to(equal(result))

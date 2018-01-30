@@ -66,30 +66,6 @@ class VisaSpec: QuickSpec {
 					expect(sut.validate(number: CardNumber(rawValue: "4111 1111 1111 1112"))).to(equal(ValidationResult.luhnTestFailed))
 				}
 			}
-
-			describe("CVV validation") {
-
-				it("should return valid for correct Visa CVV") {
-					expect(sut.validate(cvv: CVV(rawValue: "123"))).to(equal(ValidationResult.valid))
-					expect(sut.validate(cvv: CVV(rawValue: "034"))).to(equal(ValidationResult.valid))
-				}
-
-				it("should return invalid for empty CVV") {
-					expect(sut.validate(cvv: CVV(rawValue: ""))).to(equal(ValidationResult.invalidCVV))
-				}
-
-				it("should return invalid for non-numeric CVV") {
-					expect(sut.validate(cvv: CVV(rawValue: "abc"))).to(equal(ValidationResult.invalidCVV))
-				}
-
-				it("should return incomplete for too short CVV") {
-					expect(sut.validate(cvv: CVV(rawValue: "12"))).to(equal(ValidationResult.incompleteCVV))
-				}
-
-				it("should return invalid for too long CVV") {
-					expect(sut.validate(cvv: CVV(rawValue: "1234"))).to(equal(ValidationResult.invalidCVV))
-				}
-			}
 		}
 	}
 }

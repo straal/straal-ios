@@ -23,16 +23,7 @@ import Foundation
 public class CardsParser {
 
 	/// Holds card supported by Straal
-	internal static let supportedBrands: [CardBrand] = [Visa(), MasterCard(), AmericanExpress()]
-
-	/**
-	Retreives a card type for a String identifier used by Straal
-	- parameter parsingString: String used to identify card
-	- returns: Nil if no card type matches the parsing String or any other card type that matches the card number.
-	*/
-	public static func cardBrand(for parsingString: String) -> CardBrand? {
-		return supportedBrands.filter { $0.parseString == parsingString }.first
-	}
+	internal static let supportedBrands: [CardBrand] = [Visa(), VisaElectron(), MasterCard(), AmericanExpress()]
 
 	/**
 	Retreives a card type for a specific card number by parsing the Issuer Identification Numbers in the registered card types and matching them with the provided card number.
@@ -40,13 +31,20 @@ public class CardsParser {
 	- returns: Nil if no card type matches the Issuer Identification Number of the provided card number or any other card type that matches the card number.
 	*/
 	public static func cardBrand(for number: CardNumber) -> CardBrand? {
-		for i in (0...min(number.length, 6)).reversed() {
-			if let substring = number.sanitized[incl: 0, excl: i], let substringAsNumber = Int(substring) {
-				if let firstMatchingCardType = supportedBrands.first(where: { $0.identifyingDigits.contains(substringAsNumber) }) {
-					return firstMatchingCardType
+		return supportedBrands.flatMap { brand -> (cardBrand: CardBrand, matchLength: Int)? in
+			do {
+				let regex = try NSRegularExpression(pattern: brand.identifyingPattern, options: [])
+				let range = NSRange(location: 0, length: number.length)
+				let matches = regex.matches(in: number.sanitized, options: [], range: range)
+				if let match = matches.first {
+					let matchLength = match.range.length
+					return (brand, matchLength)
 				}
+				return nil
+			} catch {
+				return nil
 			}
-		}
-		return nil
+		}.sorted(by: { $0.matchLength > $1.matchLength })
+		.first?.cardBrand
 	}
 }

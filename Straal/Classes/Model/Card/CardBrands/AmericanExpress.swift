@@ -25,15 +25,13 @@ import Foundation
 */
 public struct AmericanExpress: CardBrand {
 
-	public let parseString = "amex"
-
 	public let name = "AmericanExpress"
 
 	public let CVVLength = 4
 
 	public let numberGrouping = [4, 6, 5]
 
-	public let identifyingDigits = Set([34, 37])
+	public let identifyingPattern: String = "^3[47]"
 
 	public init() { }
 }

@@ -1,6 +1,7 @@
+//
 /*
- * Visa.swift
- * Created by Bartosz Kamiński on 07/07/2017.
+ * VisaElectron.swift
+ * Created by Hubert Kuczyński on 30.01.2018.
  *
  * Straal SDK for iOS
  * Copyright 2018 Straal Sp. z o. o.
@@ -21,15 +22,15 @@
 import Foundation
 
 /**
-*  The native supported card type of Visa
+*  The native supported card type of Visa Electron
 */
-public struct Visa: CardBrand {
+public struct VisaElectron: CardBrand {
 
-	public let name = "Visa"
+	public let name = "Visa Electron"
 
 	public let CVVLength = 3
 
-	public let identifyingPattern: String = "^4"
+	public let identifyingPattern: String = "^(4026|417500|4405|4508|4844|491(3|7))"
 
 	public init() { }
 }

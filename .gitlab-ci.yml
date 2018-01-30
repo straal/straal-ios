@@ -2,6 +2,7 @@ stages:
   - prepare
   - lint
   - test
+  - test_api
 
 cache:
   paths:
@@ -44,3 +45,8 @@ test:
   script:
     - mkdir -p outputs
     - xcodebuild test -workspace Straal.xcworkspace -scheme Straal -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 8' -sdk iphonesimulator | bundle exec xcpretty -c --report html --output outputs/report.html && exit ${PIPESTATUS[0]}
+
+trigger_build:
+  stage: test_api
+  script:
+    - "curl -X POST -F token=$TESTS_TRIGGER_TOKEN -F ref=$TESTS_REF -F variables[commit_hash]=$CI_COMMIT_SHA $TESTS_URL"

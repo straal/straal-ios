@@ -16,17 +16,17 @@
 
 - [Features](#features)
 - [Requirements](#requirements)
-  - [Backend](#backend)
+  - [Back end](#back-end)
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Overview](#Overview)
+  - [Overview](#overview)
   - [Initial configuration](#initial-configuration)
   - [Operations](#operations)
-    - [Create card](#create-card)
-    - [Create transaction with a card](#create-transaction-with-card)
-  - [Validation](#valdation)
+    - [Create a card](#create-a-card)
+    - [Create a transaction with a card](#create-a-transaction-with-a-card)
+  - [Validation](#validation)
 - [Support](#support)
-- [Licence](#licence)
+- [License](#license)
 
 ## Features
 
@@ -39,17 +39,17 @@
 
 Straal SDK requires deployment target of **iOS 9.0+** and Xcode **8.0+**.
 
-### Backend
+### Back end
 
-You also need a backend service which will handle payment information and issue `CryptKeys` for the app. For more see [here](https://api-reference.straal.com).
+You also need a back-end service which will handle payment information and create `CryptKeys` for the app. For more, see [Straal API Reference](https://api-reference.straal.com).
 
-You backend service needs to implement **at least one endpoint** at *https://_base_url_/straal/v1/cryptkeys*. This endpoint is used by this SDK to fetch cryptkeys that encrypt sensitive user data.
+Your back-end service needs to implement **at least one endpoint** at `https://_base_url_/straal/v1/cryptkeys`. This endpoint is used by this SDK to fetch `CryptKeys` that encrypt sensitive user data.
 
-> It is your backend's job to authorize the user and reject the cryptkey fetch if need be.
+> It is your back end's job to authorize the user and reject the `CryptKey` fetch if necessary.
 
 ## Installation
 
-We recommend using *CocoaPods*
+We recommend using *CocoaPods*.
 
 Add the following lines to your **Podfile**:
 
@@ -63,15 +63,15 @@ Then run `pod install`.
 
 ### Overview
 
-To use [Straal](https://straal.com/) for iOS you need an iOS app (in which you want to accept payments), as well as your own backend service.
+To use [Straal](https://straal.com/) for iOS, you need your own back-end service and an iOS app which you want to use to accept payments.
 
-This SDK lets you implement a secure payment process in your app. User's sensitive data (as credit card numbers) is sent directly from mobile application, so no card data will hit your servers, which results in improved security and fewer PCI compliance requirements.
+This SDK lets you implement a secure payment process into your app. Your user's sensitive data (such as credit card numbers) is sent **directly** from the mobile application, so no card data will hit your servers. It results in improved security and fewer PCI compliance requirements.
 
-The security of this process is ensured by a `CryptKey` mechanism. Your merchant backend service is responsible for **authorizing** the app user for a specific CryptKey operation. This is done via `headers` in configuration.
+The security of this process is ensured by a `CryptKey` mechanism. Your merchant back-end service is responsible for **authorizing** the app user for a specific `CryptKey` operation. This is done via `headers` in configuration.
 
 ### Initial configuration
 
-First, create a `StraalConfiguration` object (which consists of your Merchant URL and **authorization headers**). Then you create your `Straal` object using the configuration.
+First, create a `StraalConfiguration` object (which consists of your Merchant URL and **authorization headers**). Then, create your `Straal` object using the configuration.
 
 ```swift
 let url = URL(string: "https://my-merchant-backen-url.com")!
@@ -80,13 +80,15 @@ let configuration = StraalConfiguration(baseUrl: url, headers: headers)
 let straal = Straal(configuration: configuration)
 ```
 
-> Note: Once your app needs to change the authorization headers (user logs out or in), you need to create a new Straal object. Neither Straal nor StraalConfiguration objects are meant to be reused or changed.
+> Note: Once your app needs to change the authorization headers (user logs out or in), you need to create a new `Straal` object. Neither `Straal` nor `StraalConfiguration` objects are meant to be reused or changed.
 
 Once you have your `Straal` object, you can submit `Operations` to it.
 
+### Operations
+
 #### Create a card
 
-The first operation is `CreateCard` operation.
+The first operation is `CreateCard`.
 
 ```swift
 //You should get those from your UI inputs
@@ -98,7 +100,7 @@ let number = CardNumber(rawValue: "5555 5555 5555 4444")
 //Now create a card object. You can optionally validate a card.
 let card = Card(name: name, number: number, cvv: cvv, expiry: expiry)
 
-// Create a card create operation
+// Initialise a create card operation
 let createCardOperation = CreateCard(card: card)
 
 // Now you can submit the operation for execution
@@ -107,7 +109,7 @@ straal.perform(operation: createCardOperation) { (response, error) in
 }
 ```
 
-> Note what happens under the hood when you call this last method. First, your merchant backend is fetched on `cryptkeys` endpoint with this `POST` request:
+> Note what happens under the hood when you call this last method. First, your merchant back end is fetched on `cryptkeys` endpoint with this `POST` request:
 
 ```json
 {
@@ -115,11 +117,11 @@ straal.perform(operation: createCardOperation) { (response, error) in
 }
 ```
 
-Your backend's job is to authenticate this request (using headers passed to `StraalConfiguration`), append this json with `customer_uuid` key-value pair and forward it to Straal using [this method](https://api-reference.straal.com/#resources-cryptkeys-create-a-cryptkey).
+Your back end's job is to authenticate this request (using headers passed to `StraalConfiguration`), append this JSON with `customer_uuid` key-value pair and forward it to Straal using [this method](https://api-reference.straal.com/#resources-cryptkeys-create-a-cryptkey).
 
 Then, the credit card data is encrypted, sent to Straal directly, processed by Straal, and responded to.
 
-#### Create transaction with a card
+#### Create a transaction with a card
 
 The second supported operation is `CreateTransactionWithCard`.
 
@@ -133,7 +135,7 @@ straal.perform(operation: transactionWithCardOperation) { (response, error) in
 }
 ```
 
-> Again, we first fetch your `cryptkeys` endpoint to fetch a crypt key. This time with JSON like this:
+> Again, we first fetch your `cryptkeys` endpoint to fetch a `CryptKey`. This time with JSON:
 
 ```json
 {
@@ -146,7 +148,7 @@ straal.perform(operation: transactionWithCardOperation) { (response, error) in
 }
 ```
 
-> It is your backend's responsibility to verify the transaction amount (possibly pairing it with an order using `reference`), and to authorize the user using request headers.
+> It is your back end's responsibility to verify the transaction amount (possibly pairing it with an order using `reference`), and to authorize the user using request headers.
 
 ## Validation
 

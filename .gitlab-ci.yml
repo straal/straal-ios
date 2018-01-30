@@ -42,6 +42,5 @@ test:
     paths:
       - outputs/report.html
   script:
-    - pod install
     - mkdir -p outputs
-    - xcodebuild build test -workspace Straal.xcworkspace -scheme Straal -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 8' -sdk iphonesimulator | xcpretty -c --report html --output outputs/report.html && exit ${PIPESTATUS[0]}
+    - xcodebuild build test -workspace Straal.xcworkspace -scheme Straal -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 8' -sdk iphonesimulator | bundle exec xcpretty -c --report html --output outputs/report.html && exit ${PIPESTATUS[0]}

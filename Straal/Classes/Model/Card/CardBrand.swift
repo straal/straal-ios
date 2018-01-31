@@ -23,14 +23,14 @@ import Foundation
 //`CardBrand` is a predefined type for different bank cards.
 public protocol CardBrand {
 
-	/// String used to parse card object fetched from Straal
-	var parseString: String { get }
-
 	/// The card type name (e.g.: Visa, MasterCard, ...)
 	var name: String { get }
 
 	/// The number of digits expected in the Card Validation Code.
 	var CVVLength: Int { get }
+
+	/// String used to identify the card type
+	var identifyingPattern: String { get }
 
 	/**
 	The card number grouping is used to format the card number when typing in the card number text field.
@@ -39,14 +39,6 @@ public protocol CardBrand {
 	- returns: The grouping of digits in the card number.
 	*/
 	var numberGrouping: [Int] { get }
-
-	/**
-	Card types are typically identified by their first n digits.
-
-	In order to identify the card issuer, this function returns a Set of integers which indicate the card issuer. In case of Discover for example, this is the set of [(644...649),(622126...622925),(6011)], which contains different Issuer Identification Number ranges which are reserved for Discover.
-	- returns: A set of numbers which, when being found in the first digits of the card number, indicate the card issuer.
-	*/
-	var identifyingDigits: Set<Int> { get }
 
 	/**
 	Returns whether or not `self` is equal to another `CardType`.

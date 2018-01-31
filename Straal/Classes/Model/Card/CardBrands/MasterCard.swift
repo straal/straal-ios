@@ -25,13 +25,11 @@ import Foundation
 */
 public struct MasterCard: CardBrand {
 
-	public let parseString = "mastercard"
-
 	public let name = "MasterCard"
 
 	public let CVVLength = 3
 
-	public let identifyingDigits = Set(51...55)
+	public let identifyingPattern: String = "^5[1-5]"
 
 	public init() { }
 }

@@ -23,7 +23,7 @@ import Foundation
 /**
 A Credit Card Expiry date.
 */
-public struct Expiry: RawRepresentable, Validating {
+public struct Expiry: RawRepresentable {
 	public typealias RawValue = (month: Int, year: Int)
 
 	/// The month and year of the expiration date.
@@ -31,6 +31,9 @@ public struct Expiry: RawRepresentable, Validating {
 
 	/// The month and year of the expiration date with corrected year
 	public var sanitized: (month: Int, year: Int) {
+		if rawValue == Expiry.invalid.rawValue {
+			return rawValue
+		}
 		let yearCorrected: Int = {
 			if 0...99 ~= rawValue.year {
 				return rawValue.year + 2000
@@ -40,21 +43,8 @@ public struct Expiry: RawRepresentable, Validating {
 		return (month: rawValue.month, year: yearCorrected)
 	}
 
-	/// Validation property: checks date is valid and if card is expired
-	public var validation: ValidationResult {
-		if !isValidDate {
-			return .expiryInvalid
-		} else if expired {
-			return .cardExpired
-		} else {
-			return []
-		}
-	}
-
 	/// An invalid expiry date
 	internal static let invalid = Expiry(rawValue: (month: 0, year: 0))
-
-	private static var dateSource: DateSourcing = DateSource()
 
 	/**
 	Creates a CardExpiry with the given month and year as Ints.
@@ -62,12 +52,7 @@ public struct Expiry: RawRepresentable, Validating {
 	- parameter year:      The year number (of numeric format YY or YYYY).
 	*/
 	public init(rawValue: (month: Int, year: Int)) {
-		self.init(rawValue: rawValue, dateSource: DateSource())
-	}
-
-	internal init(rawValue: (month: Int, year: Int), dateSource: DateSourcing) {
 		self.rawValue = rawValue
-		Expiry.dateSource = dateSource
 	}
 
 	/**
@@ -77,40 +62,11 @@ public struct Expiry: RawRepresentable, Validating {
 	*/
 	public init(month: String, year: String) {
 		guard let monthNumber = Int(month),
-			let yearNumber = Int(year),
-			year.count >= 2,
-			year.count <= 4 else {
-				self.init(rawValue: Expiry.invalid.rawValue)
-				return
+			  let yearNumber = Int(year)
+		else {
+			self.init(rawValue: Expiry.invalid.rawValue)
+			return
 		}
-
 		self.init(rawValue: (month: monthNumber, year: yearNumber))
 	}
-
-	internal init(month: String, year: String, dateSource: DateSourcing) {
-		self.init(month: month, year: year)
-		Expiry.dateSource = dateSource
-	}
-
-	/// Validation property: checks if expiration date is a valid date
-	private var isValidDate: Bool {
-		if (1...12).contains(sanitized.month) && sanitized.year >= 2000 {
-			return true
-		} else {
-			return false
-		}
-	}
-
-	/// Validation property: checks if expiration date is expired
-	private var expired: Bool {
-		let dateSource = Expiry.dateSource
-		if sanitized.year == dateSource.currentYear {
-			return sanitized.month >= dateSource.currentMonth ? false : true
-		} else if sanitized.year > dateSource.currentYear {
-			return false
-		} else {
-			return true
-		}
-	}
-
 }

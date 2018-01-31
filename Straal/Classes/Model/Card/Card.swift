@@ -64,7 +64,7 @@ public struct Card: Validating {
 			result.insert(number.validation)
 		}
 		result.insert(name.validation)
-		result.insert(expiry.validation)
+		result.insert(ExpiryValidator().validate(card: self))
 		return result
 	}
 }

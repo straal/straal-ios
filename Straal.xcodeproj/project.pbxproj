@@ -99,7 +99,7 @@
 		B4F4BCED2020A44D003C014C /* CardsParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */; };
 		B4F4BCF12020B90E003C014C /* VisaElectron.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCF02020B90E003C014C /* VisaElectron.swift */; };
 		B4742A832020CE7C00EAD828 /* CVVValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A822020CE7C00EAD828 /* CVVValidator.swift */; };
-		B4742A852020D5E300EAD828 /* CVVCalidatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A842020D5E300EAD828 /* CVVCalidatorSpec.swift */; };
+		B4742A852020D5E300EAD828 /* CVVValidatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A842020D5E300EAD828 /* CVVValidatorSpec.swift */; };
 		B4F4BCEF2020B41E003C014C /* CardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCEE2020B41E003C014C /* CardValidator.swift */; };
 		C17495B1A54359B3F718E387 /* Pods_Straal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5574E406B430FA7F1707BB80 /* Pods_Straal.framework */; };
 /* End PBXBuildFile section */
@@ -213,7 +213,7 @@
 		B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsParserSpec.swift; sourceTree = "<group>"; };
 		B4F4BCF02020B90E003C014C /* VisaElectron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisaElectron.swift; sourceTree = "<group>"; };
 		B4742A822020CE7C00EAD828 /* CVVValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVVValidator.swift; sourceTree = "<group>"; };
-		B4742A842020D5E300EAD828 /* CVVCalidatorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVVCalidatorSpec.swift; sourceTree = "<group>"; };
+		B4742A842020D5E300EAD828 /* CVVValidatorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVVValidatorSpec.swift; sourceTree = "<group>"; };
 		B4F4BCEE2020B41E003C014C /* CardValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardValidator.swift; sourceTree = "<group>"; };
 		D03E263B338F057044F7AAE9 /* Pods_Straal_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Straal_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB66FA318C1830F344DFA243 /* Pods-Straal_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straal_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Straal_Example/Pods-Straal_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -530,7 +530,7 @@
 		A309CB001D9945BD00873639 /* Validation */ = {
 			isa = PBXGroup;
 			children = (
-				B4742A842020D5E300EAD828 /* CVVCalidatorSpec.swift */,
+				B4742A842020D5E300EAD828 /* CVVValidatorSpec.swift */,
 				0E9D35B42021E5DC00DBA9C9 /* ExpiryValidatorSpec.swift */,
 				A309CB0F1D997AAF00873639 /* LuhnSpec.swift */,
 			);
@@ -936,7 +936,7 @@
 				0E9D35B52021E5DC00DBA9C9 /* ExpiryValidatorSpec.swift in Sources */,
 				0E7AC1C5201B703B00BC3DF3 /* PostRequestCallableSpec.swift in Sources */,
 				0E90F77D201A15BF0070C526 /* UrlSessionAdapterFake.swift in Sources */,
-				B4742A852020D5E300EAD828 /* CVVCalidatorSpec.swift in Sources */,
+				B4742A852020D5E300EAD828 /* CVVValidatorSpec.swift in Sources */,
 				A371E71E1D82FD9F00D05B2F /* KeyParserTests.swift in Sources */,
 				A35C76D5201C915600E0004F /* CreateCardSpec.swift in Sources */,
 				0EAA37D21F14C50D0048F2E6 /* AmericanExpressSpec.swift in Sources */,

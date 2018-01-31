@@ -1,5 +1,5 @@
 /*
- * CVVCalidatorSpec.swift
+ * CVVValidatorSpec.swift
  * Created by Hubert Kuczyński on 30.01.2018.
  *
  * Straal SDK for iOS

@@ -21,7 +21,7 @@
 import Foundation
 
 /// Represents a card (created by user)
-public struct Card: Validating {
+public struct Card {
 
 	/// Cardholder name and surname
 	public let name: CardholderName
@@ -47,25 +47,6 @@ public struct Card: Validating {
 		self.number = number
 		self.cvv = cvv
 		self.expiry = expiry
-	}
-
-	/**
-	Validates a card
-	- returns: OptionSet with all validation results.
-	*/
-	public var validation: ValidationResult {
-		var result: ValidationResult = []
-
-		if let cardBrand = CardsParser.cardBrand(for: number) {
-			result.insert(CVVValidator().validate(card: self))
-			result.insert(cardBrand.validate(number: number))
-		} else {
-			result.insert(.numberDoesNotMatchType)
-			result.insert(number.validation)
-		}
-		result.insert(ExpiryValidator().validate(card: self))
-		result.insert(CardholderNameValidator().validate(card: self))
-		return result
 	}
 }
 

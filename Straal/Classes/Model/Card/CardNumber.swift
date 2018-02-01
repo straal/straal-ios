@@ -21,7 +21,7 @@
 import Foundation
 
 /// Represents the card number of a card.
-public struct CardNumber: RawRepresentable, Validating, Encodable {
+public struct CardNumber: RawRepresentable, Encodable {
 
 	public typealias RawValue = String
 
@@ -36,15 +36,6 @@ public struct CardNumber: RawRepresentable, Validating, Encodable {
 	/// The count of digits in card number.
 	public var length: Int {
 		return sanitized.count
-	}
-
-	/// Validation property: checks if number is numeric
-	internal var validation: ValidationResult {
-		if sanitized.isNumeric {
-			return []
-		} else {
-			return .numberIsNotNumeric
-		}
 	}
 
 	/**

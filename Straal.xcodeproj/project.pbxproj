@@ -14,9 +14,7 @@
 		0E90F77D201A15BF0070C526 /* UrlSessionAdapterFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90F77C201A15BF0070C526 /* UrlSessionAdapterFake.swift */; };
 		0E9D35B32021D7FE00DBA9C9 /* ExpiryValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9D35B22021D7FE00DBA9C9 /* ExpiryValidation.swift */; };
 		0E9D35B52021E5DC00DBA9C9 /* ExpiryValidatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9D35B42021E5DC00DBA9C9 /* ExpiryValidatorSpec.swift */; };
-		0EAA37CE1F14C2510048F2E6 /* VisaSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA37CD1F14C2510048F2E6 /* VisaSpec.swift */; };
-		0EAA37D01F14C4FF0048F2E6 /* MasterCardSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA37CF1F14C4FF0048F2E6 /* MasterCardSpec.swift */; };
-		0EAA37D21F14C50D0048F2E6 /* AmericanExpressSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA37D11F14C50D0048F2E6 /* AmericanExpressSpec.swift */; };
+		0E9D35B72023209E00DBA9C9 /* FullCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9D35B62023209E00DBA9C9 /* FullCardValidator.swift */; };
 		0EAA37D41F18B8C20048F2E6 /* ExpirySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA37D31F18B8C20048F2E6 /* ExpirySpec.swift */; };
 		0EAA37D61F18E89D0048F2E6 /* CardSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA37D51F18E89D0048F2E6 /* CardSpec.swift */; };
 		7E97C9E424919D1429C61327 /* Pods_StraalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91ED081A58CDE563D531CD5A /* Pods_StraalTests.framework */; };
@@ -41,7 +39,6 @@
 		A30801CB2018FD0100A1060A /* DateSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30801882018FD0000A1060A /* DateSource.swift */; };
 		A30801CC2018FD0100A1060A /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A308018A2018FD0000A1060A /* Collection+Extension.swift */; };
 		A30801CD2018FD0100A1060A /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A308018B2018FD0000A1060A /* String+Extension.swift */; };
-		A30801CE2018FD0100A1060A /* Validating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A308018C2018FD0000A1060A /* Validating.swift */; };
 		A30801CF2018FD0100A1060A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = A308018F2018FD0000A1060A /* Card.swift */; };
 		A30801D02018FD0100A1060A /* CardBrand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30801902018FD0000A1060A /* CardBrand.swift */; };
 		A30801D12018FD0100A1060A /* AmericanExpress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30801922018FD0000A1060A /* AmericanExpress.swift */; };
@@ -57,7 +54,6 @@
 		A30801DD2018FD0100A1060A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30801A02018FD0000A1060A /* Currency.swift */; };
 		A30801DE2018FD0100A1060A /* MoneyAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30801A12018FD0000A1060A /* MoneyAmount.swift */; };
 		A30801DF2018FD0100A1060A /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30801A22018FD0000A1060A /* Transaction.swift */; };
-		A30801E02018FD0100A1060A /* CardValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30801A42018FD0000A1060A /* CardValidation.swift */; };
 		A30801E12018FD0100A1060A /* Luhn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30801A52018FD0000A1060A /* Luhn.swift */; };
 		A30801E22018FD0100A1060A /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30801A62018FD0000A1060A /* ValidationResult.swift */; };
 		A30801E32018FD0100A1060A /* UrlSession+Synchronous.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30801A92018FD0000A1060A /* UrlSession+Synchronous.swift */; };
@@ -102,7 +98,9 @@
 		B4742A852020D5E300EAD828 /* CVVValidatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A842020D5E300EAD828 /* CVVValidatorSpec.swift */; };
 		B4742A872021AEC500EAD828 /* CardholderNameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A862021AEC500EAD828 /* CardholderNameValidator.swift */; };
 		B4742A892021AF0E00EAD828 /* CardholderNameValidatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A882021AF0E00EAD828 /* CardholderNameValidatorSpec.swift */; };
+		B4F4BCED2020A44D003C014C /* CardsParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */; };
 		B4F4BCEF2020B41E003C014C /* CardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCEE2020B41E003C014C /* CardValidator.swift */; };
+		B4F4BCF12020B90E003C014C /* VisaElectron.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCF02020B90E003C014C /* VisaElectron.swift */; };
 		C17495B1A54359B3F718E387 /* Pods_Straal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5574E406B430FA7F1707BB80 /* Pods_Straal.framework */; };
 /* End PBXBuildFile section */
 
@@ -124,9 +122,7 @@
 		0E90F77C201A15BF0070C526 /* UrlSessionAdapterFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlSessionAdapterFake.swift; sourceTree = "<group>"; };
 		0E9D35B22021D7FE00DBA9C9 /* ExpiryValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiryValidation.swift; sourceTree = "<group>"; };
 		0E9D35B42021E5DC00DBA9C9 /* ExpiryValidatorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiryValidatorSpec.swift; sourceTree = "<group>"; };
-		0EAA37CD1F14C2510048F2E6 /* VisaSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisaSpec.swift; sourceTree = "<group>"; };
-		0EAA37CF1F14C4FF0048F2E6 /* MasterCardSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterCardSpec.swift; sourceTree = "<group>"; };
-		0EAA37D11F14C50D0048F2E6 /* AmericanExpressSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmericanExpressSpec.swift; sourceTree = "<group>"; };
+		0E9D35B62023209E00DBA9C9 /* FullCardValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullCardValidator.swift; sourceTree = "<group>"; };
 		0EAA37D31F18B8C20048F2E6 /* ExpirySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ExpirySpec.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		0EAA37D51F18E89D0048F2E6 /* CardSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CardSpec.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5574E406B430FA7F1707BB80 /* Pods_Straal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Straal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,7 +150,6 @@
 		A30801882018FD0000A1060A /* DateSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateSource.swift; sourceTree = "<group>"; };
 		A308018A2018FD0000A1060A /* Collection+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		A308018B2018FD0000A1060A /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		A308018C2018FD0000A1060A /* Validating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validating.swift; sourceTree = "<group>"; };
 		A308018F2018FD0000A1060A /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		A30801902018FD0000A1060A /* CardBrand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardBrand.swift; sourceTree = "<group>"; };
 		A30801922018FD0000A1060A /* AmericanExpress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmericanExpress.swift; sourceTree = "<group>"; };
@@ -170,7 +165,6 @@
 		A30801A02018FD0000A1060A /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		A30801A12018FD0000A1060A /* MoneyAmount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyAmount.swift; sourceTree = "<group>"; };
 		A30801A22018FD0000A1060A /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
-		A30801A42018FD0000A1060A /* CardValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardValidation.swift; sourceTree = "<group>"; };
 		A30801A52018FD0000A1060A /* Luhn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Luhn.swift; sourceTree = "<group>"; };
 		A30801A62018FD0000A1060A /* ValidationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
 		A30801A92018FD0000A1060A /* UrlSession+Synchronous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UrlSession+Synchronous.swift"; sourceTree = "<group>"; };
@@ -218,7 +212,9 @@
 		B4742A842020D5E300EAD828 /* CVVValidatorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVVValidatorSpec.swift; sourceTree = "<group>"; };
 		B4742A862021AEC500EAD828 /* CardholderNameValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardholderNameValidator.swift; sourceTree = "<group>"; };
 		B4742A882021AF0E00EAD828 /* CardholderNameValidatorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardholderNameValidatorSpec.swift; sourceTree = "<group>"; };
+		B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsParserSpec.swift; sourceTree = "<group>"; };
 		B4F4BCEE2020B41E003C014C /* CardValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardValidator.swift; sourceTree = "<group>"; };
+		B4F4BCF02020B90E003C014C /* VisaElectron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisaElectron.swift; sourceTree = "<group>"; };
 		D03E263B338F057044F7AAE9 /* Pods_Straal_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Straal_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB66FA318C1830F344DFA243 /* Pods-Straal_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straal_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Straal_Example/Pods-Straal_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E3533DFD537ECBC3D2CA1193 /* Pods-StraalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StraalTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StraalTests/Pods-StraalTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -250,22 +246,11 @@
 		0EAA37CB1F14C2490048F2E6 /* Card */ = {
 			isa = PBXGroup;
 			children = (
-				0EAA37CC1F14C2490048F2E6 /* CardBrands */,
 				0EAA37D31F18B8C20048F2E6 /* ExpirySpec.swift */,
 				0EAA37D51F18E89D0048F2E6 /* CardSpec.swift */,
 				B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */,
 			);
 			path = Card;
-			sourceTree = "<group>";
-		};
-		0EAA37CC1F14C2490048F2E6 /* CardBrands */ = {
-			isa = PBXGroup;
-			children = (
-				0EAA37CD1F14C2510048F2E6 /* VisaSpec.swift */,
-				0EAA37CF1F14C4FF0048F2E6 /* MasterCardSpec.swift */,
-				0EAA37D11F14C50D0048F2E6 /* AmericanExpressSpec.swift */,
-			);
-			path = CardBrands;
 			sourceTree = "<group>";
 		};
 		8CCEF6B63CE78FD1792EAD25 /* Frameworks */ = {
@@ -359,7 +344,6 @@
 			children = (
 				A30801882018FD0000A1060A /* DateSource.swift */,
 				A30801892018FD0000A1060A /* Extensions */,
-				A308018C2018FD0000A1060A /* Validating.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -445,13 +429,13 @@
 		A30801A32018FD0000A1060A /* Validation */ = {
 			isa = PBXGroup;
 			children = (
-				A30801A42018FD0000A1060A /* CardValidation.swift */,
 				B4F4BCEE2020B41E003C014C /* CardValidator.swift */,
 				B4742A822020CE7C00EAD828 /* CVVValidator.swift */,
 				0E9D35B22021D7FE00DBA9C9 /* ExpiryValidation.swift */,
 				A30801A52018FD0000A1060A /* Luhn.swift */,
 				A30801A62018FD0000A1060A /* ValidationResult.swift */,
 				B4742A862021AEC500EAD828 /* CardholderNameValidator.swift */,
+				0E9D35B62023209E00DBA9C9 /* FullCardValidator.swift */,
 			);
 			path = Validation;
 			sourceTree = "<group>";
@@ -863,7 +847,6 @@
 				A30801C22018FD0000A1060A /* ParseErrorCallable.swift in Sources */,
 				B4742AA32021F21000EAD828 /* Maestro.swift in Sources */,
 				A30801E22018FD0100A1060A /* ValidationResult.swift in Sources */,
-				A30801CE2018FD0100A1060A /* Validating.swift in Sources */,
 				A30801C72018FD0000A1060A /* CreateCard.swift in Sources */,
 				A30801CD2018FD0100A1060A /* String+Extension.swift in Sources */,
 				A30801C42018FD0000A1060A /* PostRequestCallable.swift in Sources */,
@@ -910,6 +893,7 @@
 				B4742A872021AEC500EAD828 /* CardholderNameValidator.swift in Sources */,
 				A30801EC2018FD0100A1060A /* Configuration.swift in Sources */,
 				B4742A8B2021D96A00EAD828 /* Switch.swift in Sources */,
+				0E9D35B72023209E00DBA9C9 /* FullCardValidator.swift in Sources */,
 				A30801E92018FD0100A1060A /* StraalResponse.swift in Sources */,
 				A30801E72018FD0100A1060A /* StraalEndpoint.swift in Sources */,
 				A30801EE2018FD0100A1060A /* StraalCryptor.swift in Sources */,
@@ -935,7 +919,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EAA37D01F14C4FF0048F2E6 /* MasterCardSpec.swift in Sources */,
 				B4F4BCED2020A44D003C014C /* CardsParserSpec.swift in Sources */,
 				A35C76D7201C916300E0004F /* CreateTransactionWithCardSpec.swift in Sources */,
 				0EAA37D41F18B8C20048F2E6 /* ExpirySpec.swift in Sources */,
@@ -946,9 +929,7 @@
 				B4742A852020D5E300EAD828 /* CVVValidatorSpec.swift in Sources */,
 				A371E71E1D82FD9F00D05B2F /* KeyParserTests.swift in Sources */,
 				A35C76D5201C915600E0004F /* CreateCardSpec.swift in Sources */,
-				0EAA37D21F14C50D0048F2E6 /* AmericanExpressSpec.swift in Sources */,
 				B4742A892021AF0E00EAD828 /* CardholderNameValidatorSpec.swift in Sources */,
-				0EAA37CE1F14C2510048F2E6 /* VisaSpec.swift in Sources */,
 				A34AD01D1D9A5ACE00D13D09 /* DateSourceFake.swift in Sources */,
 				A3080161201878F500A1060A /* CryptKeyCallableSpec.swift in Sources */,
 				0E7AC1C7201B707D00BC3DF3 /* VersionAdapterFake.swift in Sources */,

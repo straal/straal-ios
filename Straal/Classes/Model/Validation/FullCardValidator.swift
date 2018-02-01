@@ -1,6 +1,6 @@
 /*
- * Validating.swift
- * Created by Bartosz Kamiński on 17/07/2017.
+ * FullCardValidator.swift
+ * Created by Bartosz Kamiński on 01/02/2018.
  *
  * Straal SDK for iOS
  * Copyright 2018 Straal Sp. z o. o.
@@ -20,6 +20,9 @@
 
 import Foundation
 
-internal protocol Validating {
-	var validation: ValidationResult { get }
+final class FullCardValidator: CardValidator {
+
+	func validate(card: Card) -> ValidationResult {
+		return .valid
+	}
 }

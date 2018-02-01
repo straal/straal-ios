@@ -26,7 +26,7 @@ public protocol CardBrand {
 	/// The card type name (e.g.: Visa, MasterCard, ...)
 	var name: String { get }
 
-	/// The number of digits expected in the Card Validation Code.
+	/// The number of digits expected in the Card Verification Value.
 	var CVVLength: Int { get }
 
 	/// String used to identify the card type

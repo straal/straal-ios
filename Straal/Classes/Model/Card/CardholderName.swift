@@ -20,7 +20,7 @@
 
 import Foundation
 
-public struct CardholderName: Validating {
+public struct CardholderName {
 
 	/// Cardholder's name
 	public let firstName: String
@@ -31,15 +31,6 @@ public struct CardholderName: Validating {
 	/// Carholder's name and surname combined
 	public var fullName: String {
 		return firstName + " " + surname
-	}
-
-	/// Validation property: checks if first name and surname are filled
-	internal var validation: ValidationResult {
-		if !firstName.isEmpty && !surname.isEmpty {
-			return []
-		} else {
-			return .nameInvalid
-		}
 	}
 
 	/**

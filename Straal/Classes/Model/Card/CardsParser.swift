@@ -23,7 +23,9 @@ import Foundation
 public class CardsParser {
 
 	/// Holds card supported by Straal
-	internal static let supportedBrands: [CardBrand] = [Visa(), VisaElectron(), MasterCard(), AmericanExpress()]
+	internal static let supportedBrands: [CardBrand] = [VisaElectron(), Switch(), Visa(), MasterCard(), AmericanExpress(), JCB(),
+														Bankcard(), Diners(), Discover(), CUP(), InterPayment(), InstaPayment(), Laser(),
+														Dankort(), Maestro(), Solo(), UATP()]
 
 	/**
 	Retreives a card type for a specific card number by parsing the Issuer Identification Numbers in the registered card types and matching them with the provided card number.

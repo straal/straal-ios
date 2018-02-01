@@ -29,7 +29,7 @@ public struct AmericanExpress: CardBrand {
 
 	public let CVVLength = 4
 
-	public let numberGrouping = [4, 6, 5]
+	public let numberGroupings = [[4, 6, 5]]
 
 	public let identifyingPattern: String = "^3[47]"
 

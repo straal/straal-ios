@@ -81,6 +81,19 @@
 		A371E7111D82FC6600D05B2F /* Straal.h in Headers */ = {isa = PBXBuildFile; fileRef = A371E7031D82FC6600D05B2F /* Straal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A371E71D1D82FD9F00D05B2F /* CryptorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A371E71B1D82FD9F00D05B2F /* CryptorSpec.swift */; };
 		A371E71E1D82FD9F00D05B2F /* KeyParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A371E71C1D82FD9F00D05B2F /* KeyParserTests.swift */; };
+		B4742A8B2021D96A00EAD828 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A8A2021D96A00EAD828 /* Switch.swift */; };
+		B4742A8F2021E21900EAD828 /* JCB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A8E2021E21900EAD828 /* JCB.swift */; };
+		B4742A912021E32200EAD828 /* Bankcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A902021E32200EAD828 /* Bankcard.swift */; };
+		B4742A932021E5BB00EAD828 /* Diners.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A922021E5BB00EAD828 /* Diners.swift */; };
+		B4742A952021E6E900EAD828 /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A942021E6E900EAD828 /* Discover.swift */; };
+		B4742A972021EAF400EAD828 /* CUP.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A962021EAF400EAD828 /* CUP.swift */; };
+		B4742A992021ED2F00EAD828 /* InterPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A982021ED2F00EAD828 /* InterPayment.swift */; };
+		B4742A9B2021EF0100EAD828 /* InstaPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A9A2021EF0100EAD828 /* InstaPayment.swift */; };
+		B4742A9F2021F03700EAD828 /* Laser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A9E2021F03700EAD828 /* Laser.swift */; };
+		B4742AA12021F19B00EAD828 /* Dankort.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742AA02021F19B00EAD828 /* Dankort.swift */; };
+		B4742AA32021F21000EAD828 /* Maestro.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742AA22021F21000EAD828 /* Maestro.swift */; };
+		B4742AA52021FF5100EAD828 /* Solo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742AA42021FF5100EAD828 /* Solo.swift */; };
+		B4742AA72022006600EAD828 /* UATP.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742AA62022006600EAD828 /* UATP.swift */; };
 		B4F4BCED2020A44D003C014C /* CardsParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */; };
 		B4F4BCF12020B90E003C014C /* VisaElectron.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCF02020B90E003C014C /* VisaElectron.swift */; };
 		C17495B1A54359B3F718E387 /* Pods_Straal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5574E406B430FA7F1707BB80 /* Pods_Straal.framework */; };
@@ -177,6 +190,19 @@
 		A371E7101D82FC6600D05B2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A371E71B1D82FD9F00D05B2F /* CryptorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptorSpec.swift; sourceTree = "<group>"; };
 		A371E71C1D82FD9F00D05B2F /* KeyParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyParserTests.swift; sourceTree = "<group>"; };
+		B4742A8A2021D96A00EAD828 /* Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
+		B4742A8E2021E21900EAD828 /* JCB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCB.swift; sourceTree = "<group>"; };
+		B4742A902021E32200EAD828 /* Bankcard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bankcard.swift; sourceTree = "<group>"; };
+		B4742A922021E5BB00EAD828 /* Diners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diners.swift; sourceTree = "<group>"; };
+		B4742A942021E6E900EAD828 /* Discover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discover.swift; sourceTree = "<group>"; };
+		B4742A962021EAF400EAD828 /* CUP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUP.swift; sourceTree = "<group>"; };
+		B4742A982021ED2F00EAD828 /* InterPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterPayment.swift; sourceTree = "<group>"; };
+		B4742A9A2021EF0100EAD828 /* InstaPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaPayment.swift; sourceTree = "<group>"; };
+		B4742A9E2021F03700EAD828 /* Laser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Laser.swift; sourceTree = "<group>"; };
+		B4742AA02021F19B00EAD828 /* Dankort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dankort.swift; sourceTree = "<group>"; };
+		B4742AA22021F21000EAD828 /* Maestro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maestro.swift; sourceTree = "<group>"; };
+		B4742AA42021FF5100EAD828 /* Solo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solo.swift; sourceTree = "<group>"; };
+		B4742AA62022006600EAD828 /* UATP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UATP.swift; sourceTree = "<group>"; };
 		B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsParserSpec.swift; sourceTree = "<group>"; };
 		B4F4BCF02020B90E003C014C /* VisaElectron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisaElectron.swift; sourceTree = "<group>"; };
 		D03E263B338F057044F7AAE9 /* Pods_Straal_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Straal_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -367,6 +393,19 @@
 				A30801932018FD0000A1060A /* MasterCard.swift */,
 				A30801942018FD0000A1060A /* Visa.swift */,
 				B4F4BCF02020B90E003C014C /* VisaElectron.swift */,
+				B4742A8A2021D96A00EAD828 /* Switch.swift */,
+				B4742A8E2021E21900EAD828 /* JCB.swift */,
+				B4742A902021E32200EAD828 /* Bankcard.swift */,
+				B4742A922021E5BB00EAD828 /* Diners.swift */,
+				B4742A942021E6E900EAD828 /* Discover.swift */,
+				B4742A962021EAF400EAD828 /* CUP.swift */,
+				B4742A982021ED2F00EAD828 /* InterPayment.swift */,
+				B4742A9A2021EF0100EAD828 /* InstaPayment.swift */,
+				B4742A9E2021F03700EAD828 /* Laser.swift */,
+				B4742AA02021F19B00EAD828 /* Dankort.swift */,
+				B4742AA22021F21000EAD828 /* Maestro.swift */,
+				B4742AA42021FF5100EAD828 /* Solo.swift */,
+				B4742AA62022006600EAD828 /* UATP.swift */,
 			);
 			path = CardBrands;
 			sourceTree = "<group>";
@@ -801,13 +840,16 @@
 				A30801F32018FDED00A1060A /* DecodeCallable.swift in Sources */,
 				A30801D72018FD0100A1060A /* CardsParser.swift in Sources */,
 				A30801C22018FD0000A1060A /* ParseErrorCallable.swift in Sources */,
+				B4742AA32021F21000EAD828 /* Maestro.swift in Sources */,
 				A30801E22018FD0100A1060A /* ValidationResult.swift in Sources */,
 				A30801CE2018FD0100A1060A /* Validating.swift in Sources */,
 				A30801C72018FD0000A1060A /* CreateCard.swift in Sources */,
 				A30801CD2018FD0100A1060A /* String+Extension.swift in Sources */,
 				A30801C42018FD0000A1060A /* PostRequestCallable.swift in Sources */,
 				A30801DF2018FD0100A1060A /* Transaction.swift in Sources */,
+				B4742A992021ED2F00EAD828 /* InterPayment.swift in Sources */,
 				A30801D32018FD0100A1060A /* Visa.swift in Sources */,
+				B4742A8F2021E21900EAD828 /* JCB.swift in Sources */,
 				A30801BF2018FD0000A1060A /* EncryptCallable.swift in Sources */,
 				A30801D02018FD0100A1060A /* CardBrand.swift in Sources */,
 				A30801E12018FD0100A1060A /* Luhn.swift in Sources */,
@@ -817,17 +859,23 @@
 				A30801CC2018FD0100A1060A /* Collection+Extension.swift in Sources */,
 				A30801E52018FD0100A1060A /* BackendEndpoint.swift in Sources */,
 				A30801C52018FD0000A1060A /* SimpleCallable.swift in Sources */,
+				B4742A9F2021F03700EAD828 /* Laser.swift in Sources */,
 				A30801F12018FD2000A1060A /* UrlCreator.swift in Sources */,
 				A30801CA2018FD0000A1060A /* StraalOperation.swift in Sources */,
 				A30801E82018FD0100A1060A /* EncryptedOperationResponse.swift in Sources */,
 				A30801E32018FD0100A1060A /* UrlSession+Synchronous.swift in Sources */,
+				B4742A932021E5BB00EAD828 /* Diners.swift in Sources */,
 				A30801C12018FD0000A1060A /* MapToJsonCallable.swift in Sources */,
 				A30801C92018FD0000A1060A /* EncryptedOperation.swift in Sources */,
+				B4742A972021EAF400EAD828 /* CUP.swift in Sources */,
 				A30801ED2018FD0100A1060A /* KeyParser.swift in Sources */,
+				B4742AA12021F19B00EAD828 /* Dankort.swift in Sources */,
 				A30801D42018FD0100A1060A /* CardCVV.swift in Sources */,
 				A30801BE2018FD0000A1060A /* EncodeCallable.swift in Sources */,
+				B4742AA72022006600EAD828 /* UATP.swift in Sources */,
 				A30801D22018FD0100A1060A /* MasterCard.swift in Sources */,
 				A30801EA2018FD0100A1060A /* BackendUrlCreator.swift in Sources */,
+				B4742A912021E32200EAD828 /* Bankcard.swift in Sources */,
 				A30801C02018FD0000A1060A /* HttpCallable.swift in Sources */,
 				B4F4BCF12020B90E003C014C /* VisaElectron.swift in Sources */,
 				A30801DE2018FD0100A1060A /* MoneyAmount.swift in Sources */,
@@ -837,13 +885,17 @@
 				A30801DD2018FD0100A1060A /* Currency.swift in Sources */,
 				A30801E42018FD0100A1060A /* UrlSessionAdapter.swift in Sources */,
 				A30801EC2018FD0100A1060A /* Configuration.swift in Sources */,
+				B4742A8B2021D96A00EAD828 /* Switch.swift in Sources */,
 				A30801E92018FD0100A1060A /* StraalResponse.swift in Sources */,
 				A30801E72018FD0100A1060A /* StraalEndpoint.swift in Sources */,
 				A30801EE2018FD0100A1060A /* StraalCryptor.swift in Sources */,
 				0E7AC1C3201B6E8000BC3DF3 /* BundleVersionAdapter.swift in Sources */,
 				A30801C82018FD0000A1060A /* CreateTransactionWithCard.swift in Sources */,
 				A30801E02018FD0100A1060A /* CardValidation.swift in Sources */,
+				B4742AA52021FF5100EAD828 /* Solo.swift in Sources */,
+				B4742A9B2021EF0100EAD828 /* InstaPayment.swift in Sources */,
 				A30801D82018FD0100A1060A /* Expiry.swift in Sources */,
+				B4742A952021E6E900EAD828 /* Discover.swift in Sources */,
 				A30801BC2018FD0000A1060A /* Callable.swift in Sources */,
 				A30801EB2018FD0100A1060A /* StraalUrlCreator.swift in Sources */,
 				A30801D62018FD0100A1060A /* CardNumber.swift in Sources */,

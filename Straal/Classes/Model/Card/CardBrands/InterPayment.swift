@@ -1,6 +1,6 @@
 /*
- * Visa.swift
- * Created by Bartosz Kamiński on 07/07/2017.
+ * InterPayment.swift
+ * Created by Hubert Kuczyński on 31.01.2018.
  *
  * Straal SDK for iOS
  * Copyright 2018 Straal Sp. z o. o.
@@ -21,17 +21,17 @@
 import Foundation
 
 /**
-*  The native supported card type of Visa
+*  The native supported card type of Inter Payment
 */
-public struct Visa: CardBrand {
+public struct InterPayment: CardBrand {
 
-	public let name = "Visa"
+	public let name = "Inter Payment"
 
 	public let CVVLength = 3
 
-	public let numberGroupings: [[Int]] = [[4, 4, 4, 1], [4, 4, 4, 4], [4, 4, 4, 7]]
+	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 7]]
 
-	public let identifyingPattern: String = "^4"
+	public let identifyingPattern: String = "^636"
 
 	public init() { }
 }

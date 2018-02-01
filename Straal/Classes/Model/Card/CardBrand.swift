@@ -34,11 +34,11 @@ public protocol CardBrand {
 
 	/**
 	The card number grouping is used to format the card number when typing in the card number text field.
-	For Visa Card types for example, this grouping would be [4,4,4,4], resulting in a card number format like
+	For Visa Card types for example, this grouping would be [[4,4,4,4]], resulting in a card number format like
 	0000-0000-0000-0000.
-	- returns: The grouping of digits in the card number.
+	- returns: Array of groupings of digits in the card number.
 	*/
-	var numberGrouping: [Int] { get }
+	var numberGroupings: [[Int]] { get }
 
 	/**
 	Returns whether or not `self` is equal to another `CardType`.
@@ -51,12 +51,12 @@ public protocol CardBrand {
 extension CardBrand {
 
 	/// The count of digits in card number
-	public var numberLength: Int {
-		return numberGrouping.reduce(0) { $0 + $1 }
+	public var numberLengths: [Int] {
+		return numberGroupings.map { $0.reduce(0) { $0 + $1 }}
 	}
 
-	public var numberGrouping: [Int] {
-		return [4, 4, 4, 4]
+	public var numberGroupings: [[Int]] {
+		return [[4, 4, 4, 4]]
 	}
 
 	public func isEqual(to cardType: CardBrand) -> Bool {

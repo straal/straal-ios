@@ -79,6 +79,10 @@
 		A371E7111D82FC6600D05B2F /* Straal.h in Headers */ = {isa = PBXBuildFile; fileRef = A371E7031D82FC6600D05B2F /* Straal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A371E71D1D82FD9F00D05B2F /* CryptorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A371E71B1D82FD9F00D05B2F /* CryptorSpec.swift */; };
 		A371E71E1D82FD9F00D05B2F /* KeyParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A371E71C1D82FD9F00D05B2F /* KeyParserTests.swift */; };
+		B4742A832020CE7C00EAD828 /* CVVValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A822020CE7C00EAD828 /* CVVValidator.swift */; };
+		B4742A852020D5E300EAD828 /* CVVValidatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A842020D5E300EAD828 /* CVVValidatorSpec.swift */; };
+		B4742A872021AEC500EAD828 /* CardholderNameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A862021AEC500EAD828 /* CardholderNameValidator.swift */; };
+		B4742A892021AF0E00EAD828 /* CardholderNameValidatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A882021AF0E00EAD828 /* CardholderNameValidatorSpec.swift */; };
 		B4742A8B2021D96A00EAD828 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A8A2021D96A00EAD828 /* Switch.swift */; };
 		B4742A8F2021E21900EAD828 /* JCB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A8E2021E21900EAD828 /* JCB.swift */; };
 		B4742A912021E32200EAD828 /* Bankcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A902021E32200EAD828 /* Bankcard.swift */; };
@@ -92,12 +96,6 @@
 		B4742AA32021F21000EAD828 /* Maestro.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742AA22021F21000EAD828 /* Maestro.swift */; };
 		B4742AA52021FF5100EAD828 /* Solo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742AA42021FF5100EAD828 /* Solo.swift */; };
 		B4742AA72022006600EAD828 /* UATP.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742AA62022006600EAD828 /* UATP.swift */; };
-		B4F4BCED2020A44D003C014C /* CardsParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */; };
-		B4F4BCF12020B90E003C014C /* VisaElectron.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCF02020B90E003C014C /* VisaElectron.swift */; };
-		B4742A832020CE7C00EAD828 /* CVVValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A822020CE7C00EAD828 /* CVVValidator.swift */; };
-		B4742A852020D5E300EAD828 /* CVVValidatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A842020D5E300EAD828 /* CVVValidatorSpec.swift */; };
-		B4742A872021AEC500EAD828 /* CardholderNameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A862021AEC500EAD828 /* CardholderNameValidator.swift */; };
-		B4742A892021AF0E00EAD828 /* CardholderNameValidatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742A882021AF0E00EAD828 /* CardholderNameValidatorSpec.swift */; };
 		B4F4BCED2020A44D003C014C /* CardsParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */; };
 		B4F4BCEF2020B41E003C014C /* CardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCEE2020B41E003C014C /* CardValidator.swift */; };
 		B4F4BCF12020B90E003C014C /* VisaElectron.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCF02020B90E003C014C /* VisaElectron.swift */; };
@@ -193,6 +191,10 @@
 		A371E7101D82FC6600D05B2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A371E71B1D82FD9F00D05B2F /* CryptorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptorSpec.swift; sourceTree = "<group>"; };
 		A371E71C1D82FD9F00D05B2F /* KeyParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyParserTests.swift; sourceTree = "<group>"; };
+		B4742A822020CE7C00EAD828 /* CVVValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVVValidator.swift; sourceTree = "<group>"; };
+		B4742A842020D5E300EAD828 /* CVVValidatorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVVValidatorSpec.swift; sourceTree = "<group>"; };
+		B4742A862021AEC500EAD828 /* CardholderNameValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardholderNameValidator.swift; sourceTree = "<group>"; };
+		B4742A882021AF0E00EAD828 /* CardholderNameValidatorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardholderNameValidatorSpec.swift; sourceTree = "<group>"; };
 		B4742A8A2021D96A00EAD828 /* Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 		B4742A8E2021E21900EAD828 /* JCB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCB.swift; sourceTree = "<group>"; };
 		B4742A902021E32200EAD828 /* Bankcard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bankcard.swift; sourceTree = "<group>"; };
@@ -206,12 +208,6 @@
 		B4742AA22021F21000EAD828 /* Maestro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maestro.swift; sourceTree = "<group>"; };
 		B4742AA42021FF5100EAD828 /* Solo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solo.swift; sourceTree = "<group>"; };
 		B4742AA62022006600EAD828 /* UATP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UATP.swift; sourceTree = "<group>"; };
-		B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsParserSpec.swift; sourceTree = "<group>"; };
-		B4F4BCF02020B90E003C014C /* VisaElectron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisaElectron.swift; sourceTree = "<group>"; };
-		B4742A822020CE7C00EAD828 /* CVVValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVVValidator.swift; sourceTree = "<group>"; };
-		B4742A842020D5E300EAD828 /* CVVValidatorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVVValidatorSpec.swift; sourceTree = "<group>"; };
-		B4742A862021AEC500EAD828 /* CardholderNameValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardholderNameValidator.swift; sourceTree = "<group>"; };
-		B4742A882021AF0E00EAD828 /* CardholderNameValidatorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardholderNameValidatorSpec.swift; sourceTree = "<group>"; };
 		B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsParserSpec.swift; sourceTree = "<group>"; };
 		B4F4BCEE2020B41E003C014C /* CardValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardValidator.swift; sourceTree = "<group>"; };
 		B4F4BCF02020B90E003C014C /* VisaElectron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisaElectron.swift; sourceTree = "<group>"; };
@@ -372,9 +368,8 @@
 		A308018E2018FD0000A1060A /* Card */ = {
 			isa = PBXGroup;
 			children = (
+				A30801912018FD0000A1060A /* CardBrand */,
 				A308018F2018FD0000A1060A /* Card.swift */,
-				A30801902018FD0000A1060A /* CardBrand.swift */,
-				A30801912018FD0000A1060A /* CardBrands */,
 				A30801952018FD0000A1060A /* CardCVV.swift */,
 				A30801962018FD0000A1060A /* CardholderName.swift */,
 				A30801972018FD0000A1060A /* CardNumber.swift */,
@@ -384,9 +379,10 @@
 			path = Card;
 			sourceTree = "<group>";
 		};
-		A30801912018FD0000A1060A /* CardBrands */ = {
+		A30801912018FD0000A1060A /* CardBrand */ = {
 			isa = PBXGroup;
 			children = (
+				A30801902018FD0000A1060A /* CardBrand.swift */,
 				A30801922018FD0000A1060A /* AmericanExpress.swift */,
 				A30801932018FD0000A1060A /* MasterCard.swift */,
 				A30801942018FD0000A1060A /* Visa.swift */,
@@ -405,7 +401,7 @@
 				B4742AA42021FF5100EAD828 /* Solo.swift */,
 				B4742AA62022006600EAD828 /* UATP.swift */,
 			);
-			path = CardBrands;
+			path = CardBrand;
 			sourceTree = "<group>";
 		};
 		A308019B2018FD0000A1060A /* Error */ = {
@@ -900,7 +896,6 @@
 				0E9D35B32021D7FE00DBA9C9 /* ExpiryValidation.swift in Sources */,
 				0E7AC1C3201B6E8000BC3DF3 /* BundleVersionAdapter.swift in Sources */,
 				A30801C82018FD0000A1060A /* CreateTransactionWithCard.swift in Sources */,
-				A30801E02018FD0100A1060A /* CardValidation.swift in Sources */,
 				B4742AA52021FF5100EAD828 /* Solo.swift in Sources */,
 				B4742A9B2021EF0100EAD828 /* InstaPayment.swift in Sources */,
 				A30801D82018FD0100A1060A /* Expiry.swift in Sources */,

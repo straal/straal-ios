@@ -1,6 +1,6 @@
 /*
- * Visa.swift
- * Created by Bartosz Kamiński on 07/07/2017.
+ * Maestro.swift
+ * Created by Hubert Kuczyński on 31.01.2018.
  *
  * Straal SDK for iOS
  * Copyright 2018 Straal Sp. z o. o.
@@ -21,17 +21,18 @@
 import Foundation
 
 /**
-*  The native supported card type of Visa
+*  The native supported card type of Maestro
 */
-public struct Visa: CardBrand {
+public struct Maestro: CardBrand {
 
-	public let name = "Visa"
+	public let name = "Maestro"
 
 	public let CVVLength = 3
 
-	public let numberGroupings: [[Int]] = [[4, 4, 4, 1], [4, 4, 4, 4], [4, 4, 4, 7]]
+	public var numberGroupings: [[Int]] = [[4, 4, 4], [4, 4, 4, 1], [4, 4, 4, 2], [4, 4, 4, 3],
+										   [4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 7]]
 
-	public let identifyingPattern: String = "^4"
+	public let identifyingPattern: String = "^(50|5[6-9]|6019|603220)"
 
 	public init() { }
 }

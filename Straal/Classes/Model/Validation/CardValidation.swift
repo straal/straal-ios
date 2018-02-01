@@ -31,9 +31,9 @@ extension CardBrand {
 		if number.validation == .numberIsNotNumeric {
 			return .numberIsNotNumeric
 		}
-		if number.length < numberLength {
+		if number.length < numberLengths.min() ?? 0 {
 			return .numberIncomplete
-		} else if number.length > numberLength {
+		} else if number.length > numberLengths.max() ?? 0 {
 			return .numberTooLong
 		} else if !Luhn.validate(alphanumericString: number.sanitized) {
 			return .luhnTestFailed

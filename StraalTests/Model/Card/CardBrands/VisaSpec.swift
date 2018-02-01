@@ -59,7 +59,7 @@ class VisaSpec: QuickSpec {
 				}
 
 				it("should return too long for too long number") {
-					expect(sut.validate(number: CardNumber(rawValue: "4111 1111 1111 11111"))).to(equal(ValidationResult.numberTooLong))
+					expect(sut.validate(number: CardNumber(rawValue: "4111 1111 1111 111111111"))).to(equal(ValidationResult.numberTooLong))
 				}
 
 				it("should return luhn test failed for incorrect number") {

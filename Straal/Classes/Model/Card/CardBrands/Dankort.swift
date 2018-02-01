@@ -1,6 +1,6 @@
 /*
- * Visa.swift
- * Created by Bartosz Kamiński on 07/07/2017.
+ * Dankort.swift
+ * Created by Hubert Kuczyński on 31.01.2018.
  *
  * Straal SDK for iOS
  * Copyright 2018 Straal Sp. z o. o.
@@ -21,17 +21,15 @@
 import Foundation
 
 /**
-*  The native supported card type of Visa
+*  The native supported card type of Dankort
 */
-public struct Visa: CardBrand {
+public struct Dankort: CardBrand {
 
-	public let name = "Visa"
+	public let name = "Dankort"
 
 	public let CVVLength = 3
 
-	public let numberGroupings: [[Int]] = [[4, 4, 4, 1], [4, 4, 4, 4], [4, 4, 4, 7]]
-
-	public let identifyingPattern: String = "^4"
+	public let identifyingPattern: String = "^5019"
 
 	public init() { }
 }

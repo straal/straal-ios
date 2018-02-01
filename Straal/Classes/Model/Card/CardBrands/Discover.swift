@@ -1,6 +1,6 @@
 /*
- * Visa.swift
- * Created by Bartosz Kamiński on 07/07/2017.
+ * Discover.swift
+ * Created by Hubert Kuczyński on 31.01.2018.
  *
  * Straal SDK for iOS
  * Copyright 2018 Straal Sp. z o. o.
@@ -21,17 +21,17 @@
 import Foundation
 
 /**
-*  The native supported card type of Visa
+*  The native supported card type of Discover
 */
-public struct Visa: CardBrand {
+public struct Discover: CardBrand {
 
-	public let name = "Visa"
+	public let name = "Discover"
 
 	public let CVVLength = 3
 
-	public let numberGroupings: [[Int]] = [[4, 4, 4, 1], [4, 4, 4, 4], [4, 4, 4, 7]]
+	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 7]]
 
-	public let identifyingPattern: String = "^4"
+	public let identifyingPattern: String = "^6(?:011|5|4[4-9]|22(?:1(?:2[6-9]|[3-9])|[2-8]|9(?:[01]|2[0-5])))"
 
 	public init() { }
 }

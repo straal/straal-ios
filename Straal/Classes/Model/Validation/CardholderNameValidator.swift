@@ -1,6 +1,6 @@
 /*
- * CVVValidator.swift
- * Created by Hubert Kuczyński on 30.01.2018.
+ * CardholderNameValidator.swift
+ * Created by Hubert Kuczyński on 31.01.2018.
  *
  * Straal SDK for iOS
  * Copyright 2018 Straal Sp. z o. o.
@@ -20,24 +20,24 @@
 
 import Foundation
 
-/// Validates the card verification code
-public final class CVVValidator: CardValidator {
+/// Validates the cardholder name
+public final class CardholderNameValidator: CardValidator {
 
 	/**
-	Validates the card verification code.
+	Validates the cardholder name.
 	- parameter card: The payment card.
-	- returns: The validation result for the CVV, taking the current card type into account, as different card issuers can provide CVVs in different formats.
+	- returns: The validation result for the cardholder name. Checks if first name and surname are filled and whether their length is greater than or equal to 2
 	*/
 	public func validate(card: Card) -> ValidationResult {
-		guard let brand = CardsParser.cardBrand(for: card.number) else { return .numberDoesNotMatchType }
-		if !card.cvv.rawValue.isNumeric || card.cvv.length > brand.CVVLength {
-			return .cvvInvalid
-		} else if card.cvv.length < brand.CVVLength {
-			return .cvvIncomplete
+		let minLength = 2
+		let name = card.name
+		if name.firstName.count >= minLength && name.surname.count >= minLength {
+			return .valid
+		} else {
+			return .nameInvalid
 		}
-		return .valid
 	}
 
-	/// Initialize CVV validator
+	/// Initialize cardholder name validator
 	public init() { }
 }

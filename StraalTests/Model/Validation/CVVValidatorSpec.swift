@@ -76,22 +76,22 @@ class CVVValidatorSpec: QuickSpec {
 
 				it("should return invalid for empty CVV") {
 					let card = Card(name: name, number: masterCardNumber, cvv: CVV(rawValue: ""), expiry: expiry)
-					expect(sut.validate(card: card)).to(equal(ValidationResult.CVVInvalid))
+					expect(sut.validate(card: card)).to(equal(ValidationResult.cvvInvalid))
 				}
 
 				it("should return invalid for non-numeric CVV") {
 					let card = Card(name: name, number: masterCardNumber, cvv: CVV(rawValue: "abc"), expiry: expiry)
-					expect(sut.validate(card: card)).to(equal(ValidationResult.CVVInvalid))
+					expect(sut.validate(card: card)).to(equal(ValidationResult.cvvInvalid))
 				}
 
 				it("should return incomplete for too short CVV") {
 					let card = Card(name: name, number: masterCardNumber, cvv: CVV(rawValue: "12"), expiry: expiry)
-					expect(sut.validate(card: card)).to(equal(ValidationResult.CVVIncomplete))
+					expect(sut.validate(card: card)).to(equal(ValidationResult.cvvIncomplete))
 				}
 
 				it("should return invalid for too long CVV") {
 					let card = Card(name: name, number: masterCardNumber, cvv: CVV(rawValue: "1234"), expiry: expiry)
-					expect(sut.validate(card: card)).to(equal(ValidationResult.CVVInvalid))
+					expect(sut.validate(card: card)).to(equal(ValidationResult.cvvInvalid))
 				}
 			}
 		}

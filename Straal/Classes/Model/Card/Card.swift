@@ -63,8 +63,8 @@ public struct Card: Validating {
 			result.insert(.numberDoesNotMatchType)
 			result.insert(number.validation)
 		}
-		result.insert(name.validation)
 		result.insert(ExpiryValidator().validate(card: self))
+		result.insert(CardholderNameValidator().validate(card: self))
 		return result
 	}
 }

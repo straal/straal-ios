@@ -98,6 +98,8 @@
 		B4742AA32021F21000EAD828 /* Maestro.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742AA22021F21000EAD828 /* Maestro.swift */; };
 		B4742AA52021FF5100EAD828 /* Solo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742AA42021FF5100EAD828 /* Solo.swift */; };
 		B4742AA72022006600EAD828 /* UATP.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4742AA62022006600EAD828 /* UATP.swift */; };
+		B4A6012120245CF700088A0E /* FullCardValidatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A6012020245CF700088A0E /* FullCardValidatorSpec.swift */; };
+		B4A6012320246FB300088A0E /* CardValidatorFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A6012220246FB300088A0E /* CardValidatorFake.swift */; };
 		B4F4BCED2020A44D003C014C /* CardsParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */; };
 		B4F4BCEF2020B41E003C014C /* CardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCEE2020B41E003C014C /* CardValidator.swift */; };
 		B4F4BCF12020B90E003C014C /* VisaElectron.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCF02020B90E003C014C /* VisaElectron.swift */; };
@@ -212,6 +214,8 @@
 		B4742AA22021F21000EAD828 /* Maestro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maestro.swift; sourceTree = "<group>"; };
 		B4742AA42021FF5100EAD828 /* Solo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solo.swift; sourceTree = "<group>"; };
 		B4742AA62022006600EAD828 /* UATP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UATP.swift; sourceTree = "<group>"; };
+		B4A6012020245CF700088A0E /* FullCardValidatorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullCardValidatorSpec.swift; sourceTree = "<group>"; };
+		B4A6012220246FB300088A0E /* CardValidatorFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardValidatorFake.swift; sourceTree = "<group>"; };
 		B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsParserSpec.swift; sourceTree = "<group>"; };
 		B4F4BCEE2020B41E003C014C /* CardValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardValidator.swift; sourceTree = "<group>"; };
 		B4F4BCF02020B90E003C014C /* VisaElectron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisaElectron.swift; sourceTree = "<group>"; };
@@ -269,6 +273,7 @@
 				A34AD01C1D9A5ACE00D13D09 /* DateSourceFake.swift */,
 				0E90F77C201A15BF0070C526 /* UrlSessionAdapterFake.swift */,
 				0E7AC1C6201B707D00BC3DF3 /* VersionAdapterFake.swift */,
+				B4A6012220246FB300088A0E /* CardValidatorFake.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -525,6 +530,7 @@
 				A309CB0F1D997AAF00873639 /* LuhnSpec.swift */,
 				B4742A882021AF0E00EAD828 /* CardholderNameValidatorSpec.swift */,
 				0E9D35BC20234BAF00DBA9C9 /* CardNumberValidatorSpec.swift */,
+				B4A6012020245CF700088A0E /* FullCardValidatorSpec.swift */,
 			);
 			path = Validation;
 			sourceTree = "<group>";
@@ -928,6 +934,7 @@
 				0E9D35B52021E5DC00DBA9C9 /* ExpiryValidatorSpec.swift in Sources */,
 				0E7AC1C5201B703B00BC3DF3 /* PostRequestCallableSpec.swift in Sources */,
 				0E90F77D201A15BF0070C526 /* UrlSessionAdapterFake.swift in Sources */,
+				B4A6012120245CF700088A0E /* FullCardValidatorSpec.swift in Sources */,
 				B4742A852020D5E300EAD828 /* CVVValidatorSpec.swift in Sources */,
 				A371E71E1D82FD9F00D05B2F /* KeyParserTests.swift in Sources */,
 				A35C76D5201C915600E0004F /* CreateCardSpec.swift in Sources */,
@@ -942,6 +949,7 @@
 				A3000E741D8BFD5400258B07 /* BackendUrlCreatorSpec.swift in Sources */,
 				A309CB101D997AAF00873639 /* LuhnSpec.swift in Sources */,
 				0E90F77B201A09230070C526 /* HttpCallableSpec.swift in Sources */,
+				B4A6012320246FB300088A0E /* CardValidatorFake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

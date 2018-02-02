@@ -20,9 +20,35 @@
 
 import Foundation
 
+/// Validates the card by checking all its properties
 final class FullCardValidator: CardValidator {
 
-	func validate(card: Card) -> ValidationResult {
-		return .valid
+	private let validators: [CardValidator]
+
+	/**
+	Validates the card.
+	- parameter card: The payment card.
+	- returns: The validation result for all card properties
+	*/
+	public func validate(card: Card) -> ValidationResult {
+		let results = validators.map { $0.validate(card: card) }
+		var resultsJoined = results.reduce(ValidationResult(rawValue: 0), { $0.union($1) })
+		if !areAllValid(results: results) {
+			resultsJoined.remove(.valid)
+		}
+		return resultsJoined
+	}
+
+	/// Initialize full card validator
+	public convenience init() {
+		self.init(validators: [CardholderNameValidator(), CardNumberValidator(), CVVValidator(), ExpiryValidator()])
+	}
+
+	internal init(validators: [CardValidator]) {
+		self.validators = validators
+	}
+
+	private func areAllValid(results: [ValidationResult]) -> Bool {
+		return results.filter { $0.isSuperset(of: .valid) }.count == results.count
 	}
 }

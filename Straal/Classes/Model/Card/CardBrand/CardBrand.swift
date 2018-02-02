@@ -32,6 +32,9 @@ public protocol CardBrand {
 	/// String used to identify the card type
 	var identifyingPattern: String { get }
 
+	/// Bool indicating whether card must be validated using Luhn algorithm
+	var luhnValidable: Bool { get }
+
 	/**
 	The card number grouping is used to format the card number when typing in the card number text field.
 	For Visa Card types for example, this grouping would be [[4,4,4,4]], resulting in a card number format like
@@ -53,6 +56,10 @@ extension CardBrand {
 	/// The count of digits in card number
 	public var numberLengths: [Int] {
 		return numberGroupings.map { $0.reduce(0) { $0 + $1 }}
+	}
+
+	public var luhnValidable: Bool {
+		return true
 	}
 
 	public var numberGroupings: [[Int]] {

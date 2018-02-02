@@ -39,7 +39,7 @@ public struct ValidationResult: OptionSet {
 	}
 
 	/// Card is valid
-	public static let valid                   = ValidationResult(rawValue: 0)
+	public static let valid                   = ValidationResult(rawValue: 1)
 
 	/// Card number does not match the specified type or is too long.
 	public static let numberDoesNotMatchType  = ValidationResult(rawValue: 1 << 1)
@@ -81,7 +81,7 @@ extension ValidationResult: CustomStringConvertible {
 	public func toString() -> [String] {
 		var strings: [String] = []
 
-		if self == .valid {							 strings.append("Valid") }
+		if isSuperset(of: .valid) {					 strings.append("Valid") }
 		if isSuperset(of: .numberDoesNotMatchType) { strings.append("Number does not match type") }
 		if isSuperset(of: .numberIsNotNumeric) {	 strings.append("Card number is not numeric") }
 		if isSuperset(of: .numberIncomplete) {		 strings.append("Card number seems to be incomplete") }

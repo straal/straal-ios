@@ -38,14 +38,6 @@ class CardholderNameValidatorSpec: QuickSpec {
 				sut = nil
 			}
 
-			func defaultCard(withFirstName firstName: String, surname: String) -> Card {
-				let expiry = Expiry(month: "04", year: "2020")
-				let number = CardNumber(rawValue: "5555 5555 5555 4444")
-				let cvv = CVV(rawValue: "123")
-				let name = CardholderName(firstName: firstName, surname: surname)
-				return Card(name: name, number: number, cvv: cvv, expiry: expiry)
-			}
-
 			it("should return invalid for too short first name") {
 				expect(sut.validate(card: Card(firstName: "a", surname: "Appleseed"))).to(equal(ValidationResult.nameInvalid))
 			}

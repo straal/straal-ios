@@ -543,8 +543,8 @@
 				0E9D35BC20234BAF00DBA9C9 /* CardNumberValidatorSpec.swift */,
 				B4742A842020D5E300EAD828 /* CVVValidatorSpec.swift */,
 				0E9D35B42021E5DC00DBA9C9 /* ExpiryValidatorSpec.swift */,
-				A309CB0F1D997AAF00873639 /* LuhnSpec.swift */,
 				B4A6012020245CF700088A0E /* FullCardValidatorSpec.swift */,
+				A309CB0F1D997AAF00873639 /* LuhnSpec.swift */,
 			);
 			path = Validation;
 			sourceTree = "<group>";

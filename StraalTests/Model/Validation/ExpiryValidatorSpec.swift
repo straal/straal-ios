@@ -42,55 +42,52 @@ class ExpiryValidatorSpec: QuickSpec {
 				dateSourceFake = nil
 			}
 
-			describe("validation") {
+			context("when card with valid date") {
 
-				context("when card with valid date") {
+				it("should return valid when expiration date is after current date") {
+					let card = Card(expiry: Expiry(rawValue: (month: 10, year: 2020)))
+					expect(sut.validate(card: card)).to(equal([.valid]))
+				}
 
-					it("should return valid when expiration date is after current date") {
-						let card = Card(expiry: Expiry(rawValue: (month: 10, year: 2020)))
-						expect(sut.validate(card: card)).to(equal([.valid]))
+				it("should return valid when expiration date is on current year but after current month") {
+					let card = Card(expiry: Expiry(rawValue: (month: 5, year: 2018)))
+					expect(sut.validate(card: card)).to(equal([.valid]))
+				}
+
+				it("should return valid when expiration date is on current month") {
+					let card = Card(expiry: Expiry(rawValue: (month: 1, year: 2018)))
+					expect(sut.validate(card: card)).to(equal([.valid]))
+				}
+
+				it("should return card expired card's expiration date is before current date") {
+					let card = Card(expiry: Expiry(rawValue: (month: 1, year: 2017)))
+					expect(sut.validate(card: card)).to(equal([.cardExpired]))
+				}
+			}
+
+			context("when card with invalid date") {
+
+				context("when not in supported range") {
+
+					it("should return card expiry invalid when year is before 2000") {
+						let card = Card(expiry: Expiry(rawValue: (month: 1, year: 1999)))
+						expect(sut.validate(card: card)).to(equal([.expiryInvalid]))
 					}
 
-					it("should return valid when expiration date is on current year but after current month") {
-						let card = Card(expiry: Expiry(rawValue: (month: 5, year: 2018)))
-						expect(sut.validate(card: card)).to(equal([.valid]))
-					}
-
-					it("should return valid when expiration date is on current month") {
-						let card = Card(expiry: Expiry(rawValue: (month: 1, year: 2018)))
-						expect(sut.validate(card: card)).to(equal([.valid]))
-					}
-
-					it("should return card expired card's expiration date is before current date") {
-						let card = Card(expiry: Expiry(rawValue: (month: 1, year: 2017)))
-						expect(sut.validate(card: card)).to(equal([.cardExpired]))
+					it("should return card expiry invalid when year is after 2100") {
+						let card = Card(expiry: Expiry(rawValue: (month: 1, year: 2100)))
+						expect(sut.validate(card: card)).to(equal([.expiryInvalid]))
 					}
 				}
 
-				context("when card with invalid date") {
+				it("should return expiry invalid when invalid month") {
+					let card = Card(expiry: Expiry(rawValue: (month: 15, year: 2017)))
+					expect(sut.validate(card: card)).to(equal([.expiryInvalid]))
+				}
 
-					context("when not in supported range") {
-
-						it("should return card expiry invalid when year is before 2000") {
-							let card = Card(expiry: Expiry(rawValue: (month: 1, year: 1999)))
-							expect(sut.validate(card: card)).to(equal([.expiryInvalid]))
-						}
-
-						it("should return card expiry invalid when year is after 2100") {
-							let card = Card(expiry: Expiry(rawValue: (month: 1, year: 2100)))
-							expect(sut.validate(card: card)).to(equal([.expiryInvalid]))
-						}
-					}
-
-					it("should return expiry invalid when invalid month") {
-						let card = Card(expiry: Expiry(rawValue: (month: 15, year: 2017)))
-						expect(sut.validate(card: card)).to(equal([.expiryInvalid]))
-					}
-
-					it("should return card expiry invalid when year is negative") {
-						let card = Card(expiry: Expiry(rawValue: (month: 1, year: -5)))
-						expect(sut.validate(card: card)).to(equal([.expiryInvalid]))
-					}
+				it("should return card expiry invalid when year is negative") {
+					let card = Card(expiry: Expiry(rawValue: (month: 1, year: -5)))
+					expect(sut.validate(card: card)).to(equal([.expiryInvalid]))
 				}
 			}
 		}

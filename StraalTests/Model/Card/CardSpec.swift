@@ -30,7 +30,7 @@ class CardSpec: QuickSpec {
 		describe("Card") {
 
 			describe("encode to JSON") {
-				
+
 				it("should encode correctly") {
 					let card = Card(name: CardholderName(firstName: "Jan", surname: "Kowalski"), number: CardNumber(rawValue: "5555 5555 5555 4444"), cvv: CVV(rawValue: "123"), expiry: Expiry(rawValue: (month: 12, year: 2020)))
 					guard let json = try? JSONSerialization.jsonObject(with: JSONEncoder().encode(card)) as? [String: Any] else { XCTFail("Unexpected JSON"); return }

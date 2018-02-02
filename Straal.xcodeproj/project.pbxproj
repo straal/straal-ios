@@ -20,6 +20,7 @@
 		0EAA37D41F18B8C20048F2E6 /* ExpirySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA37D31F18B8C20048F2E6 /* ExpirySpec.swift */; };
 		0EAA37D61F18E89D0048F2E6 /* CardSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA37D51F18E89D0048F2E6 /* CardSpec.swift */; };
 		0EE419C22024AE89008FA186 /* LuhnValidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE419C12024AE89008FA186 /* LuhnValidable.swift */; };
+		0EE419C42024C365008FA186 /* CardholderNameSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE419C32024C365008FA186 /* CardholderNameSpec.swift */; };
 		7E97C9E424919D1429C61327 /* Pods_StraalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91ED081A58CDE563D531CD5A /* Pods_StraalTests.framework */; };
 		A3000E741D8BFD5400258B07 /* BackendUrlCreatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3000E6C1D8BFD5400258B07 /* BackendUrlCreatorSpec.swift */; };
 		A308015F2018753500A1060A /* SimpleCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A308015E2018753500A1060A /* SimpleCallableSpec.swift */; };
@@ -131,6 +132,7 @@
 		0EAA37D31F18B8C20048F2E6 /* ExpirySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ExpirySpec.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		0EAA37D51F18E89D0048F2E6 /* CardSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CardSpec.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		0EE419C12024AE89008FA186 /* LuhnValidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuhnValidable.swift; sourceTree = "<group>"; };
+		0EE419C32024C365008FA186 /* CardholderNameSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardholderNameSpec.swift; sourceTree = "<group>"; };
 		5574E406B430FA7F1707BB80 /* Pods_Straal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Straal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DF5527CE598A2401174CE04 /* Pods-Straal_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straal_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Straal_Example/Pods-Straal_Example.release.xcconfig"; sourceTree = "<group>"; };
 		91ED081A58CDE563D531CD5A /* Pods_StraalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StraalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,6 +257,7 @@
 				0EAA37D31F18B8C20048F2E6 /* ExpirySpec.swift */,
 				0EAA37D51F18E89D0048F2E6 /* CardSpec.swift */,
 				B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */,
+				0EE419C32024C365008FA186 /* CardholderNameSpec.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -962,6 +965,7 @@
 				A309CB101D997AAF00873639 /* LuhnSpec.swift in Sources */,
 				0E90F77B201A09230070C526 /* HttpCallableSpec.swift in Sources */,
 				B4A6012320246FB300088A0E /* CardValidatorFake.swift in Sources */,
+				0EE419C42024C365008FA186 /* CardholderNameSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

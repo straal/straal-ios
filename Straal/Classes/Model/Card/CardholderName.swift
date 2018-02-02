@@ -21,17 +21,25 @@
 import Foundation
 
 /// Represents cardholder's name
-public struct CardholderName {
+public struct CardholderName: RawRepresentable {
+
+	public typealias RawValue = String
 
 	/// Cardholder's name
-	public let firstName: String
+	public let rawValue: String
 
-	/// Cardholder's surname
-	public let surname: String
+	/// Sanitized cardholder name without unsupported characters
+	public var sanitized: String {
+		let components = rawValue.components(separatedBy: .whitespacesAndNewlines)
+		return components.filter { !$0.isEmpty }.joined(separator: " ")
+	}
 
-	/// Carholder's name and surname combined
-	public var fullName: String {
-		return firstName + " " + surname
+	/**
+	Creates a new carholder name with the given argument.
+	- parameter nameSurname: Carholder's name and surname separated by a space.
+	*/
+	public init(rawValue: String) {
+		self.rawValue = rawValue
 	}
 
 	/**
@@ -40,24 +48,13 @@ public struct CardholderName {
 	- parameter surname: Carholder's surname.
 	*/
 	public init(firstName: String, surname: String) {
-		self.firstName = firstName
-		self.surname = surname
-	}
-
-	/**
-	Creates a new carholder name with the given argument.
-	- parameter nameSurname: Carholder's name and surname separated by a space.
-	*/
-	public init(fullName: String) {
-		let components = fullName.components(separatedBy: " ")
-		self.firstName = components[safe: 0] ?? ""
-		self.surname = components[safe: 1] ?? ""
+		self.rawValue = firstName + " " + surname
 	}
 }
 
 extension CardholderName: Encodable {
 	public func encode(to encoder: Encoder) throws {
 		var container = encoder.singleValueContainer()
-		try container.encode(fullName)
+		try container.encode(sanitized)
 	}
 }

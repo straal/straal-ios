@@ -37,22 +37,6 @@ class CardholderNameValidatorSpec: QuickSpec {
 			afterEach {
 				sut = nil
 			}
-
-			it("should return invalid for too short first name") {
-				expect(sut.validate(card: Card(firstName: "a", surname: "Appleseed"))).to(equal(ValidationResult.nameInvalid))
-			}
-
-			it("should return invalid for too short surname") {
-				expect(sut.validate(card: Card(firstName: "John", surname: "a"))).to(equal(ValidationResult.nameInvalid))
-			}
-
-			it("should return invalid for too short first name and surname") {
-				expect(sut.validate(card: Card(firstName: "a", surname: ""))).to(equal(ValidationResult.nameInvalid))
-			}
-
-			it("should return valid for the correct name") {
-				expect(sut.validate(card: Card(firstName: "John", surname: "Appleseed"))).to(equal(ValidationResult.valid))
-			}
 		}
 	}
 }

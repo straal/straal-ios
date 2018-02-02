@@ -29,9 +29,9 @@ public final class CardholderNameValidator: CardValidator {
 	- returns: The validation result for the cardholder name. Checks if first name and surname are filled and whether their length is greater than or equal to 2
 	*/
 	public func validate(card: Card) -> ValidationResult {
-		let minLength = 2
+		let minLength = 5
 		let name = card.name
-		if name.firstName.count >= minLength && name.surname.count >= minLength {
+		if name.sanitized.count >= minLength {
 			return .valid
 		} else {
 			return .nameInvalid

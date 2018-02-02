@@ -27,7 +27,7 @@ public struct AmericanExpress: CardBrand {
 
 	public let name = "AmericanExpress"
 
-	public let CVVLength = 4
+	public let cvvLength = 4
 
 	public let numberGroupings = [[4, 6, 5]]
 

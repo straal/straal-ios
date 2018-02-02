@@ -27,7 +27,7 @@ public struct UATP: CardBrand {
 
 	public let name = "Universal Air Travel Plan"
 
-	public let CVVLength = 3
+	public let cvvLength = 3
 
 	public var numberGroupings: [[Int]] = [[4, 5, 6]]
 

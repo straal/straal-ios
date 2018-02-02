@@ -27,7 +27,7 @@ public protocol CardBrand {
 	var name: String { get }
 
 	/// The number of digits expected in the Card Verification Value.
-	var CVVLength: Int { get }
+	var cvvLength: Int { get }
 
 	/// String used to identify the card type
 	var identifyingPattern: String { get }

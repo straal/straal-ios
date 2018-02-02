@@ -27,7 +27,7 @@ public struct Dankort: CardBrand {
 
 	public let name = "Dankort"
 
-	public let CVVLength = 3
+	public let cvvLength = 3
 
 	public let identifyingPattern: String = "^5019"
 

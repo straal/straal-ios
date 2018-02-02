@@ -27,7 +27,7 @@ public struct Visa: CardBrand {
 
 	public let name = "Visa"
 
-	public let CVVLength = 3
+	public let cvvLength = 3
 
 	public let numberGroupings: [[Int]] = [[4, 4, 4, 1], [4, 4, 4, 4], [4, 4, 4, 4, 3]]
 

@@ -27,7 +27,7 @@ public struct VisaElectron: CardBrand {
 
 	public let name = "Visa Electron"
 
-	public let CVVLength = 3
+	public let cvvLength = 3
 
 	public let identifyingPattern: String = "^(4026|417500|4405|4508|4844|491(3|7))"
 

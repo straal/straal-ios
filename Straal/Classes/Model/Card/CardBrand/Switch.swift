@@ -27,7 +27,7 @@ public struct Switch: CardBrand {
 
 	public let name = "Switch"
 
-	public let CVVLength = 3
+	public let cvvLength = 3
 
 	public let numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 

@@ -27,7 +27,7 @@ public struct Bankcard: CardBrand {
 
 	public let name = "Bankcard"
 
-	public let CVVLength = 3
+	public let cvvLength = 3
 
 	public let identifyingPattern: String = "^5610|56022[1-5]"
 

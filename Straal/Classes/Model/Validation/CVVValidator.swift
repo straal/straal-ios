@@ -30,9 +30,9 @@ public final class CVVValidator: CardValidator {
 	*/
 	public func validate(card: Card) -> ValidationResult {
 		guard let brand = CardsParser.cardBrand(for: card.number) else { return .numberDoesNotMatchType }
-		if !card.cvv.rawValue.isNumeric || card.cvv.length > brand.CVVLength {
+		if !card.cvv.rawValue.isNumeric || card.cvv.length > brand.cvvLength {
 			return .cvvInvalid
-		} else if card.cvv.length < brand.CVVLength {
+		} else if card.cvv.length < brand.cvvLength {
 			return .cvvIncomplete
 		}
 		return .valid

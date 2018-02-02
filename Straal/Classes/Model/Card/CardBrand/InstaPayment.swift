@@ -27,7 +27,7 @@ public struct InstaPayment: CardBrand {
 
 	public let name = "Insta Payment"
 
-	public let CVVLength = 3
+	public let cvvLength = 3
 
 	public let identifyingPattern: String = "^63[7-9]"
 

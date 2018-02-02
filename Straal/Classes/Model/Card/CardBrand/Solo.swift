@@ -27,7 +27,7 @@ public struct Solo: CardBrand {
 
 	public let name = "Solo"
 
-	public let CVVLength = 3
+	public let cvvLength = 3
 
 	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 

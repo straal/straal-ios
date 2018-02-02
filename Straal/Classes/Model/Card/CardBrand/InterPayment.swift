@@ -35,3 +35,5 @@ public struct InterPayment: CardBrand {
 
 	public init() { }
 }
+
+extension InterPayment: LuhnValidable { }

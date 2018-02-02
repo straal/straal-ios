@@ -33,3 +33,5 @@ public struct VisaElectron: CardBrand {
 
 	public init() { }
 }
+
+extension VisaElectron: LuhnValidable { }

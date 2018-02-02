@@ -35,3 +35,5 @@ public struct Solo: CardBrand {
 
 	public init() { }
 }
+
+extension Solo: LuhnValidable { }

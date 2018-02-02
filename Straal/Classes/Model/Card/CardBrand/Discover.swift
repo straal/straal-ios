@@ -35,3 +35,5 @@ public struct Discover: CardBrand {
 
 	public init() { }
 }
+
+extension Discover: LuhnValidable { }

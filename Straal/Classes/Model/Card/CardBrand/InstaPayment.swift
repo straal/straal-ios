@@ -33,3 +33,5 @@ public struct InstaPayment: CardBrand {
 
 	public init() { }
 }
+
+extension InstaPayment: LuhnValidable { }

@@ -35,3 +35,5 @@ public struct Diners: CardBrand {
 
 	public init() { }
 }
+
+extension Diners: LuhnValidable { }

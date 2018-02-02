@@ -1,6 +1,6 @@
 /*
- * UATP.swift
- * Created by Hubert Kuczyński on 31.01.2018.
+ * LuhnValidable.swift
+ * Created by Bartosz Kamiński on 02/02/2018.
  *
  * Straal SDK for iOS
  * Copyright 2018 Straal Sp. z o. o.
@@ -20,20 +20,5 @@
 
 import Foundation
 
-/**
-*  The native supported card type of Universal Air Travel Plan
-*/
-public struct UATP: CardBrand {
-
-	public let name = "Universal Air Travel Plan"
-
-	public let cvvLength = 3
-
-	public var numberGroupings: [[Int]] = [[4, 5, 6]]
-
-	public let identifyingPattern: String = "^1"
-
-	public init() { }
-}
-
-extension UATP: LuhnValidable { }
+// Indicates that card must be validated using Luhn algorithm
+protocol LuhnValidable { }

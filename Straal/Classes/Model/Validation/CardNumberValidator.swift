@@ -44,7 +44,7 @@ public final class CardNumberValidator: CardValidator {
 		} else if number.length > maximumNumberLength {
 			result.insert(.numberTooLong)
 		}
-		if brand.luhnValidable && !Luhn.validate(alphanumericString: number.sanitized) {
+		if brand is LuhnValidable && !Luhn.validate(alphanumericString: number.sanitized) {
 			result.insert(.luhnTestFailed)
 		}
 		if isValid(result: result) || isIncompleteButValid(result: result, validNumberLengths: brand.numberLengths, numberLength: number.length) {

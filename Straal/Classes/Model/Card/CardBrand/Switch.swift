@@ -35,3 +35,5 @@ public struct Switch: CardBrand {
 
 	public init() { }
 }
+
+extension Switch: LuhnValidable { }

@@ -33,7 +33,5 @@ public struct CUP: CardBrand {
 
 	public let identifyingPattern: String = "^(62|603367)"
 
-	public var luhnValidable: Bool { return false }
-
 	public init() { }
 }

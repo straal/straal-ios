@@ -33,3 +33,5 @@ public struct Bankcard: CardBrand {
 
 	public init() { }
 }
+
+extension Bankcard: LuhnValidable { }

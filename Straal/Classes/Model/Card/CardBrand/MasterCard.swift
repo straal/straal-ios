@@ -33,3 +33,5 @@ public struct MasterCard: CardBrand {
 
 	public init() { }
 }
+
+extension MasterCard: LuhnValidable { }

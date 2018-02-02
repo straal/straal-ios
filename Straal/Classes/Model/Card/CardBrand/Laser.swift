@@ -35,3 +35,5 @@ public struct Laser: CardBrand {
 
 	public init() { }
 }
+
+extension Laser: LuhnValidable { }

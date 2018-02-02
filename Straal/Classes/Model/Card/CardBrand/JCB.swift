@@ -35,3 +35,5 @@ public struct JCB: CardBrand {
 
 	public init() { }
 }
+
+extension JCB: LuhnValidable { }

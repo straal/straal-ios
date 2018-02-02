@@ -33,3 +33,5 @@ public struct Dankort: CardBrand {
 
 	public init() { }
 }
+
+extension Dankort: LuhnValidable { }

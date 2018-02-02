@@ -35,3 +35,5 @@ public struct AmericanExpress: CardBrand {
 
 	public init() { }
 }
+
+extension AmericanExpress: LuhnValidable { }

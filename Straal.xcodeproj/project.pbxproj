@@ -19,6 +19,7 @@
 		0E9D35BD20234BAF00DBA9C9 /* CardNumberValidatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9D35BC20234BAF00DBA9C9 /* CardNumberValidatorSpec.swift */; };
 		0EAA37D41F18B8C20048F2E6 /* ExpirySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA37D31F18B8C20048F2E6 /* ExpirySpec.swift */; };
 		0EAA37D61F18E89D0048F2E6 /* CardSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA37D51F18E89D0048F2E6 /* CardSpec.swift */; };
+		0EE419C22024AE89008FA186 /* LuhnValidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE419C12024AE89008FA186 /* LuhnValidable.swift */; };
 		7E97C9E424919D1429C61327 /* Pods_StraalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91ED081A58CDE563D531CD5A /* Pods_StraalTests.framework */; };
 		A3000E741D8BFD5400258B07 /* BackendUrlCreatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3000E6C1D8BFD5400258B07 /* BackendUrlCreatorSpec.swift */; };
 		A308015F2018753500A1060A /* SimpleCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A308015E2018753500A1060A /* SimpleCallableSpec.swift */; };
@@ -129,6 +130,7 @@
 		0E9D35BC20234BAF00DBA9C9 /* CardNumberValidatorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberValidatorSpec.swift; sourceTree = "<group>"; };
 		0EAA37D31F18B8C20048F2E6 /* ExpirySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ExpirySpec.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		0EAA37D51F18E89D0048F2E6 /* CardSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CardSpec.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		0EE419C12024AE89008FA186 /* LuhnValidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuhnValidable.swift; sourceTree = "<group>"; };
 		5574E406B430FA7F1707BB80 /* Pods_Straal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Straal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DF5527CE598A2401174CE04 /* Pods-Straal_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straal_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Straal_Example/Pods-Straal_Example.release.xcconfig"; sourceTree = "<group>"; };
 		91ED081A58CDE563D531CD5A /* Pods_StraalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StraalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,6 +257,15 @@
 				B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */,
 			);
 			path = Card;
+			sourceTree = "<group>";
+		};
+		0EE419C02024AE74008FA186 /* Luhn */ = {
+			isa = PBXGroup;
+			children = (
+				A30801A52018FD0000A1060A /* Luhn.swift */,
+				0EE419C12024AE89008FA186 /* LuhnValidable.swift */,
+			);
+			path = Luhn;
 			sourceTree = "<group>";
 		};
 		8CCEF6B63CE78FD1792EAD25 /* Frameworks */ = {
@@ -434,13 +445,13 @@
 		A30801A32018FD0000A1060A /* Validation */ = {
 			isa = PBXGroup;
 			children = (
+				0EE419C02024AE74008FA186 /* Luhn */,
 				B4742A862021AEC500EAD828 /* CardholderNameValidator.swift */,
 				0E9D35BA2023443C00DBA9C9 /* CardNumberValidator.swift */,
 				B4F4BCEE2020B41E003C014C /* CardValidator.swift */,
 				B4742A822020CE7C00EAD828 /* CVVValidator.swift */,
 				0E9D35B22021D7FE00DBA9C9 /* ExpiryValidation.swift */,
 				0E9D35B62023209E00DBA9C9 /* FullCardValidator.swift */,
-				A30801A52018FD0000A1060A /* Luhn.swift */,
 				A30801A62018FD0000A1060A /* ValidationResult.swift */,
 			);
 			path = Validation;
@@ -891,6 +902,7 @@
 				A30801C02018FD0000A1060A /* HttpCallable.swift in Sources */,
 				B4F4BCF12020B90E003C014C /* VisaElectron.swift in Sources */,
 				A30801DE2018FD0100A1060A /* MoneyAmount.swift in Sources */,
+				0EE419C22024AE89008FA186 /* LuhnValidable.swift in Sources */,
 				B4742A832020CE7C00EAD828 /* CVVValidator.swift in Sources */,
 				B4F4BCEF2020B41E003C014C /* CardValidator.swift in Sources */,
 				A30801CF2018FD0100A1060A /* Card.swift in Sources */,

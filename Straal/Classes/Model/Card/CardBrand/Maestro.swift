@@ -36,3 +36,5 @@ public struct Maestro: CardBrand {
 
 	public init() { }
 }
+
+extension Maestro: LuhnValidable { }

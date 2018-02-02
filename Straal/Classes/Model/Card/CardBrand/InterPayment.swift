@@ -1,5 +1,5 @@
 /*
- * Diners.swift
+ * InterPayment.swift
  * Created by Hubert Kuczyński on 31.01.2018.
  *
  * Straal SDK for iOS
@@ -21,17 +21,19 @@
 import Foundation
 
 /**
-*  The native supported card type of Diners
+*  The native supported card type of Inter Payment
 */
-public struct Diners: CardBrand {
+public struct InterPayment: CardBrand {
 
-	public let name = "Diners"
+	public let name = "Inter Payment"
 
-	public let CVVLength = 3
+	public let cvvLength = 3
 
-	public var numberGroupings: [[Int]] = [[4, 6, 4], [4, 4, 4, 3], [4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 7]]
+	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
-	public let identifyingPattern: String = "^(30[0-5]|309|36|38|39|54|55)"
+	public let identifyingPattern = "^636"
 
 	public init() { }
 }
+
+extension InterPayment: LuhnValidable { }

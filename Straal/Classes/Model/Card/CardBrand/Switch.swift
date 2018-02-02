@@ -1,6 +1,6 @@
 /*
- * CardCVV.swift
- * Created by Bartosz Kamiński on 07/07/2017.
+ * Switch.swift
+ * Created by Hubert Kuczyński on 31.01.2018.
  *
  * Straal SDK for iOS
  * Copyright 2018 Straal Sp. z o. o.
@@ -20,24 +20,20 @@
 
 import Foundation
 
-/// Represents Card Verification Value
-public struct CVV: RawRepresentable, Encodable {
+/**
+*  The native supported card type of Switch
+*/
+public struct Switch: CardBrand {
 
-	public typealias RawValue = String
+	public let name = "Switch"
 
-	/// CVV number
-	public var rawValue: String
+	public let cvvLength = 3
 
-	/// The count of digits in the CVV.
-	public var length: Int {
-		return rawValue.count
-	}
+	public let numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
-	/**
-	Creates a new card verification code with the given argument.
-	- parameter string: The string representation of the CVV.
-	*/
-	public init(rawValue: String) {
-		self.rawValue = rawValue
-	}
+	public let identifyingPattern = "^(4903|4905|4911|4936|564182|633110|6333|6759)"
+
+	public init() { }
 }
+
+extension Switch: LuhnValidable { }

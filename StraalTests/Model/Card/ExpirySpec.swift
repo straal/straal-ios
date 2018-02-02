@@ -18,8 +18,6 @@
  * limitations under the License.
  */
 
-// swiftlint:disable function_body_length
-
 import Foundation
 import Quick
 import Nimble
@@ -30,97 +28,35 @@ class ExpirySpec: QuickSpec {
 	override func spec() {
 		describe("Expiry") {
 
-			var dateSourceFake: DateSourceFake!
+			describe("initialize") {
+				context("with correct string") {
 
-			beforeEach {
-				dateSourceFake = DateSourceFake()
-				dateSourceFake.currentYear = 2020
-				dateSourceFake.currentMonth = 10
-			}
-
-			afterEach {
-				dateSourceFake = nil
-			}
-
-			describe("create") {
-
-				context("when passed correct data with month with preceding zero and full length year") {
-
-					var expiry: Expiry!
-
-					beforeEach {
-						expiry = Expiry(month: "06", year: "2021", dateSource: dateSourceFake)
-					}
-
-					afterEach {
-						expiry = nil
-					}
-
-					it("should have correct data") {
+					it("should initialize correctly with preceding zero and full length year") {
+						let expiry = Expiry(month: "06", year: "2021")
 						expect(expiry.sanitized.month).to(equal(6))
 						expect(expiry.sanitized.year).to(equal(2021))
 					}
 
-					it("should validate correctly") {
-						expect(expiry.validation).to(equal([]))
-					}
-				}
-
-				context("when passed correct data with month and short year") {
-
-					var expiry: Expiry!
-
-					beforeEach {
-						expiry = Expiry(month: "6", year: "21", dateSource: dateSourceFake)
-					}
-
-					afterEach {
-						expiry = nil
-					}
-
-					it("should have correct data") {
+					it("should initialize correct data with month and short year") {
+						let expiry = Expiry(month: "6", year: "21")
 						expect(expiry.sanitized.month).to(equal(6))
 						expect(expiry.sanitized.year).to(equal(2021))
 					}
+				}
 
-					it("should validate correctly") {
-						expect(expiry.validation).to(equal([]))
+				context("with incorrect string") {
+
+					it("should initialize as incorrect expiry when incorrect month") {
+							let expiry = Expiry(month: "invalid", year: "21")
+							expect(expiry.sanitized.month).to(equal(Expiry.invalid.rawValue.month))
+							expect(expiry.sanitized.year).to(equal(Expiry.invalid.rawValue.year))
+						}
+
+					it("should initialize as incorrect expiry when incorrect year") {
+						let expiry = Expiry(month: "05", year: "invalid")
+						expect(expiry.sanitized.month).to(equal(Expiry.invalid.rawValue.month))
+						expect(expiry.sanitized.year).to(equal(Expiry.invalid.rawValue.year))
 					}
-				}
-
-				context("when passed incorrect string") {
-
-					it("should validate with invalid date") {
-						let result: ValidationResult = [.invalidExpiry]
-						expect(Expiry(month: "", year: "", dateSource: dateSourceFake).validation).to(equal(result))
-						expect(Expiry(month: "abc", year: "def", dateSource: dateSourceFake).validation).to(equal(result))
-					}
-				}
-
-				context("when passed correct string with incorrect date") {
-
-					it("should validate with invalid date") {
-						let result: ValidationResult = [.invalidExpiry]
-						expect(Expiry(month: "13", year: "2012", dateSource: dateSourceFake).validation).to(equal(result))
-						expect(Expiry(month: "-1", year: "30", dateSource: dateSourceFake).validation).to(equal(result))
-						expect(Expiry(month: "12", year: "1999", dateSource: dateSourceFake).validation).to(equal(result))
-					}
-				}
-			}
-
-			describe("expiry") {
-
-				it("should return expired") {
-					let result: ValidationResult = [.cardExpired]
-					expect(Expiry(month: "5", year: "2019", dateSource: dateSourceFake).validation).to(equal(result))
-					expect(Expiry(month: "9", year: "2020", dateSource: dateSourceFake).validation).to(equal(result))
-				}
-
-				it("should validate correctly") {
-					let result: ValidationResult = []
-					expect(Expiry(month: "1", year: "2021", dateSource: dateSourceFake).validation).to(equal(result))
-					expect(Expiry(month: "12", year: "2020", dateSource: dateSourceFake).validation).to(equal(result))
-					expect(Expiry(month: "10", year: "2020", dateSource: dateSourceFake).validation).to(equal(result))
 				}
 			}
 		}

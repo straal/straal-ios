@@ -1,5 +1,5 @@
 /*
- * CUP.swift
+ * Solo.swift
  * Created by Hubert Kuczyński on 31.01.2018.
  *
  * Straal SDK for iOS
@@ -21,17 +21,19 @@
 import Foundation
 
 /**
-*  The native supported card type of CUP
+*  The native supported card type of Solo
 */
-public struct CUP: CardBrand {
+public struct Solo: CardBrand {
 
-	public let name = "China UnionPay"
+	public let name = "Solo"
 
-	public let CVVLength = 3
+	public let cvvLength = 3
 
-	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [6, 11], [6, 12], [6, 13]]
+	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
-	public let identifyingPattern: String = "^(62|603367)"
+	public let identifyingPattern = "^(6334|6767)"
 
 	public init() { }
 }
+
+extension Solo: LuhnValidable { }

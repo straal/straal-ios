@@ -1,5 +1,5 @@
 /*
- * InterPayment.swift
+ * Discover.swift
  * Created by Hubert Kuczyński on 31.01.2018.
  *
  * Straal SDK for iOS
@@ -21,17 +21,19 @@
 import Foundation
 
 /**
-*  The native supported card type of Inter Payment
+*  The native supported card type of Discover
 */
-public struct InterPayment: CardBrand {
+public struct Discover: CardBrand {
 
-	public let name = "Inter Payment"
+	public let name = "Discover"
 
-	public let CVVLength = 3
+	public let cvvLength = 3
 
-	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 7]]
+	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
-	public let identifyingPattern: String = "^636"
+	public let identifyingPattern = "^6(?:011|5|4[4-9]|22(?:1(?:2[6-9]|[3-9])|[2-8]|9(?:[01]|2[0-5])))"
 
 	public init() { }
 }
+
+extension Discover: LuhnValidable { }

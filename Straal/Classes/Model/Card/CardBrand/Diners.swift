@@ -1,5 +1,5 @@
 /*
- * Solo.swift
+ * Diners.swift
  * Created by Hubert Kuczyński on 31.01.2018.
  *
  * Straal SDK for iOS
@@ -21,17 +21,19 @@
 import Foundation
 
 /**
-*  The native supported card type of Solo
+*  The native supported card type of Diners
 */
-public struct Solo: CardBrand {
+public struct Diners: CardBrand {
 
-	public let name = "Solo"
+	public let name = "Diners"
 
-	public let CVVLength = 3
+	public let cvvLength = 3
 
-	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 6], [4, 4, 4, 7]]
+	public var numberGroupings: [[Int]] = [[4, 6, 4], [4, 4, 4, 3], [4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
-	public let identifyingPattern: String = "^(6334|6767)"
+	public let identifyingPattern = "^(30[0-5]|309|36|38|39|54|55)"
 
 	public init() { }
 }
+
+extension Diners: LuhnValidable { }

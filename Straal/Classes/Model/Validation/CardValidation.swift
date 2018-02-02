@@ -41,22 +41,4 @@ extension CardBrand {
 			return .valid
 		}
 	}
-
-	/**
-	Validates the card verification code.
-	- parameter cvv: The card verification code as indicated on the payment card.
-	- returns: The validation result for the CVV, taking the current card type into account, as different card issuers can provide CVVs in different formats.
-	*/
-	public func validate(cvv: CVV) -> ValidationResult {
-		if cvv.validation == .invalidCVV {
-			return .invalidCVV
-		}
-		if cvv.length > CVVLength {
-			return .invalidCVV
-		} else if cvv.length < CVVLength {
-			return .incompleteCVV
-		}
-
-		return .valid
-	}
 }

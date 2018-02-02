@@ -22,7 +22,7 @@ import Foundation
 
 public class CardsParser {
 
-	/// Holds card supported by Straal
+	/// Holds cards supported by Straal
 	internal static let supportedBrands: [CardBrand] = [VisaElectron(), Switch(), Visa(), MasterCard(), AmericanExpress(), JCB(),
 														Bankcard(), Diners(), Discover(), CUP(), InterPayment(), InstaPayment(), Laser(),
 														Dankort(), Maestro(), Solo(), UATP()]

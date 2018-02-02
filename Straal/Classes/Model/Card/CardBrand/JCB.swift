@@ -1,5 +1,5 @@
 /*
- * UATP.swift
+ * JCB.swift
  * Created by Hubert Kuczyński on 31.01.2018.
  *
  * Straal SDK for iOS
@@ -21,17 +21,19 @@
 import Foundation
 
 /**
-*  The native supported card type of Universal Air Travel Plan
+*  The native supported card type of JCB
 */
-public struct UATP: CardBrand {
+public struct JCB: CardBrand {
 
-	public let name = "Universal Air Travel Plan"
+	public let name = "JCB"
 
-	public let CVVLength = 3
+	public let cvvLength = 3
 
-	public var numberGroupings: [[Int]] = [[4, 5, 6]]
+	public let numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
-	public let identifyingPattern: String = "^1"
+	public let identifyingPattern = "^35(28|29|[3-8][0-9])"
 
 	public init() { }
 }
+
+extension JCB: LuhnValidable { }

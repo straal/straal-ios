@@ -1,6 +1,6 @@
 /*
- * Discover.swift
- * Created by Hubert Kuczyński on 31.01.2018.
+ * CardValidatorFake.swift
+ * Created by Hubert Kuczyński on 02.02.2018.
  *
  * Straal SDK for iOS
  * Copyright 2018 Straal Sp. z o. o.
@@ -20,18 +20,17 @@
 
 import Foundation
 
-/**
-*  The native supported card type of Discover
-*/
-public struct Discover: CardBrand {
+@testable import Straal
 
-	public let name = "Discover"
+final class CardValidatorFake: CardValidator {
 
-	public let CVVLength = 3
+	var validateCalled: Bool?
+	var validationResultToReturn: ValidationResult!
+	var capturedCard: Card?
 
-	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 7]]
-
-	public let identifyingPattern: String = "^6(?:011|5|4[4-9]|22(?:1(?:2[6-9]|[3-9])|[2-8]|9(?:[01]|2[0-5])))"
-
-	public init() { }
+	func validate(card: Card) -> ValidationResult {
+		capturedCard = card
+		validateCalled = true
+		return validationResultToReturn
+	}
 }

@@ -1,5 +1,5 @@
 /*
- * JCB.swift
+ * Laser.swift
  * Created by Hubert Kuczyński on 31.01.2018.
  *
  * Straal SDK for iOS
@@ -21,17 +21,19 @@
 import Foundation
 
 /**
-*  The native supported card type of JCB
+*  The native supported card type of Laser
 */
-public struct JCB: CardBrand {
+public struct Laser: CardBrand {
 
-	public let name = "JCB"
+	public let name = "Laser"
 
-	public let CVVLength = 3
+	public let cvvLength = 3
 
-	public let numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 7]]
+	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
-	public let identifyingPattern: String = "^35(28|29|[3-8][0-9])"
+	public let identifyingPattern = "^(6304|6706|6771|6709)"
 
 	public init() { }
 }
+
+extension Laser: LuhnValidable { }

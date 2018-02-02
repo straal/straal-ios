@@ -1,6 +1,6 @@
 /*
- * Visa.swift
- * Created by Bartosz Kamiński on 07/07/2017.
+ * CardholderNameValidator.swift
+ * Created by Hubert Kuczyński on 31.01.2018.
  *
  * Straal SDK for iOS
  * Copyright 2018 Straal Sp. z o. o.
@@ -20,18 +20,24 @@
 
 import Foundation
 
-/**
-*  The native supported card type of Visa
-*/
-public struct Visa: CardBrand {
+/// Validates the cardholder name
+public final class CardholderNameValidator: CardValidator {
 
-	public let name = "Visa"
+	/**
+	Validates the cardholder name.
+	- parameter card: The payment card.
+	- returns: The validation result for the cardholder name. Checks if first name and surname are filled and whether their length is greater than or equal to 2
+	*/
+	public func validate(card: Card) -> ValidationResult {
+		let minLength = 5
+		let name = card.name
+		if name.sanitized.count >= minLength {
+			return .valid
+		} else {
+			return .nameInvalid
+		}
+	}
 
-	public let CVVLength = 3
-
-	public let numberGroupings: [[Int]] = [[4, 4, 4, 1], [4, 4, 4, 4], [4, 4, 4, 7]]
-
-	public let identifyingPattern: String = "^4"
-
+	/// Initialize cardholder name validator
 	public init() { }
 }

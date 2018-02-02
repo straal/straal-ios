@@ -1,5 +1,5 @@
 /*
- * Switch.swift
+ * Bankcard.swift
  * Created by Hubert Kuczyński on 31.01.2018.
  *
  * Straal SDK for iOS
@@ -21,17 +21,17 @@
 import Foundation
 
 /**
-*  The native supported card type of Switch
+*  The native supported card type of Bankcard
 */
-public struct Switch: CardBrand {
+public struct Bankcard: CardBrand {
 
-	public let name = "Switch"
+	public let name = "Bankcard"
 
-	public let CVVLength = 3
+	public let cvvLength = 3
 
-	public let numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 6], [4, 4, 4, 7]]
-
-	public let identifyingPattern: String = "^(4903|4905|4911|4936|564182|633110|6333|6759)"
+	public let identifyingPattern = "^5610|56022[1-5]"
 
 	public init() { }
 }
+
+extension Bankcard: LuhnValidable { }

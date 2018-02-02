@@ -1,6 +1,6 @@
 /*
- * CardCVV.swift
- * Created by Bartosz Kamiński on 07/07/2017.
+ * Maestro.swift
+ * Created by Hubert Kuczyński on 31.01.2018.
  *
  * Straal SDK for iOS
  * Copyright 2018 Straal Sp. z o. o.
@@ -20,24 +20,21 @@
 
 import Foundation
 
-/// Represents Card Verification Value
-public struct CVV: RawRepresentable, Encodable {
+/**
+*  The native supported card type of Maestro
+*/
+public struct Maestro: CardBrand {
 
-	public typealias RawValue = String
+	public let name = "Maestro"
 
-	/// CVV number
-	public var rawValue: String
+	public let cvvLength = 3
 
-	/// The count of digits in the CVV.
-	public var length: Int {
-		return rawValue.count
-	}
+	public var numberGroupings: [[Int]] = [[4, 4, 4], [4, 4, 5], [4, 4, 6], [4, 4, 4, 3],
+										   [4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
-	/**
-	Creates a new card verification code with the given argument.
-	- parameter string: The string representation of the CVV.
-	*/
-	public init(rawValue: String) {
-		self.rawValue = rawValue
-	}
+	public let identifyingPattern = "^(50|5[6-9]|6019|603220)"
+
+	public init() { }
 }
+
+extension Maestro: LuhnValidable { }

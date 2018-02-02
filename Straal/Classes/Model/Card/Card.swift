@@ -20,8 +20,8 @@
 
 import Foundation
 
-/// Represents a card (created by user)
-public struct Card: Validating {
+/// Represents a card
+public struct Card {
 
 	/// Cardholder name and surname
 	public let name: CardholderName
@@ -47,25 +47,6 @@ public struct Card: Validating {
 		self.number = number
 		self.cvv = cvv
 		self.expiry = expiry
-	}
-
-	/**
-	Validates a card
-	- returns: OptionSet with all validation results.
-	*/
-	public var validation: ValidationResult {
-		var result: ValidationResult = []
-
-		if let cardBrand = CardsParser.cardBrand(for: number) {
-			result.insert(cardBrand.validate(cvv: cvv))
-			result.insert(cardBrand.validate(number: number))
-		} else {
-			result.insert(.numberDoesNotMatchType)
-			result.insert(number.validation)
-		}
-		result.insert(name.validation)
-		result.insert(expiry.validation)
-		return result
 	}
 }
 

@@ -1,6 +1,6 @@
 /*
- * Dankort.swift
- * Created by Hubert Kuczyński on 31.01.2018.
+ * CardValidator.swift
+ * Created by Hubert Kuczyński on 30.01.2018.
  *
  * Straal SDK for iOS
  * Copyright 2018 Straal Sp. z o. o.
@@ -20,16 +20,6 @@
 
 import Foundation
 
-/**
-*  The native supported card type of Dankort
-*/
-public struct Dankort: CardBrand {
-
-	public let name = "Dankort"
-
-	public let CVVLength = 3
-
-	public let identifyingPattern: String = "^5019"
-
-	public init() { }
+internal protocol CardValidator {
+	func validate(card: Card) -> ValidationResult
 }

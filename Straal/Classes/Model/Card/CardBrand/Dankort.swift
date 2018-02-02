@@ -1,6 +1,6 @@
 /*
- * AmericanExpress.swift
- * Created by Bartosz Kamiński on 10/07/2017.
+ * Dankort.swift
+ * Created by Hubert Kuczyński on 31.01.2018.
  *
  * Straal SDK for iOS
  * Copyright 2018 Straal Sp. z o. o.
@@ -21,17 +21,17 @@
 import Foundation
 
 /**
-*  The native supported card type of AmericanExpress
+*  The native supported card type of Dankort
 */
-public struct AmericanExpress: CardBrand {
+public struct Dankort: CardBrand {
 
-	public let name = "AmericanExpress"
+	public let name = "Dankort"
 
-	public let CVVLength = 4
+	public let cvvLength = 3
 
-	public let numberGroupings = [[4, 6, 5]]
-
-	public let identifyingPattern: String = "^3[47]"
+	public let identifyingPattern = "^5019"
 
 	public init() { }
 }
+
+extension Dankort: LuhnValidable { }

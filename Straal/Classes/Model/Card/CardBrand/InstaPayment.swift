@@ -1,6 +1,6 @@
 /*
- * VisaElectron.swift
- * Created by Hubert Kuczyński on 30.01.2018.
+ * InstaPayment.swift
+ * Created by Hubert Kuczyński on 31.01.2018.
  *
  * Straal SDK for iOS
  * Copyright 2018 Straal Sp. z o. o.
@@ -21,15 +21,17 @@
 import Foundation
 
 /**
-*  The native supported card type of Visa Electron
+*  The native supported card type of Insta Payment
 */
-public struct VisaElectron: CardBrand {
+public struct InstaPayment: CardBrand {
 
-	public let name = "Visa Electron"
+	public let name = "Insta Payment"
 
-	public let CVVLength = 3
+	public let cvvLength = 3
 
-	public let identifyingPattern: String = "^(4026|417500|4405|4508|4844|491(3|7))"
+	public let identifyingPattern = "^63[7-9]"
 
 	public init() { }
 }
+
+extension InstaPayment: LuhnValidable { }

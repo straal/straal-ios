@@ -1,6 +1,6 @@
 /*
- * InstaPayment.swift
- * Created by Hubert Kuczyński on 31.01.2018.
+ * Visa.swift
+ * Created by Bartosz Kamiński on 07/07/2017.
  *
  * Straal SDK for iOS
  * Copyright 2018 Straal Sp. z o. o.
@@ -21,15 +21,19 @@
 import Foundation
 
 /**
-*  The native supported card type of Insta Payment
+*  The native supported card type of Visa
 */
-public struct InstaPayment: CardBrand {
+public struct Visa: CardBrand {
 
-	public let name = "Insta Payment"
+	public let name = "Visa"
 
-	public let CVVLength = 3
+	public let cvvLength = 3
 
-	public let identifyingPattern: String = "^63[7-9]"
+	public let numberGroupings: [[Int]] = [[4, 4, 4, 1], [4, 4, 4, 4], [4, 4, 4, 4, 3]]
+
+	public let identifyingPattern = "^4"
 
 	public init() { }
 }
+
+extension Visa: LuhnValidable { }

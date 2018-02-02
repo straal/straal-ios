@@ -1,6 +1,6 @@
 /*
- * Validating.swift
- * Created by Bartosz Kamiński on 17/07/2017.
+ * AmericanExpress.swift
+ * Created by Bartosz Kamiński on 10/07/2017.
  *
  * Straal SDK for iOS
  * Copyright 2018 Straal Sp. z o. o.
@@ -20,6 +20,20 @@
 
 import Foundation
 
-internal protocol Validating {
-	var validation: ValidationResult { get }
+/**
+*  The native supported card type of AmericanExpress
+*/
+public struct AmericanExpress: CardBrand {
+
+	public let name = "AmericanExpress"
+
+	public let cvvLength = 4
+
+	public let numberGroupings = [[4, 6, 5]]
+
+	public let identifyingPattern = "^3[47]"
+
+	public init() { }
 }
+
+extension AmericanExpress: LuhnValidable { }

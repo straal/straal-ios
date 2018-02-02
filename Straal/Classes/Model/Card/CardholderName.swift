@@ -20,6 +20,7 @@
 
 import Foundation
 
+/// Represents cardholder's name
 public struct CardholderName {
 
 	/// Cardholder's name

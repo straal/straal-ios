@@ -20,7 +20,7 @@
 
 import Foundation
 
-/// Represents the card number of a card.
+/// Represents card's number
 public struct CardNumber: RawRepresentable, Encodable {
 
 	public typealias RawValue = String

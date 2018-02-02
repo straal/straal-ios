@@ -20,9 +20,7 @@
 
 import Foundation
 
-/**
-A Credit Card Expiry date.
-*/
+/// Represents card's expiry date
 public struct Expiry: RawRepresentable {
 	public typealias RawValue = (month: Int, year: Int)
 

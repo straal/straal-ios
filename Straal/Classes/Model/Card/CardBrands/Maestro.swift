@@ -29,8 +29,8 @@ public struct Maestro: CardBrand {
 
 	public let CVVLength = 3
 
-	public var numberGroupings: [[Int]] = [[4, 4, 4], [4, 4, 4, 1], [4, 4, 4, 2], [4, 4, 4, 3],
-										   [4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 7]]
+	public var numberGroupings: [[Int]] = [[4, 4, 4], [4, 4, 5], [4, 4, 6], [4, 4, 4, 3],
+										   [4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
 	public let identifyingPattern: String = "^(50|5[6-9]|6019|603220)"
 

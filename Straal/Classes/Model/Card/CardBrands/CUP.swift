@@ -29,7 +29,7 @@ public struct CUP: CardBrand {
 
 	public let CVVLength = 3
 
-	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [6, 11], [6, 12], [6, 13]]
+	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
 	public let identifyingPattern: String = "^(62|603367)"
 

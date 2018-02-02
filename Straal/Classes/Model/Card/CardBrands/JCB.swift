@@ -29,7 +29,7 @@ public struct JCB: CardBrand {
 
 	public let CVVLength = 3
 
-	public let numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 7]]
+	public let numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
 	public let identifyingPattern: String = "^35(28|29|[3-8][0-9])"
 

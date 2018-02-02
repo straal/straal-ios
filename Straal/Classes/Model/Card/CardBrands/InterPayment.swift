@@ -29,7 +29,7 @@ public struct InterPayment: CardBrand {
 
 	public let CVVLength = 3
 
-	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 7]]
+	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
 	public let identifyingPattern: String = "^636"
 

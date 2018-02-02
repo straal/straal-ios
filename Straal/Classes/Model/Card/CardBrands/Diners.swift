@@ -29,7 +29,7 @@ public struct Diners: CardBrand {
 
 	public let CVVLength = 3
 
-	public var numberGroupings: [[Int]] = [[4, 6, 4], [4, 4, 4, 3], [4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 7]]
+	public var numberGroupings: [[Int]] = [[4, 6, 4], [4, 4, 4, 3], [4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
 	public let identifyingPattern: String = "^(30[0-5]|309|36|38|39|54|55)"
 

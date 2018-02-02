@@ -31,7 +31,7 @@ public struct InterPayment: CardBrand {
 
 	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
-	public let identifyingPattern: String = "^636"
+	public let identifyingPattern = "^636"
 
 	public init() { }
 }

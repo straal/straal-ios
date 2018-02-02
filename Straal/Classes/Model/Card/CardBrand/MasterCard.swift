@@ -29,7 +29,7 @@ public struct MasterCard: CardBrand {
 
 	public let cvvLength = 3
 
-	public let identifyingPattern: String = "^5[1-5]"
+	public let identifyingPattern = "^5[1-5]"
 
 	public init() { }
 }

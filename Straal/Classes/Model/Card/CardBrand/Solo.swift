@@ -31,7 +31,7 @@ public struct Solo: CardBrand {
 
 	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
-	public let identifyingPattern: String = "^(6334|6767)"
+	public let identifyingPattern = "^(6334|6767)"
 
 	public init() { }
 }

@@ -31,7 +31,7 @@ public struct CUP: CardBrand {
 
 	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
-	public let identifyingPattern: String = "^(62|603367)"
+	public let identifyingPattern = "^(62|603367)"
 
 	public init() { }
 }

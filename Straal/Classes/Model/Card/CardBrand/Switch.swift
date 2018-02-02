@@ -31,7 +31,7 @@ public struct Switch: CardBrand {
 
 	public let numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
-	public let identifyingPattern: String = "^(4903|4905|4911|4936|564182|633110|6333|6759)"
+	public let identifyingPattern = "^(4903|4905|4911|4936|564182|633110|6333|6759)"
 
 	public init() { }
 }

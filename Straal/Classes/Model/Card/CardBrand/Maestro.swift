@@ -32,7 +32,7 @@ public struct Maestro: CardBrand {
 	public var numberGroupings: [[Int]] = [[4, 4, 4], [4, 4, 5], [4, 4, 6], [4, 4, 4, 3],
 										   [4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
-	public let identifyingPattern: String = "^(50|5[6-9]|6019|603220)"
+	public let identifyingPattern = "^(50|5[6-9]|6019|603220)"
 
 	public init() { }
 }

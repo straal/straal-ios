@@ -31,7 +31,7 @@ public struct UATP: CardBrand {
 
 	public var numberGroupings: [[Int]] = [[4, 5, 6]]
 
-	public let identifyingPattern: String = "^1"
+	public let identifyingPattern = "^1"
 
 	public init() { }
 }

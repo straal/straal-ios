@@ -31,7 +31,7 @@ public struct Laser: CardBrand {
 
 	public var numberGroupings: [[Int]] = [[4, 4, 4, 4], [4, 4, 4, 5], [4, 4, 4, 6], [4, 4, 4, 4, 3]]
 
-	public let identifyingPattern: String = "^(6304|6706|6771|6709)"
+	public let identifyingPattern = "^(6304|6706|6771|6709)"
 
 	public init() { }
 }

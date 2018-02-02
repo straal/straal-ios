@@ -31,7 +31,7 @@ public struct AmericanExpress: CardBrand {
 
 	public let numberGroupings = [[4, 6, 5]]
 
-	public let identifyingPattern: String = "^3[47]"
+	public let identifyingPattern = "^3[47]"
 
 	public init() { }
 }

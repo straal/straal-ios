@@ -42,7 +42,7 @@ class FullCardValidatorSpec: QuickSpec {
 				cardValidatorFakes = nil
 			}
 
-			struct CardValidatorTestCase {
+			struct TestCase {
 				let inputResults: [ValidationResult]
 				let expectedResult: ValidationResult
 			}
@@ -52,18 +52,18 @@ class FullCardValidatorSpec: QuickSpec {
 							cvv: CVV(rawValue: "123"),
 							expiry: Expiry(month: "12", year: "2020"))
 
-			let testCases: [CardValidatorTestCase] = [
-				CardValidatorTestCase(inputResults: [.cvvInvalid, .valid], expectedResult: .cvvInvalid),
-				CardValidatorTestCase(inputResults: [[.valid, .numberIncomplete], .valid], expectedResult: [.valid, .numberIncomplete]),
-				CardValidatorTestCase(inputResults: [.valid, .numberIncomplete], expectedResult: .numberIncomplete),
-				CardValidatorTestCase(inputResults: [.cardExpired, .valid], expectedResult: .cardExpired),
-				CardValidatorTestCase(inputResults: [.cardExpired, .numberTooLong], expectedResult: [.cardExpired, .numberTooLong]),
-				CardValidatorTestCase(inputResults: [.valid, .valid], expectedResult: .valid),
-				CardValidatorTestCase(inputResults: [.expiryInvalid, .valid], expectedResult: .expiryInvalid),
-				CardValidatorTestCase(inputResults: [.luhnTestFailed, .valid], expectedResult: .luhnTestFailed),
-				CardValidatorTestCase(inputResults: [.numberIsNotNumeric, .valid], expectedResult: .numberIsNotNumeric),
-				CardValidatorTestCase(inputResults: [.numberDoesNotMatchType, .valid], expectedResult: .numberDoesNotMatchType),
-				CardValidatorTestCase(inputResults: [.cvvIncomplete, .numberIncomplete], expectedResult: [.cvvIncomplete, .numberIncomplete])
+			let testCases: [TestCase] = [
+				TestCase(inputResults: [.cvvInvalid, .valid], expectedResult: .cvvInvalid),
+				TestCase(inputResults: [[.valid, .numberIncomplete], .valid], expectedResult: [.valid, .numberIncomplete]),
+				TestCase(inputResults: [.valid, .numberIncomplete], expectedResult: .numberIncomplete),
+				TestCase(inputResults: [.cardExpired, .valid], expectedResult: .cardExpired),
+				TestCase(inputResults: [.cardExpired, .numberTooLong], expectedResult: [.cardExpired, .numberTooLong]),
+				TestCase(inputResults: [.valid, .valid], expectedResult: .valid),
+				TestCase(inputResults: [.expiryInvalid, .valid], expectedResult: .expiryInvalid),
+				TestCase(inputResults: [.luhnTestFailed, .valid], expectedResult: .luhnTestFailed),
+				TestCase(inputResults: [.numberIsNotNumeric, .valid], expectedResult: .numberIsNotNumeric),
+				TestCase(inputResults: [.numberDoesNotMatchType, .valid], expectedResult: .numberDoesNotMatchType),
+				TestCase(inputResults: [.cvvIncomplete, .numberIncomplete], expectedResult: [.cvvIncomplete, .numberIncomplete])
 			]
 
 			for testCase in testCases {

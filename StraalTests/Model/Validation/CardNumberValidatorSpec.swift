@@ -37,34 +37,34 @@ class CardNumberValidatorSpec: QuickSpec {
 				sut = nil
 			}
 
-			struct CardNumberTestCase {
+			struct TestCase {
 				let description: String
 				let number: String
 				let expectation: ValidationResult
 			}
 
-			let testCases: [CardNumberTestCase] = [
-				CardNumberTestCase(description: "valid Visa card with maximum length",
+			let testCases: [TestCase] = [
+				TestCase(description: "valid Visa card with maximum length",
 								   number: "4111 1111 1111 1111 110", expectation: .valid),
-				CardNumberTestCase(description: "Visa pattern but a letter appears",
+				TestCase(description: "Visa pattern but a letter appears",
 								   number: "4444 44444 4a444 44448", expectation: [.numberIsNotNumeric, .luhnTestFailed]),
-				CardNumberTestCase(description: "Visa pattern but too short and luhn not passed",
+				TestCase(description: "Visa pattern but too short and luhn not passed",
 								   number: "4444 4444 4444", expectation: [.numberIncomplete, .luhnTestFailed]),
-				CardNumberTestCase(description: "Visa pattern but too long and luhn not passed",
+				TestCase(description: "Visa pattern but too long and luhn not passed",
 								   number: "4444 4444 4444 4444 4488", expectation: [.numberTooLong, .luhnTestFailed]),
-				CardNumberTestCase(description: "Visa pattern but too long and with letter at the end",
+				TestCase(description: "Visa pattern but too long and with letter at the end",
 								   number: "4444 4444 4444 4444 448a", expectation: [.numberTooLong, .numberIsNotNumeric, .luhnTestFailed]),
-				CardNumberTestCase(description: "Visa pattern with maximum allowed length but luhn not passed",
+				TestCase(description: "Visa pattern with maximum allowed length but luhn not passed",
 								   number: "4444 4444 4444 4444 444", expectation: .luhnTestFailed),
-				CardNumberTestCase(description: "China Union Pay that doesn't pass luhn (it's not required)",
+				TestCase(description: "China Union Pay that doesn't pass luhn (it's not required)",
 								   number: "6250 9460 0000 0017", expectation: [.numberIncomplete, .valid]),
-				CardNumberTestCase(description: "Card with invalid pattern",
+				TestCase(description: "Card with invalid pattern",
 								   number: "0111 1111 1111 1111", expectation: .numberDoesNotMatchType),
-				CardNumberTestCase(description: "Valid Visa that could be longer",
+				TestCase(description: "Valid Visa that could be longer",
 								   number: "4111 1111 1111 9", expectation: [.numberIncomplete, .valid]),
-				CardNumberTestCase(description: "Invalid Visa because of luhn but might be valid if more digits added",
+				TestCase(description: "Invalid Visa because of luhn but might be valid if more digits added",
 								   number: "4111 1111 1111 14", expectation: .numberIncomplete),
-				CardNumberTestCase(description: "Valid Amex",
+				TestCase(description: "Valid Amex",
 								   number: "3457 554476 17674", expectation: .valid)
 			]
 

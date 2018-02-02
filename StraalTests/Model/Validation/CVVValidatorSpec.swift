@@ -38,7 +38,7 @@ class CVVValidatorSpec: QuickSpec {
 				sut = nil
 			}
 
-			struct CVVTestCase {
+			struct TestCase {
 				let number: CardNumber
 				let cvv: String
 				let expectation: ValidationResult
@@ -48,21 +48,21 @@ class CVVValidatorSpec: QuickSpec {
 			let americanExpressNumber = CardNumber(rawValue: "3400 0000 0000 009")
 			let visaNumber = CardNumber(rawValue: "4111111111111111")
 
-			let testCases: [CVVTestCase] = [
-				CVVTestCase(number: masterCardNumber, cvv: "123", expectation: .valid),
-				CVVTestCase(number: masterCardNumber, cvv: "034", expectation: .valid),
+			let testCases: [TestCase] = [
+				TestCase(number: masterCardNumber, cvv: "123", expectation: .valid),
+				TestCase(number: masterCardNumber, cvv: "034", expectation: .valid),
 
-				CVVTestCase(number: americanExpressNumber, cvv: "1234", expectation: .valid),
-				CVVTestCase(number: americanExpressNumber, cvv: "0057", expectation: .valid),
+				TestCase(number: americanExpressNumber, cvv: "1234", expectation: .valid),
+				TestCase(number: americanExpressNumber, cvv: "0057", expectation: .valid),
 
-				CVVTestCase(number: visaNumber, cvv: "123", expectation: .valid),
-				CVVTestCase(number: visaNumber, cvv: "123", expectation: .valid),
+				TestCase(number: visaNumber, cvv: "123", expectation: .valid),
+				TestCase(number: visaNumber, cvv: "123", expectation: .valid),
 
-				CVVTestCase(number: masterCardNumber, cvv: "", expectation: .cvvInvalid),
-				CVVTestCase(number: masterCardNumber, cvv: "abc", expectation: .cvvInvalid),
-				CVVTestCase(number: masterCardNumber, cvv: "12", expectation: .cvvIncomplete),
-				CVVTestCase(number: masterCardNumber, cvv: "1234", expectation: .cvvInvalid),
-				CVVTestCase(number: americanExpressNumber, cvv: "123", expectation: .cvvIncomplete)
+				TestCase(number: masterCardNumber, cvv: "", expectation: .cvvInvalid),
+				TestCase(number: masterCardNumber, cvv: "abc", expectation: .cvvInvalid),
+				TestCase(number: masterCardNumber, cvv: "12", expectation: .cvvIncomplete),
+				TestCase(number: masterCardNumber, cvv: "1234", expectation: .cvvInvalid),
+				TestCase(number: americanExpressNumber, cvv: "123", expectation: .cvvIncomplete)
 			]
 
 			for testCase in testCases {

@@ -19,6 +19,8 @@
  * limitations under the License.
  */
 
+// swiftlint:disable function_body_length
+
 import Foundation
 import Quick
 import Nimble
@@ -27,61 +29,61 @@ import Nimble
 
 class CardsParserSpec: QuickSpec {
 
-	private struct CardsParserTestCase {
-		let cardNumber: String
-		let expectedCardBrand: CardBrand?
-	}
-
 	override func spec() {
 		describe("CardsParser") {
 
 			context("when card brand for number called") {
 
-				let testCases: [CardsParserTestCase] = [
+				struct TestCase {
+					let cardNumber: String
+					let expectedCardBrand: CardBrand?
+				}
+
+				let testCases: [TestCase] = [
 					// Invalid
-					CardsParserTestCase(cardNumber: "abc", expectedCardBrand: nil),
-					CardsParserTestCase(cardNumber: "", expectedCardBrand: nil),
+					TestCase(cardNumber: "abc", expectedCardBrand: nil),
+					TestCase(cardNumber: "", expectedCardBrand: nil),
 					// MasterCard
-					CardsParserTestCase(cardNumber: "5555 5555 5555 4444", expectedCardBrand: MasterCard()),
-					CardsParserTestCase(cardNumber: "5555555555554444", expectedCardBrand: MasterCard()),
-					CardsParserTestCase(cardNumber: "5555-5555-5555-4444", expectedCardBrand: MasterCard()),
+					TestCase(cardNumber: "5555 5555 5555 4444", expectedCardBrand: MasterCard()),
+					TestCase(cardNumber: "5555555555554444", expectedCardBrand: MasterCard()),
+					TestCase(cardNumber: "5555-5555-5555-4444", expectedCardBrand: MasterCard()),
 					// Visa
-					CardsParserTestCase(cardNumber: "4111 1111 1111 1111", expectedCardBrand: Visa()),
-					CardsParserTestCase(cardNumber: "4111111111111111", expectedCardBrand: Visa()),
-					CardsParserTestCase(cardNumber: "4111-1111-1111-1111", expectedCardBrand: Visa()),
-					CardsParserTestCase(cardNumber: "4532556340774", expectedCardBrand: Visa()),
+					TestCase(cardNumber: "4111 1111 1111 1111", expectedCardBrand: Visa()),
+					TestCase(cardNumber: "4111111111111111", expectedCardBrand: Visa()),
+					TestCase(cardNumber: "4111-1111-1111-1111", expectedCardBrand: Visa()),
+					TestCase(cardNumber: "4532556340774", expectedCardBrand: Visa()),
 					// AmericanExpress
-					CardsParserTestCase(cardNumber: "3400 0000 0000 009", expectedCardBrand: AmericanExpress()),
-					CardsParserTestCase(cardNumber: "340000000000009", expectedCardBrand: AmericanExpress()),
-					CardsParserTestCase(cardNumber: "3400-0000-0000-009", expectedCardBrand: AmericanExpress()),
+					TestCase(cardNumber: "3400 0000 0000 009", expectedCardBrand: AmericanExpress()),
+					TestCase(cardNumber: "340000000000009", expectedCardBrand: AmericanExpress()),
+					TestCase(cardNumber: "3400-0000-0000-009", expectedCardBrand: AmericanExpress()),
 					// Visa Electron
-					CardsParserTestCase(cardNumber: "4917300800000000", expectedCardBrand: VisaElectron()),
+					TestCase(cardNumber: "4917300800000000", expectedCardBrand: VisaElectron()),
 					// Switch
-					CardsParserTestCase(cardNumber: "6331101999990016", expectedCardBrand: Switch()),
+					TestCase(cardNumber: "6331101999990016", expectedCardBrand: Switch()),
 					// JCB
-					CardsParserTestCase(cardNumber: "3528000700000000", expectedCardBrand: JCB()),
-					CardsParserTestCase(cardNumber: "3566002020360505", expectedCardBrand: JCB()),
+					TestCase(cardNumber: "3528000700000000", expectedCardBrand: JCB()),
+					TestCase(cardNumber: "3566002020360505", expectedCardBrand: JCB()),
 					// Diners
-					CardsParserTestCase(cardNumber: "36700102000000", expectedCardBrand: Diners()),
-					CardsParserTestCase(cardNumber: "36148900647913", expectedCardBrand: Diners()),
+					TestCase(cardNumber: "36700102000000", expectedCardBrand: Diners()),
+					TestCase(cardNumber: "36148900647913", expectedCardBrand: Diners()),
 					// Discover
-					CardsParserTestCase(cardNumber: "6011000400000000", expectedCardBrand: Discover()),
+					TestCase(cardNumber: "6011000400000000", expectedCardBrand: Discover()),
 					// CUP
-					CardsParserTestCase(cardNumber: "6255188246115358", expectedCardBrand: CUP()),
-					CardsParserTestCase(cardNumber: "6270183061837567", expectedCardBrand: CUP()),
+					TestCase(cardNumber: "6255188246115358", expectedCardBrand: CUP()),
+					TestCase(cardNumber: "6270183061837567", expectedCardBrand: CUP()),
 					// Laser
-					CardsParserTestCase(cardNumber: "630495060000000000", expectedCardBrand: Laser()),
-					CardsParserTestCase(cardNumber: "630490017740292441", expectedCardBrand: Laser()),
+					TestCase(cardNumber: "630495060000000000", expectedCardBrand: Laser()),
+					TestCase(cardNumber: "630490017740292441", expectedCardBrand: Laser()),
 					// Dankort
-					CardsParserTestCase(cardNumber: "5019717010103742", expectedCardBrand: Dankort()),
+					TestCase(cardNumber: "5019717010103742", expectedCardBrand: Dankort()),
 					// Maestro
-					CardsParserTestCase(cardNumber: "5018272349839732", expectedCardBrand: Maestro()),
-					CardsParserTestCase(cardNumber: "5020330598442438", expectedCardBrand: Maestro()),
+					TestCase(cardNumber: "5018272349839732", expectedCardBrand: Maestro()),
+					TestCase(cardNumber: "5020330598442438", expectedCardBrand: Maestro()),
 					// Solo
-					CardsParserTestCase(cardNumber: "6767 6222 2222 2222 222", expectedCardBrand: Solo()),
-					CardsParserTestCase(cardNumber: "6334 9000 0000 0005", expectedCardBrand: Solo()),
+					TestCase(cardNumber: "6767 6222 2222 2222 222", expectedCardBrand: Solo()),
+					TestCase(cardNumber: "6334 9000 0000 0005", expectedCardBrand: Solo()),
 					// UATP
-					CardsParserTestCase(cardNumber: "128127188770240", expectedCardBrand: UATP())
+					TestCase(cardNumber: "128127188770240", expectedCardBrand: UATP())
 				]
 
 				for testCase in testCases {

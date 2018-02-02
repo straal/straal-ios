@@ -21,14 +21,14 @@
 import Foundation
 
 /// Represents card's number
-public struct CardNumber: RawRepresentable, Encodable {
+public struct CardNumber: RawRepresentable {
 
 	public typealias RawValue = String
 
 	/// Credit card number
 	public var rawValue: String
 
-	/// Numeric-only credit card number without spaces or dashes
+	/// Sanitized credit card number without spaces or dashes
 	public var sanitized: String {
 		return rawValue.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "-", with: "")
 	}
@@ -47,7 +47,7 @@ public struct CardNumber: RawRepresentable, Encodable {
 	}
 }
 
-extension CardNumber {
+extension CardNumber: Encodable {
 	public func encode(to encoder: Encoder) throws {
 		var container = encoder.singleValueContainer()
 		try container.encode(sanitized)

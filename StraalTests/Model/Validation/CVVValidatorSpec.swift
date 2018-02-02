@@ -30,13 +30,6 @@ class CVVValidatorSpec: QuickSpec {
 
 			var sut: CVVValidator!
 
-			let name = CardholderName(firstName: "John", surname: "Appleseed")
-			let expiry = Expiry(month: "04", year: "2020")
-
-			let masterCardNumber = CardNumber(rawValue: "5555 5555 5555 4444")
-			let americanExpressNumber = CardNumber(rawValue: "3400 0000 0000 009")
-			let visaNumber = CardNumber(rawValue: "4111111111111111")
-
 			beforeEach {
 				sut = CVVValidator()
 			}
@@ -45,55 +38,45 @@ class CVVValidatorSpec: QuickSpec {
 				sut = nil
 			}
 
-			describe("Valid") {
-
-				struct CVVTestCase {
-					let number: CardNumber
-					let cvv: CVV
-					let expectation: ValidationResult
-				}
-
-				let testCases: [CVVTestCase] = [
-					CVVTestCase(number: masterCardNumber, cvv: CVV(rawValue: "123"), expectation: .valid),
-					CVVTestCase(number: masterCardNumber, cvv: CVV(rawValue: "034"), expectation: .valid),
-
-					CVVTestCase(number: americanExpressNumber, cvv: CVV(rawValue: "1234"), expectation: .valid),
-					CVVTestCase(number: americanExpressNumber, cvv: CVV(rawValue: "0057"), expectation: .valid),
-
-					CVVTestCase(number: visaNumber, cvv: CVV(rawValue: "123"), expectation: .valid),
-					CVVTestCase(number: visaNumber, cvv: CVV(rawValue: "123"), expectation: .valid)
-				]
-
-				for testCase in testCases {
-					it("should return \(testCase.expectation.description) for correct CVV") {
-						let card = Card(name: name, number: testCase.number, cvv: testCase.cvv, expiry: expiry)
-						expect(sut.validate(card: card)).to(equal(testCase.expectation))
-					}
-				}
+			struct CVVTestCase {
+				let number: CardNumber
+				let cvv: String
+				let expectation: ValidationResult
 			}
 
-			describe("Invalid") {
+			let masterCardNumber = CardNumber(rawValue: "5555 5555 5555 4444")
+			let americanExpressNumber = CardNumber(rawValue: "3400 0000 0000 009")
+			let visaNumber = CardNumber(rawValue: "4111111111111111")
 
-				it("should return invalid for empty CVV") {
-					let card = Card(name: name, number: masterCardNumber, cvv: CVV(rawValue: ""), expiry: expiry)
-					expect(sut.validate(card: card)).to(equal(ValidationResult.cvvInvalid))
-				}
+			let testCases: [CVVTestCase] = [
+				CVVTestCase(number: masterCardNumber, cvv: "123", expectation: .valid),
+				CVVTestCase(number: masterCardNumber, cvv: "034", expectation: .valid),
 
-				it("should return invalid for non-numeric CVV") {
-					let card = Card(name: name, number: masterCardNumber, cvv: CVV(rawValue: "abc"), expiry: expiry)
-					expect(sut.validate(card: card)).to(equal(ValidationResult.cvvInvalid))
-				}
+				CVVTestCase(number: americanExpressNumber, cvv: "1234", expectation: .valid),
+				CVVTestCase(number: americanExpressNumber, cvv: "0057", expectation: .valid),
 
-				it("should return incomplete for too short CVV") {
-					let card = Card(name: name, number: masterCardNumber, cvv: CVV(rawValue: "12"), expiry: expiry)
-					expect(sut.validate(card: card)).to(equal(ValidationResult.cvvIncomplete))
-				}
+				CVVTestCase(number: visaNumber, cvv: "123", expectation: .valid),
+				CVVTestCase(number: visaNumber, cvv: "123", expectation: .valid),
 
-				it("should return invalid for too long CVV") {
-					let card = Card(name: name, number: masterCardNumber, cvv: CVV(rawValue: "1234"), expiry: expiry)
-					expect(sut.validate(card: card)).to(equal(ValidationResult.cvvInvalid))
+				CVVTestCase(number: masterCardNumber, cvv: "", expectation: .cvvInvalid),
+				CVVTestCase(number: masterCardNumber, cvv: "abc", expectation: .cvvInvalid),
+				CVVTestCase(number: masterCardNumber, cvv: "12", expectation: .cvvIncomplete),
+				CVVTestCase(number: masterCardNumber, cvv: "1234", expectation: .cvvInvalid),
+				CVVTestCase(number: americanExpressNumber, cvv: "123", expectation: .cvvIncomplete)
+			]
+
+			for testCase in testCases {
+				it("should return \(testCase.expectation.description) for CVV \(testCase.cvv)") {
+					let card = Card(number: testCase.number, cvv: testCase.cvv)
+					expect(sut.validate(card: card)).to(equal(testCase.expectation))
 				}
 			}
 		}
+	}
+}
+
+private extension Card {
+	init(number: CardNumber, cvv: String) {
+		self.init(name: CardholderName(firstName: "John", surname: "Appleseed"), number: number, cvv: CVV(rawValue: cvv), expiry: Expiry(month: "04", year: "2020"))
 	}
 }

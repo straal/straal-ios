@@ -1,21 +1,28 @@
 PODS:
-  - IDZSwiftCommonCrypto (0.10.0)
-  - Nimble (7.0.3)
-  - Quick (1.2.0)
-  - SwiftLint (0.24.2)
+  - IDZSwiftCommonCrypto (0.12.1)
+  - Nimble (8.0.2)
+  - Quick (2.1.0)
+  - SwiftLint (0.34.0)
 
 DEPENDENCIES:
-  - IDZSwiftCommonCrypto (~> 0.10.0)
+  - IDZSwiftCommonCrypto (~> 0.12.0)
   - Nimble
   - Quick
   - SwiftLint
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - IDZSwiftCommonCrypto
+    - Nimble
+    - Quick
+    - SwiftLint
+
 SPEC CHECKSUMS:
-  IDZSwiftCommonCrypto: 4eef2c46e262dfbcbc1fd76365e066336680ad7d
-  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
-  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
-  SwiftLint: 2aa21b96c8d13396a051bc1cb659d2ce1e0075b0
+  IDZSwiftCommonCrypto: 24ded86c927e95a5d09eda0c2d76070a0c80b169
+  Nimble: 622629381bda1dd5678162f21f1368cec7cbba60
+  Quick: 4be43f6634acfa727dd106bdf3929ce125ffa79d
+  SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
 
-PODFILE CHECKSUM: 2875898f11a9c2452871bbd21f1c464f402e875e
+PODFILE CHECKSUM: d156182bc93111a0d229521635f5c6346d3cbb3e
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.7.5

@@ -29,7 +29,7 @@ class MapCallableSpec: QuickSpec {
 		describe("MapCallable") {
 
 			it("should correctly map simple callable") {
-				expect { try MapCallable(SimpleCallable.init(10)) { $0 * 2 }.call() }.to(equal(20))
+				expect { try MapCallable(SimpleCallable.of(10)) { $0 * 2 }.call() }.to(equal(20))
 			}
 
 			it("should not call the callable on creation") {
@@ -42,6 +42,12 @@ class MapCallableSpec: QuickSpec {
 				let spy = CallableSpy()
 				_ = try? MapCallable(spy) { $0 + 100 }.call()
 				expect(spy.callCount).to(equal(1))
+			}
+		}
+
+		describe("Syntax sugar") {
+			it("should correctly map callable") {
+				expect { try SimpleCallable.of(15).map { $0 * 2 }.call() }.to(equal(30))
 			}
 		}
 	}

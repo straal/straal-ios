@@ -35,3 +35,9 @@ class MapCallable<InputType, ReturnType>: Callable {
 		return closure(try wrapped.call())
 	}
 }
+
+extension Callable {
+	func map<T>(_ closure: @escaping((ReturnType) -> T)) -> MapCallable<ReturnType, T> {
+		MapCallable(self, closure)
+	}
+}

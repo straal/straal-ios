@@ -6,7 +6,7 @@ stages:
 
 cache:
   paths:
-    - Pods/
+    - Carthage/
 
 install_gems:
   stage: prepare
@@ -18,7 +18,7 @@ install_gems:
 install_pods:
   stage: prepare
   script:
-    - bundle exec pod install
+    - carthage bootstrap --no-use-binaries --platform iOS --cache-builds
   tags:
     - ios
 
@@ -26,7 +26,7 @@ lint:
   stage: lint
   script:
     - mkdir -p ./outputs
-    - Pods/SwiftLint/swiftlint lint --config .swiftlint_ci.yml > outputs/lint.html
+    - swiftlint lint --config .swiftlint_ci.yml > outputs/lint.html
   tags:
     - ios
   artifacts:
@@ -44,7 +44,7 @@ test:
       - outputs/report.html
   script:
     - mkdir -p outputs
-    - xcodebuild test -workspace Straal.xcworkspace -scheme Straal -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 8' -sdk iphonesimulator | bundle exec xcpretty -c --report html --output outputs/report.html && exit ${PIPESTATUS[0]}
+    - xcodebuild test -workspace Straal.xcworkspace -scheme Straal -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 11' -sdk iphonesimulator | bundle exec xcpretty -c --report html --output outputs/report.html && exit ${PIPESTATUS[0]}
 
 trigger_build:
   stage: test_api

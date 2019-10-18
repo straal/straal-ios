@@ -43,4 +43,9 @@ public struct StraalConfiguration {
 	internal let backendApiVersion: Int = 1
 	internal let straalDefaultHeaders: [String: String] = [:]
 	internal let straalApiUrl: URL = URL(string: "https://api.straal.com")!
+
+	/// MARK: 3D SECURE
+
+	internal let _3DSSuccessURL: URL = URL(string: "https://sdk.straal.com/success")!
+	internal let _3DSFailureURL: URL = URL(string: "https://sdk.straal.com/failure")!
 }

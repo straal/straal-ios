@@ -68,11 +68,7 @@ class ParseRedirectCallableSpec: QuickSpec {
 				}
 
 				it("should return parse url") {
-					expect { try sut.call().1 }.to(equal(URL(string: "https://redirect.straal.com/")))
-				}
-
-				it("should return the same data") {
-					expect { try sut.call().0 }.to(equal(data))
+					expect { try sut.call() }.to(equal(URL(string: "https://redirect.straal.com/")))
 				}
 			}
 		}

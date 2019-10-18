@@ -43,11 +43,20 @@ class MapCallableSpec: QuickSpec {
 				_ = try? MapCallable(spy) { $0 + 100 }.call()
 				expect(spy.callCount).to(equal(1))
 			}
+
+			it("should rethrow when map closure throws") {
+				let sut = MapCallable(SimpleCallable.of(1)) { _ in throw StraalError.unknown }
+				expect { try sut.call() }.to(throwError(StraalError.unknown))
+			}
 		}
 
 		describe("Syntax sugar") {
 			it("should correctly map callable") {
 				expect { try SimpleCallable.of(15).map { $0 * 2 }.call() }.to(equal(30))
+			}
+
+			it("should correctly rethrow error") {
+				expect { try SimpleCallable.of(15).map { _ in throw StraalError.unknown }.call() }.to(throwError(StraalError.unknown))
 			}
 		}
 	}

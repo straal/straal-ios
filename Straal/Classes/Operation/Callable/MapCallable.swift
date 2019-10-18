@@ -24,20 +24,20 @@ import Foundation
 class MapCallable<InputType, ReturnType>: Callable {
 
 	private let wrapped: AnyCallable<InputType>
-	private let closure: ((InputType) -> ReturnType)
+	private let closure: ((InputType) throws -> ReturnType)
 
-	init<O: Callable>(_ wrapped: O, _ closure: @escaping ((InputType) -> ReturnType)) where O.ReturnType == InputType {
+	init<O: Callable>(_ wrapped: O, _ closure: @escaping ((InputType) throws -> ReturnType)) where O.ReturnType == InputType {
 		self.wrapped = wrapped.asCallable()
 		self.closure = closure
 	}
 
 	func call() throws -> ReturnType {
-		return closure(try wrapped.call())
+		return try closure(try wrapped.call())
 	}
 }
 
 extension Callable {
-	func map<T>(_ closure: @escaping((ReturnType) -> T)) -> MapCallable<ReturnType, T> {
+	func map<T>(_ closure: @escaping((ReturnType) throws -> T)) -> MapCallable<ReturnType, T> {
 		MapCallable(self, closure)
 	}
 }

@@ -19,8 +19,8 @@
  * limitations under the License.
  */
 
-
 import Foundation
+
 class CacheValueCallable<ReturnType>: Callable {
 
 	private let wrapped: AnyCallable<ReturnType>
@@ -31,6 +31,8 @@ class CacheValueCallable<ReturnType>: Callable {
 	}
 
 	func call() throws -> ReturnType {
+		objc_sync_enter(self)
+		defer { objc_sync_exit(self) }
 		if let cached = cached { return cached }
 		cached = try wrapped.call()
 		return try call()

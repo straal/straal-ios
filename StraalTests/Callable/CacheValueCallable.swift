@@ -26,30 +26,33 @@ import Nimble
 @testable import Straal
 
 class CacheValueCallableSpec: QuickSpec {
+	//swiftlint:disable function_body_length
 	override func spec() {
 		describe("CacheValueCallable") {
 
-			var callableSpy: CallableSpy!
+			var callableSpy: CallableSpy<Int>!
 			var sut: CacheValueCallable<Int>!
 
+			describe("single thread") {
+
+				afterEach {
+					callableSpy = nil
+					sut = nil
+				}
+
 			beforeEach {
-				callableSpy = CallableSpy()
+				callableSpy = CallableSpy(1)
 				sut = CacheValueCallable(callableSpy)
 			}
 
-			afterEach {
-				callableSpy = nil
-				sut = nil
-			}
-
 			it("should return value from wrapped callable") {
-				expect { try sut.call() }.to(equal(0))
+				expect { try sut.call() }.to(equal(1))
 			}
 
 			it("should return the same value multiple times") {
-				expect { try sut.call() }.to(equal(0))
-				expect { try sut.call() }.to(equal(0))
-				expect { try sut.call() }.to(equal(0))
+				expect { try sut.call() }.to(equal(1))
+				expect { try sut.call() }.to(equal(1))
+				expect { try sut.call() }.to(equal(1))
 			}
 
 			context("when called for the first time") {
@@ -68,6 +71,53 @@ class CacheValueCallableSpec: QuickSpec {
 
 					it("should not call wrapped callable again") {
 						expect(callableSpy.callCount).to(equal(1))
+					}
+				}
+			}
+			}
+
+			describe("multithread") {
+
+				var operationCallCount: Int!
+
+				beforeEach {
+					operationCallCount = 0
+					callableSpy = CallableSpy {
+						operationCallCount += 1
+						Thread.sleep(forTimeInterval: 0.05)
+						return 5
+					}
+					sut = CacheValueCallable(callableSpy)
+				}
+
+				afterEach {
+					operationCallCount = 0
+				}
+
+				it("should return correct value") {
+					expect { try sut.call() }.to(equal(5))
+				}
+
+				context("when called from other threads") {
+					beforeEach {
+						DispatchQueue.global().async {
+							_ = try? sut.call()
+						}
+					}
+
+					it("should return the same value on the main thread") {
+						expect { try sut.call() }.to(equal(5))
+					}
+
+					context("when called again from the main thread") {
+						beforeEach {
+							_ = try? sut.call()
+						}
+
+						it("should not increase call count above 1") {
+							expect(operationCallCount).to(equal(1))
+							expect(callableSpy.callCount).to(equal(1))
+						}
 					}
 				}
 			}

@@ -19,16 +19,24 @@
  * limitations under the License.
  */
 
-
 import Foundation
 @testable import Straal
 
-class CallableSpy: Callable {
+class CallableSpy<T>: Callable {
 
-	var callCount: Int = 0
+	private(set) var callCount: Int = 0
+	private let closure: (() throws -> T)
 
-	func call() throws -> Int {
+	init(_ closure: @escaping (() throws -> T)) {
+		self.closure = closure
+	}
+
+	init(_ value: T) {
+		closure = { () in value }
+	}
+
+	func call() throws -> T {
 		callCount += 1
-		return 0
+		return try closure()
 	}
 }

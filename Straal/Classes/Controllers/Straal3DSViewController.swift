@@ -22,12 +22,16 @@
 import UIKit
 import WebKit
 
-class Straal3DSViewController: UIViewController, WKNavigationDelegate {
+internal class Straal3DSViewController: UIViewController {
 
+	// MARK: Views
 	private var webView: WKWebView!
-	private let context: Init3DSContext
-	private let completion: (Encrypted3DSOperationStatus) -> Void
 	private var activityIndicator: UIActivityIndicatorView!
+
+	// MARK: Properties
+	private let completion: (Encrypted3DSOperationStatus) -> Void
+	private let context: Init3DSContext
+	private var result: Encrypted3DSOperationStatus?
 
 	init(context: Init3DSContext, completion: @escaping (Encrypted3DSOperationStatus) -> Void) {
 		self.context = context
@@ -41,17 +45,17 @@ class Straal3DSViewController: UIViewController, WKNavigationDelegate {
 	}
 
 	override func loadView() {
-		self.view = UIView()
-		webView = WKWebView()
-		activityIndicator = .init(style: .gray)
+		view = UIView()
+		webView = Subviews.webView
+		activityIndicator = Subviews.activityIndicator
+		view.addSubview(webView)
+		view.addSubview(activityIndicator)
 	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		view.addSubview(webView)
-		view.addSubview(activityIndicator)
 		webView.navigationDelegate = self
-		activityIndicator.hidesWhenStopped = true
+		webView.load(URLRequest(url: context.redirectURL, cachePolicy: .reloadIgnoringCacheData))
 	}
 
 	override func viewDidLayoutSubviews() {
@@ -62,24 +66,67 @@ class Straal3DSViewController: UIViewController, WKNavigationDelegate {
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		activityIndicator.startAnimating()
-		webView.load(URLRequest(url: context.redirectURL, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 50))
 	}
 
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
+		if result == nil {
+			result = .failure
+			callCompletion()
+		}
+	}
+
+	private func callCompletion() {
+		let result = self.result ?? Encrypted3DSOperationStatus.failure
+		completion(result)
+	}
+
+	private func dismissWithCompletion() {
+		dismiss(animated: true) { () in self.callCompletion() }
+	}
+}
+
+extension Straal3DSViewController: WKNavigationDelegate {
 	func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
 		switch navigationAction.request.url {
-		case context.successURL:
-			decisionHandler(.cancel)
-			dismiss(animated: true) { [completion] () in completion(.success) }
-		case context.failureURL:
-			decisionHandler(.cancel)
-			dismiss(animated: true) { [completion] () in completion(.failure) }
-		default:
-			decisionHandler(.allow)
+			case context.successURL:
+				result = .success
+				decisionHandler(.cancel)
+				dismissWithCompletion()
+			case context.failureURL:
+				result = .failure
+				decisionHandler(.cancel)
+				dismissWithCompletion()
+			default:
+				decisionHandler(.allow)
 		}
+	}
+
+	func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+		result = .failure
+		dismissWithCompletion()
+	}
+
+	func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+		activityIndicator.startAnimating()
 	}
 
 	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
 		activityIndicator.stopAnimating()
+	}
+}
+
+private enum Subviews {
+	static var webView: WKWebView {
+		let webView = WKWebView()
+		webView.allowsLinkPreview = false
+		webView.allowsBackForwardNavigationGestures = false
+		return webView
+	}
+
+	static var activityIndicator: UIActivityIndicatorView {
+		let activityIndicator = UIActivityIndicatorView(style: .gray)
+		activityIndicator.hidesWhenStopped = true
+		return activityIndicator
 	}
 }

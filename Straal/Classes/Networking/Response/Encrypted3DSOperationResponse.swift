@@ -20,24 +20,23 @@
 
 import Foundation
 
-public struct Operation3DSContext {
-	public let redirectURL: URL
-	public let successURL: URL
-	public let failureURL: URL
+public enum Encrypted3DSOperationStatus {
+	case success
+	case failure
 }
 
 public struct Encrypted3DSOperationResponse: StraalResponse {
 	public let requestId: String
-	public let operation3DSContext: Operation3DSContext
+	public let status: Encrypted3DSOperationStatus
 
-	internal init(requestId: String, context: Operation3DSContext) {
+	internal init(requestId: String, status: Encrypted3DSOperationStatus) {
 		self.requestId = requestId
-		self.operation3DSContext = context
+		self.status = status
 	}
 }
 
 extension Encrypted3DSOperationResponse: CustomDebugStringConvertible {
 	public var debugDescription: String {
-		return "STRAAL 3DS REQUEST [\(requestId)]"
+		return "STRAAL 3DS REQUEST [\(requestId)] (\(status))"
 	}
 }

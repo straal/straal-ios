@@ -19,7 +19,6 @@
  * limitations under the License.
  */
 
-
 import Foundation
 
 internal struct Init3DSContext {

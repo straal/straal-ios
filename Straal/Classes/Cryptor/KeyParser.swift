@@ -100,9 +100,7 @@ extension Data {
 	}
 
 	var bytesArray: [UInt8] {
-		return withUnsafeBytes {
-			[UInt8](UnsafeBufferPointer(start: $0, count: count))
-		}
+		withUnsafeBytes { $0.compactMap { $0 } }
 	}
 }
 

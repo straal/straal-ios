@@ -89,16 +89,16 @@ internal class Straal3DSViewController: UIViewController {
 extension Straal3DSViewController: WKNavigationDelegate {
 	func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
 		switch navigationAction.request.url {
-			case context.successURL:
-				result = .success
-				decisionHandler(.cancel)
-				dismissWithCompletion()
-			case context.failureURL:
-				result = .failure
-				decisionHandler(.cancel)
-				dismissWithCompletion()
-			default:
-				decisionHandler(.allow)
+		case context.successURL:
+			result = .success
+			decisionHandler(.cancel)
+			dismissWithCompletion()
+		case context.failureURL:
+			result = .failure
+			decisionHandler(.cancel)
+			dismissWithCompletion()
+		default:
+			decisionHandler(.allow)
 		}
 	}
 

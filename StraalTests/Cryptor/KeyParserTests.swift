@@ -95,7 +95,7 @@ class KeyParserTests: XCTestCase {
 	}
 
 	func testParserReturnValidKeyIdWhenParsedFromData() {
-		XCTAssertEqual(try? CryptKey(cryptKeyData: Data(bytes: example1CryptFull))[.id], example1CryptId)
+		XCTAssertEqual(try? CryptKey(cryptKeyData: Data(example1CryptFull))[.id], example1CryptId)
 	}
 
 	func testParserReturnValidKeyCryptoKey() {

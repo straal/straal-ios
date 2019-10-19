@@ -81,6 +81,12 @@ internal class Straal3DSViewController: UIViewController {
 		completion(result)
 	}
 
+	internal func dismissWithResult(_ result: Encrypted3DSOperationStatus) {
+		guard self.result == nil else { fatalError("Result already determined") }
+		self.result = result
+		dismissWithCompletion()
+	}
+
 	private func dismissWithCompletion() {
 		dismiss(animated: true) { () in self.callCompletion() }
 	}
@@ -90,13 +96,11 @@ extension Straal3DSViewController: WKNavigationDelegate {
 	func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
 		switch navigationAction.request.url {
 		case context.successURL:
-			result = .success
 			decisionHandler(.cancel)
-			dismissWithCompletion()
+			dismissWithResult(.success)
 		case context.failureURL:
-			result = .failure
 			decisionHandler(.cancel)
-			dismissWithCompletion()
+			dismissWithResult(.failure)
 		default:
 			decisionHandler(.allow)
 		}

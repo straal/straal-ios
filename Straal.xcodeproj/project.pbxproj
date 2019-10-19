@@ -42,6 +42,7 @@
 		77283287235AE97F00CB9BB6 /* Init3DSContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283286235AE97F00CB9BB6 /* Init3DSContext.swift */; };
 		77283289235AFF1D00CB9BB6 /* MergeCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283288235AFF1D00CB9BB6 /* MergeCallable.swift */; };
 		7728328B235AFF2700CB9BB6 /* MergeCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728328A235AFF2700CB9BB6 /* MergeCallableSpec.swift */; };
+		77DC743F235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC743E235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift */; };
 		A3000E741D8BFD5400258B07 /* BackendUrlCreatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3000E6C1D8BFD5400258B07 /* BackendUrlCreatorSpec.swift */; };
 		A308015F2018753500A1060A /* SimpleCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A308015E2018753500A1060A /* SimpleCallableSpec.swift */; };
 		A3080161201878F500A1060A /* CryptKeyCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3080160201878F500A1060A /* CryptKeyCallableSpec.swift */; };
@@ -186,6 +187,7 @@
 		77283286235AE97F00CB9BB6 /* Init3DSContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init3DSContext.swift; sourceTree = "<group>"; };
 		77283288235AFF1D00CB9BB6 /* MergeCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeCallable.swift; sourceTree = "<group>"; };
 		7728328A235AFF2700CB9BB6 /* MergeCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeCallableSpec.swift; sourceTree = "<group>"; };
+		77DC743E235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentStraalViewControllerCallableSpec.swift; sourceTree = "<group>"; };
 		A3000E6C1D8BFD5400258B07 /* BackendUrlCreatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendUrlCreatorSpec.swift; sourceTree = "<group>"; };
 		A308015E2018753500A1060A /* SimpleCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCallableSpec.swift; sourceTree = "<group>"; };
 		A3080160201878F500A1060A /* CryptKeyCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptKeyCallableSpec.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				77283273235A47EE00CB9BB6 /* CacheValueCallable.swift */,
 				77283279235A4CC700CB9BB6 /* MapCallableSpec.swift */,
 				7728328A235AFF2700CB9BB6 /* MergeCallableSpec.swift */,
+				77DC743E235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift */,
 			);
 			path = Callable;
 			sourceTree = "<group>";
@@ -917,6 +920,7 @@
 				77283270235A440B00CB9BB6 /* ParseRedirectCallableSpec.swift in Sources */,
 				A35C76D7201C916300E0004F /* CreateTransactionWithCardSpec.swift in Sources */,
 				0EAA37D41F18B8C20048F2E6 /* ExpirySpec.swift in Sources */,
+				77DC743F235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift in Sources */,
 				77283274235A47EE00CB9BB6 /* CacheValueCallable.swift in Sources */,
 				A308015F2018753500A1060A /* SimpleCallableSpec.swift in Sources */,
 				7728327C235A5E6800CB9BB6 /* Init3DSOperationSpec.swift in Sources */,

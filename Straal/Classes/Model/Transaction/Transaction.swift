@@ -63,8 +63,6 @@ extension Transaction: Encodable {
 		var container = encoder.container(keyedBy: CodingKeys.self)
 		try container.encode(amount, forKey: .amount)
 		try container.encode(currency, forKey: .currency)
-		if let reference = reference {
-			try container.encode(reference, forKey: .reference)
-		}
+		try container.encodeIfPresent(reference, forKey: .reference)
 	}
 }

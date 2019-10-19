@@ -51,13 +51,13 @@ class HttpCallableSpec: QuickSpec {
 				var result: (Data, HTTPURLResponse)?
 
 				beforeEach {
-					urlSessionAdapterFake.synchronousDataTaskToReturn = (correctData, httpResponse, nil)
+					urlSessionAdapterFake.synchronousDataTasksToReturn = [(correctData, httpResponse, nil), (correctData, httpResponse, nil)]
 					sut = HttpCallable(requestSource: SimpleCallable.of(request), urlSession: urlSessionAdapterFake)
 					result = try? sut.call()
 				}
 
 				it("session adapter should receive correct request") {
-					expect(urlSessionAdapterFake.synchronousDataTaskCapturedRequest).to(equal(request))
+					expect(urlSessionAdapterFake.synchronousDataTaskCapturedRequests.first).to(equal(request))
 				}
 
 				it("should not throw error") {
@@ -75,7 +75,7 @@ class HttpCallableSpec: QuickSpec {
 				let otherResponse = URLResponse(url: url, mimeType: "application/json", expectedContentLength: 10, textEncodingName: nil)
 
 				beforeEach {
-					urlSessionAdapterFake.synchronousDataTaskToReturn = (correctData, otherResponse, nil)
+					urlSessionAdapterFake.synchronousDataTasksToReturn = [(correctData, otherResponse, nil)]
 					sut = HttpCallable(requestSource: SimpleCallable.of(request), urlSession: urlSessionAdapterFake)
 				}
 
@@ -87,7 +87,7 @@ class HttpCallableSpec: QuickSpec {
 			context("when data is nil") {
 
 				beforeEach {
-					urlSessionAdapterFake.synchronousDataTaskToReturn = (nil, httpResponse, nil)
+					urlSessionAdapterFake.synchronousDataTasksToReturn = [(nil, httpResponse, nil)]
 					sut = HttpCallable(requestSource: SimpleCallable.of(request), urlSession: urlSessionAdapterFake)
 				}
 
@@ -101,7 +101,7 @@ class HttpCallableSpec: QuickSpec {
 				let error = StraalError.invalidResponse
 
 				beforeEach {
-					urlSessionAdapterFake.synchronousDataTaskToReturn = (nil, nil, error)
+					urlSessionAdapterFake.synchronousDataTasksToReturn = [(nil, nil, error)]
 					sut = HttpCallable(requestSource: SimpleCallable.of(request), urlSession: urlSessionAdapterFake)
 				}
 

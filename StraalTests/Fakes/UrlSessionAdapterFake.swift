@@ -28,12 +28,13 @@ final class UrlSessionAdapterFake: UrlSessionAdapting {
 
 	// MARK: - UrlSessionAdapting
 
-	var synchronousDataTaskCalled: Bool = false
-	var synchronousDataTaskCapturedRequest: URLRequest?
-	var synchronousDataTaskToReturn: (Data?, URLResponse?, Error?)!
+	var synchronousDataTaskCalled: Bool { return synchronousDataTaskCallCount > 0 }
+	var synchronousDataTaskCallCount: Int = 0
+	var synchronousDataTaskCapturedRequests: [URLRequest] = []
+	var synchronousDataTasksToReturn: [(Data?, URLResponse?, Error?)] = []
 	func synchronousDataTask(request: URLRequest) -> (Data?, URLResponse?, Error?) {
-		synchronousDataTaskCalled = true
-		synchronousDataTaskCapturedRequest = request
-		return synchronousDataTaskToReturn
+		synchronousDataTaskCallCount += 1
+		synchronousDataTaskCapturedRequests.append(request)
+		return synchronousDataTasksToReturn[synchronousDataTaskCallCount - 1]
 	}
 }

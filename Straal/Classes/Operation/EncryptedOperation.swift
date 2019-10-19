@@ -24,29 +24,26 @@ internal protocol EncryptedOperation: StraalOperation {
 	var permission: CryptKeyPermission { get }
 	var card: Card { get }
 
-	var cryptKeyPayload: AnyCallable<Data> { get }
+	func cryptKeyPayload(configuration: StraalConfiguration) -> AnyCallable<Data>
 	var straalRequestPayload: AnyCallable<Data> { get }
+	func responseCallable(httpCallable: HttpCallable, configuration: StraalConfiguration) -> AnyCallable<Response>
 }
 
 extension EncryptedOperation {
-	var cryptKeyPayload: AnyCallable<Data> {
-		return EncodeCallable(value: permission).asCallable()
-	}
-
 	var straalRequestPayload: AnyCallable<Data> {
 		return EncodeCallable(value: card).asCallable()
 	}
 }
 
 extension EncryptedOperation {
-	public func perform(configuration: StraalConfiguration) throws -> EncryptedOperationResponse {
+	public func perform(configuration: StraalConfiguration) throws -> Response {
 		let cryptkeyRequest = HttpCallable(
 			requestSource: PostRequestCallable(
-				body: cryptKeyPayload,
+				body: cryptKeyPayload(configuration: configuration),
 				url: BackendUrlCreator(configuration: configuration).url(for: .cryptKey),
 				headers: configuration.headers)
 		)
-		let createKey: DecodeCallable<CryptKey> = DecodeCallable(dataSource: ParseErrorCallable(response: cryptkeyRequest))
+		let createKey: DecodeCallable<CryptKey> = DecodeCallable(dataSource: ParseErrorCallable(response: cryptkeyRequest).map { $0.0 })
 		let encryption = EncryptCallable(
 			keySource: createKey,
 			messageSource: straalRequestPayload
@@ -57,7 +54,8 @@ extension EncryptedOperation {
 				url: StraalUrlCreator(configuration: configuration).url(for: .encrypted),
 				headers: configuration.straalDefaultHeaders)
 		)
-		let operationResponse: DecodeCallable<EncryptedOperationResponse> = DecodeCallable(dataSource: ParseErrorCallable(response: encryptedRequest))
+
+		let operationResponse = responseCallable(httpCallable: encryptedRequest, configuration: configuration)
 
 		return try operationResponse.call()
 	}

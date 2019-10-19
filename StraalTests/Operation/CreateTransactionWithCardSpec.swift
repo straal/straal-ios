@@ -45,10 +45,13 @@ class CreateTransactionWithCardSpec: QuickSpec {
 			}
 
 			beforeEach {
-				let dateSourceFake = DateSourceFake()
-				dateSourceFake.currentYear = 2017
-				dateSourceFake.currentMonth = 10
-				card = Card(name: CardholderName(firstName: "John", surname: "Appleseed"), number: CardNumber(rawValue: "4444-4444-4444-4441"), cvv: CVV(rawValue: "000"), expiry: Expiry(rawValue: (month: 2, year: 2099)))
+				card = Card(
+					name: CardholderName(
+						firstName: "John",
+						surname: "Appleseed"),
+					number: CardNumber(rawValue: "4444-4444-4444-4441"),
+					cvv: CVV(rawValue: "000"),
+					expiry: Expiry(rawValue: (month: 2, year: 2099)))
 			}
 
 			afterEach {

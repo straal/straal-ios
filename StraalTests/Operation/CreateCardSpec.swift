@@ -30,8 +30,9 @@ class CreateCardSpec: QuickSpec {
 		describe("Create card") {
 
 			var sut: CreateCard!
+			let defaultConfiguration: StraalConfiguration = StraalConfiguration(baseUrl: URL(string: "https://backend.com")!)
 			var cryptKeyJson: [String: Any] {
-				let data: Data = (try? sut.cryptKeyPayload.call()) ?? Data()
+				let data: Data = (try? sut.cryptKeyPayload(configuration: defaultConfiguration).call()) ?? Data()
 				return ((try? JSONSerialization.jsonObject(with: data)) as? [String: Any]) ?? [:]
 			}
 
@@ -45,7 +46,13 @@ class CreateCardSpec: QuickSpec {
 			}
 
 			beforeEach {
-				let card = Card(name: CardholderName(firstName: "John", surname: "Appleseed"), number: CardNumber(rawValue: "5555 5555 5555 4444"), cvv: CVV(rawValue: "123"), expiry: Expiry(rawValue: (month: 12, year: 2020)))
+				let card = Card(
+					name: CardholderName(
+						firstName: "John",
+						surname: "Appleseed"),
+					number: CardNumber(rawValue: "5555 5555 5555 4444"),
+					cvv: CVV(rawValue: "123"),
+					expiry: Expiry(rawValue: (month: 12, year: 2020)))
 				sut = CreateCard(card: card)
 			}
 

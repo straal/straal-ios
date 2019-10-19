@@ -21,6 +21,31 @@
 import Foundation
 
 class ParseErrorCallable: Callable {
+	typealias ReturnType = (Data, HTTPURLResponse)
+
+	var responseCallable: AnyCallable<(Data, HTTPURLResponse)>
+
+	init<O: Callable>(response: O) where O.ReturnType == (Data, HTTPURLResponse) {
+		self.responseCallable = response.asCallable()
+	}
+
+	func call() throws -> (Data, HTTPURLResponse) {
+		let (data, response) = try responseCallable.call()
+		switch response.statusCode {
+		case 200..<300:
+			return (data, response)
+		case 400: throw StraalError.badRequest
+		case 402: throw StraalError.payment
+		case 500: throw StraalError.unknown
+		case 401: throw StraalError.unauthorized
+		case 404: throw StraalError.notFound
+		case 502: throw StraalError.notFound
+		default: throw StraalError.unknown
+		}
+	}
+}
+
+class ExtractBodyCallable: Callable {
 	typealias ReturnType = Data
 
 	var responseCallable: AnyCallable<(Data, HTTPURLResponse)>
@@ -30,17 +55,6 @@ class ParseErrorCallable: Callable {
 	}
 
 	func call() throws -> Data {
-		let (data, response) = try responseCallable.call()
-		switch response.statusCode {
-		case 200..<300:
-			return data
-		case 400: throw StraalError.badRequest
-		case 402: throw StraalError.payment
-		case 500: throw StraalError.unknown
-		case 401: throw StraalError.unauthorized
-		case 404: throw StraalError.notFound
-		case 502: throw StraalError.notFound
-		default: throw StraalError.unknown
-		}
+		return try responseCallable.call().0
 	}
 }

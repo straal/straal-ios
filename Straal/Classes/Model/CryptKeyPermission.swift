@@ -23,6 +23,7 @@ import Foundation
 enum CryptKeyPermission: Encodable {
 	case cardsCreate
 	case transactionCardCreate
+	case authentication3DS
 
 	var permissionString: String {
 		switch self {
@@ -30,6 +31,8 @@ enum CryptKeyPermission: Encodable {
 			return "v1.cards.create"
 		case .transactionCardCreate:
 			return "v1.transactions.create_with_card"
+		case .authentication3DS:
+			return "v1.customers.authentications_3ds.init_3ds"
 		}
 	}
 

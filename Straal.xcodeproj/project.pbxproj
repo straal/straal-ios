@@ -28,6 +28,15 @@
 		77283264235A42D500CB9BB6 /* IDZSwiftCommonCrypto.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7728325D235A429F00CB9BB6 /* IDZSwiftCommonCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		77283265235A42D500CB9BB6 /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7728325E235A429F00CB9BB6 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		77283266235A42D500CB9BB6 /* Quick.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7728325F235A429F00CB9BB6 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7728326A235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283268235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift */; };
+		7728326D235A440500CB9BB6 /* Init3DSOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728326B235A440400CB9BB6 /* Init3DSOperation.swift */; };
+		77283270235A440B00CB9BB6 /* ParseRedirectCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728326F235A440B00CB9BB6 /* ParseRedirectCallableSpec.swift */; };
+		77283272235A47DA00CB9BB6 /* CacheValueCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283271235A47DA00CB9BB6 /* CacheValueCallable.swift */; };
+		77283274235A47EE00CB9BB6 /* CacheValueCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283273235A47EE00CB9BB6 /* CacheValueCallable.swift */; };
+		77283276235A497800CB9BB6 /* SimpleCallableSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283275235A497800CB9BB6 /* SimpleCallableSpy.swift */; };
+		77283278235A4CB200CB9BB6 /* MapCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283277235A4CB200CB9BB6 /* MapCallable.swift */; };
+		7728327A235A4CC700CB9BB6 /* MapCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283279235A4CC700CB9BB6 /* MapCallableSpec.swift */; };
+		7728327C235A5E6800CB9BB6 /* Init3DSOperationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728327B235A5E6800CB9BB6 /* Init3DSOperationSpec.swift */; };
 		A3000E741D8BFD5400258B07 /* BackendUrlCreatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3000E6C1D8BFD5400258B07 /* BackendUrlCreatorSpec.swift */; };
 		A308015F2018753500A1060A /* SimpleCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A308015E2018753500A1060A /* SimpleCallableSpec.swift */; };
 		A3080161201878F500A1060A /* CryptKeyCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3080160201878F500A1060A /* CryptKeyCallableSpec.swift */; };
@@ -158,6 +167,15 @@
 		7728325D235A429F00CB9BB6 /* IDZSwiftCommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDZSwiftCommonCrypto.framework; path = Carthage/Build/iOS/IDZSwiftCommonCrypto.framework; sourceTree = "<group>"; };
 		7728325E235A429F00CB9BB6 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		7728325F235A429F00CB9BB6 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		77283268235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encrypted3DSOperationResponse.swift; sourceTree = "<group>"; };
+		7728326B235A440400CB9BB6 /* Init3DSOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Init3DSOperation.swift; sourceTree = "<group>"; };
+		7728326F235A440B00CB9BB6 /* ParseRedirectCallableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseRedirectCallableSpec.swift; sourceTree = "<group>"; };
+		77283271235A47DA00CB9BB6 /* CacheValueCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheValueCallable.swift; sourceTree = "<group>"; };
+		77283273235A47EE00CB9BB6 /* CacheValueCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheValueCallable.swift; sourceTree = "<group>"; };
+		77283275235A497800CB9BB6 /* SimpleCallableSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCallableSpy.swift; sourceTree = "<group>"; };
+		77283277235A4CB200CB9BB6 /* MapCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCallable.swift; sourceTree = "<group>"; };
+		77283279235A4CC700CB9BB6 /* MapCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCallableSpec.swift; sourceTree = "<group>"; };
+		7728327B235A5E6800CB9BB6 /* Init3DSOperationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init3DSOperationSpec.swift; sourceTree = "<group>"; };
 		A3000E6C1D8BFD5400258B07 /* BackendUrlCreatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendUrlCreatorSpec.swift; sourceTree = "<group>"; };
 		A308015E2018753500A1060A /* SimpleCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCallableSpec.swift; sourceTree = "<group>"; };
 		A3080160201878F500A1060A /* CryptKeyCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptKeyCallableSpec.swift; sourceTree = "<group>"; };
@@ -305,6 +323,7 @@
 				0E90F77C201A15BF0070C526 /* UrlSessionAdapterFake.swift */,
 				0E7AC1C6201B707D00BC3DF3 /* VersionAdapterFake.swift */,
 				B4A6012220246FB300088A0E /* CardValidatorFake.swift */,
+				77283275235A497800CB9BB6 /* SimpleCallableSpy.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -336,11 +355,14 @@
 		A308015D2018752A00A1060A /* Callable */ = {
 			isa = PBXGroup;
 			children = (
+				7728326F235A440B00CB9BB6 /* ParseRedirectCallableSpec.swift */,
 				A3080160201878F500A1060A /* CryptKeyCallableSpec.swift */,
 				0E90F77A201A09230070C526 /* HttpCallableSpec.swift */,
 				A308016420187C6500A1060A /* ParseResponseCallableSpec.swift */,
 				A308015E2018753500A1060A /* SimpleCallableSpec.swift */,
 				0E7AC1C4201B703B00BC3DF3 /* PostRequestCallableSpec.swift */,
+				77283273235A47EE00CB9BB6 /* CacheValueCallable.swift */,
+				77283279235A4CC700CB9BB6 /* MapCallableSpec.swift */,
 			);
 			path = Callable;
 			sourceTree = "<group>";
@@ -351,6 +373,7 @@
 				A30801762018FD0000A1060A /* Callable */,
 				A30801832018FD0000A1060A /* CreateCard.swift */,
 				A30801842018FD0000A1060A /* CreateTransactionWithCard.swift */,
+				7728326B235A440400CB9BB6 /* Init3DSOperation.swift */,
 				A30801852018FD0000A1060A /* EncryptedOperation.swift */,
 				A30801862018FD0000A1060A /* StraalOperation.swift */,
 			);
@@ -368,7 +391,9 @@
 				A308017B2018FD0000A1060A /* EncryptCallable.swift */,
 				A308017C2018FD0000A1060A /* HttpCallable.swift */,
 				A308017D2018FD0000A1060A /* MapToJsonCallable.swift */,
+				77283277235A4CB200CB9BB6 /* MapCallable.swift */,
 				A308017E2018FD0000A1060A /* ParseErrorCallable.swift */,
+				77283271235A47DA00CB9BB6 /* CacheValueCallable.swift */,
 				77283256235A3AAF00CB9BB6 /* ParseRedirectCallable.swift */,
 				A30801802018FD0000A1060A /* PostRequestCallable.swift */,
 				A30801812018FD0000A1060A /* SimpleCallable.swift */,
@@ -514,6 +539,7 @@
 			children = (
 				A30801B12018FD0000A1060A /* StraalResponse.swift */,
 				A30801B02018FD0000A1060A /* EncryptedOperationResponse.swift */,
+				77283268235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -572,6 +598,7 @@
 			children = (
 				A35C76D4201C915600E0004F /* CreateCardSpec.swift */,
 				A35C76D6201C916300E0004F /* CreateTransactionWithCardSpec.swift */,
+				7728327B235A5E6800CB9BB6 /* Init3DSOperationSpec.swift */,
 			);
 			path = Operation;
 			sourceTree = "<group>";
@@ -790,6 +817,7 @@
 				A30801D32018FD0100A1060A /* Visa.swift in Sources */,
 				B4742A8F2021E21900EAD828 /* JCB.swift in Sources */,
 				A30801BF2018FD0000A1060A /* EncryptCallable.swift in Sources */,
+				7728326A235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift in Sources */,
 				A30801D02018FD0100A1060A /* CardBrand.swift in Sources */,
 				A30801E12018FD0100A1060A /* Luhn.swift in Sources */,
 				A30801D12018FD0100A1060A /* AmericanExpress.swift in Sources */,
@@ -800,6 +828,7 @@
 				A30801C52018FD0000A1060A /* SimpleCallable.swift in Sources */,
 				B4742A9F2021F03700EAD828 /* Laser.swift in Sources */,
 				A30801F12018FD2000A1060A /* UrlCreator.swift in Sources */,
+				77283278235A4CB200CB9BB6 /* MapCallable.swift in Sources */,
 				A30801CA2018FD0000A1060A /* StraalOperation.swift in Sources */,
 				A30801E82018FD0100A1060A /* EncryptedOperationResponse.swift in Sources */,
 				A30801E32018FD0100A1060A /* UrlSession+Synchronous.swift in Sources */,
@@ -821,6 +850,7 @@
 				0EE419C22024AE89008FA186 /* LuhnValidable.swift in Sources */,
 				B4742A832020CE7C00EAD828 /* CVVValidator.swift in Sources */,
 				B4F4BCEF2020B41E003C014C /* CardValidator.swift in Sources */,
+				7728326D235A440500CB9BB6 /* Init3DSOperation.swift in Sources */,
 				A30801CF2018FD0100A1060A /* Card.swift in Sources */,
 				A30801EF2018FD0100A1060A /* Straal.swift in Sources */,
 				A30801BB2018FD0000A1060A /* AnyCallable.swift in Sources */,
@@ -835,6 +865,7 @@
 				A30801E72018FD0100A1060A /* StraalEndpoint.swift in Sources */,
 				A30801EE2018FD0100A1060A /* StraalCryptor.swift in Sources */,
 				0E9D35B32021D7FE00DBA9C9 /* ExpiryValidation.swift in Sources */,
+				77283272235A47DA00CB9BB6 /* CacheValueCallable.swift in Sources */,
 				0E7AC1C3201B6E8000BC3DF3 /* BundleVersionAdapter.swift in Sources */,
 				A30801C82018FD0000A1060A /* CreateTransactionWithCard.swift in Sources */,
 				77283257235A3AAF00CB9BB6 /* ParseRedirectCallable.swift in Sources */,
@@ -857,15 +888,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4F4BCED2020A44D003C014C /* CardsParserSpec.swift in Sources */,
+				77283270235A440B00CB9BB6 /* ParseRedirectCallableSpec.swift in Sources */,
 				A35C76D7201C916300E0004F /* CreateTransactionWithCardSpec.swift in Sources */,
 				0EAA37D41F18B8C20048F2E6 /* ExpirySpec.swift in Sources */,
+				77283274235A47EE00CB9BB6 /* CacheValueCallable.swift in Sources */,
 				A308015F2018753500A1060A /* SimpleCallableSpec.swift in Sources */,
+				7728327C235A5E6800CB9BB6 /* Init3DSOperationSpec.swift in Sources */,
 				0E9D35B52021E5DC00DBA9C9 /* ExpiryValidatorSpec.swift in Sources */,
 				0E7AC1C5201B703B00BC3DF3 /* PostRequestCallableSpec.swift in Sources */,
+				77283276235A497800CB9BB6 /* SimpleCallableSpy.swift in Sources */,
 				0E90F77D201A15BF0070C526 /* UrlSessionAdapterFake.swift in Sources */,
 				B4A6012120245CF700088A0E /* FullCardValidatorSpec.swift in Sources */,
 				B4742A852020D5E300EAD828 /* CVVValidatorSpec.swift in Sources */,
 				A371E71E1D82FD9F00D05B2F /* KeyParserTests.swift in Sources */,
+				7728327A235A4CC700CB9BB6 /* MapCallableSpec.swift in Sources */,
 				A35C76D5201C915600E0004F /* CreateCardSpec.swift in Sources */,
 				B4742A892021AF0E00EAD828 /* CardholderNameValidatorSpec.swift in Sources */,
 				A34AD01D1D9A5ACE00D13D09 /* DateSourceFake.swift in Sources */,

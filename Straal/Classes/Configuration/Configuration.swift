@@ -46,6 +46,6 @@ public struct StraalConfiguration {
 
 	/// MARK: 3D SECURE
 
-	internal let _3DSSuccessURL: URL = URL(string: "https://sdk.straal.com/success")!
-	internal let _3DSFailureURL: URL = URL(string: "https://sdk.straal.com/failure")!
+	internal let init3DSSuccessURL: URL = URL(string: "https://sdk.straal.com/success")!
+	internal let init3DSFailureURL: URL = URL(string: "https://sdk.straal.com/failure")!
 }

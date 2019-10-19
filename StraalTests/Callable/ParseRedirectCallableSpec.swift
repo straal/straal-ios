@@ -32,7 +32,7 @@ class ParseRedirectCallableSpec: QuickSpec {
 			var sut: ParseRedirectCallable { .init(response: SimpleCallable((data, response))) }
 
 			beforeEach {
-				data = Data(bytes: [0x22, 0x44])
+				data = Data([0x22, 0x44])
 			}
 
 			afterEach {

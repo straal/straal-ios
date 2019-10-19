@@ -37,6 +37,11 @@
 		77283278235A4CB200CB9BB6 /* MapCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283277235A4CB200CB9BB6 /* MapCallable.swift */; };
 		7728327A235A4CC700CB9BB6 /* MapCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283279235A4CC700CB9BB6 /* MapCallableSpec.swift */; };
 		7728327C235A5E6800CB9BB6 /* Init3DSOperationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728327B235A5E6800CB9BB6 /* Init3DSOperationSpec.swift */; };
+		7728327F235AE48100CB9BB6 /* Straal3DSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728327E235AE48100CB9BB6 /* Straal3DSViewController.swift */; };
+		77283283235AE5CE00CB9BB6 /* PresentStraalViewControllerCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283282235AE5CE00CB9BB6 /* PresentStraalViewControllerCallable.swift */; };
+		77283287235AE97F00CB9BB6 /* Init3DSContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283286235AE97F00CB9BB6 /* Init3DSContext.swift */; };
+		77283289235AFF1D00CB9BB6 /* MergeCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283288235AFF1D00CB9BB6 /* MergeCallable.swift */; };
+		7728328B235AFF2700CB9BB6 /* MergeCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728328A235AFF2700CB9BB6 /* MergeCallableSpec.swift */; };
 		A3000E741D8BFD5400258B07 /* BackendUrlCreatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3000E6C1D8BFD5400258B07 /* BackendUrlCreatorSpec.swift */; };
 		A308015F2018753500A1060A /* SimpleCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A308015E2018753500A1060A /* SimpleCallableSpec.swift */; };
 		A3080161201878F500A1060A /* CryptKeyCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3080160201878F500A1060A /* CryptKeyCallableSpec.swift */; };
@@ -176,6 +181,11 @@
 		77283277235A4CB200CB9BB6 /* MapCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCallable.swift; sourceTree = "<group>"; };
 		77283279235A4CC700CB9BB6 /* MapCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCallableSpec.swift; sourceTree = "<group>"; };
 		7728327B235A5E6800CB9BB6 /* Init3DSOperationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init3DSOperationSpec.swift; sourceTree = "<group>"; };
+		7728327E235AE48100CB9BB6 /* Straal3DSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Straal3DSViewController.swift; sourceTree = "<group>"; };
+		77283282235AE5CE00CB9BB6 /* PresentStraalViewControllerCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentStraalViewControllerCallable.swift; sourceTree = "<group>"; };
+		77283286235AE97F00CB9BB6 /* Init3DSContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init3DSContext.swift; sourceTree = "<group>"; };
+		77283288235AFF1D00CB9BB6 /* MergeCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeCallable.swift; sourceTree = "<group>"; };
+		7728328A235AFF2700CB9BB6 /* MergeCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeCallableSpec.swift; sourceTree = "<group>"; };
 		A3000E6C1D8BFD5400258B07 /* BackendUrlCreatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendUrlCreatorSpec.swift; sourceTree = "<group>"; };
 		A308015E2018753500A1060A /* SimpleCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCallableSpec.swift; sourceTree = "<group>"; };
 		A3080160201878F500A1060A /* CryptKeyCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptKeyCallableSpec.swift; sourceTree = "<group>"; };
@@ -316,6 +326,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7728327D235AE47200CB9BB6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7728327E235AE48100CB9BB6 /* Straal3DSViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		A3000E661D8BFD5000258B07 /* Fakes */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,6 +381,7 @@
 				0E7AC1C4201B703B00BC3DF3 /* PostRequestCallableSpec.swift */,
 				77283273235A47EE00CB9BB6 /* CacheValueCallable.swift */,
 				77283279235A4CC700CB9BB6 /* MapCallableSpec.swift */,
+				7728328A235AFF2700CB9BB6 /* MergeCallableSpec.swift */,
 			);
 			path = Callable;
 			sourceTree = "<group>";
@@ -392,11 +411,13 @@
 				A308017C2018FD0000A1060A /* HttpCallable.swift */,
 				A308017D2018FD0000A1060A /* MapToJsonCallable.swift */,
 				77283277235A4CB200CB9BB6 /* MapCallable.swift */,
+				77283288235AFF1D00CB9BB6 /* MergeCallable.swift */,
 				A308017E2018FD0000A1060A /* ParseErrorCallable.swift */,
 				77283271235A47DA00CB9BB6 /* CacheValueCallable.swift */,
 				77283256235A3AAF00CB9BB6 /* ParseRedirectCallable.swift */,
 				A30801802018FD0000A1060A /* PostRequestCallable.swift */,
 				A30801812018FD0000A1060A /* SimpleCallable.swift */,
+				77283282235AE5CE00CB9BB6 /* PresentStraalViewControllerCallable.swift */,
 			);
 			path = Callable;
 			sourceTree = "<group>";
@@ -540,6 +561,7 @@
 				A30801B12018FD0000A1060A /* StraalResponse.swift */,
 				A30801B02018FD0000A1060A /* EncryptedOperationResponse.swift */,
 				77283268235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift */,
+				77283286235AE97F00CB9BB6 /* Init3DSContext.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -658,6 +680,7 @@
 		A371E71F1D82FDA800D05B2F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7728327D235AE47200CB9BB6 /* Controllers */,
 				A30801B52018FD0000A1060A /* Configuration */,
 				A30801B72018FD0000A1060A /* Cryptor */,
 				A308018D2018FD0000A1060A /* Model */,
@@ -810,9 +833,11 @@
 				A30801E22018FD0100A1060A /* ValidationResult.swift in Sources */,
 				A30801C72018FD0000A1060A /* CreateCard.swift in Sources */,
 				A30801CD2018FD0100A1060A /* String+Extension.swift in Sources */,
+				77283287235AE97F00CB9BB6 /* Init3DSContext.swift in Sources */,
 				A30801C42018FD0000A1060A /* PostRequestCallable.swift in Sources */,
 				A30801DF2018FD0100A1060A /* Transaction.swift in Sources */,
 				B4742A992021ED2F00EAD828 /* InterPayment.swift in Sources */,
+				77283283235AE5CE00CB9BB6 /* PresentStraalViewControllerCallable.swift in Sources */,
 				A30801D32018FD0100A1060A /* Visa.swift in Sources */,
 				B4742A8F2021E21900EAD828 /* JCB.swift in Sources */,
 				A30801BF2018FD0000A1060A /* EncryptCallable.swift in Sources */,
@@ -854,6 +879,7 @@
 				A30801EF2018FD0100A1060A /* Straal.swift in Sources */,
 				A30801BB2018FD0000A1060A /* AnyCallable.swift in Sources */,
 				A30801DD2018FD0100A1060A /* Currency.swift in Sources */,
+				7728327F235AE48100CB9BB6 /* Straal3DSViewController.swift in Sources */,
 				A30801E42018FD0100A1060A /* UrlSessionAdapter.swift in Sources */,
 				B4742A872021AEC500EAD828 /* CardholderNameValidator.swift in Sources */,
 				0E9D35BB2023443C00DBA9C9 /* CardNumberValidator.swift in Sources */,
@@ -878,6 +904,7 @@
 				A30801CB2018FD0100A1060A /* DateSource.swift in Sources */,
 				A30801D92018FD0100A1060A /* CryptKeyPermission.swift in Sources */,
 				A30801E62018FD0100A1060A /* Endpoint.swift in Sources */,
+				77283289235AFF1D00CB9BB6 /* MergeCallable.swift in Sources */,
 				A30801DC2018FD0100A1060A /* StraalError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -911,6 +938,7 @@
 				0E9D35BD20234BAF00DBA9C9 /* CardNumberValidatorSpec.swift in Sources */,
 				A371E71D1D82FD9F00D05B2F /* CryptorSpec.swift in Sources */,
 				A3000E741D8BFD5400258B07 /* BackendUrlCreatorSpec.swift in Sources */,
+				7728328B235AFF2700CB9BB6 /* MergeCallableSpec.swift in Sources */,
 				A309CB101D997AAF00873639 /* LuhnSpec.swift in Sources */,
 				0E90F77B201A09230070C526 /* HttpCallableSpec.swift in Sources */,
 				B4A6012320246FB300088A0E /* CardValidatorFake.swift in Sources */,

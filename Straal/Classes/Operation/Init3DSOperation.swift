@@ -72,6 +72,8 @@ public final class Init3DSOperation: EncryptedOperation {
 	/// Transaction
 	public let transaction: Transaction
 
+	private let present3DSViewController: (UIViewController) -> Void
+
 	internal let permission = CryptKeyPermission.authentication3DS
 
 	func responseCallable(httpCallable: HttpCallable, configuration: StraalConfiguration) -> AnyCallable<Encrypted3DSOperationResponse> {
@@ -80,21 +82,22 @@ public final class Init3DSOperation: EncryptedOperation {
 
 		let operationResponse: DecodeCallable<EncryptedOperationResponse> = DecodeCallable(dataSource: cachedRequestResponse.map { $0.0 })
 
-		let fullResponse = operationResponse.map { response in
+		let init3DSContext = redirectURL.map { Init3DSContext(redirectURL: $0, successURL: configuration.init3DSSuccessURL, failureURL: configuration.init3DSFailureURL) }
+
+		let showViewController = PresentStraalViewControllerCallable(context: init3DSContext, present: present3DSViewController)
+
+		let result = operationResponse.merge(showViewController).map { requestAndStatus in
 			Encrypted3DSOperationResponse(
-				requestId: response.requestId,
-				context: Operation3DSContext(
-					redirectURL: try redirectURL.call(),
-					successURL: configuration.init3DSSuccessURL,
-					failureURL: configuration.init3DSFailureURL)
-			)
+				requestId: requestAndStatus.0.requestId,
+				status: requestAndStatus.1)
 		}
-		return fullResponse.asCallable()
+		return result.asCallable()
 	}
 
 	/// Designated initializer
-	public init(card: Card, transaction: Transaction) {
+	public init(card: Card, transaction: Transaction, present3DSViewController: @escaping (UIViewController) -> Void) {
 		self.card = card
 		self.transaction = transaction
+		self.present3DSViewController = present3DSViewController
 	}
 }

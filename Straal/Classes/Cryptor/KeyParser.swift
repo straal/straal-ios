@@ -96,7 +96,7 @@ extension Data {
 			bytes.append(unwrappedNum)
 		}
 
-		self.init(bytes: bytes)
+		self.init(bytes)
 	}
 
 	var bytesArray: [UInt8] {

@@ -62,7 +62,7 @@ class StraalCryptor: Encrypting, Decrypting {
 				throw CryptorError.unknown
 		}
 
-		let encryptedData = Data(bytes: key[.id].bytesArray + encryptedMessage)
+		let encryptedData = Data(key[.id].bytesArray + encryptedMessage)
 		guard let convertedData = hexString(fromArray: encryptedData.bytesArray).data(using: .ascii) else {
 			throw CryptorError.unknown
 		}
@@ -122,7 +122,7 @@ class StraalCryptor: Encrypting, Decrypting {
 	}
 
 	private func decodedMessage(message: [UInt8]) -> String? {
-		return String(data: Data(bytes: removeTrailingZeroPadding(array: message)), encoding: stringEncoding)
+		return String(data: Data(removeTrailingZeroPadding(array: message)), encoding: stringEncoding)
 	}
 
 	private func keysMatch(message: Data, key: CryptKey) -> Bool {

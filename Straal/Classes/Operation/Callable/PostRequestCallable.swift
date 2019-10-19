@@ -47,7 +47,7 @@ class PostRequestCallable: Callable {
 		guard let version = versionAdapter.version else { throw StraalError.unknown }
 		request.addValue(version, forHTTPHeaderField: "x-straal-sdk-version")
 		request.addValue("ios", forHTTPHeaderField: "x-straal-sdk-platform")
-		try headers.call().forEach { (key, value) in
+		try headers.call().forEach { key, value in
 			request.addValue(value, forHTTPHeaderField: key)
 		}
 		return request

@@ -47,10 +47,10 @@ class ExpirySpec: QuickSpec {
 				context("with incorrect string") {
 
 					it("should initialize as incorrect expiry when incorrect month") {
-							let expiry = Expiry(month: "invalid", year: "21")
-							expect(expiry.sanitized.month).to(equal(Expiry.invalid.rawValue.month))
-							expect(expiry.sanitized.year).to(equal(Expiry.invalid.rawValue.year))
-						}
+						let expiry = Expiry(month: "invalid", year: "21")
+						expect(expiry.sanitized.month).to(equal(Expiry.invalid.rawValue.month))
+						expect(expiry.sanitized.year).to(equal(Expiry.invalid.rawValue.year))
+					}
 
 					it("should initialize as incorrect expiry when incorrect year") {
 						let expiry = Expiry(month: "05", year: "invalid")

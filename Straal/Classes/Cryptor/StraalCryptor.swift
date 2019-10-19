@@ -53,10 +53,11 @@ class StraalCryptor: Encrypting, Decrypting {
 	}
 
 	private func encrypt(paddedMessage: [UInt8], key: CryptKey) throws -> Data {
-		guard let encryptedMessage = crypt(operation: .encrypt,
-										   key: key[.key].bytesArray,
-										   initVector: key[.iv1].bytesArray,
-										   message: paddedMessage
+		guard let encryptedMessage = crypt(
+			operation: .encrypt,
+			key: key[.key].bytesArray,
+			initVector: key[.iv1].bytesArray,
+			message: paddedMessage
 			) else {
 				throw CryptorError.unknown
 		}
@@ -82,10 +83,11 @@ class StraalCryptor: Encrypting, Decrypting {
 		}
 		let encryptedData = dataToDecrypt.subdata(in: CryptKey.CryptKeyElement.id.byteLength..<dataToDecrypt.count).bytesArray
 
-		guard let decryptedData: [UInt8] = crypt(operation: .decrypt,
-		                                            key: key[.key].bytesArray,
-		                                            initVector: key[.iv2].bytesArray,
-		                                            message: encryptedData)
+		guard let decryptedData: [UInt8] = crypt(
+			operation: .decrypt,
+			key: key[.key].bytesArray,
+			initVector: key[.iv2].bytesArray,
+			message: encryptedData)
 			else {
 				throw CryptorError.invalidKey
 		}
@@ -96,16 +98,18 @@ class StraalCryptor: Encrypting, Decrypting {
 		return decryptedMessage
 	}
 
-	private func crypt(operation: StreamCryptor.Operation,
-	                   key: [UInt8],
-	                   initVector: [UInt8],
-	                   message: [UInt8]) -> [UInt8]? {
-		return IDZSwiftCommonCrypto.Cryptor(operation: operation,
-		                                    algorithm: algorithm,
-		                                    mode: algorithmMode,
-		                                    padding: algorithmPadding,
-		                                    key: key,
-		                                    iv: initVector)
+	private func crypt(
+		operation: StreamCryptor.Operation,
+		key: [UInt8],
+		initVector: [UInt8],
+		message: [UInt8]) -> [UInt8]? {
+		return IDZSwiftCommonCrypto.Cryptor(
+			operation: operation,
+			algorithm: algorithm,
+			mode: algorithmMode,
+			padding: algorithmPadding,
+			key: key,
+			iv: initVector)
 			.update(byteArray: message)?.final()
 	}
 

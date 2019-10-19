@@ -25,5 +25,5 @@ protocol VersionAdapting {
 }
 
 final class VersionAdapter: VersionAdapting {
-	lazy var version: String? = Bundle.init(for: type(of: self)).object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+	lazy var version: String? = Bundle(for: type(of: self)).object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
 }

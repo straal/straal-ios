@@ -96,9 +96,10 @@ class ExpiryValidatorSpec: QuickSpec {
 
 private extension Card {
 	init(expiry: Expiry) {
-		self.init(name: CardholderName(firstName: "John", surname: "Appleseed"),
-				  number: CardNumber(rawValue: "5555555555554444"),
-				  cvv: CVV(rawValue: "123"),
-				  expiry: expiry)
+		self.init(
+			name: CardholderName(firstName: "John", surname: "Appleseed"),
+			number: CardNumber(rawValue: "5555555555554444"),
+			cvv: CVV(rawValue: "123"),
+			expiry: expiry)
 	}
 }

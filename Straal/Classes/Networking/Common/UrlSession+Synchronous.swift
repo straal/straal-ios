@@ -35,7 +35,7 @@ extension URLSession {
 			response = $1
 			error = $2
 			semaphore.signal()
-			}.resume()
+		}.resume()
 
 		_ = semaphore.wait(timeout: .distantFuture)
 

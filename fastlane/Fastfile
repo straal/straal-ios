@@ -1,0 +1,25 @@
+default_platform(:ios)
+
+platform :ios do
+
+  desc "Runs aggregate test target"
+  lane :test do
+    scan(
+      derived_data_path: 'DerivedData',
+      scheme: 'Straal',
+      devices: ['iPhone 11']
+    )
+  end
+
+  desc "Print coverage"
+  lane :coverage do
+    fastlane_require 'json'
+    xcov(
+      derived_data_path: "DerivedData",
+      scheme: 'Straal',
+      json_report: true
+    )
+    json = JSON.parse(File.read('xcov_report/report.json'))
+    puts "# Project code coverage: " + (json['coverage'] * 100).round(2).to_s
+  end
+end

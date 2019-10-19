@@ -83,3 +83,7 @@ Temporary Items
 .apdisk
 
 outputs/
+
+# fastlane
+fastlane/README.md
+fastlane/report.xml

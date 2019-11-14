@@ -82,7 +82,7 @@ class PostRequestCallableSpec: QuickSpec {
 				}
 
 				it("should have correct custom headers") {
-					customHeaders.forEach { (customHeader) in
+					customHeaders.forEach { customHeader in
 						expect(returnedRequest?.value(forHTTPHeaderField: customHeader.key)).to(equal(customHeader.value))
 					}
 				}

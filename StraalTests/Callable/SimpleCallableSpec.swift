@@ -40,7 +40,7 @@ class SimpleCallableSpec: QuickSpec {
 			}
 
 			it("should return correctly retain value when working with an object") {
-				var object: NSObject? = NSObject.init()
+				var object: NSObject? = NSObject()
 				let callable = SimpleCallable.of(object)
 				object = nil
 				expect { try callable.call() }.notTo(beNil())
@@ -59,7 +59,7 @@ class SimpleCallableSpec: QuickSpec {
 			}
 
 			it("should return correct value when working with an object even if anonymous") {
-				var object: NSObject? = NSObject.init()
+				var object: NSObject? = NSObject()
 				let callable = SimpleCallable.of(object).asCallable()
 				object = nil
 				expect { try callable.call() }.notTo(beNil())
@@ -70,6 +70,6 @@ class SimpleCallableSpec: QuickSpec {
 				let callable = SimpleCallable.of(object).asCallable()
 				expect { try callable.call() }.to(be(object))
 			}
- 		}
+		}
 	}
 }

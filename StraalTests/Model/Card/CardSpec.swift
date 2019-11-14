@@ -28,17 +28,19 @@ class CardSpec: QuickSpec {
 	override func spec() {
 
 		describe("Card") {
-
 			describe("encode to JSON") {
-
 				it("should encode correctly") {
-					let card = Card(name: CardholderName(firstName: "Jan", surname: "Kowalski"), number: CardNumber(rawValue: "5555 5555 5555 4444"), cvv: CVV(rawValue: "123"), expiry: Expiry(rawValue: (month: 12, year: 2020)))
-					guard let json = try? JSONSerialization.jsonObject(with: JSONEncoder().encode(card)) as? [String: Any] else { XCTFail("Unexpected JSON"); return }
-					expect(json?["name"] as? String).to(equal("Jan Kowalski"))
-					expect(json?["number"] as? String).to(equal("5555555555554444"))
-					expect(json?["cvv"] as? String).to(equal("123"))
-					expect(json?["expiry_month"] as? Int).to(equal(12))
-					expect(json?["expiry_year"] as? Int).to(equal(2020))
+					let card = Card(
+						name: CardholderName(firstName: "Jan", surname: "Kowalski"),
+						number: CardNumber(rawValue: "5555 5555 5555 4444"),
+						cvv: CVV(rawValue: "123"),
+						expiry: Expiry(rawValue: (month: 12, year: 2020)))
+					guard let json = try? JSONSerialization.jsonObject(with: JSONEncoder().encode(card)) as? [String: Any] else { fail("Unexpected JSON"); return }
+					expect(json["name"] as? String).to(equal("Jan Kowalski"))
+					expect(json["number"] as? String).to(equal("5555555555554444"))
+					expect(json["cvv"] as? String).to(equal("123"))
+					expect(json["expiry_month"] as? Int).to(equal(12))
+					expect(json["expiry_year"] as? Int).to(equal(2020))
 				}
 			}
 		}

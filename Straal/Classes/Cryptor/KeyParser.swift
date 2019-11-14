@@ -87,22 +87,20 @@ extension Data {
 		var bytes: [UInt8] = []
 		let length = hexString.distance(from: hexString.startIndex, to: hexString.endIndex)
 
-		for i in stride(from: 0, to: length, by: 2) {
-			let from = hexString.index(hexString.startIndex, offsetBy: i)
-			if hexString.distance(from: from, to: hexString.endIndex) < 2 { return nil }
-			let to = hexString.index(hexString.startIndex, offsetBy: i+2)
-			let num: UInt8? = UInt8(hexString[from..<to], radix: 16)
+		for index in stride(from: 0, to: length, by: 2) {
+			let fromIndex = hexString.index(hexString.startIndex, offsetBy: index)
+			if hexString.distance(from: fromIndex, to: hexString.endIndex) < 2 { return nil }
+			let toIndex = hexString.index(hexString.startIndex, offsetBy: index + 2)
+			let num: UInt8? = UInt8(hexString[fromIndex..<toIndex], radix: 16)
 			guard let unwrappedNum = num else { return nil }
 			bytes.append(unwrappedNum)
 		}
 
-		self.init(bytes: bytes)
+		self.init(bytes)
 	}
 
 	var bytesArray: [UInt8] {
-		return withUnsafeBytes {
-			[UInt8](UnsafeBufferPointer(start: $0, count: count))
-		}
+		withUnsafeBytes { $0.compactMap { $0 } }
 	}
 }
 

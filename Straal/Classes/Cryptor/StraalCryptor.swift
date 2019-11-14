@@ -53,15 +53,16 @@ class StraalCryptor: Encrypting, Decrypting {
 	}
 
 	private func encrypt(paddedMessage: [UInt8], key: CryptKey) throws -> Data {
-		guard let encryptedMessage = crypt(operation: .encrypt,
-										   key: key[.key].bytesArray,
-										   initVector: key[.iv1].bytesArray,
-										   message: paddedMessage
+		guard let encryptedMessage = crypt(
+			operation: .encrypt,
+			key: key[.key].bytesArray,
+			initVector: key[.iv1].bytesArray,
+			message: paddedMessage
 			) else {
 				throw CryptorError.unknown
 		}
 
-		let encryptedData = Data(bytes: key[.id].bytesArray + encryptedMessage)
+		let encryptedData = Data(key[.id].bytesArray + encryptedMessage)
 		guard let convertedData = hexString(fromArray: encryptedData.bytesArray).data(using: .ascii) else {
 			throw CryptorError.unknown
 		}
@@ -82,10 +83,11 @@ class StraalCryptor: Encrypting, Decrypting {
 		}
 		let encryptedData = dataToDecrypt.subdata(in: CryptKey.CryptKeyElement.id.byteLength..<dataToDecrypt.count).bytesArray
 
-		guard let decryptedData: [UInt8] = crypt(operation: .decrypt,
-		                                            key: key[.key].bytesArray,
-		                                            initVector: key[.iv2].bytesArray,
-		                                            message: encryptedData)
+		guard let decryptedData: [UInt8] = crypt(
+			operation: .decrypt,
+			key: key[.key].bytesArray,
+			initVector: key[.iv2].bytesArray,
+			message: encryptedData)
 			else {
 				throw CryptorError.invalidKey
 		}
@@ -96,16 +98,18 @@ class StraalCryptor: Encrypting, Decrypting {
 		return decryptedMessage
 	}
 
-	private func crypt(operation: StreamCryptor.Operation,
-	                   key: [UInt8],
-	                   initVector: [UInt8],
-	                   message: [UInt8]) -> [UInt8]? {
-		return IDZSwiftCommonCrypto.Cryptor(operation: operation,
-		                                    algorithm: algorithm,
-		                                    mode: algorithmMode,
-		                                    padding: algorithmPadding,
-		                                    key: key,
-		                                    iv: initVector)
+	private func crypt(
+		operation: StreamCryptor.Operation,
+		key: [UInt8],
+		initVector: [UInt8],
+		message: [UInt8]) -> [UInt8]? {
+		return IDZSwiftCommonCrypto.Cryptor(
+			operation: operation,
+			algorithm: algorithm,
+			mode: algorithmMode,
+			padding: algorithmPadding,
+			key: key,
+			iv: initVector)
 			.update(byteArray: message)?.final()
 	}
 
@@ -118,7 +122,7 @@ class StraalCryptor: Encrypting, Decrypting {
 	}
 
 	private func decodedMessage(message: [UInt8]) -> String? {
-		return String(data: Data(bytes: removeTrailingZeroPadding(array: message)), encoding: stringEncoding)
+		return String(data: Data(removeTrailingZeroPadding(array: message)), encoding: stringEncoding)
 	}
 
 	private func keysMatch(message: Data, key: CryptKey) -> Bool {

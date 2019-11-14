@@ -33,7 +33,7 @@ public class CardsParser {
 	- returns: Nil if no card type matches the Issuer Identification Number of the provided card number or any other card type that matches the card number.
 	*/
 	public static func cardBrand(for number: CardNumber) -> CardBrand? {
-		return supportedBrands.flatMap { brand -> (cardBrand: CardBrand, matchLength: Int)? in
+		return supportedBrands.compactMap { brand -> (cardBrand: CardBrand, matchLength: Int)? in
 			do {
 				let regex = try NSRegularExpression(pattern: brand.identifyingPattern, options: [])
 				let range = NSRange(location: 0, length: number.length)
@@ -46,7 +46,6 @@ public class CardsParser {
 			} catch {
 				return nil
 			}
-		}.sorted(by: { $0.matchLength > $1.matchLength })
-		.first?.cardBrand
+		}.min(by: { $0.matchLength > $1.matchLength })?.cardBrand
 	}
 }

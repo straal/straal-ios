@@ -1,4 +1,8 @@
 source "https://rubygems.org"
 
-gem 'cocoapods'
-gem 'xcpretty'
+gem 'fastlane'
+gem 'json'
+gem 'xcov'
+gem 'danger-gitlab'
+gem 'danger-xcov'
+gem 'danger-swiftlint'

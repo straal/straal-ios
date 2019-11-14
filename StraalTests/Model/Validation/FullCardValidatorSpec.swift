@@ -47,10 +47,11 @@ class FullCardValidatorSpec: QuickSpec {
 				let expectedResult: ValidationResult
 			}
 
-			let card = Card(name: CardholderName(firstName: "Jan", surname: "Kowalski"),
-							number: CardNumber(rawValue: "5555 5555 5555 4444"),
-							cvv: CVV(rawValue: "123"),
-							expiry: Expiry(month: "12", year: "2020"))
+			let card = Card(
+				name: CardholderName(firstName: "Jan", surname: "Kowalski"),
+				number: CardNumber(rawValue: "5555 5555 5555 4444"),
+				cvv: CVV(rawValue: "123"),
+				expiry: Expiry(month: "12", year: "2020"))
 
 			let testCases: [TestCase] = [
 				TestCase(inputResults: [.cvvInvalid, .valid], expectedResult: .cvvInvalid),

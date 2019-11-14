@@ -52,7 +52,7 @@ extension CardBrand {
 
 	/// The count of digits in card number
 	public var numberLengths: [Int] {
-		return numberGroupings.map { $0.reduce(0) { $0 + $1 }}
+		return numberGroupings.map { $0.reduce(0, +) }
 	}
 
 	public var numberGroupings: [[Int]] {

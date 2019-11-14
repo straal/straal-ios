@@ -26,7 +26,7 @@ class HttpCallable: Callable {
 	let requestCallable: AnyCallable<URLRequest>
 	let urlSession: UrlSessionAdapting
 
-	init<O: Callable>(requestSource: O, urlSession: UrlSessionAdapting = UrlSessionAdapter.init()) where O.ReturnType == URLRequest {
+	init<O: Callable>(requestSource: O, urlSession: UrlSessionAdapting = UrlSessionAdapter()) where O.ReturnType == URLRequest {
 		self.requestCallable = requestSource.asCallable()
 		self.urlSession = urlSession
 	}

@@ -21,7 +21,28 @@
 		0EAA37D61F18E89D0048F2E6 /* CardSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA37D51F18E89D0048F2E6 /* CardSpec.swift */; };
 		0EE419C22024AE89008FA186 /* LuhnValidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE419C12024AE89008FA186 /* LuhnValidable.swift */; };
 		0EE419C42024C365008FA186 /* CardholderNameSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE419C32024C365008FA186 /* CardholderNameSpec.swift */; };
-		7E97C9E424919D1429C61327 /* Pods_StraalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91ED081A58CDE563D531CD5A /* Pods_StraalTests.framework */; };
+		77283257235A3AAF00CB9BB6 /* ParseRedirectCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283256235A3AAF00CB9BB6 /* ParseRedirectCallable.swift */; };
+		77283260235A42C200CB9BB6 /* IDZSwiftCommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7728325D235A429F00CB9BB6 /* IDZSwiftCommonCrypto.framework */; };
+		77283261235A42C600CB9BB6 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7728325E235A429F00CB9BB6 /* Nimble.framework */; };
+		77283262235A42C600CB9BB6 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7728325F235A429F00CB9BB6 /* Quick.framework */; };
+		77283264235A42D500CB9BB6 /* IDZSwiftCommonCrypto.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7728325D235A429F00CB9BB6 /* IDZSwiftCommonCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77283265235A42D500CB9BB6 /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7728325E235A429F00CB9BB6 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77283266235A42D500CB9BB6 /* Quick.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7728325F235A429F00CB9BB6 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7728326A235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283268235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift */; };
+		7728326D235A440500CB9BB6 /* Init3DSOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728326B235A440400CB9BB6 /* Init3DSOperation.swift */; };
+		77283270235A440B00CB9BB6 /* ParseRedirectCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728326F235A440B00CB9BB6 /* ParseRedirectCallableSpec.swift */; };
+		77283272235A47DA00CB9BB6 /* CacheValueCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283271235A47DA00CB9BB6 /* CacheValueCallable.swift */; };
+		77283274235A47EE00CB9BB6 /* CacheValueCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283273235A47EE00CB9BB6 /* CacheValueCallable.swift */; };
+		77283276235A497800CB9BB6 /* SimpleCallableSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283275235A497800CB9BB6 /* SimpleCallableSpy.swift */; };
+		77283278235A4CB200CB9BB6 /* MapCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283277235A4CB200CB9BB6 /* MapCallable.swift */; };
+		7728327A235A4CC700CB9BB6 /* MapCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283279235A4CC700CB9BB6 /* MapCallableSpec.swift */; };
+		7728327C235A5E6800CB9BB6 /* Init3DSOperationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728327B235A5E6800CB9BB6 /* Init3DSOperationSpec.swift */; };
+		7728327F235AE48100CB9BB6 /* Straal3DSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728327E235AE48100CB9BB6 /* Straal3DSViewController.swift */; };
+		77283283235AE5CE00CB9BB6 /* PresentStraalViewControllerCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283282235AE5CE00CB9BB6 /* PresentStraalViewControllerCallable.swift */; };
+		77283287235AE97F00CB9BB6 /* Init3DSContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283286235AE97F00CB9BB6 /* Init3DSContext.swift */; };
+		77283289235AFF1D00CB9BB6 /* MergeCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283288235AFF1D00CB9BB6 /* MergeCallable.swift */; };
+		7728328B235AFF2700CB9BB6 /* MergeCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728328A235AFF2700CB9BB6 /* MergeCallableSpec.swift */; };
+		77DC743F235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC743E235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift */; };
 		A3000E741D8BFD5400258B07 /* BackendUrlCreatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3000E6C1D8BFD5400258B07 /* BackendUrlCreatorSpec.swift */; };
 		A308015F2018753500A1060A /* SimpleCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A308015E2018753500A1060A /* SimpleCallableSpec.swift */; };
 		A3080161201878F500A1060A /* CryptKeyCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3080160201878F500A1060A /* CryptKeyCallableSpec.swift */; };
@@ -105,7 +126,6 @@
 		B4F4BCED2020A44D003C014C /* CardsParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */; };
 		B4F4BCEF2020B41E003C014C /* CardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCEE2020B41E003C014C /* CardValidator.swift */; };
 		B4F4BCF12020B90E003C014C /* VisaElectron.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4BCF02020B90E003C014C /* VisaElectron.swift */; };
-		C17495B1A54359B3F718E387 /* Pods_Straal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5574E406B430FA7F1707BB80 /* Pods_Straal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +137,22 @@
 			remoteInfo = Straal;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		77283263235A42CA00CB9BB6 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				77283264235A42D500CB9BB6 /* IDZSwiftCommonCrypto.framework in Copy Frameworks */,
+				77283265235A42D500CB9BB6 /* Nimble.framework in Copy Frameworks */,
+				77283266235A42D500CB9BB6 /* Quick.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E7AC1C2201B6E8000BC3DF3 /* BundleVersionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleVersionAdapter.swift; sourceTree = "<group>"; };
@@ -133,10 +169,25 @@
 		0EAA37D51F18E89D0048F2E6 /* CardSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CardSpec.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		0EE419C12024AE89008FA186 /* LuhnValidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuhnValidable.swift; sourceTree = "<group>"; };
 		0EE419C32024C365008FA186 /* CardholderNameSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardholderNameSpec.swift; sourceTree = "<group>"; };
-		5574E406B430FA7F1707BB80 /* Pods_Straal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Straal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7DF5527CE598A2401174CE04 /* Pods-Straal_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straal_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Straal_Example/Pods-Straal_Example.release.xcconfig"; sourceTree = "<group>"; };
-		91ED081A58CDE563D531CD5A /* Pods_StraalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StraalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		968FADC35F022171F044CE0A /* Pods-Straal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Straal/Pods-Straal.debug.xcconfig"; sourceTree = "<group>"; };
+		77283256235A3AAF00CB9BB6 /* ParseRedirectCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseRedirectCallable.swift; sourceTree = "<group>"; };
+		7728325D235A429F00CB9BB6 /* IDZSwiftCommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDZSwiftCommonCrypto.framework; path = Carthage/Build/iOS/IDZSwiftCommonCrypto.framework; sourceTree = "<group>"; };
+		7728325E235A429F00CB9BB6 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		7728325F235A429F00CB9BB6 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		77283268235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encrypted3DSOperationResponse.swift; sourceTree = "<group>"; };
+		7728326B235A440400CB9BB6 /* Init3DSOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Init3DSOperation.swift; sourceTree = "<group>"; };
+		7728326F235A440B00CB9BB6 /* ParseRedirectCallableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseRedirectCallableSpec.swift; sourceTree = "<group>"; };
+		77283271235A47DA00CB9BB6 /* CacheValueCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheValueCallable.swift; sourceTree = "<group>"; };
+		77283273235A47EE00CB9BB6 /* CacheValueCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheValueCallable.swift; sourceTree = "<group>"; };
+		77283275235A497800CB9BB6 /* SimpleCallableSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCallableSpy.swift; sourceTree = "<group>"; };
+		77283277235A4CB200CB9BB6 /* MapCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCallable.swift; sourceTree = "<group>"; };
+		77283279235A4CC700CB9BB6 /* MapCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCallableSpec.swift; sourceTree = "<group>"; };
+		7728327B235A5E6800CB9BB6 /* Init3DSOperationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init3DSOperationSpec.swift; sourceTree = "<group>"; };
+		7728327E235AE48100CB9BB6 /* Straal3DSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Straal3DSViewController.swift; sourceTree = "<group>"; };
+		77283282235AE5CE00CB9BB6 /* PresentStraalViewControllerCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentStraalViewControllerCallable.swift; sourceTree = "<group>"; };
+		77283286235AE97F00CB9BB6 /* Init3DSContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init3DSContext.swift; sourceTree = "<group>"; };
+		77283288235AFF1D00CB9BB6 /* MergeCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeCallable.swift; sourceTree = "<group>"; };
+		7728328A235AFF2700CB9BB6 /* MergeCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeCallableSpec.swift; sourceTree = "<group>"; };
+		77DC743E235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentStraalViewControllerCallableSpec.swift; sourceTree = "<group>"; };
 		A3000E6C1D8BFD5400258B07 /* BackendUrlCreatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendUrlCreatorSpec.swift; sourceTree = "<group>"; };
 		A308015E2018753500A1060A /* SimpleCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCallableSpec.swift; sourceTree = "<group>"; };
 		A3080160201878F500A1060A /* CryptKeyCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptKeyCallableSpec.swift; sourceTree = "<group>"; };
@@ -223,11 +274,6 @@
 		B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsParserSpec.swift; sourceTree = "<group>"; };
 		B4F4BCEE2020B41E003C014C /* CardValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardValidator.swift; sourceTree = "<group>"; };
 		B4F4BCF02020B90E003C014C /* VisaElectron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisaElectron.swift; sourceTree = "<group>"; };
-		D03E263B338F057044F7AAE9 /* Pods_Straal_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Straal_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB66FA318C1830F344DFA243 /* Pods-Straal_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straal_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Straal_Example/Pods-Straal_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		E3533DFD537ECBC3D2CA1193 /* Pods-StraalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StraalTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StraalTests/Pods-StraalTests.release.xcconfig"; sourceTree = "<group>"; };
-		E3BDB8FCB79A8C9020E4C0AE /* Pods-Straal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straal.release.xcconfig"; path = "Pods/Target Support Files/Pods-Straal/Pods-Straal.release.xcconfig"; sourceTree = "<group>"; };
-		ECD4644B4780DBED9760F063 /* Pods-StraalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StraalTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StraalTests/Pods-StraalTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,7 +281,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C17495B1A54359B3F718E387 /* Pods_Straal.framework in Frameworks */,
+				77283260235A42C200CB9BB6 /* IDZSwiftCommonCrypto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +290,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A371E70A1D82FC6600D05B2F /* Straal.framework in Frameworks */,
-				7E97C9E424919D1429C61327 /* Pods_StraalTests.framework in Frameworks */,
+				77283261235A42C600CB9BB6 /* Nimble.framework in Frameworks */,
+				77283262235A42C600CB9BB6 /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,14 +318,22 @@
 			path = Luhn;
 			sourceTree = "<group>";
 		};
-		8CCEF6B63CE78FD1792EAD25 /* Frameworks */ = {
+		7728325C235A428D00CB9BB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5574E406B430FA7F1707BB80 /* Pods_Straal.framework */,
-				91ED081A58CDE563D531CD5A /* Pods_StraalTests.framework */,
-				D03E263B338F057044F7AAE9 /* Pods_Straal_Example.framework */,
+				7728325D235A429F00CB9BB6 /* IDZSwiftCommonCrypto.framework */,
+				7728325E235A429F00CB9BB6 /* Nimble.framework */,
+				7728325F235A429F00CB9BB6 /* Quick.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7728327D235AE47200CB9BB6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7728327E235AE48100CB9BB6 /* Straal3DSViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		A3000E661D8BFD5000258B07 /* Fakes */ = {
@@ -288,6 +343,7 @@
 				0E90F77C201A15BF0070C526 /* UrlSessionAdapterFake.swift */,
 				0E7AC1C6201B707D00BC3DF3 /* VersionAdapterFake.swift */,
 				B4A6012220246FB300088A0E /* CardValidatorFake.swift */,
+				77283275235A497800CB9BB6 /* SimpleCallableSpy.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -319,11 +375,16 @@
 		A308015D2018752A00A1060A /* Callable */ = {
 			isa = PBXGroup;
 			children = (
+				7728326F235A440B00CB9BB6 /* ParseRedirectCallableSpec.swift */,
 				A3080160201878F500A1060A /* CryptKeyCallableSpec.swift */,
 				0E90F77A201A09230070C526 /* HttpCallableSpec.swift */,
 				A308016420187C6500A1060A /* ParseResponseCallableSpec.swift */,
 				A308015E2018753500A1060A /* SimpleCallableSpec.swift */,
 				0E7AC1C4201B703B00BC3DF3 /* PostRequestCallableSpec.swift */,
+				77283273235A47EE00CB9BB6 /* CacheValueCallable.swift */,
+				77283279235A4CC700CB9BB6 /* MapCallableSpec.swift */,
+				7728328A235AFF2700CB9BB6 /* MergeCallableSpec.swift */,
+				77DC743E235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift */,
 			);
 			path = Callable;
 			sourceTree = "<group>";
@@ -334,6 +395,7 @@
 				A30801762018FD0000A1060A /* Callable */,
 				A30801832018FD0000A1060A /* CreateCard.swift */,
 				A30801842018FD0000A1060A /* CreateTransactionWithCard.swift */,
+				7728326B235A440400CB9BB6 /* Init3DSOperation.swift */,
 				A30801852018FD0000A1060A /* EncryptedOperation.swift */,
 				A30801862018FD0000A1060A /* StraalOperation.swift */,
 			);
@@ -351,9 +413,14 @@
 				A308017B2018FD0000A1060A /* EncryptCallable.swift */,
 				A308017C2018FD0000A1060A /* HttpCallable.swift */,
 				A308017D2018FD0000A1060A /* MapToJsonCallable.swift */,
+				77283277235A4CB200CB9BB6 /* MapCallable.swift */,
+				77283288235AFF1D00CB9BB6 /* MergeCallable.swift */,
 				A308017E2018FD0000A1060A /* ParseErrorCallable.swift */,
+				77283271235A47DA00CB9BB6 /* CacheValueCallable.swift */,
+				77283256235A3AAF00CB9BB6 /* ParseRedirectCallable.swift */,
 				A30801802018FD0000A1060A /* PostRequestCallable.swift */,
 				A30801812018FD0000A1060A /* SimpleCallable.swift */,
+				77283282235AE5CE00CB9BB6 /* PresentStraalViewControllerCallable.swift */,
 			);
 			path = Callable;
 			sourceTree = "<group>";
@@ -496,6 +563,8 @@
 			children = (
 				A30801B12018FD0000A1060A /* StraalResponse.swift */,
 				A30801B02018FD0000A1060A /* EncryptedOperationResponse.swift */,
+				77283268235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift */,
+				77283286235AE97F00CB9BB6 /* Init3DSContext.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -554,6 +623,7 @@
 			children = (
 				A35C76D4201C915600E0004F /* CreateCardSpec.swift */,
 				A35C76D6201C916300E0004F /* CreateTransactionWithCardSpec.swift */,
+				7728327B235A5E6800CB9BB6 /* Init3DSOperationSpec.swift */,
 			);
 			path = Operation;
 			sourceTree = "<group>";
@@ -564,8 +634,7 @@
 				A371E7021D82FC6600D05B2F /* Straal */,
 				A371E70D1D82FC6600D05B2F /* StraalTests */,
 				A371E7011D82FC6600D05B2F /* Products */,
-				E8A73C2BEA0F089F56AEDC85 /* Pods */,
-				8CCEF6B63CE78FD1792EAD25 /* Frameworks */,
+				7728325C235A428D00CB9BB6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -614,6 +683,7 @@
 		A371E71F1D82FDA800D05B2F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7728327D235AE47200CB9BB6 /* Controllers */,
 				A30801B52018FD0000A1060A /* Configuration */,
 				A30801B72018FD0000A1060A /* Cryptor */,
 				A308018D2018FD0000A1060A /* Model */,
@@ -623,19 +693,6 @@
 				A30801872018FD0000A1060A /* Tools */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		E8A73C2BEA0F089F56AEDC85 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				968FADC35F022171F044CE0A /* Pods-Straal.debug.xcconfig */,
-				E3BDB8FCB79A8C9020E4C0AE /* Pods-Straal.release.xcconfig */,
-				ECD4644B4780DBED9760F063 /* Pods-StraalTests.debug.xcconfig */,
-				E3533DFD537ECBC3D2CA1193 /* Pods-StraalTests.release.xcconfig */,
-				DB66FA318C1830F344DFA243 /* Pods-Straal_Example.debug.xcconfig */,
-				7DF5527CE598A2401174CE04 /* Pods-Straal_Example.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -656,13 +713,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A371E7141D82FC6600D05B2F /* Build configuration list for PBXNativeTarget "Straal" */;
 			buildPhases = (
-				D4F53AD56DBA830EFAB1B81A /* [CP] Check Pods Manifest.lock */,
 				A3B8BCEC1D9046F50031B3C4 /* Lint */,
 				A371E6FB1D82FC6600D05B2F /* Sources */,
 				A371E6FC1D82FC6600D05B2F /* Frameworks */,
 				A371E6FD1D82FC6600D05B2F /* Headers */,
 				A371E6FE1D82FC6600D05B2F /* Resources */,
-				84006ED93A15A6C41944A704 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -677,12 +732,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A371E7171D82FC6600D05B2F /* Build configuration list for PBXNativeTarget "StraalTests" */;
 			buildPhases = (
-				937CBE75B0E1443B7F66577D /* [CP] Check Pods Manifest.lock */,
 				A371E7051D82FC6600D05B2F /* Sources */,
 				A371E7061D82FC6600D05B2F /* Frameworks */,
 				A371E7071D82FC6600D05B2F /* Resources */,
-				419A69C24B921B1D1CBC6BD4 /* [CP] Embed Pods Frameworks */,
-				1F868561E033E515F27CB29A /* [CP] Copy Pods Resources */,
+				77283263235A42CA00CB9BB6 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -701,26 +754,26 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = Straal;
 				TargetAttributes = {
 					A371E6FF1D82FC6600D05B2F = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 53D9E75CA3;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1110;
 						ProvisioningStyle = Automatic;
 					};
 					A371E7081D82FC6600D05B2F = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 53D9E75CA3;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1110;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = A371E6FA1D82FC6600D05B2F /* Build configuration list for PBXProject "Straal" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -755,76 +808,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1F868561E033E515F27CB29A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StraalTests/Pods-StraalTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		419A69C24B921B1D1CBC6BD4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-StraalTests/Pods-StraalTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-				"${BUILT_PRODUCTS_DIR}/IDZSwiftCommonCrypto/IDZSwiftCommonCrypto.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IDZSwiftCommonCrypto.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StraalTests/Pods-StraalTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		84006ED93A15A6C41944A704 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Straal/Pods-Straal-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		937CBE75B0E1443B7F66577D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-StraalTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A3B8BCEC1D9046F50031B3C4 /* Lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -837,25 +820,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint lint --config .swiftlint_local.yml";
-		};
-		D4F53AD56DBA830EFAB1B81A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Straal-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "swiftlint lint --config .swiftlint_local.yml\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -871,12 +836,15 @@
 				A30801E22018FD0100A1060A /* ValidationResult.swift in Sources */,
 				A30801C72018FD0000A1060A /* CreateCard.swift in Sources */,
 				A30801CD2018FD0100A1060A /* String+Extension.swift in Sources */,
+				77283287235AE97F00CB9BB6 /* Init3DSContext.swift in Sources */,
 				A30801C42018FD0000A1060A /* PostRequestCallable.swift in Sources */,
 				A30801DF2018FD0100A1060A /* Transaction.swift in Sources */,
 				B4742A992021ED2F00EAD828 /* InterPayment.swift in Sources */,
+				77283283235AE5CE00CB9BB6 /* PresentStraalViewControllerCallable.swift in Sources */,
 				A30801D32018FD0100A1060A /* Visa.swift in Sources */,
 				B4742A8F2021E21900EAD828 /* JCB.swift in Sources */,
 				A30801BF2018FD0000A1060A /* EncryptCallable.swift in Sources */,
+				7728326A235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift in Sources */,
 				A30801D02018FD0100A1060A /* CardBrand.swift in Sources */,
 				A30801E12018FD0100A1060A /* Luhn.swift in Sources */,
 				A30801D12018FD0100A1060A /* AmericanExpress.swift in Sources */,
@@ -887,6 +855,7 @@
 				A30801C52018FD0000A1060A /* SimpleCallable.swift in Sources */,
 				B4742A9F2021F03700EAD828 /* Laser.swift in Sources */,
 				A30801F12018FD2000A1060A /* UrlCreator.swift in Sources */,
+				77283278235A4CB200CB9BB6 /* MapCallable.swift in Sources */,
 				A30801CA2018FD0000A1060A /* StraalOperation.swift in Sources */,
 				A30801E82018FD0100A1060A /* EncryptedOperationResponse.swift in Sources */,
 				A30801E32018FD0100A1060A /* UrlSession+Synchronous.swift in Sources */,
@@ -908,10 +877,12 @@
 				0EE419C22024AE89008FA186 /* LuhnValidable.swift in Sources */,
 				B4742A832020CE7C00EAD828 /* CVVValidator.swift in Sources */,
 				B4F4BCEF2020B41E003C014C /* CardValidator.swift in Sources */,
+				7728326D235A440500CB9BB6 /* Init3DSOperation.swift in Sources */,
 				A30801CF2018FD0100A1060A /* Card.swift in Sources */,
 				A30801EF2018FD0100A1060A /* Straal.swift in Sources */,
 				A30801BB2018FD0000A1060A /* AnyCallable.swift in Sources */,
 				A30801DD2018FD0100A1060A /* Currency.swift in Sources */,
+				7728327F235AE48100CB9BB6 /* Straal3DSViewController.swift in Sources */,
 				A30801E42018FD0100A1060A /* UrlSessionAdapter.swift in Sources */,
 				B4742A872021AEC500EAD828 /* CardholderNameValidator.swift in Sources */,
 				0E9D35BB2023443C00DBA9C9 /* CardNumberValidator.swift in Sources */,
@@ -922,8 +893,10 @@
 				A30801E72018FD0100A1060A /* StraalEndpoint.swift in Sources */,
 				A30801EE2018FD0100A1060A /* StraalCryptor.swift in Sources */,
 				0E9D35B32021D7FE00DBA9C9 /* ExpiryValidation.swift in Sources */,
+				77283272235A47DA00CB9BB6 /* CacheValueCallable.swift in Sources */,
 				0E7AC1C3201B6E8000BC3DF3 /* BundleVersionAdapter.swift in Sources */,
 				A30801C82018FD0000A1060A /* CreateTransactionWithCard.swift in Sources */,
+				77283257235A3AAF00CB9BB6 /* ParseRedirectCallable.swift in Sources */,
 				B4742AA52021FF5100EAD828 /* Solo.swift in Sources */,
 				B4742A9B2021EF0100EAD828 /* InstaPayment.swift in Sources */,
 				A30801D82018FD0100A1060A /* Expiry.swift in Sources */,
@@ -934,6 +907,7 @@
 				A30801CB2018FD0100A1060A /* DateSource.swift in Sources */,
 				A30801D92018FD0100A1060A /* CryptKeyPermission.swift in Sources */,
 				A30801E62018FD0100A1060A /* Endpoint.swift in Sources */,
+				77283289235AFF1D00CB9BB6 /* MergeCallable.swift in Sources */,
 				A30801DC2018FD0100A1060A /* StraalError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -943,15 +917,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4F4BCED2020A44D003C014C /* CardsParserSpec.swift in Sources */,
+				77283270235A440B00CB9BB6 /* ParseRedirectCallableSpec.swift in Sources */,
 				A35C76D7201C916300E0004F /* CreateTransactionWithCardSpec.swift in Sources */,
 				0EAA37D41F18B8C20048F2E6 /* ExpirySpec.swift in Sources */,
+				77DC743F235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift in Sources */,
+				77283274235A47EE00CB9BB6 /* CacheValueCallable.swift in Sources */,
 				A308015F2018753500A1060A /* SimpleCallableSpec.swift in Sources */,
+				7728327C235A5E6800CB9BB6 /* Init3DSOperationSpec.swift in Sources */,
 				0E9D35B52021E5DC00DBA9C9 /* ExpiryValidatorSpec.swift in Sources */,
 				0E7AC1C5201B703B00BC3DF3 /* PostRequestCallableSpec.swift in Sources */,
+				77283276235A497800CB9BB6 /* SimpleCallableSpy.swift in Sources */,
 				0E90F77D201A15BF0070C526 /* UrlSessionAdapterFake.swift in Sources */,
 				B4A6012120245CF700088A0E /* FullCardValidatorSpec.swift in Sources */,
 				B4742A852020D5E300EAD828 /* CVVValidatorSpec.swift in Sources */,
 				A371E71E1D82FD9F00D05B2F /* KeyParserTests.swift in Sources */,
+				7728327A235A4CC700CB9BB6 /* MapCallableSpec.swift in Sources */,
 				A35C76D5201C915600E0004F /* CreateCardSpec.swift in Sources */,
 				B4742A892021AF0E00EAD828 /* CardholderNameValidatorSpec.swift in Sources */,
 				A34AD01D1D9A5ACE00D13D09 /* DateSourceFake.swift in Sources */,
@@ -962,6 +942,7 @@
 				0E9D35BD20234BAF00DBA9C9 /* CardNumberValidatorSpec.swift in Sources */,
 				A371E71D1D82FD9F00D05B2F /* CryptorSpec.swift in Sources */,
 				A3000E741D8BFD5400258B07 /* BackendUrlCreatorSpec.swift in Sources */,
+				7728328B235AFF2700CB9BB6 /* MergeCallableSpec.swift in Sources */,
 				A309CB101D997AAF00873639 /* LuhnSpec.swift in Sources */,
 				0E90F77B201A09230070C526 /* HttpCallableSpec.swift in Sources */,
 				B4A6012320246FB300088A0E /* CardValidatorFake.swift in Sources */,
@@ -984,6 +965,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -993,6 +975,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1000,6 +983,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1044,6 +1028,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1053,6 +1038,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1060,6 +1046,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1095,7 +1082,6 @@
 		};
 		A371E7151D82FC6600D05B2F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 968FADC35F022171F044CE0A /* Pods-Straal.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -1104,6 +1090,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Straal/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1112,13 +1102,12 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		A371E7161D82FC6600D05B2F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E3BDB8FCB79A8C9020E4C0AE /* Pods-Straal.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -1127,6 +1116,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Straal/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1134,37 +1127,41 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 		A371E7181D82FC6600D05B2F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECD4644B4780DBED9760F063 /* Pods-StraalTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 53D9E75CA3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = StraalTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.straal.sdk.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		A371E7191D82FC6600D05B2F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E3533DFD537ECBC3D2CA1193 /* Pods-StraalTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 53D9E75CA3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = StraalTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.straal.sdk.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

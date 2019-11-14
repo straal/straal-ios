@@ -53,6 +53,14 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 
 	internal let permission = CryptKeyPermission.transactionCardCreate
 
+	func cryptKeyPayload(configuration: StraalConfiguration) -> AnyCallable<Data> {
+		EncodeCallable(value: permission).asCallable()
+	}
+
+	internal func responseCallable(httpCallable: HttpCallable, configuration: StraalConfiguration) -> AnyCallable<EncryptedOperationResponse> {
+		DecodeCallable(dataSource: ParseErrorCallable(response: httpCallable).map { $0.0 }).asCallable()
+	}
+
 	/// Designated initializer
 	public init(card: Card, transaction: Transaction) {
 		self.card = card

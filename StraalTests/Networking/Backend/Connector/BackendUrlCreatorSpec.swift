@@ -30,16 +30,41 @@ class BackendUrlCreatorSpec: QuickSpec {
 
 			var sut: BackendUrlCreator!
 
-			beforeEach {
-				sut = BackendUrlCreator(configuration: StraalConfiguration(baseUrl: URL(string: "https://merchant.backend.com")!))
-			}
-
 			afterEach {
 				sut = nil
 			}
 
-			it("should create correct url for crypt key endpoint") {
-				expect(sut.url(for: .cryptKey).absoluteString).to(equal("https://merchant.backend.com/straal/v1/cryptkeys"))
+			context("when default crypt key path is used") {
+
+				beforeEach {
+					sut = BackendUrlCreator(configuration: StraalConfiguration(baseUrl: URL(string: "https://merchant.backend.com")!))
+				}
+
+				it("should create correct url for crypt key endpoint") {
+					expect(sut.url(for: .cryptKey).absoluteString).to(equal("https://merchant.backend.com/straal/v1/cryptkeys"))
+				}
+			}
+
+			context("when custom crypt key path is provided") {
+				beforeEach {
+					let configuration = StraalConfiguration(baseUrl: URL(string: "https://merchant.backend.com")!, cryptKeyPath: "crypto")
+					sut = BackendUrlCreator(configuration: configuration)
+				}
+
+				it("should create correct url for crypt key endpoint") {
+					expect(sut.url(for: .cryptKey).absoluteString).to(equal("https://merchant.backend.com/crypto"))
+				}
+			}
+
+			context("when custom crypt key path with leading slash is provided") {
+				beforeEach {
+					let configuration = StraalConfiguration(baseUrl: URL(string: "https://merchant.backend.com")!, cryptKeyPath: "/crypto/get")
+					sut = BackendUrlCreator(configuration: configuration)
+				}
+
+				it("should create correct url for crypt key endpoint") {
+					expect(sut.url(for: .cryptKey).absoluteString).to(equal("https://merchant.backend.com/crypto/get"))
+				}
 			}
 		}
 	}

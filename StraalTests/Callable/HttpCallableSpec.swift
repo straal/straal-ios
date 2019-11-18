@@ -31,6 +31,7 @@ class HttpCallableSpec: QuickSpec {
 		describe("HttpCallable") {
 			var sut: HttpCallable!
 			var urlSessionAdapterFake: UrlSessionAdapterFake!
+			var configuration: StraalConfiguration!
 
 			let url = URL(string: "https://straal.com/endpoint")!
 			let request = URLRequest(url: url)
@@ -39,6 +40,7 @@ class HttpCallableSpec: QuickSpec {
 
 			beforeEach {
 				urlSessionAdapterFake = UrlSessionAdapterFake()
+				configuration = StraalConfiguration(baseUrl: URL(string: "https://api.backend.com")!, urlSession: urlSessionAdapterFake)
 			}
 
 			afterEach {
@@ -52,7 +54,7 @@ class HttpCallableSpec: QuickSpec {
 
 				beforeEach {
 					urlSessionAdapterFake.synchronousDataTasksToReturn = [(correctData, httpResponse, nil), (correctData, httpResponse, nil)]
-					sut = HttpCallable(requestSource: SimpleCallable.of(request), urlSession: urlSessionAdapterFake)
+					sut = HttpCallable(requestSource: SimpleCallable.of(request), configuration: configuration)
 					result = try? sut.call()
 				}
 
@@ -76,7 +78,7 @@ class HttpCallableSpec: QuickSpec {
 
 				beforeEach {
 					urlSessionAdapterFake.synchronousDataTasksToReturn = [(correctData, otherResponse, nil)]
-					sut = HttpCallable(requestSource: SimpleCallable.of(request), urlSession: urlSessionAdapterFake)
+					sut = HttpCallable(requestSource: SimpleCallable.of(request), configuration: configuration)
 				}
 
 				it("should throw Straal unknown error") {
@@ -88,7 +90,7 @@ class HttpCallableSpec: QuickSpec {
 
 				beforeEach {
 					urlSessionAdapterFake.synchronousDataTasksToReturn = [(nil, httpResponse, nil)]
-					sut = HttpCallable(requestSource: SimpleCallable.of(request), urlSession: urlSessionAdapterFake)
+					sut = HttpCallable(requestSource: SimpleCallable.of(request), configuration: configuration)
 				}
 
 				it("should throw Straal unknown error") {
@@ -102,7 +104,7 @@ class HttpCallableSpec: QuickSpec {
 
 				beforeEach {
 					urlSessionAdapterFake.synchronousDataTasksToReturn = [(nil, nil, error)]
-					sut = HttpCallable(requestSource: SimpleCallable.of(request), urlSession: urlSessionAdapterFake)
+					sut = HttpCallable(requestSource: SimpleCallable.of(request), configuration: configuration)
 				}
 
 				it("should throw the same error") {

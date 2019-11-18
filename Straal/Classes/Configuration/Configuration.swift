@@ -31,6 +31,13 @@ public struct StraalConfiguration {
 	public init(baseUrl: URL, headers: [String: String]? = nil) {
 		self.backendBaseUrl = baseUrl
 		self.headers = headers ?? [:]
+		self.urlSession = UrlSessionAdapter()
+	}
+
+	internal init(baseUrl: URL, headers: [String: String]? = nil, urlSession: UrlSessionAdapter) {
+		self.backendBaseUrl = baseUrl
+		self.headers = headers ?? [:]
+		self.urlSession = urlSession
 	}
 
 	/// Base URL of your backend service that uses Straal SDK and provides crypt key endpoint
@@ -43,6 +50,8 @@ public struct StraalConfiguration {
 	internal let backendApiVersion: Int = 1
 	internal let straalDefaultHeaders: [String: String] = [:]
 	internal let straalApiUrl: URL = URL(string: "https://api.straal.com")!
+
+	internal let urlSession: UrlSessionAdapter
 
 	/// MARK: 3D SECURE
 

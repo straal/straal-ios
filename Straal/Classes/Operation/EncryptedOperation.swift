@@ -41,7 +41,8 @@ extension EncryptedOperation {
 			requestSource: PostRequestCallable(
 				body: cryptKeyPayload(configuration: configuration),
 				url: BackendUrlCreator(configuration: configuration).url(for: .cryptKey),
-				headers: configuration.headers)
+				headers: configuration.headers),
+			configuration: configuration
 		)
 		let createKey: DecodeCallable<CryptKey> = DecodeCallable(dataSource: ParseErrorCallable(response: cryptkeyRequest).map { $0.0 })
 		let encryption = EncryptCallable(
@@ -52,7 +53,8 @@ extension EncryptedOperation {
 			requestSource: PostRequestCallable(
 				body: encryption,
 				url: StraalUrlCreator(configuration: configuration).url(for: .encrypted),
-				headers: configuration.straalDefaultHeaders)
+				headers: configuration.straalDefaultHeaders),
+			configuration: configuration
 		)
 
 		let operationResponse = responseCallable(httpCallable: encryptedRequest, configuration: configuration)

@@ -25,6 +25,7 @@ final class BackendUrlCreator: UrlCreator {
 
 	let baseUrl: URL
 	let backendApiVersion: Int
+	let cryptKeyPath: String?
 
 	var apiPathPart: String {
 		return "/straal/v\(backendApiVersion)/"
@@ -33,5 +34,14 @@ final class BackendUrlCreator: UrlCreator {
 	required init(configuration: StraalConfiguration) {
 		self.baseUrl = configuration.backendBaseUrl
 		self.backendApiVersion = configuration.backendApiVersion
+		self.cryptKeyPath = configuration.cryptKeyPath
+	}
+
+	func url(for endpoint: EndpointType) -> URL {
+		if let cryptKeyPath = cryptKeyPath {
+			return baseUrl.appendingPathComponent(cryptKeyPath)
+		} else {
+			return baseUrl.appendingPathComponent(apiPathPart).appendingPathComponent(endpoint.pathPart)
+		}
 	}
 }

@@ -26,9 +26,9 @@ class HttpCallable: Callable {
 	let requestCallable: AnyCallable<URLRequest>
 	let urlSession: UrlSessionAdapting
 
-	init<O: Callable>(requestSource: O, urlSession: UrlSessionAdapting = UrlSessionAdapter()) where O.ReturnType == URLRequest {
+	init<O: Callable>(requestSource: O, configuration: StraalConfiguration) where O.ReturnType == URLRequest {
 		self.requestCallable = requestSource.asCallable()
-		self.urlSession = urlSession
+		self.urlSession = configuration.urlSession
 	}
 
 	func call() throws -> (Data, HTTPURLResponse) {

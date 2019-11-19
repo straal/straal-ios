@@ -31,6 +31,7 @@ class HttpCallableSpec: QuickSpec {
 		describe("HttpCallable") {
 			var sut: HttpCallable!
 			var urlSessionAdapterFake: UrlSessionAdapterFake!
+			var configuration: StraalConfiguration!
 
 			let url = URL(string: "https://straal.com/endpoint")!
 			let request = URLRequest(url: url)
@@ -39,6 +40,7 @@ class HttpCallableSpec: QuickSpec {
 
 			beforeEach {
 				urlSessionAdapterFake = UrlSessionAdapterFake()
+				configuration = StraalConfiguration(baseUrl: URL(string: "https://api.backend.com")!, urlSession: urlSessionAdapterFake)
 			}
 
 			afterEach {
@@ -51,13 +53,13 @@ class HttpCallableSpec: QuickSpec {
 				var result: (Data, HTTPURLResponse)?
 
 				beforeEach {
-					urlSessionAdapterFake.synchronousDataTaskToReturn = (correctData, httpResponse, nil)
-					sut = HttpCallable(requestSource: SimpleCallable.of(request), urlSession: urlSessionAdapterFake)
+					urlSessionAdapterFake.synchronousDataTasksToReturn = [(correctData, httpResponse, nil), (correctData, httpResponse, nil)]
+					sut = HttpCallable(requestSource: SimpleCallable.of(request), configuration: configuration)
 					result = try? sut.call()
 				}
 
 				it("session adapter should receive correct request") {
-					expect(urlSessionAdapterFake.synchronousDataTaskCapturedRequest).to(equal(request))
+					expect(urlSessionAdapterFake.synchronousDataTaskCapturedRequests.first).to(equal(request))
 				}
 
 				it("should not throw error") {
@@ -75,8 +77,8 @@ class HttpCallableSpec: QuickSpec {
 				let otherResponse = URLResponse(url: url, mimeType: "application/json", expectedContentLength: 10, textEncodingName: nil)
 
 				beforeEach {
-					urlSessionAdapterFake.synchronousDataTaskToReturn = (correctData, otherResponse, nil)
-					sut = HttpCallable(requestSource: SimpleCallable.of(request), urlSession: urlSessionAdapterFake)
+					urlSessionAdapterFake.synchronousDataTasksToReturn = [(correctData, otherResponse, nil)]
+					sut = HttpCallable(requestSource: SimpleCallable.of(request), configuration: configuration)
 				}
 
 				it("should throw Straal unknown error") {
@@ -87,8 +89,8 @@ class HttpCallableSpec: QuickSpec {
 			context("when data is nil") {
 
 				beforeEach {
-					urlSessionAdapterFake.synchronousDataTaskToReturn = (nil, httpResponse, nil)
-					sut = HttpCallable(requestSource: SimpleCallable.of(request), urlSession: urlSessionAdapterFake)
+					urlSessionAdapterFake.synchronousDataTasksToReturn = [(nil, httpResponse, nil)]
+					sut = HttpCallable(requestSource: SimpleCallable.of(request), configuration: configuration)
 				}
 
 				it("should throw Straal unknown error") {
@@ -101,8 +103,8 @@ class HttpCallableSpec: QuickSpec {
 				let error = StraalError.invalidResponse
 
 				beforeEach {
-					urlSessionAdapterFake.synchronousDataTaskToReturn = (nil, nil, error)
-					sut = HttpCallable(requestSource: SimpleCallable.of(request), urlSession: urlSessionAdapterFake)
+					urlSessionAdapterFake.synchronousDataTasksToReturn = [(nil, nil, error)]
+					sut = HttpCallable(requestSource: SimpleCallable.of(request), configuration: configuration)
 				}
 
 				it("should throw the same error") {

@@ -44,17 +44,3 @@ class ParseErrorCallable: Callable {
 		}
 	}
 }
-
-class ExtractBodyCallable: Callable {
-	typealias ReturnType = Data
-
-	var responseCallable: AnyCallable<(Data, HTTPURLResponse)>
-
-	init<O: Callable>(response: O) where O.ReturnType == (Data, HTTPURLResponse) {
-		self.responseCallable = response.asCallable()
-	}
-
-	func call() throws -> Data {
-		return try responseCallable.call().0
-	}
-}

@@ -44,7 +44,7 @@ Straal SDK requires deployment target of **iOS 9.0+** and Xcode **8.0+**.
 
 You also need a back-end service which will handle payment information and create `CryptKeys` for the app. For more, see [Straal API Reference](https://api-reference.straal.com).
 
-Your back-end service needs to implement **at least one endpoint** at `https://_base_url_/straal/v1/cryptkeys`. This endpoint is used by this SDK to fetch `CryptKeys` that encrypt sensitive user data.
+Your back-end service needs to implement **at least one endpoint** at `https://_base_url_/straal/v1/cryptkeys`. This endpoint is used by this SDK to fetch `CryptKeys` that encrypt sensitive user data. To customize the path at which you fetch your `CryptKey`, you can use `StraalConfiguration`.
 
 > It is your back end's job to authorize the user and reject the `CryptKey` fetch if necessary.
 
@@ -73,6 +73,8 @@ The security of this process is ensured by a `CryptKey` mechanism. Your merchant
 ### Initial configuration
 
 First, create a `StraalConfiguration` object (which consists of your Merchant URL and **authorization headers**). Then, create your `Straal` object using the configuration.
+
+You can also add additional `cryptKeyPath` which will be the URL at which we would fetch your backend service for a new crypt key. If you don't provide a value here, we'll use the default which is `https://_base_url_/straal/v1/cryptkeys`.
 
 ```swift
 let url = URL(string: "https://my-merchant-backen-url.com")!

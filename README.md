@@ -24,6 +24,7 @@
   - [Operations](#operations)
     - [Create a card](#create-a-card)
     - [Create a transaction with a card](#create-a-transaction-with-a-card)
+    - [Init 3D-Secure](#init-3d-secure)
   - [Validation](#validation)
 - [Support](#support)
 - [License](#license)
@@ -43,7 +44,7 @@ Straal SDK requires deployment target of **iOS 9.0+** and Xcode **8.0+**.
 
 You also need a back-end service which will handle payment information and create `CryptKeys` for the app. For more, see [Straal API Reference](https://api-reference.straal.com).
 
-Your back-end service needs to implement **at least one endpoint** at `https://_base_url_/straal/v1/cryptkeys`. This endpoint is used by this SDK to fetch `CryptKeys` that encrypt sensitive user data.
+Your back-end service needs to implement **at least one endpoint** at `https://_base_url_/straal/v1/cryptkeys`. This endpoint is used by this SDK to fetch `CryptKeys` that encrypt sensitive user data. To customize the path at which you fetch your `CryptKey`, you can use `StraalConfiguration`.
 
 > It is your back end's job to authorize the user and reject the `CryptKey` fetch if necessary.
 
@@ -72,6 +73,8 @@ The security of this process is ensured by a `CryptKey` mechanism. Your merchant
 ### Initial configuration
 
 First, create a `StraalConfiguration` object (which consists of your Merchant URL and **authorization headers**). Then, create your `Straal` object using the configuration.
+
+You can also add additional `cryptKeyPath` which will be the URL at which we would fetch your backend service for a new crypt key. If you don't provide a value here, we'll use the default which is `https://_base_url_/straal/v1/cryptkeys`.
 
 ```swift
 let url = URL(string: "https://my-merchant-backen-url.com")!
@@ -147,6 +150,44 @@ straal.perform(operation: transactionWithCardOperation) { (response, error) in
   }
 }
 ```
+
+> It is your back end's responsibility to verify the transaction amount (possibly pairing it with an order using `reference`), and to authorize the user using request headers.
+
+#### Init 3D-Secure
+
+The third supported operatio is `Init3DS`.
+```swift
+
+/// First, create a Card and a Transaction.
+let card: Card = ...
+let transaction: Transaction = Transaction(amount: 200, currency: "usd")!
+let init3DSOperation = Init3DSOperation(card: card, transaction: transaction) { [weak self] controller in
+  // This will be called when 3DS is initiated by Straal. Present the controller (UIViewController) passed by Straal to the user, whichever way suits your workflow and design pattern.
+  self?.present(controller, animated: true)
+}
+straal.perform(operation: operation) { (response, error) in
+  // This will be called once the user completes 3DS and the controller dismisses, or cancels it.
+  // This does NOT mean that the transaction succeeded. It indicates the success or failure of 3DS itself.
+  // You must communicate with your backend service to be informed about trasaction status (it still needs to be completed)
+  // TODO: Handle the response and error
+}
+```
+
+> Again, we first fetch your `cryptkeys` endpoint to fetch a `CryptKey`. This time with JSON:
+
+```json
+{
+  "permission": "v1.customers.authentications_3ds.init_3ds",
+  "transaction": {
+    "amount": 200,
+    "currency": "usd",
+    "success_url": "https://sdk.straal.com/success",
+    "failure_url": "https://sdk.straal.com/failure"
+  }
+}
+```
+
+The failure and success urls are scanned for by 3DS view controller, so please don't change them, as we will not be able to dismiss it.
 
 > It is your back end's responsibility to verify the transaction amount (possibly pairing it with an order using `reference`), and to authorize the user using request headers.
 

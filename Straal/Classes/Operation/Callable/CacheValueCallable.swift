@@ -34,7 +34,8 @@ class CacheValueCallable<ReturnType>: Callable {
 		objc_sync_enter(self)
 		defer { objc_sync_exit(self) }
 		if let cached = cached { return cached }
-		cached = try wrapped.call()
-		return try call()
+		let cached = try wrapped.call()
+		self.cached = cached
+		return cached
 	}
 }

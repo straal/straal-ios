@@ -1,3 +1,7 @@
+included:
+  - Straal
+  - StraalTests
+
 excluded:
   - Carthage
 

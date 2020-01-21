@@ -1,3 +1,7 @@
+included:
+  - Straal
+  - StraalTests
+
 excluded:
   - Carthage
 
@@ -28,7 +32,7 @@ opt_in_rules:
   - vertical_parameter_alignment_on_call
   - yoda_condition
 
-quick_discouraged_focused_test: warn
+quick_discouraged_focused_test: error
 quick_discouraged_pending_test: error
 
 disabled_rules:

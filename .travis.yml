@@ -5,6 +5,7 @@ env:
   - LC_CTYPE=en_US.UTF-8 LANG=en_US.UTF-8
 
 before_install:
+  - gem install bundler
   - brew bundle
   - bundle install
   - bundle exec fastlane run bootstrap

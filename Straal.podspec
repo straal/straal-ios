@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Straal"
-  s.version      = "0.2.0"
+  s.version      = "0.4.3"
   s.summary      = "A brilliant payment solution for disruptive businesses."
 
   s.description  =  <<-DESC
@@ -26,6 +26,7 @@ Pod::Spec.new do |s|
   s.author       = { "Straal" => "devteam@straal.com" }
 
   s.platform     = :ios, "9.0"
+  s.swift_version = '5.0'
   s.source       = { :git => "https://github.com/straal/straal-ios.git", :tag => "#{s.version}" }
 
   s.source_files  = "Straal/Classes/**/*.swift"

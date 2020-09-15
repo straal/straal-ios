@@ -44,7 +44,7 @@ class LuhnSpec: QuickSpec {
 			}
 
 			it("should not validate card as one digit") {
-				expect(Luhn.validate(digits: [4111111111111111])).to(beFalse())
+				expect(Luhn.validate(digits: [411111111111])).to(beFalse())
 			}
 
 			it("should validate short visa") {

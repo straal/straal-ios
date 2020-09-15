@@ -24,6 +24,7 @@ import Foundation
 import Quick
 import Nimble
 import IDZSwiftCommonCrypto
+import XCTest
 
 @testable import Straal
 

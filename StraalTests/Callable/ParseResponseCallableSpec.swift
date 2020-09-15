@@ -23,6 +23,7 @@
 import Foundation
 import Quick
 import Nimble
+import XCTest
 
 @testable import Straal
 
@@ -34,10 +35,6 @@ class ParseResponseCallableSpec: QuickSpec {
 				"a": 1,
 				"b": "123",
 				"ccc": 4.222
-			]
-
-			let sampleArray: [String] = [
-				"1", "2", "3"
 			]
 
 			let url = URL(string: "https://straal.com/endpoint")!

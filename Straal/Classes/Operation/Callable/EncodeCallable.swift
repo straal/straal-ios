@@ -18,6 +18,8 @@
  * limitations under the License.
  */
 
+import Foundation
+
 class EncodeCallable<T: Encodable>: Callable {
 	typealias ReturnType = Data
 	private let value: AnyCallable<T>

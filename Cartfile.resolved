@@ -1,3 +1,3 @@
-github "Quick/Nimble" "v8.0.4"
-github "Quick/Quick" "v2.2.0"
-github "iosdevzone/IDZSwiftCommonCrypto" "0.13.0"
+github "Quick/Nimble" "v8.1.2"
+github "Quick/Quick" "v2.2.1"
+github "iosdevzone/IDZSwiftCommonCrypto" "0.13.1"

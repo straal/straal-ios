@@ -50,19 +50,5 @@ test:unit:
     - .xcode
   script:
     - bundle exec fastlane test
-  artifacts:
-    expire_in: 2 days
-    paths:
-      - DerivedData/Logs/Test
-
-coverage:
-  stage: coverage
-  extends:
-    - .xcode
-  dependencies:
-    - test:unit
-  cache: {}
-  when: always
-  script:
     - bundle exec fastlane coverage
     - bundle exec danger

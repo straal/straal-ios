@@ -41,10 +41,6 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 	}
 	// swiftlint:enable nesting
 
-	var cryptKeyPayload: AnyCallable<Data> {
-		return EncodeCallable(value: PermissionAndTransaction(key: permission, transaction: transaction)).asCallable()
-	}
-
 	/// Straal card
 	public let card: Card
 
@@ -54,7 +50,7 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 	internal let permission = CryptKeyPermission.transactionCardCreate
 
 	func cryptKeyPayload(configuration: StraalConfiguration) -> AnyCallable<Data> {
-		EncodeCallable(value: permission).asCallable()
+		EncodeCallable(value: PermissionAndTransaction(key: permission, transaction: transaction)).asCallable()
 	}
 
 	internal func responseCallable(httpCallable: HttpCallable, configuration: StraalConfiguration) -> AnyCallable<EncryptedOperationResponse> {

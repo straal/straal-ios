@@ -8,7 +8,7 @@ let package = Package(
 	products: [
 		.library(
 			name: "Straal",
-			type: .static,
+			type: .dynamic,
 			targets: ["Straal"]),
 	],
 	dependencies: [

@@ -249,7 +249,7 @@
 		A371E7031D82FC6600D05B2F /* Straal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Straal.h; sourceTree = "<group>"; };
 		A371E7041D82FC6600D05B2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A371E7091D82FC6600D05B2F /* StraalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StraalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A371E7101D82FC6600D05B2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A371E7101D82FC6600D05B2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Tests/StraalTests/Info.plist; sourceTree = "<group>"; };
 		A371E71B1D82FD9F00D05B2F /* CryptorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptorSpec.swift; sourceTree = "<group>"; };
 		A371E71C1D82FD9F00D05B2F /* KeyParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyParserTests.swift; sourceTree = "<group>"; };
 		B4742A822020CE7C00EAD828 /* CVVValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVVValidator.swift; sourceTree = "<group>"; };
@@ -345,7 +345,6 @@
 				A3000E671D8BFD5400258B07 /* Networking */,
 				A3000E661D8BFD5000258B07 /* Fakes */,
 				A371E71A1D82FD9F00D05B2F /* Cryptor */,
-				A371E7101D82FC6600D05B2F /* Info.plist */,
 			);
 			path = StraalTests;
 			sourceTree = "<group>";
@@ -354,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				A371E7031D82FC6600D05B2F /* Straal.h */,
+				A371E7101D82FC6600D05B2F /* Info.plist */,
 				A371E7041D82FC6600D05B2F /* Info.plist */,
 			);
 			path = "Supporting Files";

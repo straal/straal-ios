@@ -21,7 +21,6 @@
 import Foundation
 import Quick
 import Nimble
-import IDZSwiftCommonCrypto
 
 @testable import Straal
 
@@ -38,10 +37,10 @@ class CryptKeyCallableSpec: QuickSpec {
 				"permission": "v1.cards.create" as NSString
 			]
 
-			let expectedId: Data = dataFrom(hexString: "073f26135a0001f0")
-			let expectedKey: Data = dataFrom(hexString: "b5865ee331c44c7722069d06ef0699525c1e6f06ee4a681fb7e00ccce7052cf1")
-			let expectedIv1: Data = dataFrom(hexString: "4b0f7b498607156eae68e385305edc53")
-			let expectedIv2: Data = dataFrom(hexString: "38adad40aca442fec436cbed86d1a56d")
+			let expectedId: Data  = "073f26135a0001f0".hexDecodedData()
+			let expectedKey: Data = "b5865ee331c44c7722069d06ef0699525c1e6f06ee4a681fb7e00ccce7052cf1".hexDecodedData()
+			let expectedIv1: Data = "4b0f7b498607156eae68e385305edc53".hexDecodedData()
+			let expectedIv2: Data = "38adad40aca442fec436cbed86d1a56d".hexDecodedData()
 
 			afterEach {
 				sut = nil

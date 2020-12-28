@@ -336,6 +336,29 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		77944C7E2599F03000910CF3 /* StraalTests */ = {
+			isa = PBXGroup;
+			children = (
+				A35C76D3201C914500E0004F /* Operation */,
+				A308015D2018752A00A1060A /* Callable */,
+				A309CAFF1D9945BD00873639 /* Model */,
+				A3000E671D8BFD5400258B07 /* Networking */,
+				A3000E661D8BFD5000258B07 /* Fakes */,
+				A371E71A1D82FD9F00D05B2F /* Cryptor */,
+				A371E7101D82FC6600D05B2F /* Info.plist */,
+			);
+			path = StraalTests;
+			sourceTree = "<group>";
+		};
+		77944C852599F04300910CF3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A371E7031D82FC6600D05B2F /* Straal.h */,
+				A371E7041D82FC6600D05B2F /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		A3000E661D8BFD5000258B07 /* Fakes */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,8 +654,9 @@
 		A371E6F61D82FC6600D05B2F = {
 			isa = PBXGroup;
 			children = (
-				A371E7021D82FC6600D05B2F /* Straal */,
-				A371E70D1D82FC6600D05B2F /* StraalTests */,
+				A371E7021D82FC6600D05B2F /* Sources */,
+				A371E70D1D82FC6600D05B2F /* Tests */,
+				77944C852599F04300910CF3 /* Supporting Files */,
 				A371E7011D82FC6600D05B2F /* Products */,
 				7728325C235A428D00CB9BB6 /* Frameworks */,
 			);
@@ -647,28 +671,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A371E7021D82FC6600D05B2F /* Straal */ = {
+		A371E7021D82FC6600D05B2F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				A371E71F1D82FDA800D05B2F /* Classes */,
-				A371E7031D82FC6600D05B2F /* Straal.h */,
-				A371E7041D82FC6600D05B2F /* Info.plist */,
+				A371E71F1D82FDA800D05B2F /* Straal */,
 			);
-			path = Straal;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		A371E70D1D82FC6600D05B2F /* StraalTests */ = {
+		A371E70D1D82FC6600D05B2F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				A35C76D3201C914500E0004F /* Operation */,
-				A308015D2018752A00A1060A /* Callable */,
-				A309CAFF1D9945BD00873639 /* Model */,
-				A3000E671D8BFD5400258B07 /* Networking */,
-				A3000E661D8BFD5000258B07 /* Fakes */,
-				A371E71A1D82FD9F00D05B2F /* Cryptor */,
-				A371E7101D82FC6600D05B2F /* Info.plist */,
+				77944C7E2599F03000910CF3 /* StraalTests */,
 			);
-			path = StraalTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		A371E71A1D82FD9F00D05B2F /* Cryptor */ = {
@@ -680,7 +696,7 @@
 			path = Cryptor;
 			sourceTree = "<group>";
 		};
-		A371E71F1D82FDA800D05B2F /* Classes */ = {
+		A371E71F1D82FDA800D05B2F /* Straal */ = {
 			isa = PBXGroup;
 			children = (
 				7728327D235AE47200CB9BB6 /* Controllers */,
@@ -692,7 +708,7 @@
 				A30801BA2018FD0000A1060A /* Straal.swift */,
 				A30801872018FD0000A1060A /* Tools */,
 			);
-			path = Classes;
+			path = Straal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -129,7 +129,7 @@ private enum Subviews {
 	}
 
 	static var activityIndicator: UIActivityIndicatorView {
-		let activityIndicator = UIActivityIndicatorView(style: .gray)
+		let activityIndicator = UIActivityIndicatorView(style: .medium)
 		activityIndicator.hidesWhenStopped = true
 		return activityIndicator
 	}

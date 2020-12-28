@@ -12,14 +12,15 @@ let package = Package(
 	],
 	dependencies: [
 		.package(url: "https://github.com/Quick/Nimble.git", .upToNextMajor(from: "9.0.0")),
-		.package(url: "https://github.com/Quick/Quick.git", .upToNextMajor(from: "3.0.0"))
+		.package(url: "https://github.com/Quick/Quick.git", .upToNextMajor(from: "3.0.0")),
+		.package(url: "https://github.com/iosdevzone/IDZSwiftCommonCrypto.git", .upToNextMajor(from: "0.13.0")),
 	],
 	targets: [
 		.target(
 			name: "Straal",
-			dependencies: []),
+			dependencies: ["IDZSwiftCommonCrypto"]),
 		.testTarget(
 			name: "StraalTests",
-			dependencies: ["Straal", "Quick", "Nimble"]),
+			dependencies: ["Straal", "IDZSwiftCommonCrypto", "Quick", "Nimble"]),
 	]
 )

@@ -26,7 +26,7 @@ import Nimble
 @testable import Straal
 
 class CacheValueCallableSpec: QuickSpec {
-	//swiftlint:disable function_body_length
+	// swiftlint:disable function_body_length
 	override func spec() {
 		describe("CacheValueCallable") {
 

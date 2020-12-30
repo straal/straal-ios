@@ -58,11 +58,10 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 						let safariViewController = viewController as? SFSafariViewController
 						capturedPresentedViewController = viewController
 						safariViewController?.delegate?.safariViewControllerDidFinish?(safariViewController!)
-					}, dismiss: { viewController, completion in
+					}, dismiss: { viewController in
 						guard uniqueValue?.uuidString == uuidString else { XCTFail(); return }
 						dismissCallCount += 1
 						capturedDismissedViewController = viewController
-						completion()
 					}, viewControllerFactory: { url in
 						capturedURL = url
 						return SafariViewControllerSpy(url: url)
@@ -100,7 +99,8 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 				}
 
 				it("should not call dismiss") {
-					expect(dismissCallCount).to(beGreaterThan(0))
+					expect(dismissCallCount).to(equal(0))
+					expect(capturedDismissedViewController).to(beNil())
 				}
 
 				it("should present view controller from factory") {
@@ -114,12 +114,8 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 				it("should present correct url") {
 					expect(capturedURL?.absoluteString).to(equal("https://sdk.straa.com/redirect"))
 				}
-
-				it("should pass the correct view controller to dismiss") {
-					expect(capturedDismissedViewController).to(beAKindOf(SafariViewControllerSpy.self))
-					expect(capturedPresentedViewController).to(be(capturedDismissedViewController))
-				}
 			}
 		}
 	}
+
 }

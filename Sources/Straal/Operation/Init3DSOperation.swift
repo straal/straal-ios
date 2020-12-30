@@ -74,7 +74,7 @@ public final class Init3DSOperation: EncryptedOperation {
 	public let transaction: Transaction
 
 	private let present3DSViewController: (UIViewController) -> Void
-	private let dismiss3DSViewController: (UIViewController, () -> Void) -> Void
+	private let dismiss3DSViewController: (UIViewController) -> Void
 
 	internal let permission = CryptKeyPermission.authentication3DS
 
@@ -101,7 +101,7 @@ public final class Init3DSOperation: EncryptedOperation {
 		card: Card,
 		transaction: Transaction,
 		present3DSViewController: @escaping (UIViewController) -> Void,
-		dismiss3DSViewController: @escaping (UIViewController, () -> Void) -> Void) {
+		dismiss3DSViewController: @escaping (UIViewController) -> Void) {
 		self.card = card
 		self.transaction = transaction
 		self.present3DSViewController = present3DSViewController

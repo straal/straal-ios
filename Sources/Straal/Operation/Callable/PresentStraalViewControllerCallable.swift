@@ -27,13 +27,13 @@ import SafariServices
 class PresentStraalViewControllerCallable: NSObject, Callable {
 	private let operationContext: AnyCallable<Init3DSContext>
 	private let present: (UIViewController) -> Void
-	private let dismiss: (UIViewController, () -> Void) -> Void
+	private let dismiss: (UIViewController) -> Void
 	private let viewControllerFactory: (URL) -> Straal3DSViewController
 
 	init<O: Callable>(
 		context: O,
 		present: @escaping (UIViewController) -> Void,
-		dismiss: @escaping (UIViewController, () -> Void) -> Void,
+		dismiss: @escaping (UIViewController) -> Void,
 		viewControllerFactory: @escaping (URL) -> Straal3DSViewController = Straal3DSViewController.init)
 	where O.ReturnType == Init3DSContext {
 		self.operationContext = context.asCallable()
@@ -46,13 +46,11 @@ class PresentStraalViewControllerCallable: NSObject, Callable {
 		let semaphore = DispatchSemaphore(value: 0)
 		let context = try operationContext.call()
 		var operationStatus: Encrypted3DSOperationStatus!
-		DispatchQueue.main.async { [present, dismiss, semaphore, viewControllerFactory] in
+		DispatchQueue.main.async { [present, semaphore, viewControllerFactory] in
 			let viewController = viewControllerFactory(context.redirectURL)
-			viewController.cancel = { presentedViewController in
-				dismiss(presentedViewController) { [semaphore] in
-					operationStatus = .unknown
-					semaphore.signal()
-				}
+			viewController.cancel = { _ in
+				operationStatus = .unknown
+				semaphore.signal()
 			}
 			present(viewController)
 		}

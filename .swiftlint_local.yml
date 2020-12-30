@@ -1,6 +1,6 @@
 included:
-  - Straal
-  - StraalTests
+  - Sources
+  - Tests
 
 excluded:
   - Carthage

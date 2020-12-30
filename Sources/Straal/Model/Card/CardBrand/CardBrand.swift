@@ -20,7 +20,7 @@
 
 import Foundation
 
-//`CardBrand` is a predefined type for different bank cards.
+/// `CardBrand` is a predefined type for different bank cards.
 public protocol CardBrand {
 
 	/// The card type name (e.g.: Visa, MasterCard, ...)

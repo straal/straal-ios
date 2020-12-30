@@ -38,7 +38,7 @@ public struct ValidationResult: OptionSet {
 		self.rawValue = rawValue
 	}
 
-	//swiftlint:disable operator_usage_whitespace
+	// swiftlint:disable operator_usage_whitespace
 
 	/// Card is valid
 	public static let valid                   = ValidationResult(rawValue: 1)
@@ -73,7 +73,7 @@ public struct ValidationResult: OptionSet {
 	/// The card has already expired.
 	public static let cardExpired             = ValidationResult(rawValue: 1 << 10)
 
-	//swiftlint:enable operator_usage_whitespace
+	// swiftlint:enable operator_usage_whitespace
 }
 
 extension ValidationResult: CustomStringConvertible {
@@ -81,7 +81,7 @@ extension ValidationResult: CustomStringConvertible {
 	/**
 	- returns: An array of strings which contain textual descriptions of the validation result in `self`.
 	*/
-	//swiftlint:disable cyclomatic_complexity closure_spacing
+	// swiftlint:disable cyclomatic_complexity closure_spacing
 	public func toString() -> [String] {
 		var strings: [String] = []
 
@@ -98,7 +98,7 @@ extension ValidationResult: CustomStringConvertible {
 		if isSuperset(of: .cardExpired) {			 strings.append("Card has expired") }
 		return strings
 	}
-	//swiftlint:enable cyclomatic_complexity closure_spacing
+	// swiftlint:enable cyclomatic_complexity closure_spacing
 
 	public var description: String {
 		return toString().reduce("") { current, next in "\(current)\n\(next)" }

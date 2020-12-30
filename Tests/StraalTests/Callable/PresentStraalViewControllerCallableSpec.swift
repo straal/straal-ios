@@ -21,6 +21,7 @@
 // swiftlint:disable function_body_length
 import Foundation
 import UIKit
+import SafariServices
 import Quick
 import Nimble
 @testable import Straal
@@ -32,8 +33,10 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 			var sut: PresentStraalViewControllerCallable!
 			var init3DSContext: Init3DSContext!
 			var presentCallCount: Int!
+			var dismissCallCount: Int!
 			var uniqueValue: UUID!
-			var capturedViewController: UIViewController?
+			var capturedPresentedViewController: UIViewController?
+			var capturedDismissedViewController: UIViewController?
 			var responseStatus: Encrypted3DSOperationStatus!
 			var capturedStatus: Encrypted3DSOperationStatus!
 
@@ -42,6 +45,7 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 				responseStatus = nil
 				let uuidString = uniqueValue.uuidString
 				presentCallCount = 0
+				dismissCallCount = 0
 				capturedStatus = nil
 				init3DSContext = Init3DSContext(
 					redirectURL: URL(string: "https://sdk.straa.com/redirect")!,
@@ -50,16 +54,18 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 				sut = PresentStraalViewControllerCallable(context: AnyCallable.of(init3DSContext)) { viewController in
 					guard uniqueValue?.uuidString == uuidString else { return }
 					presentCallCount += 1
-					capturedViewController = viewController
+					capturedPresentedViewController = viewController
 					(viewController as? Straal3DSViewController)?.dismissWithResult(responseStatus)
 				}
 			}
 
 			afterEach {
-				capturedViewController = nil
+				capturedPresentedViewController = nil
+				capturedDismissedViewController = nil
 				responseStatus = nil
 				uniqueValue = nil
 				presentCallCount = nil
+				dismissCallCount = nil
 				init3DSContext = nil
 				capturedStatus = nil
 				sut = nil
@@ -85,7 +91,7 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 				}
 
 				it("should pass straal view controller") {
-					expect(capturedViewController).to(beAKindOf(Straal3DSViewController.self))
+					expect(capturedPresentedViewController).to(beAKindOf(Straal3DSViewController.self))
 				}
 
 				it("should return success status") {
@@ -109,7 +115,7 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 				}
 
 				it("should pass straal view controller") {
-					expect(capturedViewController).to(beAKindOf(Straal3DSViewController.self))
+					expect(capturedPresentedViewController).to(beAKindOf(Straal3DSViewController.self))
 				}
 
 				it("should return failure status") {

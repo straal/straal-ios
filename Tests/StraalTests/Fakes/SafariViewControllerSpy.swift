@@ -31,4 +31,8 @@ class SafariViewControllerSpy: SFSafariViewController {
 		self.url = URL
 		super.init(url: URL, configuration: configuration)
 	}
+
+	convenience init(url URL: URL) {
+		self.init(url: URL, configuration: .init())
+	}
 }

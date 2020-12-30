@@ -20,65 +20,36 @@
  */
 
 import UIKit
-import WebKit
+import SafariServices
 
-internal class Straal3DSViewController: UIViewController {
-
-	// MARK: Views
-	private var webView: WKWebView!
-	private var activityIndicator: UIActivityIndicatorView!
+internal final class Straal3DSViewController: SFSafariViewController {
 
 	// MARK: Properties
 	private let completion: (Encrypted3DSOperationStatus) -> Void
 	private let context: Init3DSContext
 	private var result: Encrypted3DSOperationStatus?
 
+	override var delegate: SFSafariViewControllerDelegate? {
+		didSet {
+			assert(delegate === self)
+		}
+	}
+
 	init(context: Init3DSContext, completion: @escaping (Encrypted3DSOperationStatus) -> Void) {
 		self.context = context
 		self.completion = completion
-		super.init(nibName: nil, bundle: nil)
-		self.title = "Straal 3D Secure"
-	}
-
-	required init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-
-	override func loadView() {
-		view = UIView()
-		webView = Subviews.webView
-		activityIndicator = Subviews.activityIndicator
-		view.addSubview(webView)
-		view.addSubview(activityIndicator)
+		super.init(url: context.redirectURL, configuration: .init())
 	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		webView.navigationDelegate = self
-		webView.load(URLRequest(url: context.redirectURL, cachePolicy: .reloadIgnoringCacheData))
+		self.delegate = self
 	}
 
-	override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
-		webView.frame = view.bounds
-		activityIndicator.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
-	}
-
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-	}
-
-	override func viewDidDisappear(_ animated: Bool) {
-		super.viewDidDisappear(animated)
-		if result == nil {
-			result = .failure
-			callCompletion()
-		}
-	}
+	// MARK: Private
 
 	private func callCompletion() {
-		let result = self.result ?? Encrypted3DSOperationStatus.failure
-		completion(result)
+		completion(result ?? .failure)
 	}
 
 	internal func dismissWithResult(_ result: Encrypted3DSOperationStatus) {
@@ -92,45 +63,11 @@ internal class Straal3DSViewController: UIViewController {
 	}
 }
 
-extension Straal3DSViewController: WKNavigationDelegate {
-	func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-		switch navigationAction.request.url {
-		case context.successURL:
-			decisionHandler(.cancel)
-			dismissWithResult(.success)
-		case context.failureURL:
-			decisionHandler(.cancel)
-			dismissWithResult(.failure)
-		default:
-			decisionHandler(.allow)
-		}
-	}
-
-	func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-		result = .failure
-		dismissWithCompletion()
-	}
-
-	func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-		activityIndicator.startAnimating()
-	}
-
-	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-		activityIndicator.stopAnimating()
-	}
-}
-
-private enum Subviews {
-	static var webView: WKWebView {
-		let webView = WKWebView()
-		webView.allowsLinkPreview = false
-		webView.allowsBackForwardNavigationGestures = false
-		return webView
-	}
-
-	static var activityIndicator: UIActivityIndicatorView {
-		let activityIndicator = UIActivityIndicatorView(style: .medium)
-		activityIndicator.hidesWhenStopped = true
-		return activityIndicator
+extension Straal3DSViewController: SFSafariViewControllerDelegate {
+	func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+		// TODO
+		// Nothing we can do now. This will only be called when the user cancels the presentation
+		// For now we cannot detect what happened.
+		dismissWithResult(.unknown)
 	}
 }

@@ -24,7 +24,7 @@ import UIKit
 import SafariServices
 @testable import Straal
 
-class SafariViewControllerSpy: Straal3DSViewController {
+class SafariViewControllerSpy: SFSafariViewController {
 
 	let url: URL
 

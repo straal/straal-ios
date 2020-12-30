@@ -24,17 +24,17 @@ import Dispatch
 import UIKit
 import SafariServices
 
-class PresentStraalViewControllerCallable: NSObject, Callable {
+class PresentStraalViewControllerCallable: Callable {
 	private let operationContext: AnyCallable<Init3DSContext>
 	private let present: (UIViewController) -> Void
 	private let dismiss: (UIViewController) -> Void
-	private let viewControllerFactory: (URL) -> Straal3DSViewController
+	private let viewControllerFactory: (URL) -> SFSafariViewController
 
 	init<O: Callable>(
 		context: O,
 		present: @escaping (UIViewController) -> Void,
 		dismiss: @escaping (UIViewController) -> Void,
-		viewControllerFactory: @escaping (URL) -> Straal3DSViewController = Straal3DSViewController.init)
+		viewControllerFactory: @escaping (URL) -> SFSafariViewController = SFSafariViewController.init)
 	where O.ReturnType == Init3DSContext {
 		self.operationContext = context.asCallable()
 		self.present = present
@@ -46,15 +46,30 @@ class PresentStraalViewControllerCallable: NSObject, Callable {
 		let semaphore = DispatchSemaphore(value: 0)
 		let context = try operationContext.call()
 		var operationStatus: Encrypted3DSOperationStatus!
-		DispatchQueue.main.async { [present, semaphore, viewControllerFactory] in
+		let delegate = SafariViewControllerDelegate { [weak semaphore] in
+			operationStatus = .unknown
+			semaphore?.signal()
+		}
+		DispatchQueue.main.async { [delegate, present, viewControllerFactory] in
 			let viewController = viewControllerFactory(context.redirectURL)
-			viewController.cancel = { _ in
-				operationStatus = .unknown
-				semaphore.signal()
-			}
+			viewController.delegate = delegate
 			present(viewController)
 		}
 		semaphore.wait()
 		return operationStatus
+	}
+}
+
+private class SafariViewControllerDelegate: NSObject, SFSafariViewControllerDelegate {
+
+	private let onCancel: () -> Void
+
+	init(onCancel: @escaping () -> Void) {
+		self.onCancel = onCancel
+		super.init()
+	}
+
+	func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+		onCancel()
 	}
 }

@@ -42,7 +42,6 @@
 		77CF7C57259CE7CA00C2E5CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77CF7C56259CE7CA00C2E5CD /* UIKit.framework */; };
 		77CF7C59259CE7D000C2E5CD /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77CF7C58259CE7D000C2E5CD /* SafariServices.framework */; };
 		77CF7C5D259CECB800C2E5CD /* SafariViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF7C5C259CECB800C2E5CD /* SafariViewControllerSpy.swift */; };
-		77CF7C64259CF12A00C2E5CD /* Straal3DSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728327E235AE48100CB9BB6 /* Straal3DSViewController.swift */; };
 		77DC743F235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC743E235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift */; };
 		A3000E741D8BFD5400258B07 /* BackendUrlCreatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3000E6C1D8BFD5400258B07 /* BackendUrlCreatorSpec.swift */; };
 		A308015F2018753500A1060A /* SimpleCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A308015E2018753500A1060A /* SimpleCallableSpec.swift */; };
@@ -180,7 +179,6 @@
 		77283277235A4CB200CB9BB6 /* MapCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCallable.swift; sourceTree = "<group>"; };
 		77283279235A4CC700CB9BB6 /* MapCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCallableSpec.swift; sourceTree = "<group>"; };
 		7728327B235A5E6800CB9BB6 /* Init3DSOperationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init3DSOperationSpec.swift; sourceTree = "<group>"; };
-		7728327E235AE48100CB9BB6 /* Straal3DSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Straal3DSViewController.swift; sourceTree = "<group>"; };
 		77283282235AE5CE00CB9BB6 /* PresentStraalViewControllerCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentStraalViewControllerCallable.swift; sourceTree = "<group>"; };
 		77283286235AE97F00CB9BB6 /* Init3DSContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init3DSContext.swift; sourceTree = "<group>"; };
 		77283288235AFF1D00CB9BB6 /* MergeCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeCallable.swift; sourceTree = "<group>"; };
@@ -334,14 +332,6 @@
 				77CF7C39259CDFF200C2E5CD /* Quick.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7728327D235AE47200CB9BB6 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				7728327E235AE48100CB9BB6 /* Straal3DSViewController.swift */,
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		77944C7E2599F03000910CF3 /* StraalTests */ = {
@@ -708,7 +698,6 @@
 		A371E71F1D82FDA800D05B2F /* Straal */ = {
 			isa = PBXGroup;
 			children = (
-				7728327D235AE47200CB9BB6 /* Controllers */,
 				A30801B52018FD0000A1060A /* Configuration */,
 				A30801B72018FD0000A1060A /* Cryptor */,
 				A308018D2018FD0000A1060A /* Model */,
@@ -924,7 +913,6 @@
 				A30801D82018FD0100A1060A /* Expiry.swift in Sources */,
 				B4742A952021E6E900EAD828 /* Discover.swift in Sources */,
 				A30801BC2018FD0000A1060A /* Callable.swift in Sources */,
-				77CF7C64259CF12A00C2E5CD /* Straal3DSViewController.swift in Sources */,
 				A30801EB2018FD0100A1060A /* StraalUrlCreator.swift in Sources */,
 				A30801D62018FD0100A1060A /* CardNumber.swift in Sources */,
 				A30801CB2018FD0100A1060A /* DateSource.swift in Sources */,

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,12 +22,6 @@
 		0EE419C22024AE89008FA186 /* LuhnValidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE419C12024AE89008FA186 /* LuhnValidable.swift */; };
 		0EE419C42024C365008FA186 /* CardholderNameSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE419C32024C365008FA186 /* CardholderNameSpec.swift */; };
 		77283257235A3AAF00CB9BB6 /* ParseRedirectCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283256235A3AAF00CB9BB6 /* ParseRedirectCallable.swift */; };
-		77283260235A42C200CB9BB6 /* IDZSwiftCommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7728325D235A429F00CB9BB6 /* IDZSwiftCommonCrypto.framework */; };
-		77283261235A42C600CB9BB6 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7728325E235A429F00CB9BB6 /* Nimble.framework */; };
-		77283262235A42C600CB9BB6 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7728325F235A429F00CB9BB6 /* Quick.framework */; };
-		77283264235A42D500CB9BB6 /* IDZSwiftCommonCrypto.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7728325D235A429F00CB9BB6 /* IDZSwiftCommonCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		77283265235A42D500CB9BB6 /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7728325E235A429F00CB9BB6 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		77283266235A42D500CB9BB6 /* Quick.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7728325F235A429F00CB9BB6 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7728326A235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283268235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift */; };
 		7728326D235A440500CB9BB6 /* Init3DSOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728326B235A440400CB9BB6 /* Init3DSOperation.swift */; };
 		77283270235A440B00CB9BB6 /* ParseRedirectCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728326F235A440B00CB9BB6 /* ParseRedirectCallableSpec.swift */; };
@@ -42,6 +36,9 @@
 		77283287235AE97F00CB9BB6 /* Init3DSContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283286235AE97F00CB9BB6 /* Init3DSContext.swift */; };
 		77283289235AFF1D00CB9BB6 /* MergeCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283288235AFF1D00CB9BB6 /* MergeCallable.swift */; };
 		7728328B235AFF2700CB9BB6 /* MergeCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728328A235AFF2700CB9BB6 /* MergeCallableSpec.swift */; };
+		77CF7C0A259CD36700C2E5CD /* IDZSwiftCommonCrypto.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77CF7C09259CD35F00C2E5CD /* IDZSwiftCommonCrypto.xcframework */; };
+		77CF7C11259CD49900C2E5CD /* Nimble.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77CF7C0E259CD47B00C2E5CD /* Nimble.xcframework */; };
+		77CF7C12259CD49900C2E5CD /* Quick.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77CF7C0F259CD47B00C2E5CD /* Quick.xcframework */; };
 		77DC743F235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC743E235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift */; };
 		A3000E741D8BFD5400258B07 /* BackendUrlCreatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3000E6C1D8BFD5400258B07 /* BackendUrlCreatorSpec.swift */; };
 		A308015F2018753500A1060A /* SimpleCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A308015E2018753500A1060A /* SimpleCallableSpec.swift */; };
@@ -145,9 +142,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				77283264235A42D500CB9BB6 /* IDZSwiftCommonCrypto.framework in Copy Frameworks */,
-				77283265235A42D500CB9BB6 /* Nimble.framework in Copy Frameworks */,
-				77283266235A42D500CB9BB6 /* Quick.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,9 +164,6 @@
 		0EE419C12024AE89008FA186 /* LuhnValidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuhnValidable.swift; sourceTree = "<group>"; };
 		0EE419C32024C365008FA186 /* CardholderNameSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardholderNameSpec.swift; sourceTree = "<group>"; };
 		77283256235A3AAF00CB9BB6 /* ParseRedirectCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseRedirectCallable.swift; sourceTree = "<group>"; };
-		7728325D235A429F00CB9BB6 /* IDZSwiftCommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDZSwiftCommonCrypto.framework; path = Carthage/Build/iOS/IDZSwiftCommonCrypto.framework; sourceTree = "<group>"; };
-		7728325E235A429F00CB9BB6 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
-		7728325F235A429F00CB9BB6 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		77283268235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encrypted3DSOperationResponse.swift; sourceTree = "<group>"; };
 		7728326B235A440400CB9BB6 /* Init3DSOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Init3DSOperation.swift; sourceTree = "<group>"; };
 		7728326F235A440B00CB9BB6 /* ParseRedirectCallableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseRedirectCallableSpec.swift; sourceTree = "<group>"; };
@@ -187,6 +178,10 @@
 		77283286235AE97F00CB9BB6 /* Init3DSContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init3DSContext.swift; sourceTree = "<group>"; };
 		77283288235AFF1D00CB9BB6 /* MergeCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeCallable.swift; sourceTree = "<group>"; };
 		7728328A235AFF2700CB9BB6 /* MergeCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeCallableSpec.swift; sourceTree = "<group>"; };
+		77CF7C09259CD35F00C2E5CD /* IDZSwiftCommonCrypto.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = IDZSwiftCommonCrypto.xcframework; path = Carthage/Build/IDZSwiftCommonCrypto.xcframework; sourceTree = "<group>"; };
+		77CF7C0E259CD47B00C2E5CD /* Nimble.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Nimble.xcframework; path = Carthage/Build/Nimble.xcframework; sourceTree = "<group>"; };
+		77CF7C0F259CD47B00C2E5CD /* Quick.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Quick.xcframework; path = Carthage/Build/Quick.xcframework; sourceTree = "<group>"; };
+		77CF7C15259CD4F300C2E5CD /* Info-tests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tests.plist"; sourceTree = "<group>"; };
 		77DC743E235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentStraalViewControllerCallableSpec.swift; sourceTree = "<group>"; };
 		A3000E6C1D8BFD5400258B07 /* BackendUrlCreatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendUrlCreatorSpec.swift; sourceTree = "<group>"; };
 		A308015E2018753500A1060A /* SimpleCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCallableSpec.swift; sourceTree = "<group>"; };
@@ -249,7 +244,6 @@
 		A371E7031D82FC6600D05B2F /* Straal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Straal.h; sourceTree = "<group>"; };
 		A371E7041D82FC6600D05B2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A371E7091D82FC6600D05B2F /* StraalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StraalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A371E7101D82FC6600D05B2F /* Info-tests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-tests.plist"; path = "../Tests/StraalTests/Info-tests.plist"; sourceTree = "<group>"; };
 		A371E71B1D82FD9F00D05B2F /* CryptorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptorSpec.swift; sourceTree = "<group>"; };
 		A371E71C1D82FD9F00D05B2F /* KeyParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyParserTests.swift; sourceTree = "<group>"; };
 		B4742A822020CE7C00EAD828 /* CVVValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVVValidator.swift; sourceTree = "<group>"; };
@@ -281,7 +275,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77283260235A42C200CB9BB6 /* IDZSwiftCommonCrypto.framework in Frameworks */,
+				77CF7C0A259CD36700C2E5CD /* IDZSwiftCommonCrypto.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,8 +284,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A371E70A1D82FC6600D05B2F /* Straal.framework in Frameworks */,
-				77283261235A42C600CB9BB6 /* Nimble.framework in Frameworks */,
-				77283262235A42C600CB9BB6 /* Quick.framework in Frameworks */,
+				77CF7C11259CD49900C2E5CD /* Nimble.xcframework in Frameworks */,
+				77CF7C12259CD49900C2E5CD /* Quick.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,9 +315,9 @@
 		7728325C235A428D00CB9BB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7728325D235A429F00CB9BB6 /* IDZSwiftCommonCrypto.framework */,
-				7728325E235A429F00CB9BB6 /* Nimble.framework */,
-				7728325F235A429F00CB9BB6 /* Quick.framework */,
+				77CF7C0E259CD47B00C2E5CD /* Nimble.xcframework */,
+				77CF7C0F259CD47B00C2E5CD /* Quick.xcframework */,
+				77CF7C09259CD35F00C2E5CD /* IDZSwiftCommonCrypto.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -353,8 +347,8 @@
 			isa = PBXGroup;
 			children = (
 				A371E7031D82FC6600D05B2F /* Straal.h */,
-				A371E7101D82FC6600D05B2F /* Info-tests.plist */,
 				A371E7041D82FC6600D05B2F /* Info.plist */,
+				77CF7C15259CD4F300C2E5CD /* Info-tests.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -1090,7 +1084,8 @@
 				MARKETING_VERSION = 0.5.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1110,11 +1105,15 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.straal.sdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1136,11 +1135,15 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.straal.sdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1155,10 +1158,14 @@
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info-tests.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.straal.sdk.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
@@ -1172,10 +1179,14 @@
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info-tests.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.straal.sdk.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;

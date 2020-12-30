@@ -64,7 +64,7 @@ public final class Init3DSOperation: EncryptedOperation {
 				transaction: transaction,
 				successURL: configuration.init3DSSuccessURL,
 				failureURL: configuration.init3DSFailureURL)
-			).asCallable()
+		).asCallable()
 	}
 
 	/// Straal card
@@ -96,7 +96,15 @@ public final class Init3DSOperation: EncryptedOperation {
 		return result.asCallable()
 	}
 
-	/// Designated initializer
+	/// Designated initializer. Initializes 3D Secure operation (v1).
+	///
+	/// - Parameters:
+	///   - card: Card to be created and captured
+	///   - transaction: Transaction to be authorized with 3D Secure
+	///   - present3DSViewController: A closure that Straal will call on the main queue when 3D Secure Authorization will be required. Present passed View Controller to the user
+	///   - dismiss3DSViewController: A closure that Straal will call on the main queue when the operation is finished. Do not rely on this closure being called – there are many more ways of dismissing this view controller. This will be called in only some of these cases.
+	///
+	/// - seealso: [Straal Documentation](https://api-reference.straal.com/#resources-transactions-create-a-3ds-transaction-with-a-card-using-cryptkey)
 	public init(
 		card: Card,
 		transaction: Transaction,

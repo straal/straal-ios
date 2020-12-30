@@ -53,13 +53,13 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 				sut = PresentStraalViewControllerCallable(
 					context: AnyCallable.of(init3DSContext),
 					present: { viewController in
-						guard uniqueValue?.uuidString == uuidString else { XCTFail(); return }
+						guard uniqueValue?.uuidString == uuidString else { XCTFail("Invalid test!"); return }
 						presentCallCount += 1
 						let safariViewController = viewController as? SFSafariViewController
 						capturedPresentedViewController = viewController
 						safariViewController?.delegate?.safariViewControllerDidFinish?(safariViewController!)
 					}, dismiss: { viewController in
-						guard uniqueValue?.uuidString == uuidString else { XCTFail(); return }
+						guard uniqueValue?.uuidString == uuidString else { XCTFail("Invalid test!"); return }
 						dismissCallCount += 1
 						capturedDismissedViewController = viewController
 					}, viewControllerFactory: { url in

@@ -22,12 +22,10 @@
 import UIKit
 import SafariServices
 
-internal final class Straal3DSViewController: SFSafariViewController {
+internal class Straal3DSViewController: SFSafariViewController {
 
 	// MARK: Properties
-	private let completion: (Encrypted3DSOperationStatus) -> Void
-	private let context: Init3DSContext
-	private var result: Encrypted3DSOperationStatus?
+	var cancel: ((UIViewController) -> Void)?
 
 	override var delegate: SFSafariViewControllerDelegate? {
 		didSet {
@@ -35,31 +33,13 @@ internal final class Straal3DSViewController: SFSafariViewController {
 		}
 	}
 
-	init(context: Init3DSContext, completion: @escaping (Encrypted3DSOperationStatus) -> Void) {
-		self.context = context
-		self.completion = completion
-		super.init(url: context.redirectURL, configuration: .init())
+	override init(url URL: URL, configuration: SFSafariViewController.Configuration) {
+		super.init(url: URL, configuration: configuration)
+		delegate = self
 	}
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		self.delegate = self
-	}
-
-	// MARK: Private
-
-	private func callCompletion() {
-		completion(result ?? .failure)
-	}
-
-	internal func dismissWithResult(_ result: Encrypted3DSOperationStatus) {
-		guard self.result == nil else { fatalError("Result already determined") }
-		self.result = result
-		dismissWithCompletion()
-	}
-
-	private func dismissWithCompletion() {
-		dismiss(animated: true) { () in self.callCompletion() }
+	convenience init(url URL: URL) {
+		self.init(url: URL, configuration: .init())
 	}
 }
 
@@ -68,6 +48,7 @@ extension Straal3DSViewController: SFSafariViewControllerDelegate {
 		// TODO
 		// Nothing we can do now. This will only be called when the user cancels the presentation
 		// For now we cannot detect what happened.
-		dismissWithResult(.unknown)
+//		dismissWithResult(.unknown)
+		cancel?(self)
 	}
 }

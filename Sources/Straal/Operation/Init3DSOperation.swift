@@ -74,6 +74,7 @@ public final class Init3DSOperation: EncryptedOperation {
 	public let transaction: Transaction
 
 	private let present3DSViewController: (UIViewController) -> Void
+	private let dismiss3DSViewController: (UIViewController, () -> Void) -> Void
 
 	internal let permission = CryptKeyPermission.authentication3DS
 
@@ -85,7 +86,7 @@ public final class Init3DSOperation: EncryptedOperation {
 
 		let init3DSContext = redirectURL.map { Init3DSContext(redirectURL: $0, successURL: configuration.init3DSSuccessURL, failureURL: configuration.init3DSFailureURL) }
 
-		let showViewController = PresentStraalViewControllerCallable(context: init3DSContext, present: present3DSViewController)
+		let showViewController = PresentStraalViewControllerCallable(context: init3DSContext, present: present3DSViewController, dismiss: dismiss3DSViewController)
 
 		let result = operationResponse.merge(showViewController).map { requestAndStatus in
 			Encrypted3DSOperationResponse(
@@ -96,9 +97,14 @@ public final class Init3DSOperation: EncryptedOperation {
 	}
 
 	/// Designated initializer
-	public init(card: Card, transaction: Transaction, present3DSViewController: @escaping (UIViewController) -> Void) {
+	public init(
+		card: Card,
+		transaction: Transaction,
+		present3DSViewController: @escaping (UIViewController) -> Void,
+		dismiss3DSViewController: @escaping (UIViewController, () -> Void) -> Void) {
 		self.card = card
 		self.transaction = transaction
 		self.present3DSViewController = present3DSViewController
+		self.dismiss3DSViewController = dismiss3DSViewController
 	}
 }

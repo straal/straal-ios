@@ -64,7 +64,7 @@ class Init3DSOperationSpec: QuickSpec {
 			context("with transaction in usd without reference") {
 				beforeEach {
 					let transaction = Transaction(amount: 100, currency: "usd")!
-					sut = Init3DSOperation(card: card, transaction: transaction, present3DSViewController: { _ in })
+					sut = Init3DSOperation(card: card, transaction: transaction, present3DSViewController: { _ in }, dismiss3DSViewController: { _, completion in completion() })
 				}
 
 				describe("Crypt key request json") {
@@ -147,7 +147,7 @@ class Init3DSOperationSpec: QuickSpec {
 			context("with transaction in pln with reference") {
 				beforeEach {
 					let transaction = Transaction(amount: 1000, currency: "pln", reference: "order:124iygtieurg")!
-					sut = Init3DSOperation(card: card, transaction: transaction, present3DSViewController: { _ in })
+					sut = Init3DSOperation(card: card, transaction: transaction, present3DSViewController: { _ in }, dismiss3DSViewController: { _, completion in completion() })
 				}
 
 				describe("Crypt key request json") {

@@ -22,8 +22,9 @@
 import Foundation
 import UIKit
 import SafariServices
+@testable import Straal
 
-class SafariViewControllerSpy: SFSafariViewController {
+class SafariViewControllerSpy: Straal3DSViewController {
 
 	let url: URL
 

@@ -37,12 +37,11 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 			var uniqueValue: UUID!
 			var capturedPresentedViewController: UIViewController?
 			var capturedDismissedViewController: UIViewController?
-			var responseStatus: Encrypted3DSOperationStatus!
 			var capturedStatus: Encrypted3DSOperationStatus!
+			var capturedURL: URL?
 
 			beforeEach {
 				uniqueValue = UUID()
-				responseStatus = nil
 				let uuidString = uniqueValue.uuidString
 				presentCallCount = 0
 				dismissCallCount = 0
@@ -51,23 +50,34 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 					redirectURL: URL(string: "https://sdk.straa.com/redirect")!,
 					successURL: URL(string: "https://sdk.straa.com/success")!,
 					failureURL: URL(string: "https://sdk.straa.com/failure")!)
-				sut = PresentStraalViewControllerCallable(context: AnyCallable.of(init3DSContext)) { viewController in
-					guard uniqueValue?.uuidString == uuidString else { return }
-					presentCallCount += 1
-					capturedPresentedViewController = viewController
-					(viewController as? Straal3DSViewController)?.dismissWithResult(responseStatus)
-				}
+				sut = PresentStraalViewControllerCallable(
+					context: AnyCallable.of(init3DSContext),
+					present: { viewController in
+						guard uniqueValue?.uuidString == uuidString else { XCTFail(); return }
+						presentCallCount += 1
+						let safariViewController = viewController as? SFSafariViewController
+						capturedPresentedViewController = viewController
+						safariViewController?.delegate?.safariViewControllerDidFinish?(safariViewController!)
+					}, dismiss: { viewController, completion in
+						guard uniqueValue?.uuidString == uuidString else { XCTFail(); return }
+						dismissCallCount += 1
+						capturedDismissedViewController = viewController
+						completion()
+					}, viewControllerFactory: { url in
+						capturedURL = url
+						return SafariViewControllerSpy(url: url)
+					})
 			}
 
 			afterEach {
 				capturedPresentedViewController = nil
 				capturedDismissedViewController = nil
-				responseStatus = nil
 				uniqueValue = nil
 				presentCallCount = nil
 				dismissCallCount = nil
 				init3DSContext = nil
 				capturedStatus = nil
+				capturedURL = nil
 				sut = nil
 			}
 
@@ -75,9 +85,8 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 				expect(presentCallCount).to(equal(0))
 			}
 
-			context("when present is called and result is success") {
+			context("when present is called and completed") {
 				beforeEach {
-					responseStatus = .success
 					waitUntil { done in
 						DispatchQueue.global().async {
 							capturedStatus = try? sut.call()
@@ -86,40 +95,29 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 					}
 				}
 
-				it("should eventually call present") {
+				it("should call present once") {
 					expect(presentCallCount).to(equal(1))
 				}
 
-				it("should pass straal view controller") {
-					expect(capturedPresentedViewController).to(beAKindOf(Straal3DSViewController.self))
+				it("should not call dismiss") {
+					expect(dismissCallCount).to(beGreaterThan(0))
 				}
 
-				it("should return success status") {
-					expect(capturedStatus).to(equal(.success))
-				}
-			}
-
-			context("when present is called and result is failure") {
-				beforeEach {
-					responseStatus = .failure
-					waitUntil { done in
-						DispatchQueue.global().async {
-							capturedStatus = try? sut.call()
-							done()
-						}
-					}
+				it("should present view controller from factory") {
+					expect(capturedPresentedViewController).to(beAKindOf(SafariViewControllerSpy.self))
 				}
 
-				it("should eventually call present") {
-					expect(presentCallCount).to(equal(1))
+				it("should return unknown status") {
+					expect(capturedStatus).to(equal(.unknown))
 				}
 
-				it("should pass straal view controller") {
-					expect(capturedPresentedViewController).to(beAKindOf(Straal3DSViewController.self))
+				it("should present correct url") {
+					expect(capturedURL?.absoluteString).to(equal("https://sdk.straa.com/redirect"))
 				}
 
-				it("should return failure status") {
-					expect(capturedStatus).to(equal(.failure))
+				it("should pass the correct view controller to dismiss") {
+					expect(capturedDismissedViewController).to(beAKindOf(SafariViewControllerSpy.self))
+					expect(capturedPresentedViewController).to(be(capturedDismissedViewController))
 				}
 			}
 		}

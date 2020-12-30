@@ -164,6 +164,9 @@ let transaction: Transaction = Transaction(amount: 200, currency: "usd")!
 let init3DSOperation = Init3DSOperation(card: card, transaction: transaction) { [weak self] controller in
   // This will be called when 3DS is initiated by Straal. Present the controller (UIViewController) passed by Straal to the user, whichever way suits your workflow and design pattern.
   self?.present(controller, animated: true)
+} dismiss3DSViewController: { controller in
+  // This will be called when 3DS is completed. Do not rely on this method being called, as the viewcontroller can be dismissed in other ways (when cancelled by the user)
+  controller.dismiss(animated: true, completion: nil)
 }
 straal.perform(operation: operation) { (response, error) in
   // This will be called once the user completes 3DS and the controller dismisses, or cancels it.

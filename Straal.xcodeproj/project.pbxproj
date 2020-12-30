@@ -249,7 +249,7 @@
 		A371E7031D82FC6600D05B2F /* Straal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Straal.h; sourceTree = "<group>"; };
 		A371E7041D82FC6600D05B2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A371E7091D82FC6600D05B2F /* StraalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StraalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A371E7101D82FC6600D05B2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Tests/StraalTests/Info.plist; sourceTree = "<group>"; };
+		A371E7101D82FC6600D05B2F /* Info-tests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-tests.plist"; path = "../Tests/StraalTests/Info-tests.plist"; sourceTree = "<group>"; };
 		A371E71B1D82FD9F00D05B2F /* CryptorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptorSpec.swift; sourceTree = "<group>"; };
 		A371E71C1D82FD9F00D05B2F /* KeyParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyParserTests.swift; sourceTree = "<group>"; };
 		B4742A822020CE7C00EAD828 /* CVVValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVVValidator.swift; sourceTree = "<group>"; };
@@ -353,7 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				A371E7031D82FC6600D05B2F /* Straal.h */,
-				A371E7101D82FC6600D05B2F /* Info.plist */,
+				A371E7101D82FC6600D05B2F /* Info-tests.plist */,
 				A371E7041D82FC6600D05B2F /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -775,13 +775,11 @@
 				TargetAttributes = {
 					A371E6FF1D82FC6600D05B2F = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 53D9E75CA3;
 						LastSwiftMigration = 1110;
 						ProvisioningStyle = Automatic;
 					};
 					A371E7081D82FC6600D05B2F = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 53D9E75CA3;
 						LastSwiftMigration = 1110;
 						ProvisioningStyle = Automatic;
 					};
@@ -836,7 +834,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "swiftlint lint --config .swiftlint_local.yml\n";
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1102,7 +1100,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 53D9E75CA3;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1110,7 +1108,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Straal/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.straal.sdk;
@@ -1128,7 +1126,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 53D9E75CA3;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1136,7 +1134,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Straal/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.straal.sdk;
@@ -1150,12 +1148,12 @@
 		A371E7181D82FC6600D05B2F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 53D9E75CA3;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = StraalTests/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info-tests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.straal.sdk.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1167,12 +1165,12 @@
 		A371E7191D82FC6600D05B2F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 53D9E75CA3;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = StraalTests/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info-tests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.straal.sdk.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

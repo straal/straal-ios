@@ -39,6 +39,9 @@
 		77CF7C3C259CE02300C2E5CD /* IDZSwiftCommonCrypto.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 77CF7C3A259CDFF200C2E5CD /* IDZSwiftCommonCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		77CF7C3D259CE02300C2E5CD /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 77CF7C38259CDFF100C2E5CD /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		77CF7C3E259CE02300C2E5CD /* Quick.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 77CF7C39259CDFF200C2E5CD /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77CF7C55259CE7C500C2E5CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77CF7C54259CE7C500C2E5CD /* Foundation.framework */; };
+		77CF7C57259CE7CA00C2E5CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77CF7C56259CE7CA00C2E5CD /* UIKit.framework */; };
+		77CF7C59259CE7D000C2E5CD /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77CF7C58259CE7D000C2E5CD /* SafariServices.framework */; };
 		77DC743F235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC743E235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift */; };
 		A3000E741D8BFD5400258B07 /* BackendUrlCreatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3000E6C1D8BFD5400258B07 /* BackendUrlCreatorSpec.swift */; };
 		A308015F2018753500A1060A /* SimpleCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A308015E2018753500A1060A /* SimpleCallableSpec.swift */; };
@@ -185,6 +188,9 @@
 		77CF7C38259CDFF100C2E5CD /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		77CF7C39259CDFF200C2E5CD /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		77CF7C3A259CDFF200C2E5CD /* IDZSwiftCommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDZSwiftCommonCrypto.framework; path = Carthage/Build/iOS/IDZSwiftCommonCrypto.framework; sourceTree = "<group>"; };
+		77CF7C54259CE7C500C2E5CD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		77CF7C56259CE7CA00C2E5CD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		77CF7C58259CE7D000C2E5CD /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		77DC743E235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentStraalViewControllerCallableSpec.swift; sourceTree = "<group>"; };
 		A3000E6C1D8BFD5400258B07 /* BackendUrlCreatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendUrlCreatorSpec.swift; sourceTree = "<group>"; };
 		A308015E2018753500A1060A /* SimpleCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCallableSpec.swift; sourceTree = "<group>"; };
@@ -278,6 +284,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77CF7C55259CE7C500C2E5CD /* Foundation.framework in Frameworks */,
+				77CF7C57259CE7CA00C2E5CD /* UIKit.framework in Frameworks */,
+				77CF7C59259CE7D000C2E5CD /* SafariServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +324,9 @@
 		7728325C235A428D00CB9BB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				77CF7C58259CE7D000C2E5CD /* SafariServices.framework */,
+				77CF7C56259CE7CA00C2E5CD /* UIKit.framework */,
+				77CF7C54259CE7C500C2E5CD /* Foundation.framework */,
 				77CF7C3A259CDFF200C2E5CD /* IDZSwiftCommonCrypto.framework */,
 				77CF7C38259CDFF100C2E5CD /* Nimble.framework */,
 				77CF7C39259CDFF200C2E5CD /* Quick.framework */,

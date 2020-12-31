@@ -34,11 +34,16 @@ public final class CreateCard: EncryptedOperation {
 		self.card = card
 	}
 
-	func cryptKeyPayload(configuration: StraalConfiguration) -> AnyCallable<Data> {
+	func cryptKeyPayload(
+		configuration: StraalConfiguration
+	) -> AnyCallable<Data> {
 		EncodeCallable(value: permission).asCallable()
 	}
 
-	internal func responseCallable(httpCallable: HttpCallable, configuration: StraalConfiguration) -> AnyCallable<EncryptedOperationResponse> {
+	internal func responseCallable(
+		httpCallable: HttpCallable,
+		configuration: StraalConfiguration
+	) -> AnyCallable<EncryptedOperationResponse> {
 		DecodeCallable(dataSource: ParseErrorCallable(response: httpCallable).map { $0.0 }).asCallable()
 	}
 }

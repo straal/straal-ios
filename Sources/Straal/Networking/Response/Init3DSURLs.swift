@@ -1,6 +1,5 @@
-//
 /*
- * Init3DSContext.swift
+ * Init3DSURLs.swift
  * Created by Michał Dąbrowski on 19/10/2019.
  *
  * Straal SDK for iOS
@@ -21,7 +20,7 @@
 
 import Foundation
 
-internal struct Init3DSContext {
+internal struct Init3DSURLs {
 	public let redirectURL: URL
 	public let successURL: URL
 	public let failureURL: URL

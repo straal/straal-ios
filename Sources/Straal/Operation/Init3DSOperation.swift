@@ -84,7 +84,7 @@ public final class Init3DSOperation: EncryptedOperation {
 
 		let operationResponse: DecodeCallable<EncryptedOperationResponse> = DecodeCallable(dataSource: cachedRequestResponse.map { $0.0 })
 
-		let init3DSContext = redirectURL.map { Init3DSContext(redirectURL: $0, successURL: configuration.init3DSSuccessURL, failureURL: configuration.init3DSFailureURL) }
+		let init3DSContext = redirectURL.map { Init3DSURLs(redirectURL: $0, successURL: configuration.init3DSSuccessURL, failureURL: configuration.init3DSFailureURL) }
 
 		let showViewController = PresentStraalViewControllerCallable(context: init3DSContext, present: present3DSViewController, dismiss: dismiss3DSViewController)
 

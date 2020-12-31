@@ -25,18 +25,18 @@ import UIKit
 import SafariServices
 
 class PresentStraalViewControllerCallable: Callable {
-	private let operationContext: AnyCallable<Init3DSContext>
+	private let urlsCallable: AnyCallable<Init3DSURLs>
 	private let present: (UIViewController) -> Void
 	private let dismiss: (UIViewController) -> Void
 	private let viewControllerFactory: (URL) -> SFSafariViewController
 
 	init<O: Callable>(
-		context: O,
+		urls: O,
 		present: @escaping (UIViewController) -> Void,
 		dismiss: @escaping (UIViewController) -> Void,
 		viewControllerFactory: @escaping (URL) -> SFSafariViewController = SFSafariViewController.init)
-	where O.ReturnType == Init3DSContext {
-		self.operationContext = context.asCallable()
+	where O.ReturnType == Init3DSURLs {
+		self.urlsCallable = urls.asCallable()
 		self.present = present
 		self.dismiss = dismiss
 		self.viewControllerFactory = viewControllerFactory
@@ -44,14 +44,14 @@ class PresentStraalViewControllerCallable: Callable {
 
 	func call() throws -> Encrypted3DSOperationStatus {
 		let semaphore = DispatchSemaphore(value: 0)
-		let context = try operationContext.call()
+		let urls = try urlsCallable.call()
 		var operationStatus: Encrypted3DSOperationStatus!
 		let delegate = SafariViewControllerDelegate { [weak semaphore] in
-			operationStatus = .unknown
+			operationStatus = .failure
 			semaphore?.signal()
 		}
 		DispatchQueue.main.async { [delegate, present, viewControllerFactory] in
-			let viewController = viewControllerFactory(context.redirectURL)
+			let viewController = viewControllerFactory(urls.redirectURL)
 			viewController.delegate = delegate
 			present(viewController)
 		}

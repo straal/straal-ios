@@ -31,7 +31,7 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 		describe("PresentStraalViewControllerCallable") {
 
 			var sut: PresentStraalViewControllerCallable!
-			var init3DSContext: Init3DSContext!
+			var init3DSURLs: Init3DSURLs!
 			var presentCallCount: Int!
 			var dismissCallCount: Int!
 			var uniqueValue: UUID!
@@ -46,12 +46,12 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 				presentCallCount = 0
 				dismissCallCount = 0
 				capturedStatus = nil
-				init3DSContext = Init3DSContext(
+				init3DSURLs = Init3DSContext(
 					redirectURL: URL(string: "https://sdk.straa.com/redirect")!,
 					successURL: URL(string: "https://sdk.straa.com/success")!,
 					failureURL: URL(string: "https://sdk.straa.com/failure")!)
 				sut = PresentStraalViewControllerCallable(
-					context: AnyCallable.of(init3DSContext),
+					context: AnyCallable.of(init3DSURLs),
 					present: { viewController in
 						guard uniqueValue?.uuidString == uuidString else { XCTFail("Invalid test!"); return }
 						presentCallCount += 1
@@ -74,7 +74,7 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 				uniqueValue = nil
 				presentCallCount = nil
 				dismissCallCount = nil
-				init3DSContext = nil
+				init3DSURLs = nil
 				capturedStatus = nil
 				capturedURL = nil
 				sut = nil

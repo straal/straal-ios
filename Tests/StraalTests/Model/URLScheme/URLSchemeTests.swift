@@ -1,6 +1,6 @@
 //
 /*
- * URLScheme.swift
+ * URLSchemeTests.swift
  * Created by Michał Dąbrowski on 31/12/2020.
  *
  * Straal SDK for iOS
@@ -20,17 +20,19 @@
  */
 
 import Foundation
+import XCTest
+import Nimble
 
-public enum URLScheme: Equatable {
-	case `default`
-	case custom(String)
-}
+@testable import Straal
 
-internal extension URLScheme {
-	var scheme: String {
-		switch self {
-		case .default: return "https"
-		case .custom(let scheme): return scheme
-		}
+class URLSchemeTests: XCTestCase {
+
+	func testDefaultSchemeResolvesToHTTPS() {
+		expect(URLScheme.default.scheme).to(equal("https"))
 	}
+
+	func testCustomSchemeResolvesToCustom() {
+		expect(URLScheme.custom("com.straal.testapp").scheme).to(equal("com.straal.testapp"))
+	}
+
 }

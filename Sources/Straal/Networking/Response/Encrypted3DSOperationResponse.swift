@@ -23,6 +23,7 @@ import Foundation
 public enum Encrypted3DSOperationStatus {
 	case success
 	case failure
+	case unknown
 }
 
 public struct Encrypted3DSOperationResponse: StraalResponse {

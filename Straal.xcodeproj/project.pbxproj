@@ -23,6 +23,8 @@
 		0EE419C42024C365008FA186 /* CardholderNameSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE419C32024C365008FA186 /* CardholderNameSpec.swift */; };
 		7718AE6F259DD63A007CBF61 /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7718AE6E259DD63A007CBF61 /* URLScheme.swift */; };
 		7718AE78259DD818007CBF61 /* URLSchemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7718AE73259DD7AF007CBF61 /* URLSchemeTests.swift */; };
+		7718AE7B259DD90B007CBF61 /* ReturnURLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7718AE7A259DD90B007CBF61 /* ReturnURLProvider.swift */; };
+		7718AE7E259DD91A007CBF61 /* ReturnURLProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7718AE7D259DD91A007CBF61 /* ReturnURLProviderTests.swift */; };
 		77283257235A3AAF00CB9BB6 /* ParseRedirectCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283256235A3AAF00CB9BB6 /* ParseRedirectCallable.swift */; };
 		7728326A235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283268235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift */; };
 		7728326D235A440500CB9BB6 /* Init3DSOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728326B235A440400CB9BB6 /* Init3DSOperation.swift */; };
@@ -173,6 +175,8 @@
 		0EE419C32024C365008FA186 /* CardholderNameSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardholderNameSpec.swift; sourceTree = "<group>"; };
 		7718AE6E259DD63A007CBF61 /* URLScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLScheme.swift; sourceTree = "<group>"; };
 		7718AE73259DD7AF007CBF61 /* URLSchemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSchemeTests.swift; sourceTree = "<group>"; };
+		7718AE7A259DD90B007CBF61 /* ReturnURLProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnURLProvider.swift; sourceTree = "<group>"; };
+		7718AE7D259DD91A007CBF61 /* ReturnURLProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnURLProviderTests.swift; sourceTree = "<group>"; };
 		77283256235A3AAF00CB9BB6 /* ParseRedirectCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseRedirectCallable.swift; sourceTree = "<group>"; };
 		77283268235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encrypted3DSOperationResponse.swift; sourceTree = "<group>"; };
 		7728326B235A440400CB9BB6 /* Init3DSOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Init3DSOperation.swift; sourceTree = "<group>"; };
@@ -350,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				7718AE6E259DD63A007CBF61 /* URLScheme.swift */,
+				7718AE7A259DD90B007CBF61 /* ReturnURLProvider.swift */,
 			);
 			path = URLScheme;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				7718AE73259DD7AF007CBF61 /* URLSchemeTests.swift */,
+				7718AE7D259DD91A007CBF61 /* ReturnURLProviderTests.swift */,
 			);
 			path = URLScheme;
 			sourceTree = "<group>";
@@ -873,6 +879,7 @@
 				A30801BF2018FD0000A1060A /* EncryptCallable.swift in Sources */,
 				7728326A235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift in Sources */,
 				A30801D02018FD0100A1060A /* CardBrand.swift in Sources */,
+				7718AE7B259DD90B007CBF61 /* ReturnURLProvider.swift in Sources */,
 				A30801E12018FD0100A1060A /* Luhn.swift in Sources */,
 				A30801D12018FD0100A1060A /* AmericanExpress.swift in Sources */,
 				A30801D52018FD0100A1060A /* CardholderName.swift in Sources */,
@@ -946,6 +953,7 @@
 				B4F4BCED2020A44D003C014C /* CardsParserSpec.swift in Sources */,
 				77283270235A440B00CB9BB6 /* ParseRedirectCallableSpec.swift in Sources */,
 				A35C76D7201C916300E0004F /* CreateTransactionWithCardSpec.swift in Sources */,
+				7718AE7E259DD91A007CBF61 /* ReturnURLProviderTests.swift in Sources */,
 				0EAA37D41F18B8C20048F2E6 /* ExpirySpec.swift in Sources */,
 				77DC743F235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift in Sources */,
 				77283274235A47EE00CB9BB6 /* CacheValueCallable.swift in Sources */,

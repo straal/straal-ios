@@ -21,6 +21,7 @@
 		0EAA37D61F18E89D0048F2E6 /* CardSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA37D51F18E89D0048F2E6 /* CardSpec.swift */; };
 		0EE419C22024AE89008FA186 /* LuhnValidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE419C12024AE89008FA186 /* LuhnValidable.swift */; };
 		0EE419C42024C365008FA186 /* CardholderNameSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE419C32024C365008FA186 /* CardholderNameSpec.swift */; };
+		7718AE6F259DD63A007CBF61 /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7718AE6E259DD63A007CBF61 /* URLScheme.swift */; };
 		77283257235A3AAF00CB9BB6 /* ParseRedirectCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283256235A3AAF00CB9BB6 /* ParseRedirectCallable.swift */; };
 		7728326A235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77283268235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift */; };
 		7728326D235A440500CB9BB6 /* Init3DSOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728326B235A440400CB9BB6 /* Init3DSOperation.swift */; };
@@ -169,6 +170,7 @@
 		0EAA37D51F18E89D0048F2E6 /* CardSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CardSpec.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		0EE419C12024AE89008FA186 /* LuhnValidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuhnValidable.swift; sourceTree = "<group>"; };
 		0EE419C32024C365008FA186 /* CardholderNameSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardholderNameSpec.swift; sourceTree = "<group>"; };
+		7718AE6E259DD63A007CBF61 /* URLScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLScheme.swift; sourceTree = "<group>"; };
 		77283256235A3AAF00CB9BB6 /* ParseRedirectCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseRedirectCallable.swift; sourceTree = "<group>"; };
 		77283268235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encrypted3DSOperationResponse.swift; sourceTree = "<group>"; };
 		7728326B235A440400CB9BB6 /* Init3DSOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Init3DSOperation.swift; sourceTree = "<group>"; };
@@ -342,6 +344,14 @@
 			path = Permission;
 			sourceTree = "<group>";
 		};
+		7718AE6D259DD620007CBF61 /* URLScheme */ = {
+			isa = PBXGroup;
+			children = (
+				7718AE6E259DD63A007CBF61 /* URLScheme.swift */,
+			);
+			path = URLScheme;
+			sourceTree = "<group>";
+		};
 		7728325C235A428D00CB9BB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,6 +485,7 @@
 				A308019B2018FD0000A1060A /* Error */,
 				7718AE6A259DD5DB007CBF61 /* Permission */,
 				A308019F2018FD0000A1060A /* Transaction */,
+				7718AE6D259DD620007CBF61 /* URLScheme */,
 				A30801A32018FD0000A1060A /* Validation */,
 			);
 			path = Model;
@@ -835,6 +846,7 @@
 			files = (
 				A30801F32018FDED00A1060A /* DecodeCallable.swift in Sources */,
 				A30801D72018FD0100A1060A /* CardsParser.swift in Sources */,
+				7718AE6F259DD63A007CBF61 /* URLScheme.swift in Sources */,
 				A30801C22018FD0000A1060A /* ParseErrorCallable.swift in Sources */,
 				B4742AA32021F21000EAD828 /* Maestro.swift in Sources */,
 				A30801E22018FD0100A1060A /* ValidationResult.swift in Sources */,

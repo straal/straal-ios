@@ -304,10 +304,10 @@
 		0EAA37CB1F14C2490048F2E6 /* Card */ = {
 			isa = PBXGroup;
 			children = (
-				0EAA37D31F18B8C20048F2E6 /* ExpirySpec.swift */,
-				0EAA37D51F18E89D0048F2E6 /* CardSpec.swift */,
-				B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */,
 				0EE419C32024C365008FA186 /* CardholderNameSpec.swift */,
+				B4F4BCEC2020A44D003C014C /* CardsParserSpec.swift */,
+				0EAA37D51F18E89D0048F2E6 /* CardSpec.swift */,
+				0EAA37D31F18B8C20048F2E6 /* ExpirySpec.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -319,6 +319,16 @@
 				0EE419C12024AE89008FA186 /* LuhnValidable.swift */,
 			);
 			path = Luhn;
+			sourceTree = "<group>";
+		};
+		7718AE65259DD3C4007CBF61 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0E7AC1C2201B6E8000BC3DF3 /* BundleVersionAdapter.swift */,
+				A30801A92018FD0000A1060A /* UrlSession+Synchronous.swift */,
+				A30801AA2018FD0000A1060A /* UrlSessionAdapter.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		7728325C235A428D00CB9BB6 /* Frameworks */ = {
@@ -337,12 +347,12 @@
 		77944C7E2599F03000910CF3 /* StraalTests */ = {
 			isa = PBXGroup;
 			children = (
-				A35C76D3201C914500E0004F /* Operation */,
 				A308015D2018752A00A1060A /* Callable */,
+				A371E71A1D82FD9F00D05B2F /* Cryptor */,
+				A3000E661D8BFD5000258B07 /* Fakes */,
 				A309CAFF1D9945BD00873639 /* Model */,
 				A3000E671D8BFD5400258B07 /* Networking */,
-				A3000E661D8BFD5000258B07 /* Fakes */,
-				A371E71A1D82FD9F00D05B2F /* Cryptor */,
+				A35C76D3201C914500E0004F /* Operation */,
 			);
 			path = StraalTests;
 			sourceTree = "<group>";
@@ -360,12 +370,12 @@
 		A3000E661D8BFD5000258B07 /* Fakes */ = {
 			isa = PBXGroup;
 			children = (
+				B4A6012220246FB300088A0E /* CardValidatorFake.swift */,
 				A34AD01C1D9A5ACE00D13D09 /* DateSourceFake.swift */,
+				77CF7C5C259CECB800C2E5CD /* SafariViewControllerSpy.swift */,
+				77283275235A497800CB9BB6 /* SimpleCallableSpy.swift */,
 				0E90F77C201A15BF0070C526 /* UrlSessionAdapterFake.swift */,
 				0E7AC1C6201B707D00BC3DF3 /* VersionAdapterFake.swift */,
-				B4A6012220246FB300088A0E /* CardValidatorFake.swift */,
-				77283275235A497800CB9BB6 /* SimpleCallableSpy.swift */,
-				77CF7C5C259CECB800C2E5CD /* SafariViewControllerSpy.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -397,16 +407,16 @@
 		A308015D2018752A00A1060A /* Callable */ = {
 			isa = PBXGroup;
 			children = (
-				7728326F235A440B00CB9BB6 /* ParseRedirectCallableSpec.swift */,
+				77283273235A47EE00CB9BB6 /* CacheValueCallable.swift */,
 				A3080160201878F500A1060A /* CryptKeyCallableSpec.swift */,
 				0E90F77A201A09230070C526 /* HttpCallableSpec.swift */,
-				A308016420187C6500A1060A /* ParseResponseCallableSpec.swift */,
-				A308015E2018753500A1060A /* SimpleCallableSpec.swift */,
-				0E7AC1C4201B703B00BC3DF3 /* PostRequestCallableSpec.swift */,
-				77283273235A47EE00CB9BB6 /* CacheValueCallable.swift */,
 				77283279235A4CC700CB9BB6 /* MapCallableSpec.swift */,
 				7728328A235AFF2700CB9BB6 /* MergeCallableSpec.swift */,
+				7728326F235A440B00CB9BB6 /* ParseRedirectCallableSpec.swift */,
+				A308016420187C6500A1060A /* ParseResponseCallableSpec.swift */,
+				0E7AC1C4201B703B00BC3DF3 /* PostRequestCallableSpec.swift */,
 				77DC743E235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift */,
+				A308015E2018753500A1060A /* SimpleCallableSpec.swift */,
 			);
 			path = Callable;
 			sourceTree = "<group>";
@@ -552,7 +562,6 @@
 		A30801A72018FD0000A1060A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				A30801A82018FD0000A1060A /* Common */,
 				A30801AB2018FD0000A1060A /* Endpoint */,
 				A30801AF2018FD0000A1060A /* Response */,
 				A30801B22018FD0000A1060A /* URLCreating */,
@@ -560,21 +569,11 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		A30801A82018FD0000A1060A /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				A30801A92018FD0000A1060A /* UrlSession+Synchronous.swift */,
-				A30801AA2018FD0000A1060A /* UrlSessionAdapter.swift */,
-				0E7AC1C2201B6E8000BC3DF3 /* BundleVersionAdapter.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
 		A30801AB2018FD0000A1060A /* Endpoint */ = {
 			isa = PBXGroup;
 			children = (
-				A30801AD2018FD0000A1060A /* Endpoint.swift */,
 				A30801AC2018FD0000A1060A /* BackendEndpoint.swift */,
+				A30801AD2018FD0000A1060A /* Endpoint.swift */,
 				A30801AE2018FD0000A1060A /* StraalEndpoint.swift */,
 			);
 			path = Endpoint;
@@ -595,8 +594,8 @@
 			isa = PBXGroup;
 			children = (
 				A30801B32018FD0000A1060A /* BackendUrlCreator.swift */,
-				A30801F02018FD2000A1060A /* UrlCreator.swift */,
 				A30801B42018FD0000A1060A /* StraalUrlCreator.swift */,
+				A30801F02018FD2000A1060A /* UrlCreator.swift */,
 			);
 			path = URLCreating;
 			sourceTree = "<group>";
@@ -701,6 +700,7 @@
 				A30801BA2018FD0000A1060A /* Straal.swift */,
 				A30801B52018FD0000A1060A /* Configuration */,
 				A30801B72018FD0000A1060A /* Cryptor */,
+				7718AE65259DD3C4007CBF61 /* Extensions */,
 				A308018D2018FD0000A1060A /* Model */,
 				A30801A72018FD0000A1060A /* Networking */,
 				A30801752018FD0000A1060A /* Operation */,

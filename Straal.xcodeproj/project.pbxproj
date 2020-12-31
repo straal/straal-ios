@@ -417,8 +417,8 @@
 				A30801762018FD0000A1060A /* Callable */,
 				A30801832018FD0000A1060A /* CreateCard.swift */,
 				A30801842018FD0000A1060A /* CreateTransactionWithCard.swift */,
-				7728326B235A440400CB9BB6 /* Init3DSOperation.swift */,
 				A30801852018FD0000A1060A /* EncryptedOperation.swift */,
+				7728326B235A440400CB9BB6 /* Init3DSOperation.swift */,
 				A30801862018FD0000A1060A /* StraalOperation.swift */,
 			);
 			path = Operation;
@@ -428,21 +428,21 @@
 			isa = PBXGroup;
 			children = (
 				A30801772018FD0000A1060A /* AnyCallable.swift */,
+				77283271235A47DA00CB9BB6 /* CacheValueCallable.swift */,
 				A30801782018FD0000A1060A /* Callable.swift */,
 				A30801792018FD0000A1060A /* CryptKeyResponseCallable.swift */,
-				A308017A2018FD0000A1060A /* EncodeCallable.swift */,
 				A30801F22018FDED00A1060A /* DecodeCallable.swift */,
+				A308017A2018FD0000A1060A /* EncodeCallable.swift */,
 				A308017B2018FD0000A1060A /* EncryptCallable.swift */,
 				A308017C2018FD0000A1060A /* HttpCallable.swift */,
-				A308017D2018FD0000A1060A /* MapToJsonCallable.swift */,
 				77283277235A4CB200CB9BB6 /* MapCallable.swift */,
+				A308017D2018FD0000A1060A /* MapToJsonCallable.swift */,
 				77283288235AFF1D00CB9BB6 /* MergeCallable.swift */,
 				A308017E2018FD0000A1060A /* ParseErrorCallable.swift */,
-				77283271235A47DA00CB9BB6 /* CacheValueCallable.swift */,
 				77283256235A3AAF00CB9BB6 /* ParseRedirectCallable.swift */,
 				A30801802018FD0000A1060A /* PostRequestCallable.swift */,
-				A30801812018FD0000A1060A /* SimpleCallable.swift */,
 				77283282235AE5CE00CB9BB6 /* PresentStraalViewControllerCallable.swift */,
+				A30801812018FD0000A1060A /* SimpleCallable.swift */,
 			);
 			path = Callable;
 			sourceTree = "<group>";
@@ -494,24 +494,24 @@
 		A30801912018FD0000A1060A /* CardBrand */ = {
 			isa = PBXGroup;
 			children = (
-				A30801902018FD0000A1060A /* CardBrand.swift */,
 				A30801922018FD0000A1060A /* AmericanExpress.swift */,
-				A30801932018FD0000A1060A /* MasterCard.swift */,
-				A30801942018FD0000A1060A /* Visa.swift */,
-				B4F4BCF02020B90E003C014C /* VisaElectron.swift */,
-				B4742A8A2021D96A00EAD828 /* Switch.swift */,
-				B4742A8E2021E21900EAD828 /* JCB.swift */,
 				B4742A902021E32200EAD828 /* Bankcard.swift */,
+				A30801902018FD0000A1060A /* CardBrand.swift */,
+				B4742A962021EAF400EAD828 /* CUP.swift */,
+				B4742AA02021F19B00EAD828 /* Dankort.swift */,
 				B4742A922021E5BB00EAD828 /* Diners.swift */,
 				B4742A942021E6E900EAD828 /* Discover.swift */,
-				B4742A962021EAF400EAD828 /* CUP.swift */,
-				B4742A982021ED2F00EAD828 /* InterPayment.swift */,
 				B4742A9A2021EF0100EAD828 /* InstaPayment.swift */,
+				B4742A982021ED2F00EAD828 /* InterPayment.swift */,
+				B4742A8E2021E21900EAD828 /* JCB.swift */,
 				B4742A9E2021F03700EAD828 /* Laser.swift */,
-				B4742AA02021F19B00EAD828 /* Dankort.swift */,
 				B4742AA22021F21000EAD828 /* Maestro.swift */,
+				A30801932018FD0000A1060A /* MasterCard.swift */,
 				B4742AA42021FF5100EAD828 /* Solo.swift */,
+				B4742A8A2021D96A00EAD828 /* Switch.swift */,
 				B4742AA62022006600EAD828 /* UATP.swift */,
+				A30801942018FD0000A1060A /* Visa.swift */,
+				B4F4BCF02020B90E003C014C /* VisaElectron.swift */,
 			);
 			path = CardBrand;
 			sourceTree = "<group>";
@@ -583,10 +583,10 @@
 		A30801AF2018FD0000A1060A /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				A30801B12018FD0000A1060A /* StraalResponse.swift */,
-				A30801B02018FD0000A1060A /* EncryptedOperationResponse.swift */,
 				77283268235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift */,
+				A30801B02018FD0000A1060A /* EncryptedOperationResponse.swift */,
 				77283286235AE97F00CB9BB6 /* Init3DSContext.swift */,
+				A30801B12018FD0000A1060A /* StraalResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -698,12 +698,12 @@
 		A371E71F1D82FDA800D05B2F /* Straal */ = {
 			isa = PBXGroup;
 			children = (
+				A30801BA2018FD0000A1060A /* Straal.swift */,
 				A30801B52018FD0000A1060A /* Configuration */,
 				A30801B72018FD0000A1060A /* Cryptor */,
 				A308018D2018FD0000A1060A /* Model */,
 				A30801A72018FD0000A1060A /* Networking */,
 				A30801752018FD0000A1060A /* Operation */,
-				A30801BA2018FD0000A1060A /* Straal.swift */,
 				A30801872018FD0000A1060A /* Tools */,
 			);
 			path = Straal;

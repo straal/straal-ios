@@ -325,6 +325,9 @@
 			isa = PBXGroup;
 			children = (
 				0E7AC1C2201B6E8000BC3DF3 /* BundleVersionAdapter.swift */,
+				A308018A2018FD0000A1060A /* Collection+Extension.swift */,
+				A30801882018FD0000A1060A /* DateSource.swift */,
+				A308018B2018FD0000A1060A /* String+Extension.swift */,
 				A30801A92018FD0000A1060A /* UrlSession+Synchronous.swift */,
 				A30801AA2018FD0000A1060A /* UrlSessionAdapter.swift */,
 			);
@@ -455,24 +458,6 @@
 				A30801812018FD0000A1060A /* SimpleCallable.swift */,
 			);
 			path = Callable;
-			sourceTree = "<group>";
-		};
-		A30801872018FD0000A1060A /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				A30801882018FD0000A1060A /* DateSource.swift */,
-				A30801892018FD0000A1060A /* Extensions */,
-			);
-			path = Tools;
-			sourceTree = "<group>";
-		};
-		A30801892018FD0000A1060A /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				A308018A2018FD0000A1060A /* Collection+Extension.swift */,
-				A308018B2018FD0000A1060A /* String+Extension.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		A308018D2018FD0000A1060A /* Model */ = {
@@ -704,7 +689,6 @@
 				A308018D2018FD0000A1060A /* Model */,
 				A30801A72018FD0000A1060A /* Networking */,
 				A30801752018FD0000A1060A /* Operation */,
-				A30801872018FD0000A1060A /* Tools */,
 			);
 			path = Straal;
 			sourceTree = "<group>";

@@ -334,6 +334,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		7718AE6A259DD5DB007CBF61 /* Permission */ = {
+			isa = PBXGroup;
+			children = (
+				A308019A2018FD0000A1060A /* CryptKeyPermission.swift */,
+			);
+			path = Permission;
+			sourceTree = "<group>";
+		};
 		7728325C235A428D00CB9BB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,8 +472,8 @@
 			isa = PBXGroup;
 			children = (
 				A308018E2018FD0000A1060A /* Card */,
-				A308019A2018FD0000A1060A /* CryptKeyPermission.swift */,
 				A308019B2018FD0000A1060A /* Error */,
+				7718AE6A259DD5DB007CBF61 /* Permission */,
 				A308019F2018FD0000A1060A /* Transaction */,
 				A30801A32018FD0000A1060A /* Validation */,
 			);

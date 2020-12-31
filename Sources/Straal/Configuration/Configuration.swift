@@ -52,6 +52,8 @@ public struct StraalConfiguration {
 	/// Dictionary of key-value pairs that will be added as headers to every HTTP request to your backend service
 	public let headers: [String: String]
 
+	// MARK: Internal
+
 	internal let straalApiVersion: Int = 1
 	internal let backendApiVersion: Int = 1
 	internal let straalDefaultHeaders: [String: String] = [:]

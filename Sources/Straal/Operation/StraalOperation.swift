@@ -22,5 +22,8 @@ import Foundation
 
 public protocol StraalOperation {
 	associatedtype Response: StraalResponse
+	associatedtype Context: OperationContext
+
 	func perform(configuration: StraalConfiguration) throws -> Response
+	var context: Context { get }
 }

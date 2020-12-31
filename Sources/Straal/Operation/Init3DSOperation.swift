@@ -24,6 +24,7 @@ import UIKit
 /// Creates a card with the first transaction
 public final class Init3DSOperation: EncryptedOperation {
 	public typealias Response = Encrypted3DSOperationResponse
+	public typealias Context = Init3DSOperationContext
 
 	// swiftlint:disable nesting
 	private struct PermissionAndTransaction: Encodable {
@@ -72,6 +73,8 @@ public final class Init3DSOperation: EncryptedOperation {
 
 	/// Transaction
 	public let transaction: Transaction
+
+	public internal(set) var context: Init3DSOperationContext = .init()
 
 	private let present3DSViewController: (UIViewController) -> Void
 	private let dismiss3DSViewController: (UIViewController) -> Void

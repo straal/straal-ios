@@ -25,8 +25,12 @@ public final class CreateCard: EncryptedOperation {
 
 	public typealias Response = EncryptedOperationResponse
 
+	public typealias Context = SimpleOperationContext
+
 	/// Straal card
 	public var card: Card
+
+	public internal(set) var context: SimpleOperationContext = .init()
 
 	let permission = CryptKeyPermission.cardsCreate
 

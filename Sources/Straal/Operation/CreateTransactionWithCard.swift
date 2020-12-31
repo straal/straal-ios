@@ -24,6 +24,8 @@ import Foundation
 public final class CreateTransactionWithCard: EncryptedOperation {
 
 	public typealias Response = EncryptedOperationResponse
+	
+	public typealias Context = SimpleOperationContext
 
 	// swiftlint:disable nesting
 	private struct PermissionAndTransaction: Encodable {
@@ -47,6 +49,8 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 
 	/// Transaction
 	public let transaction: Transaction
+
+	public internal(set) var context: SimpleOperationContext = .init()
 
 	internal let permission = CryptKeyPermission.transactionCardCreate
 

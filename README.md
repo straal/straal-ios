@@ -17,6 +17,7 @@
 - [Features](#features)
 - [Requirements](#requirements)
   - [Back end](#back-end)
+  - [Universal Links](#universal-links)
 - [Installation](#installation)
   - [Cocoapods](#cocoapods)
   - [Carthage](#carthage)
@@ -50,6 +51,32 @@ You also need a back-end service which will handle payment information and creat
 Your back-end service needs to implement **at least one endpoint** at `https://_base_url_/straal/v1/cryptkeys`. This endpoint is used by this SDK to fetch `CryptKeys` that encrypt sensitive user data. To customize the path at which you fetch your `CryptKey`, you can use `StraalConfiguration`.
 
 > It is your back end's job to authorize the user and reject the `CryptKey` fetch if necessary.
+
+### Universal Links
+
+In order to correctly handle message redirects, you need to open your backend redirects in you app. iOS supports this using [Universal Links](https://developer.apple.com/ios/universal-links/). There are 3 steps to configuring universal links in your app:
+
+1. In Xcode, click on your project in the Project Navigator and navigate to App Target > Signing & Capabilities
+2. Click [+ Capability] to add a new capability
+3. Add *Associated Domains*
+4. Under *Associated Domains* add an entry: `applinks:your-merchant-backen-url-domain`.
+5. IOS will verify you domain association by requesting your configuration from `https://your-merchant-backend-url-domain/.well-known/apple-app-site-association`. See more [here](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_associated-domains). You need to configure your AASA in order to handle return links from 3DS-based operations. Tha path that is needed for Straal SDK is `/x-callback-url/straal/*`, so your file should look something like:
+
+```json
+{
+  "applinks": {
+    "details": [
+      {
+        "appID": "XXXXXXXX.com.bundle.identifier",
+        "paths": ["/x-callback-url/straal/*"]
+      }
+    ],
+    "apps": []
+  }
+}
+```
+
+>Please remember to confiigure app links in order to automatically handle 3DS operations. You can verify your setup [here](https://branch.io/resources/aasa-validator/).
 
 ## Installation
 
@@ -114,7 +141,7 @@ First, create a `StraalConfiguration` object (which consists of your Merchant UR
 You can also add additional `cryptKeyPath` which will be the URL at which we would fetch your backend service for a new crypt key. If you don't provide a value here, we'll use the default which is `https://_base_url_/straal/v1/cryptkeys`.
 
 ```swift
-let url = URL(string: "https://my-merchant-backen-url.com")!
+let url = URL(string: "https://your-merchant-backen-url.com")!
 let headers = ["x-user-token": myUserToken] // You have to authorize your user on cryptkeys endpoint using this header!
 let configuration = StraalConfiguration(baseUrl: url, headers: headers)
 let straal = Straal(configuration: configuration)
@@ -192,7 +219,7 @@ straal.perform(operation: transactionWithCardOperation) { (response, error) in
 
 #### Init 3D-Secure
 
-The third supported operatio is `Init3DS`.
+The third supported operation is `Init3DS`.
 ```swift
 
 /// First, create a Card and a Transaction.
@@ -221,8 +248,8 @@ straal.perform(operation: operation) { (response, error) in
   "transaction": {
     "amount": 200,
     "currency": "usd",
-    "success_url": "https://sdk.straal.com/success",
-    "failure_url": "https://sdk.straal.com/failure"
+    "success_url": "https://your-merchant-backen-url/x-callback-url/straal/success",
+    "failure_url": "https://your-merchant-backen-url/x-callback-url/straal/failure"
   }
 }
 ```

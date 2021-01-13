@@ -78,7 +78,8 @@ public final class Straal {
 
 public extension Straal {
 
-	// TODO: Docs
+	/// Use this to handle external user activity in your `SceneDelegate` class
+	/// - Parameter userActivity: user activity
 	class func handle(_ userActivity: NSUserActivity) {
 		if let openURLContext = userActivity.openURLContext {
 			OperationContextContainerImpl
@@ -89,6 +90,8 @@ public extension Straal {
 		}
 	}
 
+	/// Use this to handle external user activity in your `SceneDelegate` class
+	/// - Parameter userActivity: user activity
 	func handle(_ userActivity: NSUserActivity) {
 		if let openURLContext = userActivity.openURLContext {
 			configuration
@@ -100,3 +103,6 @@ public extension Straal {
 	}
 
 }
+
+/// Use this to avoid confusion between module and class name
+public typealias StraalMain = Straal

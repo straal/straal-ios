@@ -76,7 +76,7 @@ In order to correctly handle message redirects, you need to open your backend re
 }
 ```
 
->Please remember to confiigure app links in order to automatically handle 3DS operations. You can verify your setup [here](https://branch.io/resources/aasa-validator/).
+>Please remember to configure app links in order to automatically handle 3DS operations. You can verify your setup [here](https://branch.io/resources/aasa-validator/).
 
 ## Installation
 

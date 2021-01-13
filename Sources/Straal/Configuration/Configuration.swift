@@ -34,13 +34,21 @@ public struct StraalConfiguration {
 		self.headers = headers ?? [:]
 		self.cryptKeyPath = cryptKeyPath
 		self.urlSession = UrlSessionAdapter()
+		self.operationContextContainer = OperationContextContainerImpl.shared
 	}
 
-	internal init(baseUrl: URL, headers: [String: String]? = nil, cryptKeyPath: String? = nil, urlSession: UrlSessionAdapting) {
+	internal init(
+		baseUrl: URL,
+		headers: [String: String]? = nil,
+		cryptKeyPath: String? = nil,
+		urlSession: UrlSessionAdapting,
+		operationContextContainer: OperationContextContainer
+	) {
 		self.backendBaseUrl = baseUrl
 		self.headers = headers ?? [:]
 		self.cryptKeyPath = cryptKeyPath
 		self.urlSession = urlSession
+		self.operationContextContainer = operationContextContainer
 	}
 
 	/// Base URL of your backend service that uses Straal SDK and provides crypt key endpoint
@@ -60,9 +68,6 @@ public struct StraalConfiguration {
 	internal let straalApiUrl: URL = URL(string: "https://api.straal.com")!
 
 	internal let urlSession: UrlSessionAdapting
+	internal let operationContextContainer: OperationContextContainer
 
-	// MARK: 3D SECURE
-
-	internal let init3DSSuccessURL: URL = URL(string: "https://sdk.straal.com/success")!
-	internal let init3DSFailureURL: URL = URL(string: "https://sdk.straal.com/failure")!
 }

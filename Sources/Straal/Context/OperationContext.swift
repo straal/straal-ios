@@ -19,4 +19,4 @@
  */
 
 /// This represents a persistent operation context. You never need to handle contexts by yourself
-public protocol OperationContext {}
+public protocol OperationContext: class {}

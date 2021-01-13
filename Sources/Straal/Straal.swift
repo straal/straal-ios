@@ -49,12 +49,14 @@ public final class Straal {
 	// MARK: - Public API
 
 	/// Performs your task on the queue that it's called on, and returns a correct response, or throws an error from one of the tasks
-	/// @warn: Do not call this on the main queuq, as it's a blocking call
+	/// @warn: Do not call this on the main queue, as it's a blocking call
 	///
 	/// - Parameter operation: operation to execute
 	/// - Returns: the final result of the operation
 	/// - Throws: StraalError or any system error that might have happened
 	public func performSync<O: StraalOperation, T>(operation: O) throws -> T where O.Response == T {
+		configuration.operationContextContainer.register(context: operation.context)
+		defer { configuration.operationContextContainer.unregister(context: operation.context) }
 		return try operation.perform(configuration: configuration)
 	}
 
@@ -72,4 +74,29 @@ public final class Straal {
 			}
 		}
 	}
+}
+
+public extension Straal {
+
+	// TODO: Docs
+	class func handle(_ userActivity: NSUserActivity) {
+		if let openURLContext = userActivity.openURLContext {
+			OperationContextContainerImpl
+				.shared
+				.registered
+				.compactMap { $0 as? OpenURLContextHandler }
+				.forEach { $0.handle(openURLContext) }
+		}
+	}
+
+	func handle(_ userActivity: NSUserActivity) {
+		if let openURLContext = userActivity.openURLContext {
+			configuration
+				.operationContextContainer
+				.registered
+				.compactMap { $0 as? OpenURLContextHandler }
+				.forEach { $0.handle(openURLContext) }
+		}
+	}
+
 }

@@ -19,25 +19,22 @@
  */
 
 import Foundation
-import UIKit
 
 internal struct OpenURLContext: Equatable {
 	var url: URL
-	var sourceApplication: String?
 
-	init(uiOpenURLContext: UIOpenURLContext) {
-		url = uiOpenURLContext.url
-		sourceApplication = uiOpenURLContext.options.sourceApplication
+	init?(userActivity: NSUserActivity) {
+		guard let url = userActivity.webpageURL else { return nil }
+		self.url = url
 	}
 
-	init(url: URL, sourceApplication: String?) {
+	init(url: URL) {
 		self.url = url
-		self.sourceApplication = sourceApplication
 	}
 }
 
-internal extension UIOpenURLContext {
-	var openURLContext: OpenURLContext {
-		.init(uiOpenURLContext: self)
+internal extension NSUserActivity {
+	var openURLContext: OpenURLContext? {
+		OpenURLContext(userActivity: self)
 	}
 }

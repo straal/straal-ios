@@ -18,6 +18,9 @@
 - [Requirements](#requirements)
   - [Back end](#back-end)
 - [Installation](#installation)
+  - [Cocoapods](#cocoapods)
+  - [Carthage](#carthage)
+  - [Swift Package Manager](#swift-package-manager)
 - [Usage](#usage)
   - [Overview](#overview)
   - [Initial configuration](#initial-configuration)
@@ -38,7 +41,7 @@
 
 ## Requirements
 
-Straal SDK requires deployment target of **iOS 9.0+** and Xcode **8.0+**.
+Straal SDK requires deployment target of **iOS 13.0+** and Xcode **11.0+**.
 
 ### Back end
 
@@ -50,15 +53,49 @@ Your back-end service needs to implement **at least one endpoint** at `https://_
 
 ## Installation
 
-We recommend using *CocoaPods*.
+### CocoaPods
 
-Add the following lines to your **Podfile**:
+[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
 
-```ruby
-pod 'Straal',    '~> 0.1.0'
+```bash
+$ gem install cocoapods
 ```
 
-Then run `pod install`.
+To integrate Straal into your project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+pod 'Straal', '~> 0.6.0'
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
+
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+To integrate Straal into your project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "straal/straal-ios" ~> 0.6.0
+```
+
+Run `carthage update` to build the framework and drag the built `Straal.framework` into your Xcode project.
+
+### Swift Package Manager
+
+[Swift Package Manager](https://swift.org/package-manager/) is a tool for managing the distribution of Swift packages. It’s integrated with the Swift build system and Xcode.
+
+To integrate Straal into your project using Swift Package Manager, add it to your Xcode project or to your `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/straal/straal-ios.git", .upToNextMajor(from: "0.6.0"))
+]
+```
 
 ## Usage
 

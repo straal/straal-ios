@@ -1,4 +1,3 @@
-//
 /*
  * ReturnURLProviderTests.swift
  * Created by Michał Dąbrowski on 31/12/2020.
@@ -40,19 +39,23 @@ class ReturnURLProviderTests: XCTestCase {
 	}
 
 	func testDefaultSuccessReturnURL() {
-		expect(self.sut.successURL(scheme: .default).absoluteString).to(equal("https://x-callback-url/straal/success"))
+		expect(self.sut.successURL(baseURL: URL(string: "https://exaple.com/")!).absoluteString).to(equal("https://exaple.com/x-callback-url/straal/success"))
 	}
 
-	func testCustomSuccessReturnURL() {
-		expect(self.sut.successURL(scheme: .custom("com.straal.example.payments")).absoluteString).to(equal("com.straal.example.payments://x-callback-url/straal/success"))
+	func testSuccessReturnURLWithDomainPath() {
+		expect(self.sut.successURL(baseURL: URL(string: "https://exaple.com/strr")!).absoluteString).to(equal("https://exaple.com/x-callback-url/straal/success"))
+	}
+
+	func testSuccessReturnURLWithHTTP() {
+		expect(self.sut.successURL(baseURL: URL(string: "http://staging.exaple.com/something")!).absoluteString).to(equal("https://staging.exaple.com/x-callback-url/straal/success"))
 	}
 
 	func testDefaultFailureReturnURL() {
-		expect(self.sut.failureURL(scheme: .default).absoluteString).to(equal("https://x-callback-url/straal/failure"))
+		expect(self.sut.failureURL(baseURL: URL(string: "https://exaple.com/")!).absoluteString).to(equal("https://exaple.com/x-callback-url/straal/failure"))
 	}
 
-	func testCustomFailureReturnURL() {
-		expect(self.sut.failureURL(scheme: .custom("com.straal.example.payments")).absoluteString).to(equal("com.straal.example.payments://x-callback-url/straal/failure"))
+	func testFailureReturnURLWithDomainPath() {
+		expect(self.sut.failureURL(baseURL: URL(string: "https://exaple.com/strr")!).absoluteString).to(equal("https://exaple.com/x-callback-url/straal/failure"))
 	}
 
 }

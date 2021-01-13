@@ -78,6 +78,18 @@ In order to correctly handle message redirects, you need to open your backend re
 
 >Please remember to configure app links in order to automatically handle 3DS operations. You can verify your setup [here](https://branch.io/resources/aasa-validator/).
 
+Then you need to let Straal know about external user activity during 3DS process. To do that, add a method to your `SceneDelegate`:
+
+```swift
+
+func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+  Straal.handle(userActivity)
+}
+
+```
+
+This will allow Straal to close any `SFSafariViewController` windows needed for 3DS processing.
+
 ## Installation
 
 ### CocoaPods

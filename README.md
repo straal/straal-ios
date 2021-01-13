@@ -248,8 +248,8 @@ straal.perform(operation: operation) { (response, error) in
   "transaction": {
     "amount": 200,
     "currency": "usd",
-    "success_url": "https://your-merchant-backen-url/x-callback-url/straal/success",
-    "failure_url": "https://your-merchant-backen-url/x-callback-url/straal/failure"
+    "success_url": "https://your-merchant-backend-url/x-callback-url/straal/success",
+    "failure_url": "https://your-merchant-backend-url/x-callback-url/straal/failure"
   }
 }
 ```

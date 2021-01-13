@@ -54,7 +54,7 @@ Your back-end service needs to implement **at least one endpoint** at `https://_
 
 ### Universal Links
 
-In order to correctly handle message redirects, you need to open your backend redirects in you app. iOS supports this using [Universal Links](https://developer.apple.com/ios/universal-links/). There are 3 steps to configuring universal links in your app:
+In order to correctly handle message redirects, you need to open your backend redirects in you app. iOS supports this using [Universal Links](https://developer.apple.com/ios/universal-links/). There are a few steps to configuring universal links in your app:
 
 1. In Xcode, click on your project in the Project Navigator and navigate to App Target > Signing & Capabilities
 2. Click [+ Capability] to add a new capability

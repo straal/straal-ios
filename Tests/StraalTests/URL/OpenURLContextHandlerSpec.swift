@@ -39,14 +39,8 @@ class OpenURLContextHandlerSpec: QuickSpec {
 			beforeEach {
 				sut = .init()
 				handlerFake = .init()
-				openURLContext1 = .init(
-					url: URL(string: "https://straal.com/return/success")!,
-					sourceApplication: nil
-				)
-				openURLContext2 = .init(
-					url: URL(string: "https://straal.com/return/failure")!,
-					sourceApplication: "MyBankingApp"
-				)
+				openURLContext1 = .init(url: URL(string: "https://straal.com/return/success")!)
+				openURLContext2 = .init(url: URL(string: "https://straal.com/return/failure")!)
 			}
 
 			afterEach {

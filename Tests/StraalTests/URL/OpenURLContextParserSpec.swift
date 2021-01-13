@@ -34,8 +34,8 @@ class OpenURLContextParserSpec: QuickSpec {
 			var sut: OpenURLContextParser!
 			var successCalled: Int!
 			var failureCalled: Int!
-			let successURL: URL = URL(string: "com.straal.app.test.pay/x-callback-url/straal/success")!
-			let failureURL = URL(string: "com.straal.app.test.pay/x-callback-url/straal/failure")!
+			let successURL: URL = URL(string: "https://domain.com/x-callback-url/straal/success")!
+			let failureURL = URL(string: "https://domain.com/x-callback-url/straal/failure")!
 			let redirectURL = URL(string: "https://straal.com/webpay/aliuterif")!
 
 			beforeEach {
@@ -59,7 +59,7 @@ class OpenURLContextParserSpec: QuickSpec {
 
 			describe("redirect url") {
 				beforeEach {
-					sut.handle(.init(url: redirectURL, sourceApplication: nil))
+					sut.handle(.init(url: redirectURL))
 				}
 
 				it("should not call success") {
@@ -73,7 +73,7 @@ class OpenURLContextParserSpec: QuickSpec {
 
 			describe("success url") {
 				beforeEach {
-					sut.handle(.init(url: successURL, sourceApplication: nil))
+					sut.handle(.init(url: successURL))
 				}
 
 				it("should call success") {
@@ -87,7 +87,7 @@ class OpenURLContextParserSpec: QuickSpec {
 
 			describe("failure url") {
 				beforeEach {
-					sut.handle(.init(url: failureURL, sourceApplication: nil))
+					sut.handle(.init(url: failureURL))
 				}
 
 				it("should not call success") {
@@ -101,8 +101,8 @@ class OpenURLContextParserSpec: QuickSpec {
 
 			describe("some other url with same scope url") {
 				beforeEach {
-					let url = URL(string: "com.straal.app.test.pay/x-callback-url/daftmobile/success")!
-					sut.handle(.init(url: url, sourceApplication: nil))
+					let url = URL(string: "https://domain.com/x-callback-url/daftmobile/success")!
+					sut.handle(.init(url: url))
 				}
 
 				it("should not call success") {

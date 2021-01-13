@@ -141,7 +141,7 @@ First, create a `StraalConfiguration` object (which consists of your Merchant UR
 You can also add additional `cryptKeyPath` which will be the URL at which we would fetch your backend service for a new crypt key. If you don't provide a value here, we'll use the default which is `https://_base_url_/straal/v1/cryptkeys`.
 
 ```swift
-let url = URL(string: "https://your-merchant-backen-url.com")!
+let url = URL(string: "https://your-merchant-backend-url.com")!
 let headers = ["x-user-token": myUserToken] // You have to authorize your user on cryptkeys endpoint using this header!
 let configuration = StraalConfiguration(baseUrl: url, headers: headers)
 let straal = Straal(configuration: configuration)

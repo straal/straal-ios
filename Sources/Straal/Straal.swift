@@ -81,25 +81,24 @@ public extension Straal {
 	/// Use this to handle external user activity in your `SceneDelegate` class
 	/// - Parameter userActivity: user activity
 	class func handle(_ userActivity: NSUserActivity) {
-		if let openURLContext = userActivity.openURLContext {
-			OperationContextContainerImpl
-				.shared
-				.registered
-				.compactMap { $0 as? OpenURLContextHandler }
-				.forEach { $0.handle(openURLContext) }
-		}
+		handle(userActivity, with: OperationContextContainerImpl.shared)
 	}
 
 	/// Use this to handle external user activity in your `SceneDelegate` class
 	/// - Parameter userActivity: user activity
 	func handle(_ userActivity: NSUserActivity) {
-		if let openURLContext = userActivity.openURLContext {
-			configuration
-				.operationContextContainer
-				.registered
-				.compactMap { $0 as? OpenURLContextHandler }
-				.forEach { $0.handle(openURLContext) }
-		}
+		Straal.handle(userActivity, with: configuration.operationContextContainer)
+	}
+
+	private class func handle(
+		_ userActivity: NSUserActivity,
+		with container: OperationContextContainer
+	) {
+		guard let openURLContext = userActivity.openURLContext else { return }
+		container
+			.registered
+			.compactMap { $0 as? OpenURLContextHandler }
+			.forEach { $0.handle(openURLContext) }
 	}
 
 }

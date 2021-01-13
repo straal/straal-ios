@@ -29,10 +29,6 @@ class OpenURLContextHandlerImpl: OpenURLContextHandler, OpenURLContextRegistrati
 
 	private(set) var registeredHandlers: [OpenURLContextHandler] = []
 
-	func handle(_ context: UIOpenURLContext) {
-		handle(context.openURLContext)
-	}
-
 	func handle(_ context: OpenURLContext) {
 		registeredHandlers.forEach { $0.handle(context) }
 	}

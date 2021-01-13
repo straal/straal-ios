@@ -1,4 +1,3 @@
-//
 /*
  * PresentStraalViewControllerCallableSpec.swift
  * Created by Michał Dąbrowski on 19/10/2019.
@@ -39,6 +38,18 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 			var capturedDismissedViewController: UIViewController?
 			var capturedStatus: Encrypted3DSOperationStatus!
 			var capturedURL: URL?
+			var capturedOnSuccess: (() -> Void)?
+			var capturedOnFailure: (() -> Void)?
+			var urlRegistrationFake: OpenURLContextRegistrationFake!
+			var urlContextHandlerFake: OpenURLContextHandlerFake!
+
+			var presentAndCancelByUser: ((UIViewController) -> Void)!
+
+			var presentAndSucceed: ((UIViewController) -> Void)!
+			var presentAndFail: ((UIViewController) -> Void)!
+			var dismiss: ((UIViewController) -> Void)!
+			var handlerFactory: OpenURLHandlerFactory!
+			var safariFactory: ((URL) -> SFSafariViewController)!
 
 			beforeEach {
 				uniqueValue = UUID()
@@ -46,26 +57,57 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 				presentCallCount = 0
 				dismissCallCount = 0
 				capturedStatus = nil
-				init3DSURLs = Init3DSContext(
+				capturedOnSuccess = nil
+				capturedOnFailure = nil
+				urlRegistrationFake = .init()
+				urlContextHandlerFake = .init()
+				init3DSURLs = Init3DSURLs(
 					redirectURL: URL(string: "https://sdk.straa.com/redirect")!,
 					successURL: URL(string: "https://sdk.straa.com/success")!,
-					failureURL: URL(string: "https://sdk.straa.com/failure")!)
-				sut = PresentStraalViewControllerCallable(
-					context: AnyCallable.of(init3DSURLs),
-					present: { viewController in
-						guard uniqueValue?.uuidString == uuidString else { XCTFail("Invalid test!"); return }
-						presentCallCount += 1
-						let safariViewController = viewController as? SFSafariViewController
-						capturedPresentedViewController = viewController
-						safariViewController?.delegate?.safariViewControllerDidFinish?(safariViewController!)
-					}, dismiss: { viewController in
-						guard uniqueValue?.uuidString == uuidString else { XCTFail("Invalid test!"); return }
-						dismissCallCount += 1
-						capturedDismissedViewController = viewController
-					}, viewControllerFactory: { url in
-						capturedURL = url
-						return SafariViewControllerSpy(url: url)
-					})
+					failureURL: URL(string: "https://sdk.straa.com/failure")!
+				)
+				presentAndCancelByUser = { viewController in
+					guard uniqueValue?.uuidString == uuidString else { XCTFail("Invalid test!"); return }
+					presentCallCount += 1
+					let safariViewController = viewController as? SFSafariViewController
+					capturedPresentedViewController = viewController
+					safariViewController?.delegate?.safariViewControllerDidFinish?(safariViewController!)
+				}
+				presentAndSucceed = { viewController in
+					guard uniqueValue?.uuidString == uuidString else { XCTFail("Invalid test!"); return }
+					presentCallCount += 1
+					capturedPresentedViewController = viewController
+					Thread.sleep(forTimeInterval: 0.1)
+					guard let success = capturedOnSuccess else {
+						XCTFail("Success not handled"); return
+					}
+					success()
+				}
+				presentAndFail = { viewController in
+					guard uniqueValue?.uuidString == uuidString else { XCTFail("Invalid test!"); return }
+					presentCallCount += 1
+					capturedPresentedViewController = viewController
+					//					Thread.sleep(until: .now() + .milliseconds(100))
+					Thread.sleep(forTimeInterval: 0.1)
+					guard let fail = capturedOnFailure else {
+						XCTFail("Success not handled"); return
+					}
+					fail()
+				}
+				dismiss = { viewController in
+					guard uniqueValue?.uuidString == uuidString else { XCTFail("Invalid test!"); return }
+					dismissCallCount += 1
+					capturedDismissedViewController = viewController
+				}
+				safariFactory = { url in
+					capturedURL = url
+					return SafariViewControllerSpy(url: url)
+				}
+				handlerFactory = { _, onSuccess, onFailure in
+					capturedOnSuccess = onSuccess
+					capturedOnFailure = onFailure
+					return urlContextHandlerFake
+				}
 			}
 
 			afterEach {
@@ -77,6 +119,16 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 				init3DSURLs = nil
 				capturedStatus = nil
 				capturedURL = nil
+				capturedOnSuccess = nil
+				capturedOnFailure = nil
+				urlRegistrationFake = nil
+				urlContextHandlerFake = nil
+				safariFactory = nil
+				handlerFactory = nil
+				presentAndCancelByUser = nil
+				presentAndSucceed = nil
+				presentAndFail = nil
+				dismiss = nil
 				sut = nil
 			}
 
@@ -84,8 +136,17 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 				expect(presentCallCount).to(equal(0))
 			}
 
-			context("when present is called and completed") {
+			context("when present is called and cancelled by user") {
 				beforeEach {
+					sut = PresentStraalViewControllerCallable(
+						urls: AnyCallable.of(init3DSURLs),
+						present: presentAndCancelByUser,
+						dismiss: dismiss,
+						notificationRegistration: AnyCallable.of(urlRegistrationFake).asCallable(),
+						notificationHandlerFactory: handlerFactory,
+						viewControllerFactory: safariFactory
+					)
+
 					waitUntil { done in
 						DispatchQueue.global().async {
 							capturedStatus = try? sut.call()
@@ -107,15 +168,144 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 					expect(capturedPresentedViewController).to(beAKindOf(SafariViewControllerSpy.self))
 				}
 
-				it("should return unknown status") {
-					expect(capturedStatus).to(equal(.unknown))
+				it("should return failure status") {
+					expect(capturedStatus).to(equal(.failure))
 				}
 
 				it("should present correct url") {
 					expect(capturedURL?.absoluteString).to(equal("https://sdk.straa.com/redirect"))
 				}
+
+				it("should register once for urls") {
+					expect(urlRegistrationFake.registerCalled).to(haveCount(1))
+				}
+
+				it("should register object returned from factory") {
+					expect(urlRegistrationFake.registerCalled.first).to(be(urlContextHandlerFake))
+				}
+
+				it("should deregister once for urls") {
+					expect(urlRegistrationFake.unregisterCalled).to(haveCount(1))
+				}
+
+				it("should deregister object returned from factory") {
+					expect(urlRegistrationFake.unregisterCalled.first).to(be(urlContextHandlerFake))
+				}
+			}
+
+			context("when present is called and succeeds") {
+				beforeEach {
+					sut = PresentStraalViewControllerCallable(
+						urls: AnyCallable.of(init3DSURLs),
+						present: presentAndSucceed,
+						dismiss: dismiss,
+						notificationRegistration: AnyCallable.of(urlRegistrationFake).asCallable(),
+						notificationHandlerFactory: handlerFactory,
+						viewControllerFactory: safariFactory
+					)
+
+					waitUntil { done in
+						DispatchQueue.global().async {
+							capturedStatus = try? sut.call()
+							done()
+						}
+					}
+				}
+
+				it("should call present once") {
+					expect(presentCallCount).to(equal(1))
+				}
+
+				it("should call dismiss") {
+					expect(dismissCallCount).to(equal(1))
+					expect(capturedDismissedViewController).to(beAKindOf(SafariViewControllerSpy.self))
+				}
+
+				it("should present view controller from factory") {
+					expect(capturedPresentedViewController).to(beAKindOf(SafariViewControllerSpy.self))
+				}
+
+				it("should return success status") {
+					expect(capturedStatus).to(equal(.success))
+				}
+
+				it("should present correct url") {
+					expect(capturedURL?.absoluteString).to(equal("https://sdk.straa.com/redirect"))
+				}
+
+				it("should register once for urls") {
+					expect(urlRegistrationFake.registerCalled).to(haveCount(1))
+				}
+
+				it("should register object returned from factory") {
+					expect(urlRegistrationFake.registerCalled.first).to(be(urlContextHandlerFake))
+				}
+
+				it("should deregister once for urls") {
+					expect(urlRegistrationFake.unregisterCalled).to(haveCount(1))
+				}
+
+				it("should deregister object returned from factory") {
+					expect(urlRegistrationFake.unregisterCalled.first).to(be(urlContextHandlerFake))
+				}
+			}
+
+			context("when present is called and fails") {
+				beforeEach {
+					sut = PresentStraalViewControllerCallable(
+						urls: AnyCallable.of(init3DSURLs),
+						present: presentAndFail,
+						dismiss: dismiss,
+						notificationRegistration: AnyCallable.of(urlRegistrationFake).asCallable(),
+						notificationHandlerFactory: handlerFactory,
+						viewControllerFactory: safariFactory
+					)
+
+					waitUntil { done in
+						DispatchQueue.global().async {
+							capturedStatus = try? sut.call()
+							done()
+						}
+					}
+				}
+
+				it("should call present once") {
+					expect(presentCallCount).to(equal(1))
+				}
+
+				it("should call dismiss") {
+					expect(dismissCallCount).to(equal(1))
+					expect(capturedDismissedViewController).to(beAKindOf(SafariViewControllerSpy.self))
+				}
+
+				it("should present view controller from factory") {
+					expect(capturedPresentedViewController).to(beAKindOf(SafariViewControllerSpy.self))
+				}
+
+				it("should return failed status") {
+					expect(capturedStatus).to(equal(.failure))
+				}
+
+				it("should present correct url") {
+					expect(capturedURL?.absoluteString).to(equal("https://sdk.straa.com/redirect"))
+				}
+
+				it("should register once for urls") {
+					expect(urlRegistrationFake.registerCalled).to(haveCount(1))
+				}
+
+				it("should register object returned from factory") {
+					expect(urlRegistrationFake.registerCalled.first).to(be(urlContextHandlerFake))
+				}
+
+				it("should deregister once for urls") {
+					expect(urlRegistrationFake.unregisterCalled).to(haveCount(1))
+				}
+
+				it("should deregister object returned from factory") {
+					expect(urlRegistrationFake.unregisterCalled.first).to(be(urlContextHandlerFake))
+				}
 			}
 		}
 	}
-
 }

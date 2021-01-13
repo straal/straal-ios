@@ -24,40 +24,65 @@ import Dispatch
 import UIKit
 import SafariServices
 
+typealias OpenURLHandlerFactory = (Init3DSURLs, @escaping () -> Void, @escaping () -> Void) -> OpenURLContextHandler
+
 class PresentStraalViewControllerCallable: Callable {
 	private let urlsCallable: AnyCallable<Init3DSURLs>
 	private let present: (UIViewController) -> Void
 	private let dismiss: (UIViewController) -> Void
+	private let notificationRegistration: AnyCallable<OpenURLContextRegistration>
+	private let notificationHandlerFactory: OpenURLHandlerFactory
 	private let viewControllerFactory: (URL) -> SFSafariViewController
 
 	init<O: Callable>(
 		urls: O,
 		present: @escaping (UIViewController) -> Void,
 		dismiss: @escaping (UIViewController) -> Void,
+		notificationRegistration: AnyCallable<OpenURLContextRegistration>,
+		notificationHandlerFactory: @escaping OpenURLHandlerFactory = OpenURLContextParser.init,
 		viewControllerFactory: @escaping (URL) -> SFSafariViewController = SFSafariViewController.init)
 	where O.ReturnType == Init3DSURLs {
 		self.urlsCallable = urls.asCallable()
 		self.present = present
 		self.dismiss = dismiss
+		self.notificationRegistration = notificationRegistration
+		self.notificationHandlerFactory = notificationHandlerFactory
 		self.viewControllerFactory = viewControllerFactory
 	}
 
 	func call() throws -> Encrypted3DSOperationStatus {
 		let semaphore = DispatchSemaphore(value: 0)
 		let urls = try urlsCallable.call()
+		let registration = try notificationRegistration.call()
 		var operationStatus: Encrypted3DSOperationStatus!
 		let delegate = SafariViewControllerDelegate { [weak semaphore] in
 			operationStatus = .failure
 			semaphore?.signal()
 		}
-		DispatchQueue.main.async { [delegate, present, viewControllerFactory] in
-			let viewController = viewControllerFactory(urls.redirectURL)
-			viewController.delegate = delegate
+		let viewController: SFSafariViewController = viewControllerFactory(urls.redirectURL)
+		viewController.delegate = delegate
+
+		let onSuccess = { [semaphore, dismiss, viewController] in
+			operationStatus = .success
+			dismiss(viewController)
+			semaphore.signal()
+		}
+		let onFailure = { [semaphore, dismiss, viewController] in
+			operationStatus = .failure
+			dismiss(viewController)
+			semaphore.signal()
+		}
+
+		let urlHandler = notificationHandlerFactory(urls, onSuccess, onFailure)
+		registration.register(handler: urlHandler)
+		defer { registration.unregister(handler: urlHandler) }
+		DispatchQueue.main.async { [present, viewController] in
 			present(viewController)
 		}
 		semaphore.wait()
 		return operationStatus
 	}
+
 }
 
 private class SafariViewControllerDelegate: NSObject, SFSafariViewControllerDelegate {

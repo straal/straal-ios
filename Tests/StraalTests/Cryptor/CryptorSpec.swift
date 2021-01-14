@@ -59,9 +59,9 @@ class CryptorSpec: QuickSpec {
 				}
 
 				it("should correctly decrypt response") {
-					guard let decryptedString = try? sut.decrypt(data: encryptedResponse, key: cryptKey) else { XCTFail("Decryption failed"); return }
+					guard let decryptedString = try? sut.decrypt(data: encryptedResponse, key: cryptKey) else { fail("Decryption failed"); return }
 					guard let jsonObject = try? JSONSerialization.jsonObject(with: decryptedString.data(using: String.Encoding.utf8)!, options: []),
-						let jsonDict = jsonObject as? [String: Any] else { XCTFail("Unexpected JSON"); return }
+						let jsonDict = jsonObject as? [String: Any] else { fail("Unexpected JSON"); return }
 					expect((decryptedResponse as NSDictionary).isEqual(to: jsonDict)).to(beTrue())
 				}
 			}
@@ -72,7 +72,7 @@ class CryptorSpec: QuickSpec {
 				let cryptKey: CryptKey? = try? CryptKey(cryptKeyString: "06fc9b6e24000256b61c6d91d1333932283370ecca62ae6c551745545a1918d0a7c67a58143ee503c850ad861f2d2683052876cf90a64688211b5dd8caef0969dcc887dc5a31e34b")
 
 				it("should throw a correct error") {
-					guard let key = cryptKey else { XCTFail("Unexpected key"); return }
+					guard let key = cryptKey else { fail("Unexpected key"); return }
 					expect { try sut.decrypt(data: encryptedInvalidResponse, key: key) }.to(throwError(StraalCryptor.CryptorError.invalidMessage))
 				}
 			}
@@ -83,7 +83,7 @@ class CryptorSpec: QuickSpec {
 				let cryptKey: CryptKey? = try? CryptKey(cryptKeyString: "07fc9b6e24000256b61c6d91d1333932283370ecca62ae6c551745545a1918d0a7c67a58143ee503c850ad861f2d2683052876cf90a64688211b5dd8caef0969dcc887dc5a31e34b")
 
 				it("should throw a correct error") {
-					guard let key = cryptKey else { XCTFail("Unexpected key"); return }
+					guard let key = cryptKey else { fail("Unexpected key"); return }
 					expect { try sut.decrypt(data: encryptedInvalidResponse, key: key) }.to(throwError(StraalCryptor.CryptorError.invalidKey))
 				}
 			}
@@ -92,7 +92,7 @@ class CryptorSpec: QuickSpec {
 				let cryptKey: CryptKey? = try? CryptKey(cryptKeyString: "06fc9b6e24000256b61c6d91d1333932283370ecca62ae6c551745545a1918d0a7c67a58143ee503c850ad861f2d2683052876cf90a64688211b5dd8caef0969dcc887dc5a31e34b")
 
 				it("should throw error when message is empty") {
-					guard let key = cryptKey else { XCTFail("Unexpected key"); return }
+					guard let key = cryptKey else { fail("Unexpected key"); return }
 					expect { try sut.decrypt(data: Data(), key: key) }.to(throwError(StraalCryptor.CryptorError.invalidMessage))
 				}
 			}

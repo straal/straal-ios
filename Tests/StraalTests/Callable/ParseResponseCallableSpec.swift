@@ -56,7 +56,7 @@ class ParseResponseCallableSpec: QuickSpec {
 
 			context("when status and json are ok") {
 				beforeEach {
-					guard let data = try? JSONSerialization.data(withJSONObject: sampleJSON) else { XCTFail("Unexpected JSON"); return }
+					guard let data = try? JSONSerialization.data(withJSONObject: sampleJSON) else { fail("Unexpected JSON"); return }
 					sut = ParseErrorCallable(response: SimpleCallable.of((data, okResponse)))
 				}
 

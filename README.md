@@ -17,7 +17,11 @@
 - [Features](#features)
 - [Requirements](#requirements)
   - [Back end](#back-end)
+  - [Universal Links](#universal-links)
 - [Installation](#installation)
+  - [Cocoapods](#cocoapods)
+  - [Carthage](#carthage)
+  - [Swift Package Manager](#swift-package-manager)
 - [Usage](#usage)
   - [Overview](#overview)
   - [Initial configuration](#initial-configuration)
@@ -38,7 +42,7 @@
 
 ## Requirements
 
-Straal SDK requires deployment target of **iOS 9.0+** and Xcode **8.0+**.
+Straal SDK requires deployment target of **iOS 13.0+** and Xcode **11.0+**.
 
 ### Back end
 
@@ -48,17 +52,89 @@ Your back-end service needs to implement **at least one endpoint** at `https://_
 
 > It is your back end's job to authorize the user and reject the `CryptKey` fetch if necessary.
 
-## Installation
+### Universal Links
 
-We recommend using *CocoaPods*.
+In order to correctly handle message redirects, you need to open your backend redirects in you app. iOS supports this using [Universal Links](https://developer.apple.com/ios/universal-links/). There are a few steps to configuring universal links in your app:
 
-Add the following lines to your **Podfile**:
+1. In Xcode, click on your project in the Project Navigator and navigate to App Target > Signing & Capabilities
+2. Click [+ Capability] to add a new capability
+3. Add *Associated Domains*
+4. Under *Associated Domains* add an entry: `applinks:your-merchant-backen-url-domain`.
+5. IOS will verify you domain association by requesting your configuration from `https://your-merchant-backend-url-domain/.well-known/apple-app-site-association`. See more [here](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_associated-domains). You need to configure your AASA in order to handle return links from 3DS-based operations. Tha path that is needed for Straal SDK is `/x-callback-url/straal/*`, so your file should look something like:
 
-```ruby
-pod 'Straal',    '~> 0.1.0'
+```json
+{
+  "applinks": {
+    "details": [
+      {
+        "appID": "XXXXXXXX.com.bundle.identifier",
+        "paths": ["/x-callback-url/straal/*"]
+      }
+    ],
+    "apps": []
+  }
+}
 ```
 
-Then run `pod install`.
+>Please remember to configure app links in order to automatically handle 3DS operations. You can verify your setup [here](https://branch.io/resources/aasa-validator/).
+
+Then you need to let Straal know about external user activity during 3DS process. To do that, add a method to your `SceneDelegate`:
+
+```swift
+
+func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+  Straal.handle(userActivity)
+}
+
+```
+
+This will allow Straal to close any `SFSafariViewController` windows needed for 3DS processing.
+
+## Installation
+
+### CocoaPods
+
+[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
+
+```bash
+$ gem install cocoapods
+```
+
+To integrate Straal into your project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+pod 'Straal', '~> 0.6.0'
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
+
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+To integrate Straal into your project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "straal/straal-ios" ~> 0.6.0
+```
+
+Run `carthage update` to build the framework and drag the built `Straal.framework` into your Xcode project.
+
+### Swift Package Manager
+
+[Swift Package Manager](https://swift.org/package-manager/) is a tool for managing the distribution of Swift packages. It’s integrated with the Swift build system and Xcode.
+
+To integrate Straal into your project using Swift Package Manager, add it to your Xcode project or to your `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/straal/straal-ios.git", .upToNextMajor(from: "0.6.0"))
+]
+```
 
 ## Usage
 
@@ -77,7 +153,7 @@ First, create a `StraalConfiguration` object (which consists of your Merchant UR
 You can also add additional `cryptKeyPath` which will be the URL at which we would fetch your backend service for a new crypt key. If you don't provide a value here, we'll use the default which is `https://_base_url_/straal/v1/cryptkeys`.
 
 ```swift
-let url = URL(string: "https://my-merchant-backen-url.com")!
+let url = URL(string: "https://your-merchant-backend-url.com")!
 let headers = ["x-user-token": myUserToken] // You have to authorize your user on cryptkeys endpoint using this header!
 let configuration = StraalConfiguration(baseUrl: url, headers: headers)
 let straal = Straal(configuration: configuration)
@@ -155,7 +231,7 @@ straal.perform(operation: transactionWithCardOperation) { (response, error) in
 
 #### Init 3D-Secure
 
-The third supported operatio is `Init3DS`.
+The third supported operation is `Init3DS`.
 ```swift
 
 /// First, create a Card and a Transaction.
@@ -184,8 +260,8 @@ straal.perform(operation: operation) { (response, error) in
   "transaction": {
     "amount": 200,
     "currency": "usd",
-    "success_url": "https://sdk.straal.com/success",
-    "failure_url": "https://sdk.straal.com/failure"
+    "success_url": "https://your-merchant-backend-url/x-callback-url/straal/success",
+    "failure_url": "https://your-merchant-backend-url/x-callback-url/straal/failure"
   }
 }
 ```

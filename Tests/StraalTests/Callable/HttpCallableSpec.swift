@@ -31,6 +31,7 @@ class HttpCallableSpec: QuickSpec {
 		describe("HttpCallable") {
 			var sut: HttpCallable!
 			var urlSessionAdapterFake: UrlSessionAdapterFake!
+			var operationContextContainerFake: OperationContextContainerFake!
 			var configuration: StraalConfiguration!
 
 			let url = URL(string: "https://straal.com/endpoint")!
@@ -39,13 +40,15 @@ class HttpCallableSpec: QuickSpec {
 			let httpResponse = HTTPURLResponse(url: url, statusCode: 200, httpVersion: "1.1", headerFields: nil)!
 
 			beforeEach {
+				operationContextContainerFake = .init()
 				urlSessionAdapterFake = UrlSessionAdapterFake()
-				configuration = StraalConfiguration(baseUrl: URL(string: "https://api.backend.com")!, urlSession: urlSessionAdapterFake)
+				configuration = StraalConfiguration(baseUrl: URL(string: "https://api.backend.com")!, urlSession: urlSessionAdapterFake, operationContextContainer: operationContextContainerFake)
 			}
 
 			afterEach {
 				sut = nil
 				urlSessionAdapterFake = nil
+				operationContextContainerFake = nil
 			}
 
 			context("when data and response are correct") {

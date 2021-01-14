@@ -1,6 +1,6 @@
 /*
- * EncryptedOperationResponse.swift
- * Created by Kajetan Dąbrowski on 23/01/2018.
+ * OpenURLContextRegistrationFake.swift
+ * Created by Michał Dąbrowski on 31/12/2020.
  *
  * Straal SDK for iOS
  * Copyright 2020 Straal Sp. z o. o.
@@ -20,23 +20,19 @@
 
 import Foundation
 
-public enum Encrypted3DSOperationStatus {
-	case success
-	case failure
-}
+@testable import Straal
 
-public struct Encrypted3DSOperationResponse: StraalResponse {
-	public let requestId: String
-	public let status: Encrypted3DSOperationStatus
+class OpenURLContextRegistrationFake: OpenURLContextRegistration {
 
-	internal init(requestId: String, status: Encrypted3DSOperationStatus) {
-		self.requestId = requestId
-		self.status = status
+	var registerCalled: [OpenURLContextHandler] = []
+	var unregisterCalled: [OpenURLContextHandler] = []
+
+	func register(handler: OpenURLContextHandler) {
+		registerCalled.append(handler)
 	}
-}
 
-extension Encrypted3DSOperationResponse: CustomDebugStringConvertible {
-	public var debugDescription: String {
-		return "STRAAL 3DS REQUEST [\(requestId)] (\(status))"
+	func unregister(handler: OpenURLContextHandler) {
+		unregisterCalled.append(handler)
 	}
+
 }

@@ -1,6 +1,6 @@
 /*
- * EncryptedOperationResponse.swift
- * Created by Kajetan Dąbrowski on 23/01/2018.
+ * Init3DSURLs.swift
+ * Created by Michał Dąbrowski on 19/10/2019.
  *
  * Straal SDK for iOS
  * Copyright 2020 Straal Sp. z o. o.
@@ -20,23 +20,8 @@
 
 import Foundation
 
-public enum Encrypted3DSOperationStatus {
-	case success
-	case failure
-}
-
-public struct Encrypted3DSOperationResponse: StraalResponse {
-	public let requestId: String
-	public let status: Encrypted3DSOperationStatus
-
-	internal init(requestId: String, status: Encrypted3DSOperationStatus) {
-		self.requestId = requestId
-		self.status = status
-	}
-}
-
-extension Encrypted3DSOperationResponse: CustomDebugStringConvertible {
-	public var debugDescription: String {
-		return "STRAAL 3DS REQUEST [\(requestId)] (\(status))"
-	}
+internal struct Init3DSURLs {
+	public let redirectURL: URL
+	public let successURL: URL
+	public let failureURL: URL
 }

@@ -1,6 +1,6 @@
 /*
- * EncryptedOperationResponse.swift
- * Created by Kajetan Dąbrowski on 23/01/2018.
+ * OperationContext.swift
+ * Created by Michał Dąbrowski on 31/12/2020.
  *
  * Straal SDK for iOS
  * Copyright 2020 Straal Sp. z o. o.
@@ -18,25 +18,5 @@
  * limitations under the License.
  */
 
-import Foundation
-
-public enum Encrypted3DSOperationStatus {
-	case success
-	case failure
-}
-
-public struct Encrypted3DSOperationResponse: StraalResponse {
-	public let requestId: String
-	public let status: Encrypted3DSOperationStatus
-
-	internal init(requestId: String, status: Encrypted3DSOperationStatus) {
-		self.requestId = requestId
-		self.status = status
-	}
-}
-
-extension Encrypted3DSOperationResponse: CustomDebugStringConvertible {
-	public var debugDescription: String {
-		return "STRAAL 3DS REQUEST [\(requestId)] (\(status))"
-	}
-}
+/// This represents a persistent operation context. You never need to handle contexts by yourself
+public protocol OperationContext: class {}

@@ -22,6 +22,7 @@ import Foundation
 
 /// Creates a card with the first transaction
 public final class CreateTransactionWithCard: EncryptedOperation {
+
 	public typealias Response = EncryptedOperationResponse
 
 	// swiftlint:disable nesting
@@ -47,13 +48,20 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 	/// Transaction
 	public let transaction: Transaction
 
+	public internal(set) var context: SimpleOperationContext = .init()
+
 	internal let permission = CryptKeyPermission.transactionCardCreate
 
-	func cryptKeyPayload(configuration: StraalConfiguration) -> AnyCallable<Data> {
+	func cryptKeyPayload(
+		configuration: StraalConfiguration
+	) -> AnyCallable<Data> {
 		EncodeCallable(value: PermissionAndTransaction(key: permission, transaction: transaction)).asCallable()
 	}
 
-	internal func responseCallable(httpCallable: HttpCallable, configuration: StraalConfiguration) -> AnyCallable<EncryptedOperationResponse> {
+	internal func responseCallable(
+		httpCallable: HttpCallable,
+		configuration: StraalConfiguration
+	) -> AnyCallable<EncryptedOperationResponse> {
 		DecodeCallable(dataSource: ParseErrorCallable(response: httpCallable).map { $0.0 }).asCallable()
 	}
 

@@ -108,11 +108,11 @@ class Init3DSOperationSpec: QuickSpec {
 						}
 
 						it("should have a correct success URL") {
-							expect(transaction["success_url"] as? String).to(equal("https://sdk.straal.com/success"))
+							expect(transaction["success_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/success"))
 						}
 
 						it("should have a correct failure URL") {
-							expect(transaction["failure_url"] as? String).to(equal("https://sdk.straal.com/failure"))
+							expect(transaction["failure_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/failure"))
 						}
 
 						it("should have four keys") {
@@ -191,11 +191,11 @@ class Init3DSOperationSpec: QuickSpec {
 						}
 
 						it("should have a correct success URL") {
-							expect(transaction["success_url"] as? String).to(equal("https://sdk.straal.com/success"))
+							expect(transaction["success_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/success"))
 						}
 
 						it("should have a correct failure URL") {
-							expect(transaction["failure_url"] as? String).to(equal("https://sdk.straal.com/failure"))
+							expect(transaction["failure_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/failure"))
 						}
 
 						it("should have five keys") {

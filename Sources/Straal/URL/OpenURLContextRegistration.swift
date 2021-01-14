@@ -1,7 +1,6 @@
-//
 /*
- * Init3DSContext.swift
- * Created by Michał Dąbrowski on 19/10/2019.
+ * OpenURLContextRegistration.swift
+ * Created by Michał Dąbrowski on 31/12/2020.
  *
  * Straal SDK for iOS
  * Copyright 2020 Straal Sp. z o. o.
@@ -21,8 +20,7 @@
 
 import Foundation
 
-internal struct Init3DSContext {
-	public let redirectURL: URL
-	public let successURL: URL
-	public let failureURL: URL
+internal protocol OpenURLContextRegistration {
+	func register(handler: OpenURLContextHandler)
+	func unregister(handler: OpenURLContextHandler)
 }

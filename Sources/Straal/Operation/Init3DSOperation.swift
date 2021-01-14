@@ -24,6 +24,7 @@ import UIKit
 /// Creates a card with the first transaction
 public final class Init3DSOperation: EncryptedOperation {
 	public typealias Response = Encrypted3DSOperationResponse
+	public typealias Context = Init3DSOperationContext
 
 	// swiftlint:disable nesting
 	private struct PermissionAndTransaction: Encodable {
@@ -62,8 +63,8 @@ public final class Init3DSOperation: EncryptedOperation {
 			value: PermissionAndTransaction(
 				key: permission,
 				transaction: transaction,
-				successURL: configuration.init3DSSuccessURL,
-				failureURL: configuration.init3DSFailureURL)
+				successURL: context.urlProvider.successURL(configuration: configuration),
+				failureURL: context.urlProvider.failureURL(configuration: configuration))
 		).asCallable()
 	}
 
@@ -72,6 +73,8 @@ public final class Init3DSOperation: EncryptedOperation {
 
 	/// Transaction
 	public let transaction: Transaction
+
+	public internal(set) var context: Init3DSOperationContext = Init3DSOperationContext()
 
 	private let present3DSViewController: (UIViewController) -> Void
 	private let dismiss3DSViewController: (UIViewController) -> Void
@@ -84,9 +87,18 @@ public final class Init3DSOperation: EncryptedOperation {
 
 		let operationResponse: DecodeCallable<EncryptedOperationResponse> = DecodeCallable(dataSource: cachedRequestResponse.map { $0.0 })
 
-		let init3DSContext = redirectURL.map { Init3DSContext(redirectURL: $0, successURL: configuration.init3DSSuccessURL, failureURL: configuration.init3DSFailureURL) }
+		let successURL = context.urlProvider.successURL(configuration: configuration)
+		let failureURL = context.urlProvider.successURL(configuration: configuration)
 
-		let showViewController = PresentStraalViewControllerCallable(context: init3DSContext, present: present3DSViewController, dismiss: dismiss3DSViewController)
+		let init3DSURLs = redirectURL
+			.map { Init3DSURLs(
+				redirectURL: $0,
+				successURL: successURL,
+				failureURL: failureURL
+			)
+			}
+
+		let showViewController = PresentStraalViewControllerCallable(urls: init3DSURLs, present: present3DSViewController, dismiss: dismiss3DSViewController, notificationRegistration: SimpleCallable(context.urlOpeningHandler).asCallable())
 
 		let result = operationResponse.merge(showViewController).map { requestAndStatus in
 			Encrypted3DSOperationResponse(

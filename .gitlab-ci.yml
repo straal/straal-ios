@@ -24,6 +24,5 @@ test:unit:
   script:
     - bundle exec fastlane test
     - bundle exec fastlane coverage
-    - bundle exec danger
   tags:
     - xcode.12.3

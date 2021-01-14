@@ -7,7 +7,7 @@ platform :ios do
     scan(
       derived_data_path: 'DerivedData',
       scheme: 'Straal',
-      devices: ['iPhone 11']
+      devices: ['iPhone 12 Pro']
     )
   end
 

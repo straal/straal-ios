@@ -1,32 +1,6 @@
 stages:
-  - prepare
   - lint
   - test
-  - coverage
-
-.xcode:
-  before_script:
-    - bundle install
-  tags:
-    - xcode
-
-.getcarthage:
-  cache:
-    key: straal-sdk-key-1
-    paths:
-      - Carthage/
-    policy: pull
-
-prepare:
-  extends: .xcode
-  stage: prepare
-  script:
-    - bundle exec fastlane run bootstrap
-  cache:
-    key: straal-sdk-key-1
-    paths:
-      - Carthage/
-    policy: pull-push
 
 lint:
   stage: lint
@@ -45,10 +19,11 @@ lint:
 test:unit:
   stage: test
   dependencies: []
-  extends:
-    - .getcarthage
-    - .xcode
+  before_script:
+    - bundle
   script:
     - bundle exec fastlane test
     - bundle exec fastlane coverage
     - bundle exec danger
+  tags:
+    - xcode.12.3

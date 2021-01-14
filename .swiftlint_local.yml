@@ -2,9 +2,6 @@ included:
   - Sources
   - Tests
 
-excluded:
-  - Carthage
-
 opt_in_rules:
   - closure_end_indentation
   - closure_parameter_position

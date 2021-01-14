@@ -7,8 +7,9 @@
 ![Platform](https://img.shields.io/badge/platform-iOS-blue.svg?style=flat)
 [![pod](https://img.shields.io/cocoapods/v/Straal.svg?style=flat)](https://cocoapods.org/pods/Straal)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat)](LICENSE)
-[![Travis](https://travis-ci.org/straal/straal-ios.svg?branch=master&style=flat)](https://travis-ci.org/straal/straal-ios)
+[![GitHub](https://github.com/straal/straal-ios/workflows/Build%20status/badge.svg?style=flat)](https://github.com/straal/straal-ios)
 [![codebeat badge](https://codebeat.co/badges/73ab7e38-7c7e-4b48-8e20-376e04a93774?style=flat)](https://codebeat.co/projects/github-com-straal-straal-ios-master)
+[![Language](https://img.shields.io/badge/Swift-5.3-FA7343.svg?logo=swift&style=flat)](https://swift.org/)
 [![Twitter](https://img.shields.io/badge/twitter-@straal-blue.svg?style=flat)](http://twitter.com/straal_)
 
 > Straal SDK for iOS written in Swift.

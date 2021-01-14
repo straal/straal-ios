@@ -122,7 +122,7 @@ To integrate Straal into your project using Carthage, specify it in your `Cartfi
 github "straal/straal-ios" ~> 0.6.0
 ```
 
-Run `carthage update` to build the framework and drag the built `Straal.framework` into your Xcode project.
+Run `carthage update  --use-xcframeworks` to build the framework and drag the built `Straal.framework` into your Xcode project.
 
 ### Swift Package Manager
 

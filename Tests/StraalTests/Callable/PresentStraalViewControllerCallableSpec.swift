@@ -67,35 +67,34 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 					failureURL: URL(string: "https://sdk.straa.com/failure")!
 				)
 				presentAndCancelByUser = { viewController in
-					guard uniqueValue?.uuidString == uuidString else { XCTFail("Invalid test!"); return }
+					guard uniqueValue?.uuidString == uuidString else { fail("Invalid test!"); return }
 					presentCallCount += 1
 					let safariViewController = viewController as? SFSafariViewController
 					capturedPresentedViewController = viewController
 					safariViewController?.delegate?.safariViewControllerDidFinish?(safariViewController!)
 				}
 				presentAndSucceed = { viewController in
-					guard uniqueValue?.uuidString == uuidString else { XCTFail("Invalid test!"); return }
+					guard uniqueValue?.uuidString == uuidString else { fail("Invalid test!"); return }
 					presentCallCount += 1
 					capturedPresentedViewController = viewController
 					Thread.sleep(forTimeInterval: 0.1)
 					guard let success = capturedOnSuccess else {
-						XCTFail("Success not handled"); return
+						fail("Success not handled"); return
 					}
 					success()
 				}
 				presentAndFail = { viewController in
-					guard uniqueValue?.uuidString == uuidString else { XCTFail("Invalid test!"); return }
+					guard uniqueValue?.uuidString == uuidString else { fail("Invalid test!"); return }
 					presentCallCount += 1
 					capturedPresentedViewController = viewController
-					//					Thread.sleep(until: .now() + .milliseconds(100))
 					Thread.sleep(forTimeInterval: 0.1)
-					guard let fail = capturedOnFailure else {
-						XCTFail("Success not handled"); return
+					guard let failure = capturedOnFailure else {
+						fail("Success not handled"); return
 					}
-					fail()
+					failure()
 				}
 				dismiss = { viewController in
-					guard uniqueValue?.uuidString == uuidString else { XCTFail("Invalid test!"); return }
+					guard uniqueValue?.uuidString == uuidString else { fail("Invalid test!"); return }
 					dismissCallCount += 1
 					capturedDismissedViewController = viewController
 				}

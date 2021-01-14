@@ -1,0 +1,19 @@
+name: Build status
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Select Xcode 12.3
+      run:  sudo xcode-select -switch /Applications/Xcode_12.3.app
+    - name: List available simulators
+      run: xcrun simctl list
+      shell: bash
+    - name: Run tests
+      run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild test -project Straal.xcodeproj -scheme "Straal" -destination "name=iPhone 12 Pro" -derivedDataPath DerivedData | xcpretty -c

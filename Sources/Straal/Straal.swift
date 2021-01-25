@@ -90,11 +90,37 @@ public extension Straal {
 		Straal.handle(userActivity, with: configuration.operationContextContainer)
 	}
 
+	/// Use this to handle external open url in your Swift UI`App` struct
+	/// - Parameter url: redirected URL
+	class func handle(_ url: URL) {
+		handle(url, with: OperationContextContainerImpl.shared)
+	}
+
+	/// Use this to handle external open url in your Swift UI`App` struct
+	/// - Parameter url: redirected URL
+	func handle(_ url: URL) {
+		Straal.handle(url, with: configuration.operationContextContainer)
+	}
+
 	private class func handle(
 		_ userActivity: NSUserActivity,
 		with container: OperationContextContainer
 	) {
 		guard let openURLContext = userActivity.openURLContext else { return }
+		handle(openURLContext, with: container)
+	}
+
+	private class func handle(
+		_ url: URL,
+		with container: OperationContextContainer
+	) {
+		handle(OpenURLContext(url: url), with: container)
+	}
+
+	private class func handle(
+		_ openURLContext: OpenURLContext,
+		with container: OperationContextContainer
+	) {
 		container
 			.registered
 			.compactMap { $0 as? OpenURLContextHandler }

@@ -91,7 +91,7 @@ public final class Init3DSOperation: EncryptedOperation {
 		let operationResponse: DecodeCallable<EncryptedOperationResponse> = DecodeCallable(dataSource: cachedRequestResponse.map { $0.0 })
 
 		let successURL = context.urlProvider.successURL(configuration: configuration)
-		let failureURL = context.urlProvider.successURL(configuration: configuration)
+		let failureURL = context.urlProvider.failureURL(configuration: configuration)
 
 		let init3DSURLs = redirectURL
 			.map { Init3DSURLs(

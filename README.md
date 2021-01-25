@@ -104,7 +104,7 @@ $ gem install cocoapods
 To integrate Straal into your project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'Straal', '~> 0.6.0'
+pod 'Straal', '~> 0.6.1'
 ```
 
 Then, run the following command:
@@ -120,7 +120,7 @@ $ pod install
 To integrate Straal into your project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "straal/straal-ios" ~> 0.6.0
+github "straal/straal-ios" ~> 0.6.1
 ```
 
 Run `carthage update  --use-xcframeworks` to build the framework and drag the built `Straal.framework` into your Xcode project.
@@ -133,7 +133,7 @@ To integrate Straal into your project using Swift Package Manager, add it to you
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/straal/straal-ios.git", .upToNextMajor(from: "0.6.0"))
+    .package(url: "https://github.com/straal/straal-ios.git", .upToNextMajor(from: "0.6.1"))
 ]
 ```
 

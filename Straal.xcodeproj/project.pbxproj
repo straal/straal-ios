@@ -53,6 +53,7 @@
 		774590C525AEF52400588304 /* ReturnURLProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774590C425AEF52400588304 /* ReturnURLProviderTests.swift */; };
 		774590CA25AEF9B100588304 /* StraalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774590C925AEF9B100588304 /* StraalTests.swift */; };
 		774590CD25AEFA6F00588304 /* OperationContextContainerFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774590CC25AEFA6F00588304 /* OperationContextContainerFake.swift */; };
+		7788010025BF5D360016F7EA /* HttpCallableFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778800FF25BF5D360016F7EA /* HttpCallableFake.swift */; };
 		77CED51F25B07D000085B30E /* IDZSwiftCommonCrypto in Frameworks */ = {isa = PBXBuildFile; productRef = 77CED51E25B07D000085B30E /* IDZSwiftCommonCrypto */; };
 		77CED52325B07D340085B30E /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 77CED52225B07D340085B30E /* Quick */; };
 		77CED52725B07D510085B30E /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 77CED52625B07D510085B30E /* Nimble */; };
@@ -209,6 +210,7 @@
 		774590C425AEF52400588304 /* ReturnURLProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReturnURLProviderTests.swift; sourceTree = "<group>"; };
 		774590C925AEF9B100588304 /* StraalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StraalTests.swift; sourceTree = "<group>"; };
 		774590CC25AEFA6F00588304 /* OperationContextContainerFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationContextContainerFake.swift; sourceTree = "<group>"; };
+		778800FF25BF5D360016F7EA /* HttpCallableFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpCallableFake.swift; sourceTree = "<group>"; };
 		77CF7C15259CD4F300C2E5CD /* Info-tests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tests.plist"; sourceTree = "<group>"; };
 		77CF7C5C259CECB800C2E5CD /* SafariViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariViewControllerSpy.swift; sourceTree = "<group>"; };
 		77DC743E235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentStraalViewControllerCallableSpec.swift; sourceTree = "<group>"; };
@@ -432,13 +434,14 @@
 			children = (
 				B4A6012220246FB300088A0E /* CardValidatorFake.swift */,
 				A34AD01C1D9A5ACE00D13D09 /* DateSourceFake.swift */,
+				778800FF25BF5D360016F7EA /* HttpCallableFake.swift */,
 				7718AE8C259DE6F1007CBF61 /* OpenURLContextHandlerFake.swift */,
 				7718AEBB259E08D1007CBF61 /* OpenURLContextRegistrationFake.swift */,
+				774590CC25AEFA6F00588304 /* OperationContextContainerFake.swift */,
 				77CF7C5C259CECB800C2E5CD /* SafariViewControllerSpy.swift */,
 				77283275235A497800CB9BB6 /* SimpleCallableSpy.swift */,
 				0E90F77C201A15BF0070C526 /* UrlSessionAdapterFake.swift */,
 				0E7AC1C6201B707D00BC3DF3 /* VersionAdapterFake.swift */,
-				774590CC25AEFA6F00588304 /* OperationContextContainerFake.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -1026,6 +1029,7 @@
 				0E9D35BD20234BAF00DBA9C9 /* CardNumberValidatorSpec.swift in Sources */,
 				A371E71D1D82FD9F00D05B2F /* CryptorSpec.swift in Sources */,
 				A3000E741D8BFD5400258B07 /* BackendUrlCreatorSpec.swift in Sources */,
+				7788010025BF5D360016F7EA /* HttpCallableFake.swift in Sources */,
 				774590CD25AEFA6F00588304 /* OperationContextContainerFake.swift in Sources */,
 				7728328B235AFF2700CB9BB6 /* MergeCallableSpec.swift in Sources */,
 				A309CB101D997AAF00873639 /* LuhnSpec.swift in Sources */,
@@ -1081,7 +1085,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 600;
+				CURRENT_PROJECT_VERSION = 601;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1100,7 +1104,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 0.6.0;
+				MARKETING_VERSION = 0.6.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1146,7 +1150,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 600;
+				CURRENT_PROJECT_VERSION = 601;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1159,7 +1163,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 0.6.0;
+				MARKETING_VERSION = 0.6.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;

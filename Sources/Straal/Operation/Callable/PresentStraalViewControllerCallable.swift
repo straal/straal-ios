@@ -24,6 +24,15 @@ import Dispatch
 import UIKit
 import SafariServices
 
+internal typealias PresentStraalViewControllerFactory = (
+	AnyCallable<Init3DSURLs>,
+	@escaping (UIViewController) -> Void,
+	@escaping (UIViewController) -> Void,
+	AnyCallable<OpenURLContextRegistration>,
+	@escaping OpenURLHandlerFactory,
+	@escaping (URL) -> SFSafariViewController
+) -> PresentStraalViewControllerCallable
+
 typealias OpenURLHandlerFactory = (Init3DSURLs, @escaping () -> Void, @escaping () -> Void) -> OpenURLContextHandler
 
 class PresentStraalViewControllerCallable: Callable {
@@ -34,14 +43,14 @@ class PresentStraalViewControllerCallable: Callable {
 	private let notificationHandlerFactory: OpenURLHandlerFactory
 	private let viewControllerFactory: (URL) -> SFSafariViewController
 
-	init<O: Callable>(
-		urls: O,
+	init(
+		urls: AnyCallable<Init3DSURLs>,
 		present: @escaping (UIViewController) -> Void,
 		dismiss: @escaping (UIViewController) -> Void,
 		notificationRegistration: AnyCallable<OpenURLContextRegistration>,
 		notificationHandlerFactory: @escaping OpenURLHandlerFactory = OpenURLContextParser.init,
-		viewControllerFactory: @escaping (URL) -> SFSafariViewController = SFSafariViewController.init)
-	where O.ReturnType == Init3DSURLs {
+		viewControllerFactory: @escaping (URL) -> SFSafariViewController = SFSafariViewController.init
+	) {
 		self.urlsCallable = urls.asCallable()
 		self.present = present
 		self.dismiss = dismiss

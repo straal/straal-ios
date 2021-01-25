@@ -46,7 +46,12 @@ class Init3DSOperationSpec: QuickSpec {
 				return ((try? JSONSerialization.jsonObject(with: data)) as? [String: Any]) ?? [:]
 			}
 
+			var present3DSViewControllerFactoryStub: PresentStraalViewControllerFactory!
+			var presentCallableFactoryCalled: Bool = false
+			var capturedRedirectURLs: Init3DSURLs?
+
 			beforeEach {
+				presentCallableFactoryCalled = false
 				card = Card(
 					name: CardholderName(
 						firstName: "John",
@@ -54,17 +59,32 @@ class Init3DSOperationSpec: QuickSpec {
 					number: CardNumber(rawValue: "4444-4444-4444-4441"),
 					cvv: CVV(rawValue: "000"),
 					expiry: Expiry(rawValue: (month: 2, year: 2099)))
+
+				present3DSViewControllerFactoryStub = { urls, present, dismiss, registration, _, _ in
+					presentCallableFactoryCalled = true
+					capturedRedirectURLs = try? urls.call()
+					return PresentStraalViewControllerCallable(urls: urls, present: present, dismiss: dismiss, notificationRegistration: registration)
+				}
 			}
 
 			afterEach {
 				sut = nil
 				card = nil
+				capturedRedirectURLs = nil
+				presentCallableFactoryCalled = false
+				present3DSViewControllerFactoryStub = nil
 			}
 
 			context("with transaction in usd without reference") {
 				beforeEach {
 					let transaction = Transaction(amount: 100, currency: "usd")!
-					sut = Init3DSOperation(card: card, transaction: transaction, present3DSViewController: { _ in }, dismiss3DSViewController: { _ in })
+					sut = Init3DSOperation(
+						card: card,
+						transaction: transaction,
+						present3DSViewController: { _ in },
+						dismiss3DSViewController: { _ in }
+					)
+					sut.presentViewControllerFactory = present3DSViewControllerFactoryStub
 				}
 
 				describe("Crypt key request json") {
@@ -140,6 +160,40 @@ class Init3DSOperationSpec: QuickSpec {
 
 					it("should have correct expiry year") {
 						expect(straalRequestJson["expiry_year"] as? Int).to(equal(2099))
+					}
+				}
+
+				describe("Response callable") {
+					beforeEach {
+						let stubURL = URL(string: "https://backend.com/url")!
+						let redirectResponse = HTTPURLResponse(
+							url: stubURL,
+							statusCode: 200,
+							httpVersion: nil,
+							headerFields: ["Location": "https://straal.com/redirect"]
+						)!
+						let httpCallable = HttpCallableFake(response: (Data(), redirectResponse))
+						_ = sut.responseCallable(httpCallable: httpCallable, configuration: defaultConfiguration)
+					}
+
+					it("should call sf safari presentation callable factory") {
+						expect(presentCallableFactoryCalled).to(beTrue())
+					}
+
+					it("should pass some urls") {
+						expect(capturedRedirectURLs).notTo(beNil())
+					}
+
+					it("should pass correct redirect url") {
+						expect(capturedRedirectURLs?.redirectURL.absoluteString).to(equal("https://straal.com/redirect"))
+					}
+
+					it("should pass correct success url") {
+						expect(capturedRedirectURLs?.successURL.absoluteString).to(equal("https://backend.com/x-callback-url/straal/success"))
+					}
+
+					it("should pass correct failure url") {
+						expect(capturedRedirectURLs?.failureURL.absoluteString).to(equal("https://backend.com/x-callback-url/straal/failure"))
 					}
 				}
 			}

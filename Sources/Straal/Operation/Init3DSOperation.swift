@@ -20,6 +20,7 @@
 
 import Foundation
 import UIKit
+import SafariServices
 
 /// Creates a card with the first transaction
 public final class Init3DSOperation: EncryptedOperation {
@@ -76,6 +77,8 @@ public final class Init3DSOperation: EncryptedOperation {
 
 	public internal(set) var context: Init3DSOperationContext = Init3DSOperationContext()
 
+	internal var presentViewControllerFactory: PresentStraalViewControllerFactory = PresentStraalViewControllerCallable.init
+
 	private let present3DSViewController: (UIViewController) -> Void
 	private let dismiss3DSViewController: (UIViewController) -> Void
 
@@ -88,7 +91,7 @@ public final class Init3DSOperation: EncryptedOperation {
 		let operationResponse: DecodeCallable<EncryptedOperationResponse> = DecodeCallable(dataSource: cachedRequestResponse.map { $0.0 })
 
 		let successURL = context.urlProvider.successURL(configuration: configuration)
-		let failureURL = context.urlProvider.successURL(configuration: configuration)
+		let failureURL = context.urlProvider.failureURL(configuration: configuration)
 
 		let init3DSURLs = redirectURL
 			.map { Init3DSURLs(
@@ -98,7 +101,14 @@ public final class Init3DSOperation: EncryptedOperation {
 			)
 			}
 
-		let showViewController = PresentStraalViewControllerCallable(urls: init3DSURLs, present: present3DSViewController, dismiss: dismiss3DSViewController, notificationRegistration: SimpleCallable(context.urlOpeningHandler).asCallable())
+		let showViewController = presentViewControllerFactory(
+			init3DSURLs.asCallable(),
+			present3DSViewController,
+			dismiss3DSViewController,
+			SimpleCallable(context.urlOpeningHandler).asCallable(),
+			OpenURLContextParser.init,
+			SFSafariViewController.init
+		)
 
 		let result = operationResponse.merge(showViewController).map { requestAndStatus in
 			Encrypted3DSOperationResponse(

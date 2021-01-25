@@ -138,7 +138,7 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 			context("when present is called and cancelled by user") {
 				beforeEach {
 					sut = PresentStraalViewControllerCallable(
-						urls: AnyCallable.of(init3DSURLs),
+						urls: AnyCallable.of(init3DSURLs).asCallable(),
 						present: presentAndCancelByUser,
 						dismiss: dismiss,
 						notificationRegistration: AnyCallable.of(urlRegistrationFake).asCallable(),
@@ -195,7 +195,7 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 			context("when present is called and succeeds") {
 				beforeEach {
 					sut = PresentStraalViewControllerCallable(
-						urls: AnyCallable.of(init3DSURLs),
+						urls: AnyCallable.of(init3DSURLs).asCallable(),
 						present: presentAndSucceed,
 						dismiss: dismiss,
 						notificationRegistration: AnyCallable.of(urlRegistrationFake).asCallable(),
@@ -252,7 +252,7 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 			context("when present is called and fails") {
 				beforeEach {
 					sut = PresentStraalViewControllerCallable(
-						urls: AnyCallable.of(init3DSURLs),
+						urls: AnyCallable.of(init3DSURLs).asCallable(),
 						present: presentAndFail,
 						dismiss: dismiss,
 						notificationRegistration: AnyCallable.of(urlRegistrationFake).asCallable(),

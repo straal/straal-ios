@@ -20,21 +20,29 @@
 
 import Foundation
 
-class SimpleCallable<T>: Callable {
+struct SimpleCallable<T>: Callable {
 	typealias ReturnType = T
-	private let value: T
+	private let value: (() throws -> T)
 
 	init(_ value: T) {
-		self.value = value
+		self.value = { value }
+	}
+
+	init(_ closure: @escaping (() throws -> T)) {
+		self.value = closure
 	}
 
 	func call() throws -> T {
-		return value
+		return try value()
 	}
 }
 
 extension Callable {
 	static func of(_ value: ReturnType) -> SimpleCallable<ReturnType> {
+		return SimpleCallable(value)
+	}
+
+	static func just(_ value: ReturnType) -> SimpleCallable<ReturnType> {
 		return SimpleCallable(value)
 	}
 }

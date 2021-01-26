@@ -54,6 +54,7 @@
 		774590CA25AEF9B100588304 /* StraalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774590C925AEF9B100588304 /* StraalTests.swift */; };
 		774590CD25AEFA6F00588304 /* OperationContextContainerFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774590CC25AEFA6F00588304 /* OperationContextContainerFake.swift */; };
 		7788010025BF5D360016F7EA /* HttpCallableFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778800FF25BF5D360016F7EA /* HttpCallableFake.swift */; };
+		779B9D7425C0824D008EB5A0 /* JSONEncoder+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779B9D7325C0824D008EB5A0 /* JSONEncoder+Default.swift */; };
 		77CED51F25B07D000085B30E /* IDZSwiftCommonCrypto in Frameworks */ = {isa = PBXBuildFile; productRef = 77CED51E25B07D000085B30E /* IDZSwiftCommonCrypto */; };
 		77CED52325B07D340085B30E /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 77CED52225B07D340085B30E /* Quick */; };
 		77CED52725B07D510085B30E /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 77CED52625B07D510085B30E /* Nimble */; };
@@ -211,6 +212,7 @@
 		774590C925AEF9B100588304 /* StraalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StraalTests.swift; sourceTree = "<group>"; };
 		774590CC25AEFA6F00588304 /* OperationContextContainerFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationContextContainerFake.swift; sourceTree = "<group>"; };
 		778800FF25BF5D360016F7EA /* HttpCallableFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpCallableFake.swift; sourceTree = "<group>"; };
+		779B9D7325C0824D008EB5A0 /* JSONEncoder+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+Default.swift"; sourceTree = "<group>"; };
 		77CF7C15259CD4F300C2E5CD /* Info-tests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tests.plist"; sourceTree = "<group>"; };
 		77CF7C5C259CECB800C2E5CD /* SafariViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariViewControllerSpy.swift; sourceTree = "<group>"; };
 		77DC743E235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentStraalViewControllerCallableSpec.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 				0E7AC1C2201B6E8000BC3DF3 /* BundleVersionAdapter.swift */,
 				A308018A2018FD0000A1060A /* Collection+Extension.swift */,
 				A30801882018FD0000A1060A /* DateSource.swift */,
+				779B9D7325C0824D008EB5A0 /* JSONEncoder+Default.swift */,
 				A308018B2018FD0000A1060A /* String+Extension.swift */,
 				A30801A92018FD0000A1060A /* UrlSession+Synchronous.swift */,
 				A30801AA2018FD0000A1060A /* UrlSessionAdapter.swift */,
@@ -930,6 +933,7 @@
 				A30801CC2018FD0100A1060A /* Collection+Extension.swift in Sources */,
 				A30801E52018FD0100A1060A /* BackendEndpoint.swift in Sources */,
 				A30801C52018FD0000A1060A /* SimpleCallable.swift in Sources */,
+				779B9D7425C0824D008EB5A0 /* JSONEncoder+Default.swift in Sources */,
 				B4742A9F2021F03700EAD828 /* Laser.swift in Sources */,
 				A30801F12018FD2000A1060A /* UrlCreator.swift in Sources */,
 				77283278235A4CB200CB9BB6 /* MapCallable.swift in Sources */,

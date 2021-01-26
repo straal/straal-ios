@@ -374,17 +374,11 @@
 		7718AE65259DD3C4007CBF61 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				0E7AC1C2201B6E8000BC3DF3 /* BundleVersionAdapter.swift */,
 				A308018A2018FD0000A1060A /* Collection+Extension.swift */,
 				A30801882018FD0000A1060A /* DateSource.swift */,
-				774D95DB25C0911700026FD3 /* DeviceAdapter.swift */,
-				774D95CF25C08EC500026FD3 /* InfoDictionaryAdapter.swift */,
 				779B9D7325C0824D008EB5A0 /* JSONEncoder+Default.swift */,
-				774D95BF25C0872F00026FD3 /* LocaleAdapter.swift */,
-				774D95D825C090DA00026FD3 /* ScreenAdapter.swift */,
 				A308018B2018FD0000A1060A /* String+Extension.swift */,
 				A30801A92018FD0000A1060A /* UrlSession+Synchronous.swift */,
-				A30801AA2018FD0000A1060A /* UrlSessionAdapter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -477,6 +471,19 @@
 				774D95C825C08B8600026FD3 /* UserAgentSpec.swift */,
 			);
 			path = UserAgent;
+			sourceTree = "<group>";
+		};
+		774D95ED25C098DB00026FD3 /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				0E7AC1C2201B6E8000BC3DF3 /* BundleVersionAdapter.swift */,
+				774D95DB25C0911700026FD3 /* DeviceAdapter.swift */,
+				774D95CF25C08EC500026FD3 /* InfoDictionaryAdapter.swift */,
+				774D95BF25C0872F00026FD3 /* LocaleAdapter.swift */,
+				774D95D825C090DA00026FD3 /* ScreenAdapter.swift */,
+				A30801AA2018FD0000A1060A /* UrlSessionAdapter.swift */,
+			);
+			path = Adapters;
 			sourceTree = "<group>";
 		};
 		77944C7E2599F03000910CF3 /* StraalTests */ = {
@@ -828,6 +835,7 @@
 			isa = PBXGroup;
 			children = (
 				A30801BA2018FD0000A1060A /* Straal.swift */,
+				774D95ED25C098DB00026FD3 /* Adapters */,
 				A30801762018FD0000A1060A /* Callable */,
 				A30801B52018FD0000A1060A /* Configuration */,
 				A30801B72018FD0000A1060A /* Cryptor */,

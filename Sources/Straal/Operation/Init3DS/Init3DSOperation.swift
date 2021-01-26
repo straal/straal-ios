@@ -22,6 +22,7 @@ import Foundation
 import UIKit
 
 /// Creates a card with the first transaction
+@available(*, deprecated, message: "Use CreateTransactionWithCard operation for 3DS v2")
 public final class Init3DSOperation: EncryptedOperation {
 
 	public typealias Response = Encrypted3DSOperationResponse

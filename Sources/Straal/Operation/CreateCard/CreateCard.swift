@@ -21,6 +21,7 @@
 import Foundation
 
 /// Creates a card
+@available(*, deprecated, message: "This operation is deprecated. Use CreateTransactionWithCard.")
 public final class CreateCard: EncryptedOperation {
 
 	public typealias Response = EncryptedOperationResponse

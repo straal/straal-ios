@@ -407,6 +407,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		774D95B225C0847200026FD3 /* CreateCard */ = {
+			isa = PBXGroup;
+			children = (
+				A30801832018FD0000A1060A /* CreateCard.swift */,
+			);
+			path = CreateCard;
+			sourceTree = "<group>";
+		};
 		77944C7E2599F03000910CF3 /* StraalTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,7 +501,7 @@
 		A30801752018FD0000A1060A /* Operation */ = {
 			isa = PBXGroup;
 			children = (
-				A30801832018FD0000A1060A /* CreateCard.swift */,
+				774D95B225C0847200026FD3 /* CreateCard */,
 				A30801842018FD0000A1060A /* CreateTransactionWithCard.swift */,
 				A30801852018FD0000A1060A /* EncryptedOperation.swift */,
 				7728326B235A440400CB9BB6 /* Init3DSOperation.swift */,

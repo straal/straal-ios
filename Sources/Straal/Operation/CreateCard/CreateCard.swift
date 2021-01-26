@@ -48,6 +48,10 @@ public final class CreateCard: EncryptedOperation {
 		httpCallable: HttpCallable,
 		configuration: StraalConfiguration
 	) -> AnyCallable<EncryptedOperationResponse> {
-		DecodeCallable(dataSource: ParseErrorCallable(response: httpCallable).map { $0.0 }).asCallable()
+		DecodeCallable(
+			dataSource: ParseErrorCallable(
+				response: httpCallable
+			).map { $0.0 }
+		).asCallable()
 	}
 }

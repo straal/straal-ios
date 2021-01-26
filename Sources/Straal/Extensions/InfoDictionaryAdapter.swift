@@ -1,9 +1,9 @@
 /*
- * BundleVersionAdapter.swift
- * Created by Bartosz Kamiński on 26/01/2018.
+ * InfoDictionaryAdapter.swift
+ * Created by Michał Dąbrowski on 26/01/2021.
  *
  * Straal SDK for iOS
- * Copyright 2020 Straal Sp. z o. o.
+ * Copyright 2021 Straal Sp. z o. o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,20 +20,8 @@
 
 import Foundation
 
-protocol VersionAdapting {
-	var version: String? { get }
+protocol InfoDictionaryAdapter {
+	func object(forInfoDictionaryKey key: String) -> Any?
 }
 
-extension VersionAdapting where Self: InfoDictionaryAdapter {
-	var version: String? {
-		object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
-	}
-}
-
-extension Bundle: VersionAdapting { }
-
-final class VersionAdapter: VersionAdapting {
-	var version: String? {
-		Bundle(for: type(of: self)).version
-	}
-}
+extension Bundle: InfoDictionaryAdapter {}

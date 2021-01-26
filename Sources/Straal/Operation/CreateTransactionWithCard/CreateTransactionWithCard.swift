@@ -56,7 +56,7 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 				successURL: successURL,
 				failureURL: failureURL,
 				language: language,
-				userAgent: ""
+				userAgent: configuration.userAgent.userAgent
 			)
 		).asCallable()
 	}
@@ -108,35 +108,4 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 		self.dismiss3DSViewController = dismiss3DSViewController
 	}
 
-}
-
-
-
-
-public class UserAgent {
-	public static let userAgent: String? = {
-		guard let info = Bundle.main.infoDictionary,
-					let appNameRaw = info["CFBundleDisplayName"] ??  info[kCFBundleIdentifierKey as String],
-					let appVersionRaw = info[kCFBundleVersionKey as String],
-					let appName = appNameRaw as? String,
-					let appVersion = appVersionRaw as? String
-		else { return nil }
-
-		#if canImport(UIKit)
-		let scale: String
-		if #available(iOS 4, *) {
-			scale = String(format: "%0.2f", UIScreen.main.scale)
-		} else {
-			scale = "1.0"
-		}
-
-		let model = UIDevice.current.model
-		let os = UIDevice.current.systemVersion
-		let ua = "\(appName)/\(appVersion) (\(model); iOS \(os); Scale/\(scale))"
-		#else
-		let ua = "\(appName)/\(appVersion)"
-		#endif
-
-		return ua
-	}()
 }

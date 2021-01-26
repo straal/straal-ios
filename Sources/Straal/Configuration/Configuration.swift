@@ -38,6 +38,7 @@ public struct StraalConfiguration {
 		self.headers = headers ?? [:]
 		self.cryptKeyPath = cryptKeyPath
 		self.locale = Locale.current
+		self.userAgent = UserAgent()
 		self.urlSession = UrlSessionAdapter()
 		self.operationContextContainer = OperationContextContainerImpl.shared
 	}
@@ -47,6 +48,7 @@ public struct StraalConfiguration {
 		headers: [String: String]? = nil,
 		cryptKeyPath: String? = nil,
 		locale: LocaleAdapting,
+		userAgent: UserAgentGeneration,
 		urlSession: UrlSessionAdapting,
 		operationContextContainer: OperationContextContainer
 	) {
@@ -54,6 +56,7 @@ public struct StraalConfiguration {
 		self.headers = headers ?? [:]
 		self.cryptKeyPath = cryptKeyPath
 		self.locale = locale
+		self.userAgent = userAgent
 		self.urlSession = urlSession
 		self.operationContextContainer = operationContextContainer
 	}
@@ -77,5 +80,6 @@ public struct StraalConfiguration {
 	internal let urlSession: UrlSessionAdapting
 	internal let operationContextContainer: OperationContextContainer
 	internal let locale: LocaleAdapting
+	internal let userAgent: UserAgentGeneration
 
 }

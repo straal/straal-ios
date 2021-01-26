@@ -37,6 +37,7 @@ class CreateTransactionWithCardSpec: QuickSpec {
 			let defaultConfiguration: StraalConfiguration = .init(
 				baseUrl: URL(string: "https://backend.com")!,
 				locale: Locale.english,
+				userAgent: UserAgentFake(userAgent: "user-agent"),
 				urlSession: UrlSessionAdapterFake(),
 				operationContextContainer: OperationContextContainerFake()
 				)
@@ -198,7 +199,7 @@ class CreateTransactionWithCardSpec: QuickSpec {
 									}
 
 									it("should have correct user agent") {
-										expect(browser?["user_agent"] as? String).notTo(beNil())
+										expect(browser?["user_agent"] as? String).to(equal("user-agent"))
 									}
 
 									it("should have correct java_enabled") {

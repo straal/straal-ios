@@ -41,6 +41,7 @@ class StraalTests: XCTestCase {
 			headers: nil,
 			cryptKeyPath: nil,
 			locale: Locale.english,
+			userAgent: UserAgentFake(userAgent: "user-agent"),
 			urlSession: urlSessionAdapterFake,
 			operationContextContainer: operationContextContainerFake
 		)

@@ -45,6 +45,7 @@ class HttpCallableSpec: QuickSpec {
 				configuration = StraalConfiguration(
 					baseUrl: URL(string: "https://api.backend.com")!,
 					locale: Locale.english,
+					userAgent: UserAgentFake(userAgent: "user-agent"),
 					urlSession: urlSessionAdapterFake,
 					operationContextContainer: operationContextContainerFake
 				)

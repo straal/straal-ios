@@ -23,48 +23,20 @@ import UIKit
 
 /// Creates a card with the first transaction
 public final class Init3DSOperation: EncryptedOperation {
+
 	public typealias Response = Encrypted3DSOperationResponse
+
 	public typealias Context = Init3DSOperationContext
 
-	// swiftlint:disable nesting
-	private struct PermissionAndTransaction: Encodable {
-		let key: CryptKeyPermission
-
-		let transaction: Transaction
-		let successURL: URL
-		let failureURL: URL
-
-		func encode(to encoder: Encoder) throws {
-			try key.encode(to: encoder)
-
-			var container = encoder.container(keyedBy: CodingKeys.self)
-
-			let superEncoder = container.superEncoder(forKey: .transaction)
-			try transaction.encode(to: superEncoder)
-
-			var urlsEncoder = superEncoder.container(keyedBy: URLCodingKeys.self)
-			try urlsEncoder.encode(successURL, forKey: .successURL)
-			try urlsEncoder.encode(failureURL, forKey: .failureURL)
-		}
-
-		enum CodingKeys: String, CodingKey {
-			case transaction
-		}
-
-		enum URLCodingKeys: String, CodingKey {
-			case successURL = "success_url"
-			case failureURL = "failure_url"
-		}
-	}
-	// swiftlint:enable nesting
-
 	func cryptKeyPayload(configuration: StraalConfiguration) -> AnyCallable<Data> {
+		let successURL = context.urlProvider.successURL(configuration: configuration)
+		let failureURL = context.urlProvider.failureURL(configuration: configuration)
 		return EncodeCallable(
-			value: PermissionAndTransaction(
+			value: CryptKeyPayload(
 				key: permission,
 				transaction: transaction,
-				successURL: context.urlProvider.successURL(configuration: configuration),
-				failureURL: context.urlProvider.failureURL(configuration: configuration))
+				successURL: successURL,
+				failureURL: failureURL)
 		).asCallable()
 	}
 

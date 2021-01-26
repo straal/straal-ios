@@ -1,5 +1,5 @@
 /*
-* CreateTransactionWithCard.swift
+* Init3DSOperation.swift
 * Created by Hubert Kuczyński on 12/01/2018.
 *
 * Straal SDK for iOS

@@ -27,6 +27,7 @@ import Nimble
 @testable import Straal
 
 class CreateTransactionWithCardSpec: QuickSpec {
+
 	override func spec() {
 
 		describe("TransactionWithCard") {
@@ -45,6 +46,10 @@ class CreateTransactionWithCardSpec: QuickSpec {
 				return ((try? JSONSerialization.jsonObject(with: data)) as? [String: Any]) ?? [:]
 			}
 
+			var present3DSViewControllerFactoryStub: PresentStraalViewControllerFactory!
+			var presentCallableFactoryCalled: Bool = false
+			var capturedRedirectURLs: Init3DSURLs?
+
 			beforeEach {
 				card = Card(
 					name: CardholderName(
@@ -52,18 +57,34 @@ class CreateTransactionWithCardSpec: QuickSpec {
 						surname: "Appleseed"),
 					number: CardNumber(rawValue: "4444-4444-4444-4441"),
 					cvv: CVV(rawValue: "000"),
-					expiry: Expiry(rawValue: (month: 2, year: 2099)))
+					expiry: Expiry(rawValue: (month: 2, year: 2099))
+				)
+
+				present3DSViewControllerFactoryStub = { urls, present, dismiss, registration, _, _ in
+					presentCallableFactoryCalled = true
+					capturedRedirectURLs = try? urls.call()
+					return PresentStraalViewControllerCallable(urls: urls, present: present, dismiss: dismiss, notificationRegistration: registration)
+				}
 			}
 
 			afterEach {
 				sut = nil
 				card = nil
+				capturedRedirectURLs = nil
+				presentCallableFactoryCalled = false
+				present3DSViewControllerFactoryStub = nil
 			}
 
 			context("with transaction in usd without reference") {
 				beforeEach {
 					let transaction = Transaction(amount: 100, currency: "usd")!
-					sut = CreateTransactionWithCard(card: card, transaction: transaction)
+					sut = CreateTransactionWithCard(
+						card: card,
+						transaction: transaction,
+						present3DSViewController: { _ in },
+						dismiss3DSViewController: { _ in }
+					)
+					sut.presentViewControllerFactory = present3DSViewControllerFactoryStub
 				}
 
 				describe("Crypt key request json") {
@@ -76,7 +97,7 @@ class CreateTransactionWithCardSpec: QuickSpec {
 					}
 
 					describe("transaction") {
-						var transaction: [String: Any]!
+						var transaction: [String: Any]?
 
 						beforeEach {
 							transaction = cryptKeyJson["transaction"] as? [String: Any]
@@ -87,19 +108,97 @@ class CreateTransactionWithCardSpec: QuickSpec {
 						}
 
 						it("should have correct amount") {
-							expect(transaction["amount"] as? Int).to(equal(100))
+							expect(transaction?["amount"] as? Int).to(equal(100))
 						}
 
 						it("should have correct currency") {
-							expect(transaction["currency"] as? String).to(equal("usd"))
+							expect(transaction?["currency"] as? String).to(equal("usd"))
 						}
 
 						it("should not have reference") {
-							expect(transaction["reference"]).to(beNil())
+							expect(transaction?["reference"]).to(beNil())
 						}
 
 						it("should have two keys") {
-							expect(transaction.count).to(equal(2))
+							expect(transaction?.count).to(equal(2))
+						}
+
+						describe("authentication_3ds") {
+							var authentication3DS: [String: Any]?
+
+							beforeEach {
+								authentication3DS = transaction?["authentication_3ds"] as? [String: Any]
+							}
+
+							afterEach {
+								authentication3DS = nil
+							}
+
+							it("should have correct success url") {
+								expect(authentication3DS?["success_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/success"))
+							}
+
+							it("should have correct failure url") {
+								it("should have a correct failure URL") {
+									expect(authentication3DS?["failure_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/failure"))
+								}
+							}
+
+							it("should have count 3") {
+								expect(authentication3DS?.count).to(equal(3))
+							}
+
+							describe("threeds_v2") {
+								var threeDSV2: [String: Any]?
+
+								beforeEach {
+									threeDSV2 = authentication3DS?["threeds_v2"] as? [String: Any]
+								}
+
+								afterEach {
+									threeDSV2 = nil
+								}
+
+								it("should have browser key") {
+									expect(threeDSV2?["browser"] as? [String: Any]).notTo(beNil())
+								}
+
+								it("should have count 1") {
+									expect(threeDSV2?.count).to(equal(1))
+								}
+
+								describe("browser") {
+									var browser: [String: Any]?
+
+									beforeEach {
+										browser = threeDSV2?["browser"] as? [String: Any]
+									}
+
+									afterEach {
+										browser = nil
+									}
+
+									it("should have count 4") {
+										expect(browser?.count).to(equal(4))
+									}
+
+									it("should have correct locale") {
+										expect(browser?["language"] as? String).to(equal("pl-PL"))
+									}
+
+									it("should have correct accept header") {
+										expect(browser?["accept_header"] as? String).to(equal("*/*"))
+									}
+
+									it("should have correct user agent") {
+										expect(browser?["user_agent"] as? String).to(equal("USER AGENT")) //FIXME
+									}
+
+									it("should have correct java_enabled") {
+										expect(browser?["java_enabled"] as? Bool).to(equal(true))
+									}
+								}
+							}
 						}
 					}
 				}
@@ -125,12 +224,52 @@ class CreateTransactionWithCardSpec: QuickSpec {
 						expect(straalRequestJson["expiry_year"] as? Int).to(equal(2099))
 					}
 				}
+
+				describe("Response callable") {
+					beforeEach {
+						let stubURL = URL(string: "https://backend.com/url")!
+						let redirectResponse = HTTPURLResponse(
+							url: stubURL,
+							statusCode: 200,
+							httpVersion: nil,
+							headerFields: ["Location": "https://straal.com/redirect"]
+						)!
+						let httpCallable = HttpCallableFake(response: (Data(), redirectResponse))
+						_ = sut.responseCallable(httpCallable: httpCallable, configuration: defaultConfiguration)
+					}
+
+					it("should call sf safari presentation callable factory") {
+						expect(presentCallableFactoryCalled).to(beTrue())
+					}
+
+					it("should pass some urls") {
+						expect(capturedRedirectURLs).notTo(beNil())
+					}
+
+					it("should pass correct redirect url") {
+						expect(capturedRedirectURLs?.redirectURL.absoluteString).to(equal("https://straal.com/redirect"))
+					}
+
+					it("should pass correct success url") {
+						expect(capturedRedirectURLs?.successURL.absoluteString).to(equal("https://backend.com/x-callback-url/straal/success"))
+					}
+
+					it("should pass correct failure url") {
+						expect(capturedRedirectURLs?.failureURL.absoluteString).to(equal("https://backend.com/x-callback-url/straal/failure"))
+					}
+				}
 			}
 
 			context("with transaction in pln with reference") {
 				beforeEach {
 					let transaction = Transaction(amount: 1000, currency: "pln", reference: "order:124iygtieurg")!
-					sut = CreateTransactionWithCard(card: card, transaction: transaction)
+					sut = CreateTransactionWithCard(
+						card: card,
+						transaction: transaction,
+						present3DSViewController: { _ in },
+						dismiss3DSViewController: { _ in }
+					)
+					sut.presentViewControllerFactory = present3DSViewControllerFactoryStub
 				}
 
 				describe("Crypt key request json") {

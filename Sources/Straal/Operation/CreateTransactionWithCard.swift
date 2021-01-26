@@ -50,6 +50,8 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 
 	public internal(set) var context: SimpleOperationContext = .init()
 
+	internal var presentViewControllerFactory: PresentStraalViewControllerFactory = PresentStraalViewControllerCallable.init
+
 	internal let permission = CryptKeyPermission.transactionCardCreate
 
 	func cryptKeyPayload(
@@ -66,8 +68,13 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 	}
 
 	/// Designated initializer
-	public init(card: Card, transaction: Transaction) {
+	public init(
+		card: Card,
+		transaction: Transaction,
+		present3DSViewController: @escaping (UIViewController) -> Void,
+		dismiss3DSViewController: @escaping (UIViewController) -> Void) {
 		self.card = card
 		self.transaction = transaction
 	}
+
 }

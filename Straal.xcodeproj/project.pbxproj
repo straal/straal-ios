@@ -493,7 +493,6 @@
 		A30801752018FD0000A1060A /* Operation */ = {
 			isa = PBXGroup;
 			children = (
-				A30801762018FD0000A1060A /* Callable */,
 				A30801832018FD0000A1060A /* CreateCard.swift */,
 				A30801842018FD0000A1060A /* CreateTransactionWithCard.swift */,
 				A30801852018FD0000A1060A /* EncryptedOperation.swift */,
@@ -749,6 +748,7 @@
 			isa = PBXGroup;
 			children = (
 				A30801BA2018FD0000A1060A /* Straal.swift */,
+				A30801762018FD0000A1060A /* Callable */,
 				A30801B52018FD0000A1060A /* Configuration */,
 				7718AE99259DF087007CBF61 /* Context */,
 				A30801B72018FD0000A1060A /* Cryptor */,

@@ -40,6 +40,7 @@ class StraalTests: XCTestCase {
 			baseUrl: URL(string: "https://example.com/")!,
 			headers: nil,
 			cryptKeyPath: nil,
+			locale: Locale.english,
 			urlSession: urlSessionAdapterFake,
 			operationContextContainer: operationContextContainerFake
 		)

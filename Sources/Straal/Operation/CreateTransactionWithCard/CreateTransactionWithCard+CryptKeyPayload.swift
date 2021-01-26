@@ -1,5 +1,5 @@
 /*
- * Init3DS+CryptKeyPayload.swift
+ * CreateTransactionWithCard+CryptKeyPayload.swift
  * Created by Michał Dąbrowski on 26/01/2021.
  *
  * Straal SDK for iOS
@@ -20,16 +20,14 @@
 
 import Foundation
 
-extension Init3DSOperation {
+extension CreateTransactionWithCard {
 
 	// swiftlint:disable nesting
 
 	struct CryptKeyPayload: Encodable {
 		let key: CryptKeyPermission
-
 		let transaction: Transaction
-		let successURL: URL
-		let failureURL: URL
+		let authentication3DS: Authentication3DS
 
 		func encode(to encoder: Encoder) throws {
 			try key.encode(to: encoder)
@@ -39,19 +37,57 @@ extension Init3DSOperation {
 			let superEncoder = container.superEncoder(forKey: .transaction)
 			try transaction.encode(to: superEncoder)
 
-			var urlsEncoder = superEncoder.container(keyedBy: URLCodingKeys.self)
-			try urlsEncoder.encode(successURL, forKey: .successURL)
-			try urlsEncoder.encode(failureURL, forKey: .failureURL)
+			var authEncoder = superEncoder.container(keyedBy: Authentication3DSCodingKeys.self)
+			try authEncoder.encode(authentication3DS, forKey: .authentication3DS)
 		}
 
 		enum CodingKeys: String, CodingKey {
 			case transaction
 		}
 
-		enum URLCodingKeys: String, CodingKey {
-			case successURL
-			case failureURL
+		enum Authentication3DSCodingKeys: String, CodingKey {
+			case authentication3DS = "authentication_3ds"
 		}
+
+		init(
+			key: CryptKeyPermission,
+			transaction: Transaction,
+			successURL: URL,
+			failureURL: URL,
+			language: String,
+			userAgent: String
+			) {
+			self.key = key
+			self.transaction = transaction
+			self.authentication3DS = .init(
+				successURL: successURL,
+				failureURL: failureURL,
+				threedsV2: .init(
+					browser: Browser(
+						language: language,
+						userAgent: userAgent
+					)
+				)
+			)
+		}
+	}
+
+	struct Authentication3DS: Encodable {
+		var successURL: URL
+		var failureURL: URL
+		var threedsV2: ThreeDSV2
+	}
+
+	struct ThreeDSV2: Encodable {
+		var browser: Browser
+	}
+
+	struct Browser: Encodable {
+		let acceptHeader: String = "*/*"
+		let javaEnabled: Bool = true
+		let language: String// = "pl-PL"
+		let userAgent: String// = UserAgent.userAgent!
+
 	}
 
 	// swiftlint:enable nesting

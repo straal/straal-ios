@@ -34,7 +34,12 @@ class CreateTransactionWithCardSpec: QuickSpec {
 
 			var sut: CreateTransactionWithCard!
 			var card: Card!
-			let defaultConfiguration: StraalConfiguration = StraalConfiguration(baseUrl: URL(string: "https://backend.com")!)
+			let defaultConfiguration: StraalConfiguration = .init(
+				baseUrl: URL(string: "https://backend.com")!,
+				locale: Locale.english,
+				urlSession: UrlSessionAdapterFake(),
+				operationContextContainer: OperationContextContainerFake()
+				)
 
 			var cryptKeyJson: [String: Any] {
 				let data: Data = (try? sut.cryptKeyPayload(configuration: defaultConfiguration).call()) ?? Data()
@@ -185,7 +190,7 @@ class CreateTransactionWithCardSpec: QuickSpec {
 									}
 
 									it("should have correct locale") {
-										expect(browser?["language"] as? String).to(equal("pl-PL"))
+										expect(browser?["language"] as? String).to(equal("en_US"))
 									}
 
 									it("should have correct accept header") {

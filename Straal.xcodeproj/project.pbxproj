@@ -54,6 +54,9 @@
 		774590CA25AEF9B100588304 /* StraalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774590C925AEF9B100588304 /* StraalTests.swift */; };
 		774590CD25AEFA6F00588304 /* OperationContextContainerFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774590CC25AEFA6F00588304 /* OperationContextContainerFake.swift */; };
 		774D95B525C084E800026FD3 /* Init3DS+CryptKeyPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D95B425C084E800026FD3 /* Init3DS+CryptKeyPayload.swift */; };
+		774D95BC25C085DD00026FD3 /* CreateTransactionWithCard+CryptKeyPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D95BB25C085DD00026FD3 /* CreateTransactionWithCard+CryptKeyPayload.swift */; };
+		774D95C025C0872F00026FD3 /* LocaleAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D95BF25C0872F00026FD3 /* LocaleAdapter.swift */; };
+		774D95C325C0894F00026FD3 /* Locale+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D95C225C0894F00026FD3 /* Locale+Stub.swift */; };
 		7788010025BF5D360016F7EA /* HttpCallableFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778800FF25BF5D360016F7EA /* HttpCallableFake.swift */; };
 		779B9D7425C0824D008EB5A0 /* JSONEncoder+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779B9D7325C0824D008EB5A0 /* JSONEncoder+Default.swift */; };
 		77CED51F25B07D000085B30E /* IDZSwiftCommonCrypto in Frameworks */ = {isa = PBXBuildFile; productRef = 77CED51E25B07D000085B30E /* IDZSwiftCommonCrypto */; };
@@ -213,6 +216,9 @@
 		774590C925AEF9B100588304 /* StraalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StraalTests.swift; sourceTree = "<group>"; };
 		774590CC25AEFA6F00588304 /* OperationContextContainerFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationContextContainerFake.swift; sourceTree = "<group>"; };
 		774D95B425C084E800026FD3 /* Init3DS+CryptKeyPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Init3DS+CryptKeyPayload.swift"; sourceTree = "<group>"; };
+		774D95BB25C085DD00026FD3 /* CreateTransactionWithCard+CryptKeyPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTransactionWithCard+CryptKeyPayload.swift"; sourceTree = "<group>"; };
+		774D95BF25C0872F00026FD3 /* LocaleAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleAdapter.swift; sourceTree = "<group>"; };
+		774D95C225C0894F00026FD3 /* Locale+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Stub.swift"; sourceTree = "<group>"; };
 		778800FF25BF5D360016F7EA /* HttpCallableFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpCallableFake.swift; sourceTree = "<group>"; };
 		779B9D7325C0824D008EB5A0 /* JSONEncoder+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+Default.swift"; sourceTree = "<group>"; };
 		77CF7C15259CD4F300C2E5CD /* Info-tests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tests.plist"; sourceTree = "<group>"; };
@@ -357,6 +363,7 @@
 				A308018B2018FD0000A1060A /* String+Extension.swift */,
 				A30801A92018FD0000A1060A /* UrlSession+Synchronous.swift */,
 				A30801AA2018FD0000A1060A /* UrlSessionAdapter.swift */,
+				774D95BF25C0872F00026FD3 /* LocaleAdapter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -426,6 +433,15 @@
 			path = Init3DS;
 			sourceTree = "<group>";
 		};
+		774D95BA25C085AC00026FD3 /* CreateTransactionWithCard */ = {
+			isa = PBXGroup;
+			children = (
+				A30801842018FD0000A1060A /* CreateTransactionWithCard.swift */,
+				774D95BB25C085DD00026FD3 /* CreateTransactionWithCard+CryptKeyPayload.swift */,
+			);
+			path = CreateTransactionWithCard;
+			sourceTree = "<group>";
+		};
 		77944C7E2599F03000910CF3 /* StraalTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,6 +473,7 @@
 				B4A6012220246FB300088A0E /* CardValidatorFake.swift */,
 				A34AD01C1D9A5ACE00D13D09 /* DateSourceFake.swift */,
 				778800FF25BF5D360016F7EA /* HttpCallableFake.swift */,
+				774D95C225C0894F00026FD3 /* Locale+Stub.swift */,
 				7718AE8C259DE6F1007CBF61 /* OpenURLContextHandlerFake.swift */,
 				7718AEBB259E08D1007CBF61 /* OpenURLContextRegistrationFake.swift */,
 				774590CC25AEFA6F00588304 /* OperationContextContainerFake.swift */,
@@ -512,9 +529,9 @@
 		A30801752018FD0000A1060A /* Operation */ = {
 			isa = PBXGroup;
 			children = (
-				774D95B325C084BC00026FD3 /* Init3DS */,
 				774D95B225C0847200026FD3 /* CreateCard */,
-				A30801842018FD0000A1060A /* CreateTransactionWithCard.swift */,
+				774D95BA25C085AC00026FD3 /* CreateTransactionWithCard */,
+				774D95B325C084BC00026FD3 /* Init3DS */,
 				A30801852018FD0000A1060A /* EncryptedOperation.swift */,
 				A30801862018FD0000A1060A /* StraalOperation.swift */,
 			);
@@ -928,6 +945,7 @@
 				A30801D72018FD0100A1060A /* CardsParser.swift in Sources */,
 				A30801C22018FD0000A1060A /* ParseErrorCallable.swift in Sources */,
 				B4742AA32021F21000EAD828 /* Maestro.swift in Sources */,
+				774D95BC25C085DD00026FD3 /* CreateTransactionWithCard+CryptKeyPayload.swift in Sources */,
 				A30801E22018FD0100A1060A /* ValidationResult.swift in Sources */,
 				A30801C72018FD0000A1060A /* CreateCard.swift in Sources */,
 				A30801CD2018FD0100A1060A /* String+Extension.swift in Sources */,
@@ -1014,6 +1032,7 @@
 				A30801E62018FD0100A1060A /* Endpoint.swift in Sources */,
 				77283289235AFF1D00CB9BB6 /* MergeCallable.swift in Sources */,
 				A30801DC2018FD0100A1060A /* StraalError.swift in Sources */,
+				774D95C025C0872F00026FD3 /* LocaleAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1039,6 +1058,7 @@
 				0E90F77D201A15BF0070C526 /* UrlSessionAdapterFake.swift in Sources */,
 				B4A6012120245CF700088A0E /* FullCardValidatorSpec.swift in Sources */,
 				B4742A852020D5E300EAD828 /* CVVValidatorSpec.swift in Sources */,
+				774D95C325C0894F00026FD3 /* Locale+Stub.swift in Sources */,
 				774590CA25AEF9B100588304 /* StraalTests.swift in Sources */,
 				A371E71E1D82FD9F00D05B2F /* KeyParserTests.swift in Sources */,
 				7728327A235A4CC700CB9BB6 /* MapCallableSpec.swift in Sources */,

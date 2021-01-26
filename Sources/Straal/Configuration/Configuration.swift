@@ -29,10 +29,15 @@ public struct StraalConfiguration {
 	///   - baseUrl: base URL of your backend service that uses Straal SDK and provides crypt key endpoint
 	///   - headers: dictionary of key-value pairs that will be added as headers to every HTTP request to your backend service
 	///   - cryptKeyPath: Path at which to download crypt keys. It will be appended to `backendBaseUrl` by the SDK. If no value is provided, the default (`/api/v1/cryptkeys`) will be used.
-	public init(baseUrl: URL, headers: [String: String]? = nil, cryptKeyPath: String? = nil) {
+	public init(
+		baseUrl: URL,
+		headers: [String: String]? = nil,
+		cryptKeyPath: String? = nil
+	) {
 		self.backendBaseUrl = baseUrl
 		self.headers = headers ?? [:]
 		self.cryptKeyPath = cryptKeyPath
+		self.locale = Locale.current
 		self.urlSession = UrlSessionAdapter()
 		self.operationContextContainer = OperationContextContainerImpl.shared
 	}
@@ -41,12 +46,14 @@ public struct StraalConfiguration {
 		baseUrl: URL,
 		headers: [String: String]? = nil,
 		cryptKeyPath: String? = nil,
+		locale: LocaleAdapting,
 		urlSession: UrlSessionAdapting,
 		operationContextContainer: OperationContextContainer
 	) {
 		self.backendBaseUrl = baseUrl
 		self.headers = headers ?? [:]
 		self.cryptKeyPath = cryptKeyPath
+		self.locale = locale
 		self.urlSession = urlSession
 		self.operationContextContainer = operationContextContainer
 	}
@@ -69,5 +76,6 @@ public struct StraalConfiguration {
 
 	internal let urlSession: UrlSessionAdapting
 	internal let operationContextContainer: OperationContextContainer
+	internal let locale: LocaleAdapting
 
 }

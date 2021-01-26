@@ -60,7 +60,7 @@ class CreateTransactionWithCardSpec: QuickSpec {
 					expiry: Expiry(rawValue: (month: 2, year: 2099))
 				)
 
-				present3DSViewControllerFactoryStub = { urls, present, dismiss, registration, _, _ in
+				present3DSViewControllerFactoryStub = { urls, present, dismiss, registration in
 					presentCallableFactoryCalled = true
 					capturedRedirectURLs = try? urls.call()
 					return PresentStraalViewControllerCallable(urls: urls, present: present, dismiss: dismiss, notificationRegistration: registration)

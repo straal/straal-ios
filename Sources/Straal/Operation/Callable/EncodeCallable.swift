@@ -23,8 +23,13 @@ import Foundation
 class EncodeCallable<T: Encodable>: Callable {
 	typealias ReturnType = Data
 	private let value: AnyCallable<T>
+	private let keyEncodingStrategy: JSONEncoder.KeyEncodingStrategy
 
-	init<O: Callable>(valueSource: O) where O.ReturnType == T {
+	init<O: Callable>(
+		valueSource: O,
+		keyEncodingStrategy: JSONEncoder.KeyEncodingStrategy = .convertToSnakeCase
+	) where O.ReturnType == T {
+		self.keyEncodingStrategy = keyEncodingStrategy
 		self.value = valueSource.asCallable()
 	}
 
@@ -33,6 +38,8 @@ class EncodeCallable<T: Encodable>: Callable {
 	}
 
 	func call() throws -> Data {
-		return try JSONEncoder().encode(value.call())
+		let encoder = JSONEncoder()
+		encoder.keyEncodingStrategy = keyEncodingStrategy
+		return try encoder.encode(value.call())
 	}
 }

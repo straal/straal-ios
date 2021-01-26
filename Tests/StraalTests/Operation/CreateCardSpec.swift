@@ -24,6 +24,7 @@ import Nimble
 
 @testable import Straal
 
+@available(*, deprecated)
 class CreateCardSpec: QuickSpec {
 	override func spec() {
 

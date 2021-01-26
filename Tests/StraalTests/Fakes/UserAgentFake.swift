@@ -23,5 +23,5 @@
 struct UserAgentFake: UserAgentGeneration {
 
 	let userAgent: String
-	
+
 }

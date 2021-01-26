@@ -27,6 +27,7 @@ import Nimble
 
 @testable import Straal
 
+@available(*, deprecated)
 class Init3DSOperationSpec: QuickSpec {
 	override func spec() {
 

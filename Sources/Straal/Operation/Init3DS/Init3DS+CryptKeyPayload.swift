@@ -20,6 +20,7 @@
 
 import Foundation
 
+@available(*, deprecated)
 extension Init3DSOperation {
 
 	// swiftlint:disable nesting

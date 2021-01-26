@@ -26,10 +26,6 @@ public struct EncryptedOperationResponse: StraalResponse, Codable {
 	internal init(requestId: String) {
 		self.requestId = requestId
 	}
-
-	enum CodingKeys: String, CodingKey {
-		case requestId = "request_id"
-	}
 }
 
 extension EncryptedOperationResponse: CustomDebugStringConvertible {

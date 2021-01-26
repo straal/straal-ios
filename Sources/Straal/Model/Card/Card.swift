@@ -53,7 +53,11 @@ public struct Card {
 extension Card: Encodable {
 
 	enum CodingKeys: String, CodingKey {
-		case name, number, cvv, expiryMonth = "expiry_month", expiryYear = "expiry_year"
+		case name
+		case number
+		case cvv
+		case expiryMonth
+		case expiryYear
 	}
 
 	public func encode(to encoder: Encoder) throws {

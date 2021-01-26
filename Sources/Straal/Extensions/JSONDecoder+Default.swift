@@ -1,9 +1,9 @@
 /*
- * DecodeCallable.swift
- * Created by Kajetan Dąbrowski on 24/01/2018.
+ * JSONDecoder+Default.swift
+ * Created by Michał Dąbrowski on 26/01/2021.
  *
  * Straal SDK for iOS
- * Copyright 2020 Straal Sp. z o. o.
+ * Copyright 2021 Straal Sp. z o. o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,19 +20,10 @@
 
 import Foundation
 
-class DecodeCallable<T: Decodable>: Callable {
-	typealias ReturnType = T
-	private let value: AnyCallable<Data>
-
-	init<O: Callable>(dataSource: O) where O.ReturnType == Data {
-		self.value = dataSource.asCallable()
-	}
-
-	convenience init(data: Data) {
-		self.init(dataSource: SimpleCallable.of(data))
-	}
-
-	func call() throws -> T {
-		return try JSONDecoder.default.decode(T.self, from: value.call())
+extension JSONDecoder {
+	static var `default`: JSONDecoder {
+		let decoder = JSONDecoder()
+		decoder.keyDecodingStrategy = .convertFromSnakeCase
+		return decoder
 	}
 }

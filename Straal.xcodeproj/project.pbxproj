@@ -66,6 +66,9 @@
 		774D95DF25C0913A00026FD3 /* DeviceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D95DE25C0913A00026FD3 /* DeviceFake.swift */; };
 		774D95E225C0914400026FD3 /* ScreenFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D95E125C0914400026FD3 /* ScreenFake.swift */; };
 		774D95EA25C0969900026FD3 /* UserAgentFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D95E925C0969900026FD3 /* UserAgentFake.swift */; };
+		774D95FB25C09C9100026FD3 /* JSONDecoder+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D95FA25C09C9100026FD3 /* JSONDecoder+Default.swift */; };
+		774D960925C09E9F00026FD3 /* IfCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D960825C09E9F00026FD3 /* IfCallable.swift */; };
+		774D960C25C09EAD00026FD3 /* IfCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D960B25C09EAD00026FD3 /* IfCallableSpec.swift */; };
 		7788010025BF5D360016F7EA /* HttpCallableFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778800FF25BF5D360016F7EA /* HttpCallableFake.swift */; };
 		779B9D7425C0824D008EB5A0 /* JSONEncoder+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779B9D7325C0824D008EB5A0 /* JSONEncoder+Default.swift */; };
 		77CED51F25B07D000085B30E /* IDZSwiftCommonCrypto in Frameworks */ = {isa = PBXBuildFile; productRef = 77CED51E25B07D000085B30E /* IDZSwiftCommonCrypto */; };
@@ -237,6 +240,9 @@
 		774D95DE25C0913A00026FD3 /* DeviceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFake.swift; sourceTree = "<group>"; };
 		774D95E125C0914400026FD3 /* ScreenFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFake.swift; sourceTree = "<group>"; };
 		774D95E925C0969900026FD3 /* UserAgentFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgentFake.swift; sourceTree = "<group>"; };
+		774D95FA25C09C9100026FD3 /* JSONDecoder+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Default.swift"; sourceTree = "<group>"; };
+		774D960825C09E9F00026FD3 /* IfCallable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IfCallable.swift; sourceTree = "<group>"; };
+		774D960B25C09EAD00026FD3 /* IfCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfCallableSpec.swift; sourceTree = "<group>"; };
 		778800FF25BF5D360016F7EA /* HttpCallableFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpCallableFake.swift; sourceTree = "<group>"; };
 		779B9D7325C0824D008EB5A0 /* JSONEncoder+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+Default.swift"; sourceTree = "<group>"; };
 		77CF7C15259CD4F300C2E5CD /* Info-tests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tests.plist"; sourceTree = "<group>"; };
@@ -377,6 +383,7 @@
 				A308018A2018FD0000A1060A /* Collection+Extension.swift */,
 				A30801882018FD0000A1060A /* DateSource.swift */,
 				779B9D7325C0824D008EB5A0 /* JSONEncoder+Default.swift */,
+				774D95FA25C09C9100026FD3 /* JSONDecoder+Default.swift */,
 				A308018B2018FD0000A1060A /* String+Extension.swift */,
 				A30801A92018FD0000A1060A /* UrlSession+Synchronous.swift */,
 			);
@@ -563,6 +570,7 @@
 				77283273235A47EE00CB9BB6 /* CacheValueCallable.swift */,
 				A3080160201878F500A1060A /* CryptKeyCallableSpec.swift */,
 				0E90F77A201A09230070C526 /* HttpCallableSpec.swift */,
+				774D960B25C09EAD00026FD3 /* IfCallableSpec.swift */,
 				77283279235A4CC700CB9BB6 /* MapCallableSpec.swift */,
 				7728328A235AFF2700CB9BB6 /* MergeCallableSpec.swift */,
 				7728326F235A440B00CB9BB6 /* ParseRedirectCallableSpec.swift */,
@@ -598,6 +606,7 @@
 				A308017A2018FD0000A1060A /* EncodeCallable.swift */,
 				A308017B2018FD0000A1060A /* EncryptCallable.swift */,
 				A308017C2018FD0000A1060A /* HttpCallable.swift */,
+				774D960825C09E9F00026FD3 /* IfCallable.swift */,
 				77283277235A4CB200CB9BB6 /* MapCallable.swift */,
 				A308017D2018FD0000A1060A /* MapToJsonCallable.swift */,
 				77283288235AFF1D00CB9BB6 /* MergeCallable.swift */,
@@ -1009,6 +1018,7 @@
 				A30801D32018FD0100A1060A /* Visa.swift in Sources */,
 				B4742A8F2021E21900EAD828 /* JCB.swift in Sources */,
 				A30801BF2018FD0000A1060A /* EncryptCallable.swift in Sources */,
+				774D95FB25C09C9100026FD3 /* JSONDecoder+Default.swift in Sources */,
 				774590C125AEF51600588304 /* ReturnURLProvider.swift in Sources */,
 				7728326A235A43F900CB9BB6 /* Encrypted3DSOperationResponse.swift in Sources */,
 				7718AEB2259E010A007CBF61 /* OpenURLContextParser.swift in Sources */,
@@ -1063,6 +1073,7 @@
 				B4742A872021AEC500EAD828 /* CardholderNameValidator.swift in Sources */,
 				0E9D35BB2023443C00DBA9C9 /* CardNumberValidator.swift in Sources */,
 				B4742A8B2021D96A00EAD828 /* Switch.swift in Sources */,
+				774D960925C09E9F00026FD3 /* IfCallable.swift in Sources */,
 				0E9D35B72023209E00DBA9C9 /* FullCardValidator.swift in Sources */,
 				A30801E92018FD0100A1060A /* StraalResponse.swift in Sources */,
 				A30801E72018FD0100A1060A /* StraalEndpoint.swift in Sources */,
@@ -1118,6 +1129,7 @@
 				774D95C325C0894F00026FD3 /* Locale+Stub.swift in Sources */,
 				774590CA25AEF9B100588304 /* StraalTests.swift in Sources */,
 				A371E71E1D82FD9F00D05B2F /* KeyParserTests.swift in Sources */,
+				774D960C25C09EAD00026FD3 /* IfCallableSpec.swift in Sources */,
 				7728327A235A4CC700CB9BB6 /* MapCallableSpec.swift in Sources */,
 				A35C76D5201C915600E0004F /* CreateCardSpec.swift in Sources */,
 				774D95C925C08B8600026FD3 /* UserAgentSpec.swift in Sources */,

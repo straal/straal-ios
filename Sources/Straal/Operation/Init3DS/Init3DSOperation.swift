@@ -26,7 +26,7 @@ public final class Init3DSOperation: EncryptedOperation {
 
 	public typealias Response = Encrypted3DSOperationResponse
 
-	public typealias Context = Init3DSOperationContext
+	public typealias Context = ThreeDSOperationContext
 
 	func cryptKeyPayload(configuration: StraalConfiguration) -> AnyCallable<Data> {
 		let successURL = context.urlProvider.successURL(configuration: configuration)
@@ -46,7 +46,7 @@ public final class Init3DSOperation: EncryptedOperation {
 	/// Transaction
 	public let transaction: Transaction
 
-	public internal(set) var context: Init3DSOperationContext = Init3DSOperationContext()
+	public internal(set) var context: ThreeDSOperationContext = ThreeDSOperationContext()
 
 	internal var presentViewControllerFactory: PresentStraalViewControllerFactory = PresentStraalViewControllerCallable.init
 

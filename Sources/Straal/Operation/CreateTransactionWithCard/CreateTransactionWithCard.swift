@@ -26,7 +26,7 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 
 	public typealias Response = Encrypted3DSOperationResponse
 
-	public typealias Context = Init3DSOperationContext // FIXME
+	public typealias Context = ThreeDSOperationContext
 
 	/// Straal card
 	public let card: Card
@@ -34,7 +34,7 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 	/// Transaction
 	public let transaction: Transaction
 
-	public internal(set) var context: Init3DSOperationContext = .init()
+	public internal(set) var context: ThreeDSOperationContext = .init()
 
 	internal var presentViewControllerFactory: PresentStraalViewControllerFactory = PresentStraalViewControllerCallable.init
 

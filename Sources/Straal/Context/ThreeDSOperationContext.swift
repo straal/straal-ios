@@ -1,5 +1,5 @@
 /*
- * Init3DSOperationContext.swift
+ * ThreeDSOperationContext.swift
  * Created by Michał Dąbrowski on 31/12/2020.
  *
  * Straal SDK for iOS
@@ -19,7 +19,7 @@
  */
 
 /// This is a shared context of a 3DS operation
-public class Init3DSOperationContext: OperationContext {
+public class ThreeDSOperationContext: OperationContext {
 
 	internal let urlOpeningHandler: OpenURLContextRegistration & OpenURLContextHandler
 	internal let urlProvider: ReturnURLProvider
@@ -33,7 +33,7 @@ public class Init3DSOperationContext: OperationContext {
 	}
 }
 
-extension Init3DSOperationContext: OpenURLContextHandler {
+extension ThreeDSOperationContext: OpenURLContextHandler {
 	func handle(_ context: OpenURLContext) {
 		urlOpeningHandler.handle(context)
 	}

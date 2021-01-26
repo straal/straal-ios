@@ -61,10 +61,10 @@ class Init3DSOperationSpec: QuickSpec {
 					cvv: CVV(rawValue: "000"),
 					expiry: Expiry(rawValue: (month: 2, year: 2099)))
 
-				present3DSViewControllerFactoryStub = { urls, present, dismiss, registration in
+				present3DSViewControllerFactoryStub = { urls, _, _, _ in
 					presentCallableFactoryCalled = true
 					capturedRedirectURLs = try? urls.call()
-					return PresentStraalViewControllerCallable(urls: urls, present: present, dismiss: dismiss, notificationRegistration: registration)
+					return PresentStraalViewControllerCallableFake(status: .success)
 				}
 			}
 
@@ -164,20 +164,12 @@ class Init3DSOperationSpec: QuickSpec {
 					}
 				}
 
-				describe("Response callable") {
+				describe("Response callable with redirect") {
 					beforeEach {
-						let stubURL = URL(string: "https://backend.com/url")!
-						let redirectResponse = HTTPURLResponse(
-							url: stubURL,
-							statusCode: 200,
-							httpVersion: nil,
-							headerFields: ["Location": "https://straal.com/redirect"]
-						)!
-						let httpCallable = HttpCallableFake(response: (Data(), redirectResponse))
-						_ = sut.responseCallable(httpCallable: httpCallable, configuration: defaultConfiguration)
+						_ = sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: "https://straal.com/redirect"), configuration: defaultConfiguration)
 					}
 
-					it("should call sf safari presentation callable factory") {
+					it("should not call sf safari presentation callable factory") {
 						expect(presentCallableFactoryCalled).to(beTrue())
 					}
 

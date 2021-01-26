@@ -67,28 +67,31 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 	) -> AnyCallable<Encrypted3DSOperationResponse> {
 		let cachedRequestResponse = CacheValueCallable(ParseErrorCallable(response: httpCallable))
 		let redirectURL = ParseRedirectCallable(response: cachedRequestResponse)
-
+		let catchCallable = CatchCallable(redirectURL.map { $0 }, default: nil)
+		let cachedURL = CacheValueCallable<URL?>(catchCallable)
 		let operationResponse: DecodeCallable<EncryptedOperationResponse> = DecodeCallable(dataSource: cachedRequestResponse.map { $0.0 })
 
-		let successURL = context.urlProvider.successURL(configuration: configuration)
-		let failureURL = context.urlProvider.failureURL(configuration: configuration)
-
-		let threeDSURLs = redirectURL
-			.map { ThreeDSURLs(
-				redirectURL: $0,
-				successURL: successURL,
-				failureURL: failureURL
-			)
+		let resultCallable = IfCallable(
+			cachedURL.map { $0 != nil },
+			cachedURL.map { [context] in
+				ThreeDSURLs(
+					redirectURL: $0!,
+					successURL: context.urlProvider.successURL(configuration: configuration),
+					failureURL: context.urlProvider.failureURL(configuration: configuration)
+				)
 			}
-
-		let showViewController = presentViewControllerFactory(
-			threeDSURLs.asCallable(),
-			present3DSViewController,
-			dismiss3DSViewController,
-			SimpleCallable(context.urlOpeningHandler).asCallable()
+			.flatMap { [context, presentViewControllerFactory, present3DSViewController, dismiss3DSViewController] urls in
+				presentViewControllerFactory(
+					SimpleCallable.just(urls).asCallable(),
+					present3DSViewController,
+					dismiss3DSViewController,
+					SimpleCallable(context.urlOpeningHandler).asCallable()
+				)
+			},
+			SimpleCallable.just(Encrypted3DSOperationStatus.success)
 		)
 
-		let result = operationResponse.merge(showViewController).map { requestAndStatus in
+		let result = operationResponse.merge(resultCallable).map { requestAndStatus in
 			Encrypted3DSOperationResponse(
 				requestId: requestAndStatus.0.requestId,
 				status: requestAndStatus.1)

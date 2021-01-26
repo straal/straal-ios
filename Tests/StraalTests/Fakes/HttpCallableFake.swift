@@ -35,4 +35,20 @@ class HttpCallableFake: HttpCallable {
 	override func call() throws -> (Data, HTTPURLResponse) {
 		return stubResponse
 	}
+
+	static func straalResponse(location: String?) -> HttpCallableFake {
+		var headers: [String: String] = [:]
+		if let location = location {
+			headers["Location"] = location
+		}
+		let stubURL = URL(string: "https://backend.com/url")!
+		let redirectResponse = HTTPURLResponse(
+			url: stubURL,
+			statusCode: 200,
+			httpVersion: nil,
+			headerFields: headers
+		)!
+		let data = try? JSONEncoder.default.encode( EncryptedOperationResponse(requestId: "REQ1"))
+		return HttpCallableFake(response: (data ?? Data(), redirectResponse))
+	}
 }

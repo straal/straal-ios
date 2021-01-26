@@ -66,10 +66,10 @@ class CreateTransactionWithCardSpec: QuickSpec {
 					expiry: Expiry(rawValue: (month: 2, year: 2099))
 				)
 
-				present3DSViewControllerFactoryStub = { urls, present, dismiss, registration in
+				present3DSViewControllerFactoryStub = { urls, _, _, _ in
 					presentCallableFactoryCalled = true
 					capturedRedirectURLs = try? urls.call()
-					return PresentStraalViewControllerCallable(urls: urls, present: present, dismiss: dismiss, notificationRegistration: registration)
+					return PresentStraalViewControllerCallableFake(status: .success)
 				}
 			}
 
@@ -233,17 +233,9 @@ class CreateTransactionWithCardSpec: QuickSpec {
 					}
 				}
 
-				describe("Response callable") {
+				describe("Response callable with redirect") {
 					beforeEach {
-						let stubURL = URL(string: "https://backend.com/url")!
-						let redirectResponse = HTTPURLResponse(
-							url: stubURL,
-							statusCode: 200,
-							httpVersion: nil,
-							headerFields: ["Location": "https://straal.com/redirect"]
-						)!
-						let httpCallable = HttpCallableFake(response: (Data(), redirectResponse))
-						_ = sut.responseCallable(httpCallable: httpCallable, configuration: defaultConfiguration)
+						_ = try? sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: "https://straal.com/redirect"), configuration: defaultConfiguration).call()
 					}
 
 					it("should call sf safari presentation callable factory") {
@@ -264,6 +256,36 @@ class CreateTransactionWithCardSpec: QuickSpec {
 
 					it("should pass correct failure url") {
 						expect(capturedRedirectURLs?.failureURL.absoluteString).to(equal("https://backend.com/x-callback-url/straal/failure"))
+					}
+				}
+
+				describe("Response callable without redirect") { // frictionless
+					beforeEach {
+						_ = try? sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: nil), configuration: defaultConfiguration).call()
+					}
+
+					it("should not call sf safari presentation callable factory") {
+						expect(presentCallableFactoryCalled).to(beFalse())
+					}
+				}
+
+				describe("Response callable with redirect to success url") {
+					beforeEach {
+						_ = try? sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: "https://backend.com/x-callback-url/straal/success"), configuration: defaultConfiguration).call()
+					}
+
+					it("should not call sf safari presentation callable factory") {
+						expect(presentCallableFactoryCalled).to(beFalse())
+					}
+				}
+
+				describe("Response callable with redirect to failure url") {
+					beforeEach {
+						_ = try? sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: "https://backend.com/x-callback-url/straal/failure"), configuration: defaultConfiguration).call()
+					}
+
+					it("should not call sf safari presentation callable factory") {
+						expect(presentCallableFactoryCalled).to(beFalse())
 					}
 				}
 			}

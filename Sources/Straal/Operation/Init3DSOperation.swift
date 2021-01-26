@@ -20,7 +20,6 @@
 
 import Foundation
 import UIKit
-import SafariServices
 
 /// Creates a card with the first transaction
 public final class Init3DSOperation: EncryptedOperation {
@@ -43,7 +42,7 @@ public final class Init3DSOperation: EncryptedOperation {
 			let superEncoder = container.superEncoder(forKey: .transaction)
 			try transaction.encode(to: superEncoder)
 
-			var urlsEncoder = superEncoder.container(keyedBy: URLCodingKeys.self.self)
+			var urlsEncoder = superEncoder.container(keyedBy: URLCodingKeys.self)
 			try urlsEncoder.encode(successURL, forKey: .successURL)
 			try urlsEncoder.encode(failureURL, forKey: .failureURL)
 		}
@@ -94,7 +93,7 @@ public final class Init3DSOperation: EncryptedOperation {
 		let failureURL = context.urlProvider.failureURL(configuration: configuration)
 
 		let init3DSURLs = redirectURL
-			.map { Init3DSURLs(
+			.map { ThreeDSURLs(
 				redirectURL: $0,
 				successURL: successURL,
 				failureURL: failureURL
@@ -105,9 +104,7 @@ public final class Init3DSOperation: EncryptedOperation {
 			init3DSURLs.asCallable(),
 			present3DSViewController,
 			dismiss3DSViewController,
-			SimpleCallable(context.urlOpeningHandler).asCallable(),
-			OpenURLContextParser.init,
-			SFSafariViewController.init
+			SimpleCallable(context.urlOpeningHandler).asCallable()
 		)
 
 		let result = operationResponse.merge(showViewController).map { requestAndStatus in

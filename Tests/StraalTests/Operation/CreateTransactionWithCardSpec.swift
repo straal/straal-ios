@@ -48,7 +48,7 @@ class CreateTransactionWithCardSpec: QuickSpec {
 
 			var present3DSViewControllerFactoryStub: PresentStraalViewControllerFactory!
 			var presentCallableFactoryCalled: Bool = false
-			var capturedRedirectURLs: Init3DSURLs?
+			var capturedRedirectURLs: ThreeDSURLs?
 
 			beforeEach {
 				card = Card(
@@ -119,8 +119,8 @@ class CreateTransactionWithCardSpec: QuickSpec {
 							expect(transaction?["reference"]).to(beNil())
 						}
 
-						it("should have two keys") {
-							expect(transaction?.count).to(equal(2))
+						it("should have 3 keys") {
+							expect(transaction?.count).to(equal(3))
 						}
 
 						describe("authentication_3ds") {
@@ -134,14 +134,16 @@ class CreateTransactionWithCardSpec: QuickSpec {
 								authentication3DS = nil
 							}
 
+							it("should have auth3DS") {
+								expect(authentication3DS).notTo(beNil())
+							}
+
 							it("should have correct success url") {
 								expect(authentication3DS?["success_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/success"))
 							}
 
 							it("should have correct failure url") {
-								it("should have a correct failure URL") {
-									expect(authentication3DS?["failure_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/failure"))
-								}
+								expect(authentication3DS?["failure_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/failure"))
 							}
 
 							it("should have count 3") {
@@ -191,7 +193,7 @@ class CreateTransactionWithCardSpec: QuickSpec {
 									}
 
 									it("should have correct user agent") {
-										expect(browser?["user_agent"] as? String).to(equal("USER AGENT")) //FIXME
+										expect(browser?["user_agent"] as? String).notTo(beNil())
 									}
 
 									it("should have correct java_enabled") {
@@ -304,8 +306,8 @@ class CreateTransactionWithCardSpec: QuickSpec {
 							expect(transaction["reference"] as? String).to(equal("order:124iygtieurg"))
 						}
 
-						it("should have three keys") {
-							expect(transaction.count).to(equal(3))
+						it("should have 4 keys") {
+							expect(transaction.count).to(equal(4))
 						}
 					}
 				}

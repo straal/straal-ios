@@ -20,7 +20,7 @@
 
 import Foundation
 
-internal struct Init3DSURLs {
+internal struct ThreeDSURLs {
 	public let redirectURL: URL
 	public let successURL: URL
 	public let failureURL: URL

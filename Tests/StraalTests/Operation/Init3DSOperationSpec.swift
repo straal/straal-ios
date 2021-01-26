@@ -48,7 +48,7 @@ class Init3DSOperationSpec: QuickSpec {
 
 			var present3DSViewControllerFactoryStub: PresentStraalViewControllerFactory!
 			var presentCallableFactoryCalled: Bool = false
-			var capturedRedirectURLs: Init3DSURLs?
+			var capturedRedirectURLs: ThreeDSURLs?
 
 			beforeEach {
 				presentCallableFactoryCalled = false

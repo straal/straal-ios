@@ -75,6 +75,7 @@
 		774D961E25C0B68B00026FD3 /* PresentStraalViewControllerCallableFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D961D25C0B68B00026FD3 /* PresentStraalViewControllerCallableFake.swift */; };
 		774D962125C0B89600026FD3 /* FlatMapCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D962025C0B89600026FD3 /* FlatMapCallable.swift */; };
 		774D962525C0B8B200026FD3 /* FlatMapCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D962425C0B8B200026FD3 /* FlatMapCallableSpec.swift */; };
+		7762D2D725C15BFE00A48482 /* CreateTransactionWithCard+StraalRequestPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7762D2D625C15BFE00A48482 /* CreateTransactionWithCard+StraalRequestPayload.swift */; };
 		7788010025BF5D360016F7EA /* HttpCallableFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778800FF25BF5D360016F7EA /* HttpCallableFake.swift */; };
 		779B9D7425C0824D008EB5A0 /* JSONEncoder+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779B9D7325C0824D008EB5A0 /* JSONEncoder+Default.swift */; };
 		77CED51F25B07D000085B30E /* IDZSwiftCommonCrypto in Frameworks */ = {isa = PBXBuildFile; productRef = 77CED51E25B07D000085B30E /* IDZSwiftCommonCrypto */; };
@@ -255,6 +256,7 @@
 		774D961D25C0B68B00026FD3 /* PresentStraalViewControllerCallableFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentStraalViewControllerCallableFake.swift; sourceTree = "<group>"; };
 		774D962025C0B89600026FD3 /* FlatMapCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatMapCallable.swift; sourceTree = "<group>"; };
 		774D962425C0B8B200026FD3 /* FlatMapCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatMapCallableSpec.swift; sourceTree = "<group>"; };
+		7762D2D625C15BFE00A48482 /* CreateTransactionWithCard+StraalRequestPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTransactionWithCard+StraalRequestPayload.swift"; sourceTree = "<group>"; };
 		778800FF25BF5D360016F7EA /* HttpCallableFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpCallableFake.swift; sourceTree = "<group>"; };
 		779B9D7325C0824D008EB5A0 /* JSONEncoder+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+Default.swift"; sourceTree = "<group>"; };
 		77CF7C15259CD4F300C2E5CD /* Info-tests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tests.plist"; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 			children = (
 				A30801842018FD0000A1060A /* CreateTransactionWithCard.swift */,
 				774D95BB25C085DD00026FD3 /* CreateTransactionWithCard+CryptKeyPayload.swift */,
+				7762D2D625C15BFE00A48482 /* CreateTransactionWithCard+StraalRequestPayload.swift */,
 			);
 			path = CreateTransactionWithCard;
 			sourceTree = "<group>";
@@ -1023,6 +1026,7 @@
 				A30801D72018FD0100A1060A /* CardsParser.swift in Sources */,
 				A30801C22018FD0000A1060A /* ParseErrorCallable.swift in Sources */,
 				B4742AA32021F21000EAD828 /* Maestro.swift in Sources */,
+				7762D2D725C15BFE00A48482 /* CreateTransactionWithCard+StraalRequestPayload.swift in Sources */,
 				774D95BC25C085DD00026FD3 /* CreateTransactionWithCard+CryptKeyPayload.swift in Sources */,
 				A30801E22018FD0100A1060A /* ValidationResult.swift in Sources */,
 				A30801C72018FD0000A1060A /* CreateCard.swift in Sources */,

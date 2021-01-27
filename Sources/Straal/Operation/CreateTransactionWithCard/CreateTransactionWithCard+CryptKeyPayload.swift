@@ -25,9 +25,9 @@ extension CreateTransactionWithCard {
 	// swiftlint:disable nesting
 
 	struct CryptKeyPayload: Encodable {
-		let key: CryptKeyPermission
-		let transaction: Transaction
-		let authentication3DS: Authentication3DS
+		private let key: CryptKeyPermission
+		private let transaction: Transaction
+		private let authentication3DS: Authentication3DS
 
 		func encode(to encoder: Encoder) throws {
 			try key.encode(to: encoder)
@@ -53,41 +53,20 @@ extension CreateTransactionWithCard {
 			key: CryptKeyPermission,
 			transaction: Transaction,
 			successURL: URL,
-			failureURL: URL,
-			language: String,
-			userAgent: String
+			failureURL: URL
 			) {
 			self.key = key
 			self.transaction = transaction
 			self.authentication3DS = .init(
 				successURL: successURL,
-				failureURL: failureURL,
-				threedsV2: .init(
-					browser: Browser(
-						language: language,
-						userAgent: userAgent
-					)
-				)
+				failureURL: failureURL
 			)
 		}
 	}
 
-	struct Authentication3DS: Encodable {
+	private struct Authentication3DS: Encodable {
 		var successURL: URL
 		var failureURL: URL
-		var threedsV2: ThreeDSV2
-	}
-
-	struct ThreeDSV2: Encodable {
-		var browser: Browser
-	}
-
-	struct Browser: Encodable {
-		let acceptHeader: String = "*/*"
-		let javaEnabled: Bool = true
-		let language: String// = "pl-PL"
-		let userAgent: String// = UserAgent.userAgent!
-
 	}
 
 	// swiftlint:enable nesting

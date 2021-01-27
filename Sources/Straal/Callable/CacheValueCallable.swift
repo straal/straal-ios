@@ -38,4 +38,11 @@ class CacheValueCallable<ReturnType>: Callable {
 		self.cached = cached
 		return cached
 	}
+
+}
+
+extension Callable {
+	func cached() -> CacheValueCallable<ReturnType> {
+		CacheValueCallable(self)
+	}
 }

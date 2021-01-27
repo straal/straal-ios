@@ -68,18 +68,18 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 		httpCallable: HttpCallable,
 		configuration: StraalConfiguration
 	) -> AnyCallable<Encrypted3DSOperationResponse> {
-		let cachedRequestResponse = CacheValueCallable(ParseErrorCallable(response: httpCallable))
-		let redirectURL = ParseRedirectCallable(response: cachedRequestResponse)
-		let catchCallable = CatchCallable(redirectURL.map { $0 }, default: nil)
-		let cachedURL = CacheValueCallable<URL?>(catchCallable)
-		let operationResponse: DecodeCallable<EncryptedOperationResponse> = DecodeCallable(dataSource: cachedRequestResponse.map { $0.0 })
-
 		let successURL = context.urlProvider.successURL(configuration: configuration)
 		let failureURL = context.urlProvider.failureURL(configuration: configuration)
 
+
+		let cachedRequestResponse = ParseErrorCallable(response: httpCallable).cached()
+		let redirectURL = ParseRedirectCallable(response: cachedRequestResponse)
+		let redirectURLOrNil = CatchCallable(redirectURL.map { $0 }, default: nil).cached()
+		let operationResponse: DecodeCallable<EncryptedOperationResponse> = DecodeCallable(dataSource: cachedRequestResponse.map { $0.0 })
+
 		let resultCallable = IfCallable(
-			cachedURL.map { $0 != nil && $0 != successURL && $0 != failureURL },
-			cachedURL.map {
+			redirectURLOrNil.map { $0 != nil && $0 != successURL && $0 != failureURL },
+			redirectURLOrNil.map {
 				ThreeDSURLs(
 					redirectURL: $0!,
 					successURL: successURL,
@@ -94,7 +94,7 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 					SimpleCallable(context.urlOpeningHandler).asCallable()
 				)
 			},
-			cachedURL.map { redirect in
+			redirectURLOrNil.map { redirect in
 				switch redirect {
 				case .none: return .success
 				case let url where url == successURL: return .success

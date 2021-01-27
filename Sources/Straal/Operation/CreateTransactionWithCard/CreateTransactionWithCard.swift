@@ -74,13 +74,16 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 		let cachedURL = CacheValueCallable<URL?>(catchCallable)
 		let operationResponse: DecodeCallable<EncryptedOperationResponse> = DecodeCallable(dataSource: cachedRequestResponse.map { $0.0 })
 
+		let successURL = context.urlProvider.successURL(configuration: configuration)
+		let failureURL = context.urlProvider.failureURL(configuration: configuration)
+
 		let resultCallable = IfCallable(
-			cachedURL.map { $0 != nil },
-			cachedURL.map { [context] in
+			cachedURL.map { $0 != nil && $0 != successURL && $0 != failureURL },
+			cachedURL.map {
 				ThreeDSURLs(
 					redirectURL: $0!,
-					successURL: context.urlProvider.successURL(configuration: configuration),
-					failureURL: context.urlProvider.failureURL(configuration: configuration)
+					successURL: successURL,
+					failureURL: failureURL
 				)
 			}
 			.flatMap { [context, presentViewControllerFactory, present3DSViewController, dismiss3DSViewController] urls in
@@ -91,7 +94,14 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 					SimpleCallable(context.urlOpeningHandler).asCallable()
 				)
 			},
-			SimpleCallable.just(Encrypted3DSOperationStatus.success)
+			cachedURL.map { redirect in
+				switch redirect {
+				case .none: return .success
+				case let url where url == successURL: return .success
+				case let url where url == failureURL: return .failure
+				default: return .failure
+				}
+			}
 		)
 
 		let result = operationResponse.merge(resultCallable).map { requestAndStatus in

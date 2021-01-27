@@ -29,16 +29,21 @@ public final class Init3DSOperation: EncryptedOperation {
 
 	public typealias Context = ThreeDSOperationContext
 
-	func cryptKeyPayload(configuration: StraalConfiguration) -> AnyCallable<Data> {
-		let successURL = context.urlProvider.successURL(configuration: configuration)
-		let failureURL = context.urlProvider.failureURL(configuration: configuration)
-		return EncodeCallable(
-			value: CryptKeyPayload(
-				key: permission,
-				transaction: transaction,
-				successURL: successURL,
-				failureURL: failureURL)
-		).asCallable()
+	func cryptKeyPayload(
+		configuration: StraalConfiguration
+	) -> CryptKeyPayload {
+		.init(
+			key: permission,
+			transaction: transaction,
+			successURL: context.urlProvider.successURL(configuration: configuration),
+			failureURL: context.urlProvider.failureURL(configuration: configuration)
+		)
+	}
+
+	func straalRequestPayload(
+		configuration: StraalConfiguration
+	) -> Card {
+		card
 	}
 
 	/// Straal card

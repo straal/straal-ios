@@ -33,12 +33,12 @@ class CreateCardSpec: QuickSpec {
 			var sut: CreateCard!
 			let defaultConfiguration: StraalConfiguration = StraalConfiguration(baseUrl: URL(string: "https://backend.com")!)
 			var cryptKeyJson: [String: Any] {
-				let data: Data = (try? sut.cryptKeyPayload(configuration: defaultConfiguration).call()) ?? Data()
+				let data: Data = (try? sut.cryptKeyData(configuration: defaultConfiguration).call()) ?? Data()
 				return ((try? JSONSerialization.jsonObject(with: data)) as? [String: Any]) ?? [:]
 			}
 
 			var straalRequestJson: [String: Any] {
-				let data: Data = (try? sut.straalRequestPayload.call()) ?? Data()
+				let data: Data = (try? sut.straalRequestData(configuration: defaultConfiguration).call()) ?? Data()
 				return ((try? JSONSerialization.jsonObject(with: data)) as? [String: Any]) ?? [:]
 			}
 

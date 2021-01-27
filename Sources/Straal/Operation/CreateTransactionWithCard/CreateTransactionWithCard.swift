@@ -45,20 +45,23 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 
 	func cryptKeyPayload(
 		configuration: StraalConfiguration
-	) -> AnyCallable<Data> {
-		let successURL = context.urlProvider.successURL(configuration: configuration)
-		let failureURL = context.urlProvider.failureURL(configuration: configuration)
-		let language = configuration.locale.identifier
-		return EncodeCallable(
-			value: CryptKeyPayload(
-				key: permission,
-				transaction: transaction,
-				successURL: successURL,
-				failureURL: failureURL,
-				language: language,
-				userAgent: configuration.userAgent.userAgent
-			)
-		).asCallable()
+	) -> CryptKeyPayload {
+		.init(
+			key: permission,
+			transaction: transaction,
+			successURL: context.urlProvider.successURL(configuration: configuration),
+			failureURL: context.urlProvider.failureURL(configuration: configuration)
+		)
+	}
+
+	func straalRequestPayload(
+		configuration: StraalConfiguration
+	) -> StraalRequestPayload {
+		.init(
+			card: card,
+			language: configuration.locale.identifier,
+			userAgent: configuration.userAgent.userAgent
+		)
 	}
 
 	internal func responseCallable(

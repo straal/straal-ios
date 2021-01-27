@@ -33,6 +33,6 @@ class DecodeCallable<T: Decodable>: Callable {
 	}
 
 	func call() throws -> T {
-		return try JSONDecoder.default.decode(T.self, from: value.call())
+		try JSONDecoder.default.decode(T.self, from: value.call())
 	}
 }

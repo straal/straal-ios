@@ -152,60 +152,8 @@ class CreateTransactionWithCardSpec: QuickSpec {
 								expect(authentication3DS?["failure_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/failure"))
 							}
 
-							it("should have count 3") {
-								expect(authentication3DS?.count).to(equal(3))
-							}
-
-							describe("threeds_v2") {
-								var threeDSV2: [String: Any]?
-
-								beforeEach {
-									threeDSV2 = authentication3DS?["threeds_v2"] as? [String: Any]
-								}
-
-								afterEach {
-									threeDSV2 = nil
-								}
-
-								it("should have browser key") {
-									expect(threeDSV2?["browser"] as? [String: Any]).notTo(beNil())
-								}
-
-								it("should have count 1") {
-									expect(threeDSV2?.count).to(equal(1))
-								}
-
-								describe("browser") {
-									var browser: [String: Any]?
-
-									beforeEach {
-										browser = threeDSV2?["browser"] as? [String: Any]
-									}
-
-									afterEach {
-										browser = nil
-									}
-
-									it("should have count 4") {
-										expect(browser?.count).to(equal(4))
-									}
-
-									it("should have correct locale") {
-										expect(browser?["language"] as? String).to(equal("en_US"))
-									}
-
-									it("should have correct accept header") {
-										expect(browser?["accept_header"] as? String).to(equal("*/*"))
-									}
-
-									it("should have correct user agent") {
-										expect(browser?["user_agent"] as? String).to(equal("user-agent"))
-									}
-
-									it("should have correct java_enabled") {
-										expect(browser?["java_enabled"] as? Bool).to(equal(true))
-									}
-								}
+							it("should have count 2") {
+								expect(authentication3DS?.count).to(equal(2))
 							}
 						}
 					}
@@ -230,6 +178,46 @@ class CreateTransactionWithCardSpec: QuickSpec {
 
 					it("should have correct expiry year") {
 						expect(straalRequestJson["expiry_year"] as? Int).to(equal(2099))
+					}
+
+					it("should have browser key") {
+						expect(straalRequestJson["browser"] as? [String: Any]).notTo(beNil())
+					}
+
+					it("should have count 6") {
+						expect(straalRequestJson.count).to(equal(6))
+					}
+
+					describe("browser") {
+						var browser: [String: Any]?
+
+						beforeEach {
+							browser = straalRequestJson["browser"] as? [String: Any]
+						}
+
+						afterEach {
+							browser = nil
+						}
+
+						it("should have count 4") {
+							expect(browser?.count).to(equal(4))
+						}
+
+						it("should have correct locale") {
+							expect(browser?["language"] as? String).to(equal("en_US"))
+						}
+
+						it("should have correct accept header") {
+							expect(browser?["accept_header"] as? String).to(equal("*/*"))
+						}
+
+						it("should have correct user agent") {
+							expect(browser?["user_agent"] as? String).to(equal("user-agent"))
+						}
+
+						it("should have correct java_enabled") {
+							expect(browser?["java_enabled"] as? Bool).to(equal(true))
+						}
 					}
 				}
 

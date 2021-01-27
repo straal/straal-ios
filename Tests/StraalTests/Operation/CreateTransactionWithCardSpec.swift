@@ -55,6 +55,7 @@ class CreateTransactionWithCardSpec: QuickSpec {
 			var present3DSViewControllerFactoryStub: PresentStraalViewControllerFactory!
 			var presentCallableFactoryCalled: Bool = false
 			var capturedRedirectURLs: ThreeDSURLs?
+			var result: Encrypted3DSOperationResponse?
 
 			beforeEach {
 				card = Card(
@@ -79,6 +80,7 @@ class CreateTransactionWithCardSpec: QuickSpec {
 				capturedRedirectURLs = nil
 				presentCallableFactoryCalled = false
 				present3DSViewControllerFactoryStub = nil
+				result = nil
 			}
 
 			context("with transaction in usd without reference") {
@@ -222,8 +224,9 @@ class CreateTransactionWithCardSpec: QuickSpec {
 				}
 
 				describe("Response callable with redirect") {
+
 					beforeEach {
-						_ = try? sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: "https://straal.com/redirect"), configuration: defaultConfiguration).call()
+						result = try? sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: "https://straal.com/redirect"), configuration: defaultConfiguration).call()
 					}
 
 					it("should call sf safari presentation callable factory") {
@@ -245,35 +248,51 @@ class CreateTransactionWithCardSpec: QuickSpec {
 					it("should pass correct failure url") {
 						expect(capturedRedirectURLs?.failureURL.absoluteString).to(equal("https://backend.com/x-callback-url/straal/failure"))
 					}
+
+					it("should return ok result") {
+						expect(result).to(equal(Encrypted3DSOperationResponse(requestId: "REQ1", status: .success)))
+					}
 				}
 
 				describe("Response callable without redirect") { // frictionless
 					beforeEach {
-						_ = try? sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: nil), configuration: defaultConfiguration).call()
+						result = try? sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: nil), configuration: defaultConfiguration).call()
 					}
 
 					it("should not call sf safari presentation callable factory") {
 						expect(presentCallableFactoryCalled).to(beFalse())
+					}
+
+					it("should return ok result") {
+						expect(result).to(equal(Encrypted3DSOperationResponse(requestId: "REQ1", status: .success)))
 					}
 				}
 
 				describe("Response callable with redirect to success url") {
 					beforeEach {
-						_ = try? sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: "https://backend.com/x-callback-url/straal/success"), configuration: defaultConfiguration).call()
+						result = try? sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: "https://backend.com/x-callback-url/straal/success"), configuration: defaultConfiguration).call()
 					}
 
 					it("should not call sf safari presentation callable factory") {
 						expect(presentCallableFactoryCalled).to(beFalse())
+					}
+
+					it("should return ok result") {
+						expect(result).to(equal(Encrypted3DSOperationResponse(requestId: "REQ1", status: .success)))
 					}
 				}
 
 				describe("Response callable with redirect to failure url") {
 					beforeEach {
-						_ = try? sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: "https://backend.com/x-callback-url/straal/failure"), configuration: defaultConfiguration).call()
+						result = try? sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: "https://backend.com/x-callback-url/straal/failure"), configuration: defaultConfiguration).call()
 					}
 
 					it("should not call sf safari presentation callable factory") {
 						expect(presentCallableFactoryCalled).to(beFalse())
+					}
+
+					it("should return failed result") {
+						expect(result).to(equal(Encrypted3DSOperationResponse(requestId: "REQ1", status: .failure)))
 					}
 				}
 			}

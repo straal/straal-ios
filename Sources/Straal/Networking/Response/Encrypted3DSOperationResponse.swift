@@ -25,7 +25,7 @@ public enum Encrypted3DSOperationStatus {
 	case failure
 }
 
-public struct Encrypted3DSOperationResponse: StraalResponse {
+public struct Encrypted3DSOperationResponse: StraalResponse, Equatable {
 	public let requestId: String
 	public let status: Encrypted3DSOperationStatus
 

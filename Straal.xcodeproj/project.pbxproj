@@ -78,6 +78,7 @@
 		7762D2D725C15BFE00A48482 /* CreateTransactionWithCard+StraalRequestPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7762D2D625C15BFE00A48482 /* CreateTransactionWithCard+StraalRequestPayload.swift */; };
 		7788010025BF5D360016F7EA /* HttpCallableFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778800FF25BF5D360016F7EA /* HttpCallableFake.swift */; };
 		779B9D7425C0824D008EB5A0 /* JSONEncoder+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779B9D7325C0824D008EB5A0 /* JSONEncoder+Default.swift */; };
+		77B6298C25D585A400408AF3 /* StraalConfiguration+TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B6298B25D585A400408AF3 /* StraalConfiguration+TestData.swift */; };
 		77CED51F25B07D000085B30E /* IDZSwiftCommonCrypto in Frameworks */ = {isa = PBXBuildFile; productRef = 77CED51E25B07D000085B30E /* IDZSwiftCommonCrypto */; };
 		77CED52325B07D340085B30E /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 77CED52225B07D340085B30E /* Quick */; };
 		77CED52725B07D510085B30E /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 77CED52625B07D510085B30E /* Nimble */; };
@@ -259,6 +260,7 @@
 		7762D2D625C15BFE00A48482 /* CreateTransactionWithCard+StraalRequestPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTransactionWithCard+StraalRequestPayload.swift"; sourceTree = "<group>"; };
 		778800FF25BF5D360016F7EA /* HttpCallableFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpCallableFake.swift; sourceTree = "<group>"; };
 		779B9D7325C0824D008EB5A0 /* JSONEncoder+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+Default.swift"; sourceTree = "<group>"; };
+		77B6298B25D585A400408AF3 /* StraalConfiguration+TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StraalConfiguration+TestData.swift"; sourceTree = "<group>"; };
 		77CF7C15259CD4F300C2E5CD /* Info-tests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tests.plist"; sourceTree = "<group>"; };
 		77CF7C5C259CECB800C2E5CD /* SafariViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariViewControllerSpy.swift; sourceTree = "<group>"; };
 		77DC743E235B5126002FC9D8 /* PresentStraalViewControllerCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentStraalViewControllerCallableSpec.swift; sourceTree = "<group>"; };
@@ -518,6 +520,7 @@
 				A309CAFF1D9945BD00873639 /* Model */,
 				A3000E671D8BFD5400258B07 /* Networking */,
 				A35C76D3201C914500E0004F /* Operation */,
+				77B6298A25D5858B00408AF3 /* TestData */,
 				7718AE86259DE65B007CBF61 /* URL */,
 			);
 			path = StraalTests;
@@ -531,6 +534,14 @@
 				77CF7C15259CD4F300C2E5CD /* Info-tests.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		77B6298A25D5858B00408AF3 /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+				77B6298B25D585A400408AF3 /* StraalConfiguration+TestData.swift */,
+			);
+			path = TestData;
 			sourceTree = "<group>";
 		};
 		A3000E661D8BFD5000258B07 /* Fakes */ = {
@@ -1147,6 +1158,7 @@
 				0E7AC1C5201B703B00BC3DF3 /* PostRequestCallableSpec.swift in Sources */,
 				77283276235A497800CB9BB6 /* SimpleCallableSpy.swift in Sources */,
 				774D95D625C0902700026FD3 /* InfoDictionaryFake.swift in Sources */,
+				77B6298C25D585A400408AF3 /* StraalConfiguration+TestData.swift in Sources */,
 				774D961425C0A62B00026FD3 /* CatchCallableSpec.swift in Sources */,
 				0E90F77D201A15BF0070C526 /* UrlSessionAdapterFake.swift in Sources */,
 				B4A6012120245CF700088A0E /* FullCardValidatorSpec.swift in Sources */,

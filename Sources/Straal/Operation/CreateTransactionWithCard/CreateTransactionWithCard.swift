@@ -71,7 +71,6 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 		let successURL = context.urlProvider.successURL(configuration: configuration)
 		let failureURL = context.urlProvider.failureURL(configuration: configuration)
 
-
 		let cachedRequestResponse = ParseErrorCallable(response: httpCallable).cached()
 		let redirectURL = ParseRedirectCallable(response: cachedRequestResponse)
 		let redirectURLOrNil = CatchCallable(redirectURL.map { $0 }, default: nil).cached()

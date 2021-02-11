@@ -27,11 +27,11 @@ protocol ReturnURLProvider {
 
 extension ReturnURLProvider {
 	func successURL(configuration: StraalConfiguration) -> URL {
-		successURL(scheme: configuration.returnURLScheme ?? "https")
+		successURL(scheme: configuration.returnURLScheme)
 	}
 
 	func failureURL(configuration: StraalConfiguration) -> URL {
-		failureURL(scheme: configuration.returnURLScheme ?? "https")
+		failureURL(scheme: configuration.returnURLScheme)
 	}
 }
 

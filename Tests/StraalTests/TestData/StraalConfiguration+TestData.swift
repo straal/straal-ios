@@ -24,7 +24,7 @@ import Foundation
 extension StraalConfiguration {
 	static func testConfiguration(
 		baseUrl: URL = URL(string: "https://example.com/")!,
-		returnURLScheme: String? = "com.straal.app.payments",
+		returnURLScheme: String = "com.straal.app.payments",
 		headers: [String: String] = [:],
 		cryptKeyPath: String? = nil,
 		locale: LocaleAdapting = Locale.english,

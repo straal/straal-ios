@@ -32,7 +32,7 @@ public struct StraalConfiguration {
 	///   - cryptKeyPath: Path at which to download crypt keys. It will be appended to `backendBaseUrl` by the SDK. If no value is provided, the default (`/api/v1/cryptkeys`) will be used.
 	public init(
 		baseUrl: URL,
-		returnURLScheme: String?,
+		returnURLScheme: String,
 		headers: [String: String]? = nil,
 		cryptKeyPath: String? = nil
 	) {
@@ -48,7 +48,7 @@ public struct StraalConfiguration {
 
 	internal init(
 		baseUrl: URL,
-		returnURLScheme: String?,
+		returnURLScheme: String,
 		headers: [String: String]? = nil,
 		cryptKeyPath: String? = nil,
 		locale: LocaleAdapting,
@@ -76,7 +76,7 @@ public struct StraalConfiguration {
 	public let headers: [String: String]
 
 	/// URL scheme to return to the app from external verification (like 3d-secure). It has to be defines in Xcode and unique for your app.
-	public let returnURLScheme: String?
+	public let returnURLScheme: String
 
 	// MARK: Internal
 

@@ -27,14 +27,17 @@ public struct StraalConfiguration {
 	///
 	/// - Parameters:
 	///   - baseUrl: base URL of your backend service that uses Straal SDK and provides crypt key endpoint
+	///   - returnURLScheme: URL scheme to define to return to the app. It has to be defines in Xcode and unique for your app
 	///   - headers: dictionary of key-value pairs that will be added as headers to every HTTP request to your backend service
 	///   - cryptKeyPath: Path at which to download crypt keys. It will be appended to `backendBaseUrl` by the SDK. If no value is provided, the default (`/api/v1/cryptkeys`) will be used.
 	public init(
 		baseUrl: URL,
+		returnURLScheme: String?,
 		headers: [String: String]? = nil,
 		cryptKeyPath: String? = nil
 	) {
 		self.backendBaseUrl = baseUrl
+		self.returnURLScheme = returnURLScheme
 		self.headers = headers ?? [:]
 		self.cryptKeyPath = cryptKeyPath
 		self.locale = Locale.current
@@ -45,6 +48,7 @@ public struct StraalConfiguration {
 
 	internal init(
 		baseUrl: URL,
+		returnURLScheme: String?,
 		headers: [String: String]? = nil,
 		cryptKeyPath: String? = nil,
 		locale: LocaleAdapting,
@@ -53,6 +57,7 @@ public struct StraalConfiguration {
 		operationContextContainer: OperationContextContainer
 	) {
 		self.backendBaseUrl = baseUrl
+		self.returnURLScheme = returnURLScheme
 		self.headers = headers ?? [:]
 		self.cryptKeyPath = cryptKeyPath
 		self.locale = locale
@@ -69,6 +74,9 @@ public struct StraalConfiguration {
 
 	/// Dictionary of key-value pairs that will be added as headers to every HTTP request to your backend service
 	public let headers: [String: String]
+
+	/// URL scheme to return to the app from external verification (like 3d-secure). It has to be defines in Xcode and unique for your app.
+	public let returnURLScheme: String?
 
 	// MARK: Internal
 

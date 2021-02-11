@@ -144,11 +144,11 @@ class CreateTransactionWithCardSpec: QuickSpec {
 							}
 
 							it("should have correct success url") {
-								expect(authentication3DS?["success_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/success"))
+								expect(authentication3DS?["success_url"] as? String).to(equal("com.straal.test.payments://sdk.straal.com/x-callback-url/ios/success"))
 							}
 
 							it("should have correct failure url") {
-								expect(authentication3DS?["failure_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/failure"))
+								expect(authentication3DS?["failure_url"] as? String).to(equal("com.straal.test.payments://sdk.straal.com/x-callback-url/ios/failure"))
 							}
 
 							it("should have count 2") {
@@ -239,11 +239,11 @@ class CreateTransactionWithCardSpec: QuickSpec {
 					}
 
 					it("should pass correct success url") {
-						expect(capturedRedirectURLs?.successURL.absoluteString).to(equal("https://backend.com/x-callback-url/straal/success"))
+						expect(capturedRedirectURLs?.successURL.absoluteString).to(equal("com.straal.test.payments://sdk.straal.com/x-callback-url/ios/success"))
 					}
 
 					it("should pass correct failure url") {
-						expect(capturedRedirectURLs?.failureURL.absoluteString).to(equal("https://backend.com/x-callback-url/straal/failure"))
+						expect(capturedRedirectURLs?.failureURL.absoluteString).to(equal("com.straal.test.payments://sdk.straal.com/x-callback-url/ios/failure"))
 					}
 
 					it("should return ok result") {
@@ -267,7 +267,7 @@ class CreateTransactionWithCardSpec: QuickSpec {
 
 				describe("Response callable with redirect to success url") {
 					beforeEach {
-						result = try? sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: "https://backend.com/x-callback-url/straal/success"), configuration: defaultConfiguration).call()
+						result = try? sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: "com.straal.test.payments://sdk.straal.com/x-callback-url/ios/success"), configuration: defaultConfiguration).call()
 					}
 
 					it("should not call sf safari presentation callable factory") {
@@ -281,7 +281,7 @@ class CreateTransactionWithCardSpec: QuickSpec {
 
 				describe("Response callable with redirect to failure url") {
 					beforeEach {
-						result = try? sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: "https://backend.com/x-callback-url/straal/failure"), configuration: defaultConfiguration).call()
+						result = try? sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: "com.straal.test.payments://sdk.straal.com/x-callback-url/ios/failure"), configuration: defaultConfiguration).call()
 					}
 
 					it("should not call sf safari presentation callable factory") {

@@ -39,23 +39,27 @@ class ReturnURLProviderTests: XCTestCase {
 	}
 
 	func testDefaultSuccessReturnURL() {
-		expect(self.sut.successURL(baseURL: URL(string: "https://exaple.com/")!).absoluteString).to(equal("https://exaple.com/x-callback-url/straal/success"))
+		expect(self.sut.successURL(scheme: "com.straal.app.payments").absoluteString).to(equal("com.straal.app.payments://sdk.straal.com/x-callback-url/ios/success"))
 	}
 
-	func testSuccessReturnURLWithDomainPath() {
-		expect(self.sut.successURL(baseURL: URL(string: "https://exaple.com/strr")!).absoluteString).to(equal("https://exaple.com/x-callback-url/straal/success"))
+	func testSuccessReturnURLWithSlashes() {
+		expect(self.sut.successURL(scheme: "com.straal.app.payments://").absoluteString).to(equal("com.straal.app.payments://sdk.straal.com/x-callback-url/ios/success"))
 	}
 
-	func testSuccessReturnURLWithHTTP() {
-		expect(self.sut.successURL(baseURL: URL(string: "http://staging.exaple.com/something")!).absoluteString).to(equal("https://staging.exaple.com/x-callback-url/straal/success"))
+	func testSuccessReturnURLWithShortURL() {
+		expect(self.sut.successURL(scheme: "app.payments://").absoluteString).to(equal("app.payments://sdk.straal.com/x-callback-url/ios/success"))
+	}
+
+	func testSuccessReturnURLWithUppercaseLetters() {
+		expect(self.sut.successURL(scheme: "com.straal.App.Payments").absoluteString).to(equal("com.straal.app.payments://sdk.straal.com/x-callback-url/ios/success"))
 	}
 
 	func testDefaultFailureReturnURL() {
-		expect(self.sut.failureURL(baseURL: URL(string: "https://exaple.com/")!).absoluteString).to(equal("https://exaple.com/x-callback-url/straal/failure"))
+		expect(self.sut.failureURL(scheme: "com.straal.app.payments").absoluteString).to(equal("com.straal.app.payments://sdk.straal.com/x-callback-url/ios/failure"))
 	}
 
-	func testFailureReturnURLWithDomainPath() {
-		expect(self.sut.failureURL(baseURL: URL(string: "https://exaple.com/strr")!).absoluteString).to(equal("https://exaple.com/x-callback-url/straal/failure"))
+	func testFailureReturnURLWithSlashes() {
+		expect(self.sut.failureURL(scheme: "com.straal.app.payments://").absoluteString).to(equal("com.straal.app.payments://sdk.straal.com/x-callback-url/ios/failure"))
 	}
 
 }

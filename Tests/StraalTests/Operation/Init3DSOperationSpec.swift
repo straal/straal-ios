@@ -129,11 +129,11 @@ class Init3DSOperationSpec: QuickSpec {
 						}
 
 						it("should have a correct success URL") {
-							expect(transaction["success_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/success"))
+							expect(transaction["success_url"] as? String).to(equal("com.straal.app.payments://sdk.straal.com/x-callback-url/ios/success"))
 						}
 
 						it("should have a correct failure URL") {
-							expect(transaction["failure_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/failure"))
+							expect(transaction["failure_url"] as? String).to(equal("com.straal.app.payments://sdk.straal.com/x-callback-url/ios/failure"))
 						}
 
 						it("should have four keys") {
@@ -182,11 +182,11 @@ class Init3DSOperationSpec: QuickSpec {
 					}
 
 					it("should pass correct success url") {
-						expect(capturedRedirectURLs?.successURL.absoluteString).to(equal("https://backend.com/x-callback-url/straal/success"))
+						expect(capturedRedirectURLs?.successURL.absoluteString).to(equal("com.straal.app.payments://sdk.straal.com/x-callback-url/ios/success"))
 					}
 
 					it("should pass correct failure url") {
-						expect(capturedRedirectURLs?.failureURL.absoluteString).to(equal("https://backend.com/x-callback-url/straal/failure"))
+						expect(capturedRedirectURLs?.failureURL.absoluteString).to(equal("com.straal.app.payments://sdk.straal.com/x-callback-url/ios/failure"))
 					}
 				}
 			}
@@ -238,11 +238,11 @@ class Init3DSOperationSpec: QuickSpec {
 						}
 
 						it("should have a correct success URL") {
-							expect(transaction["success_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/success"))
+							expect(transaction["success_url"] as? String).to(equal("com.straal.app.payments://sdk.straal.com/x-callback-url/ios/success"))
 						}
 
 						it("should have a correct failure URL") {
-							expect(transaction["failure_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/failure"))
+							expect(transaction["failure_url"] as? String).to(equal("com.straal.app.payments://sdk.straal.com/x-callback-url/ios/failure"))
 						}
 
 						it("should have five keys") {

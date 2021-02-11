@@ -29,7 +29,7 @@ class HttpCallableFake: HttpCallable {
 	init(response: (Data, HTTPURLResponse)) {
 		self.stubResponse = response
 		let fakeURL = URL(string: "https://fake.com")!
-		super.init(requestSource: SimpleCallable(URLRequest(url: fakeURL)), configuration: .init(baseUrl: fakeURL))
+		super.init(requestSource: SimpleCallable(URLRequest(url: fakeURL)), configuration: .testConfiguration(baseUrl: fakeURL))
 	}
 
 	override func call() throws -> (Data, HTTPURLResponse) {

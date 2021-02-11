@@ -34,13 +34,10 @@ class CreateTransactionWithCardSpec: QuickSpec {
 
 			var sut: CreateTransactionWithCard!
 			var card: Card!
-			let defaultConfiguration: StraalConfiguration = .init(
+			let defaultConfiguration: StraalConfiguration = .testConfiguration(
 				baseUrl: URL(string: "https://backend.com")!,
-				locale: Locale.english,
-				userAgent: UserAgentFake(userAgent: "user-agent"),
-				urlSession: UrlSessionAdapterFake(),
-				operationContextContainer: OperationContextContainerFake()
-				)
+				returnURLScheme: "com.straal.Test.payments"
+			)
 
 			var cryptKeyJson: [String: Any] {
 				let data: Data = (try? sut.cryptKeyData(configuration: defaultConfiguration).call()) ?? Data()

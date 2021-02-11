@@ -35,7 +35,7 @@ class Init3DSOperationSpec: QuickSpec {
 
 			var sut: Init3DSOperation!
 			var card: Card!
-			let defaultConfiguration: StraalConfiguration = StraalConfiguration(baseUrl: URL(string: "https://backend.com")!)
+			let defaultConfiguration: StraalConfiguration = .testConfiguration(baseUrl: URL(string: "https://backend.com")!, returnURLScheme: "com.straal.App.payments")
 
 			var cryptKeyJson: [String: Any] {
 				let data: Data = (try? sut.cryptKeyData(configuration: defaultConfiguration).call()) ?? Data()

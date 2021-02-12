@@ -38,7 +38,7 @@ class MapCallableSpec: QuickSpec {
 				expect(spy.callCount).to(equal(0))
 			}
 
-			it("should not call the callable after being called") {
+			it("should call the callable after being called") {
 				let spy = CallableSpy(1)
 				_ = try? MapCallable(spy) { $0 + 100 }.call()
 				expect(spy.callCount).to(equal(1))

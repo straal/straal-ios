@@ -169,7 +169,7 @@ class Init3DSOperationSpec: QuickSpec {
 						_ = sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: "https://straal.com/redirect"), configuration: defaultConfiguration)
 					}
 
-					it("should not call sf safari presentation callable factory") {
+					it("should call sf safari presentation callable factory") {
 						expect(presentCallableFactoryCalled).to(beTrue())
 					}
 

@@ -43,7 +43,7 @@ class FlatMapCallableSpec: QuickSpec {
 				expect(flatCallCount).to(equal(0))
 			}
 
-			it("should not call the callable after being called") {
+			it("should call the callable after being called") {
 				let spy = CallableSpy(1)
 				var flatCallCount = 0
 

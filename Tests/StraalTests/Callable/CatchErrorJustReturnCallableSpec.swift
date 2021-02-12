@@ -1,5 +1,5 @@
 /*
- * CatchCallableSpec.swift
+ * CatchErrorJustReturnCallableSpec.swift
  * Created by Michał Dąbrowski on 26/01/2021.
  *
  * Straal SDK for iOS
@@ -23,13 +23,13 @@ import Quick
 import Nimble
 @testable import Straal
 
-class CatchCallableSpec: QuickSpec {
+class CatchErrorJustReturnCallableSpec: QuickSpec {
 
 	override func spec() {
-		describe("CatchCallable") {
+		describe("CatchErrorJustReturnCallable") {
 
 			it("should evaluate and pass value") {
-				expect { try CatchCallable(
+				expect { try CatchErrorJustReturnCallable(
 					SimpleCallable.just(true),
 					default: false
 				)
@@ -39,7 +39,7 @@ class CatchCallableSpec: QuickSpec {
 			}
 
 			it("should catch") {
-				expect { try CatchCallable(
+				expect { try CatchErrorJustReturnCallable(
 					SimpleCallable { throw TestError() },
 					default: false
 				)
@@ -49,7 +49,7 @@ class CatchCallableSpec: QuickSpec {
 			}
 
 			it("should return default value") {
-				expect { try CatchCallable(
+				expect { try CatchErrorJustReturnCallable(
 					SimpleCallable { throw TestError() },
 					default: false
 				)

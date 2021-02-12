@@ -73,7 +73,7 @@ public final class CreateTransactionWithCard: EncryptedOperation {
 
 		let cachedRequestResponse = ParseErrorCallable(response: httpCallable).cached()
 		let redirectURL = ParseRedirectCallable(response: cachedRequestResponse)
-		let redirectURLOrNil = CatchCallable(redirectURL.map { $0 }, default: nil).cached()
+		let redirectURLOrNil = CatchErrorJustReturnCallable(redirectURL.map { $0 }, default: nil).cached()
 		let operationResponse: DecodeCallable<EncryptedOperationResponse> = DecodeCallable(dataSource: cachedRequestResponse.map { $0.0 })
 
 		let resultCallable = IfCallable(

@@ -1,5 +1,5 @@
 /*
- * CatchCallable.swift
+ * CatchErrorJustReturnCallable.swift
  * Created by Michał Dąbrowski on 26/01/2021.
  *
  * Straal SDK for iOS
@@ -20,7 +20,7 @@
 
 import Foundation
 
-struct CatchCallable<Wrapped: Callable>: Callable {
+struct CatchErrorJustReturnCallable<Wrapped: Callable>: Callable {
 
 	typealias ReturnType = Wrapped.ReturnType
 

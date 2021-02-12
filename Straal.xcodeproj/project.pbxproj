@@ -69,8 +69,8 @@
 		774D95FB25C09C9100026FD3 /* JSONDecoder+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D95FA25C09C9100026FD3 /* JSONDecoder+Default.swift */; };
 		774D960925C09E9F00026FD3 /* IfCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D960825C09E9F00026FD3 /* IfCallable.swift */; };
 		774D960C25C09EAD00026FD3 /* IfCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D960B25C09EAD00026FD3 /* IfCallableSpec.swift */; };
-		774D961125C0A5FC00026FD3 /* CatchCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D961025C0A5FC00026FD3 /* CatchCallable.swift */; };
-		774D961425C0A62B00026FD3 /* CatchCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D961325C0A62B00026FD3 /* CatchCallableSpec.swift */; };
+		774D961125C0A5FC00026FD3 /* CatchErrorJustReturnCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D961025C0A5FC00026FD3 /* CatchErrorJustReturnCallable.swift */; };
+		774D961425C0A62B00026FD3 /* CatchErrorJustReturnCallableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D961325C0A62B00026FD3 /* CatchErrorJustReturnCallableSpec.swift */; };
 		774D961A25C0B33C00026FD3 /* CryptKey+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D961925C0B33C00026FD3 /* CryptKey+Stub.swift */; };
 		774D961E25C0B68B00026FD3 /* PresentStraalViewControllerCallableFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D961D25C0B68B00026FD3 /* PresentStraalViewControllerCallableFake.swift */; };
 		774D962125C0B89600026FD3 /* FlatMapCallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D962025C0B89600026FD3 /* FlatMapCallable.swift */; };
@@ -251,8 +251,8 @@
 		774D95FA25C09C9100026FD3 /* JSONDecoder+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Default.swift"; sourceTree = "<group>"; };
 		774D960825C09E9F00026FD3 /* IfCallable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IfCallable.swift; sourceTree = "<group>"; };
 		774D960B25C09EAD00026FD3 /* IfCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfCallableSpec.swift; sourceTree = "<group>"; };
-		774D961025C0A5FC00026FD3 /* CatchCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchCallable.swift; sourceTree = "<group>"; };
-		774D961325C0A62B00026FD3 /* CatchCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchCallableSpec.swift; sourceTree = "<group>"; };
+		774D961025C0A5FC00026FD3 /* CatchErrorJustReturnCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchErrorJustReturnCallable.swift; sourceTree = "<group>"; };
+		774D961325C0A62B00026FD3 /* CatchErrorJustReturnCallableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchErrorJustReturnCallableSpec.swift; sourceTree = "<group>"; };
 		774D961925C0B33C00026FD3 /* CryptKey+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CryptKey+Stub.swift"; sourceTree = "<group>"; };
 		774D961D25C0B68B00026FD3 /* PresentStraalViewControllerCallableFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentStraalViewControllerCallableFake.swift; sourceTree = "<group>"; };
 		774D962025C0B89600026FD3 /* FlatMapCallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatMapCallable.swift; sourceTree = "<group>"; };
@@ -596,7 +596,7 @@
 			isa = PBXGroup;
 			children = (
 				77283273235A47EE00CB9BB6 /* CacheValueCallableSpec.swift */,
-				774D961325C0A62B00026FD3 /* CatchCallableSpec.swift */,
+				774D961325C0A62B00026FD3 /* CatchErrorJustReturnCallableSpec.swift */,
 				A3080160201878F500A1060A /* CryptKeyCallableSpec.swift */,
 				774D962425C0B8B200026FD3 /* FlatMapCallableSpec.swift */,
 				0E90F77A201A09230070C526 /* HttpCallableSpec.swift */,
@@ -631,7 +631,7 @@
 				A30801772018FD0000A1060A /* AnyCallable.swift */,
 				77283271235A47DA00CB9BB6 /* CacheValueCallable.swift */,
 				A30801782018FD0000A1060A /* Callable.swift */,
-				774D961025C0A5FC00026FD3 /* CatchCallable.swift */,
+				774D961025C0A5FC00026FD3 /* CatchErrorJustReturnCallable.swift */,
 				A30801792018FD0000A1060A /* CryptKeyResponseCallable.swift */,
 				A30801F22018FDED00A1060A /* DecodeCallable.swift */,
 				A308017A2018FD0000A1060A /* EncodeCallable.swift */,
@@ -1133,7 +1133,7 @@
 				77283289235AFF1D00CB9BB6 /* MergeCallable.swift in Sources */,
 				A30801DC2018FD0100A1060A /* StraalError.swift in Sources */,
 				774D95C025C0872F00026FD3 /* LocaleAdapter.swift in Sources */,
-				774D961125C0A5FC00026FD3 /* CatchCallable.swift in Sources */,
+				774D961125C0A5FC00026FD3 /* CatchErrorJustReturnCallable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1159,7 +1159,7 @@
 				77283276235A497800CB9BB6 /* SimpleCallableSpy.swift in Sources */,
 				774D95D625C0902700026FD3 /* InfoDictionaryFake.swift in Sources */,
 				77B6298C25D585A400408AF3 /* StraalConfiguration+TestData.swift in Sources */,
-				774D961425C0A62B00026FD3 /* CatchCallableSpec.swift in Sources */,
+				774D961425C0A62B00026FD3 /* CatchErrorJustReturnCallableSpec.swift in Sources */,
 				0E90F77D201A15BF0070C526 /* UrlSessionAdapterFake.swift in Sources */,
 				B4A6012120245CF700088A0E /* FullCardValidatorSpec.swift in Sources */,
 				B4742A852020D5E300EAD828 /* CVVValidatorSpec.swift in Sources */,

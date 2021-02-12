@@ -1,9 +1,9 @@
 /*
- * EncryptedOperationResponse.swift
- * Created by Kajetan Dąbrowski on 23/01/2018.
+ * UserAgentFake.swift
+ * Created by Michał Dąbrowski on 26/01/2021.
  *
  * Straal SDK for iOS
- * Copyright 2020 Straal Sp. z o. o.
+ * Copyright 2021 Straal Sp. z o. o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,18 +18,10 @@
  * limitations under the License.
  */
 
-import Foundation
+@testable import Straal
 
-public struct EncryptedOperationResponse: StraalResponse, Codable {
-	public let requestId: String
+struct UserAgentFake: UserAgentGeneration {
 
-	internal init(requestId: String) {
-		self.requestId = requestId
-	}
-}
+	let userAgent: String
 
-extension EncryptedOperationResponse: CustomDebugStringConvertible {
-	public var debugDescription: String {
-		return "STRAAL REQUEST [\(requestId)]"
-	}
 }

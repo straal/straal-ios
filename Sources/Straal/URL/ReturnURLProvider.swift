@@ -21,40 +21,34 @@
 import Foundation
 
 protocol ReturnURLProvider {
-	func successURL(baseURL: URL) -> URL
-	func failureURL(baseURL: URL) -> URL
+	func successURL(scheme: String) -> URL
+	func failureURL(scheme: String) -> URL
 }
 
 extension ReturnURLProvider {
 	func successURL(configuration: StraalConfiguration) -> URL {
-		successURL(baseURL: configuration.backendBaseUrl)
+		successURL(scheme: configuration.returnURLScheme)
 	}
 
 	func failureURL(configuration: StraalConfiguration) -> URL {
-		failureURL(baseURL: configuration.backendBaseUrl)
+		failureURL(scheme: configuration.returnURLScheme)
 	}
 }
 
 class ReturnURLProviderImpl: ReturnURLProvider {
-
-	private let paths = ["x-callback-url", "straal"]
-
-	func successURL(baseURL: URL) -> URL {
-		url(baseURL: baseURL, components: paths + ["success"])
+	func successURL(scheme: String) -> URL {
+		url(scheme: scheme, lastPathComponent: "success")
 	}
 
-	func failureURL(baseURL: URL) -> URL {
-		url(baseURL: baseURL, components: paths + ["failure"])
+	func failureURL(scheme: String) -> URL {
+		url(scheme: scheme, lastPathComponent: "failure")
 	}
 
-	private func url(scheme: String = "https", baseURL: URL, components: [String]) -> URL {
-		URL(string: scheme + "://" + ([host(from: baseURL)] + components).joined(separator: "/"))!
+	private func url(scheme: String, lastPathComponent: String) -> URL {
+		URL(string: validated(scheme: scheme) + "://" + "sdk.straal.com/x-callback-url/ios/" + lastPathComponent)!
 	}
 
-	private func host(from url: URL) -> String {
-		guard let host = url.host else {
-			fatalError("Could not parse url host in \(url). Host is required for 3DS operation handling")
-		}
-		return host
+	private func validated(scheme: String?) -> String {
+		scheme?.lowercased().trimmingCharacters(in: CharacterSet.urlUserAllowed.inverted) ?? "https"
 	}
 }

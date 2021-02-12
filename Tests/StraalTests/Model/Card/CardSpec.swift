@@ -35,7 +35,7 @@ class CardSpec: QuickSpec {
 						number: CardNumber(rawValue: "5555 5555 5555 4444"),
 						cvv: CVV(rawValue: "123"),
 						expiry: Expiry(rawValue: (month: 12, year: 2020)))
-					guard let json = try? JSONSerialization.jsonObject(with: JSONEncoder().encode(card)) as? [String: Any] else { fail("Unexpected JSON"); return }
+					guard let json = try? JSONSerialization.jsonObject(with: JSONEncoder.default.encode(card)) as? [String: Any] else { fail("Unexpected JSON"); return }
 					expect(json["name"] as? String).to(equal("Jan Kowalski"))
 					expect(json["number"] as? String).to(equal("5555555555554444"))
 					expect(json["cvv"] as? String).to(equal("123"))

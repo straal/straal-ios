@@ -1,6 +1,7 @@
+//
 /*
- * BundleVersionAdapter.swift
- * Created by Bartosz Kamiński on 26/01/2018.
+ * CacheValueCallable.swift
+ * Created by Michał Dąbrowski on 18/10/2019.
  *
  * Straal SDK for iOS
  * Copyright 2020 Straal Sp. z o. o.
@@ -20,10 +21,28 @@
 
 import Foundation
 
-protocol VersionAdapting {
-	var version: String? { get }
+class CacheValueCallable<ReturnType>: Callable {
+
+	private let wrapped: AnyCallable<ReturnType>
+	private var cached: ReturnType?
+
+	init<O: Callable>(_ wrapped: O) where O.ReturnType == ReturnType {
+		self.wrapped = wrapped.asCallable()
+	}
+
+	func call() throws -> ReturnType {
+		objc_sync_enter(self)
+		defer { objc_sync_exit(self) }
+		if let cached = cached { return cached }
+		let cached = try wrapped.call()
+		self.cached = cached
+		return cached
+	}
+
 }
 
-final class VersionAdapter: VersionAdapting {
-	lazy var version: String? = Bundle(for: type(of: self)).object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+extension Callable {
+	func cached() -> CacheValueCallable<ReturnType> {
+		CacheValueCallable(self)
+	}
 }

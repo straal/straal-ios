@@ -1,9 +1,9 @@
 /*
- * DecodeCallable.swift
- * Created by Kajetan Dąbrowski on 24/01/2018.
+ * ScreenFake.swift
+ * Created by Michał Dąbrowski on 26/01/2021.
  *
  * Straal SDK for iOS
- * Copyright 2020 Straal Sp. z o. o.
+ * Copyright 2021 Straal Sp. z o. o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,21 +18,10 @@
  * limitations under the License.
  */
 
-import Foundation
+@testable import Straal
 
-class DecodeCallable<T: Decodable>: Callable {
-	typealias ReturnType = T
-	private let value: AnyCallable<Data>
+struct ScreenFake: ScreenAdapter {
 
-	init<O: Callable>(dataSource: O) where O.ReturnType == Data {
-		self.value = dataSource.asCallable()
-	}
+	let scale: CGFloat
 
-	convenience init(data: Data) {
-		self.init(dataSource: SimpleCallable.of(data))
-	}
-
-	func call() throws -> T {
-		return try JSONDecoder().decode(T.self, from: value.call())
-	}
 }

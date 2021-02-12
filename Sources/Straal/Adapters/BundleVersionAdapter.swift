@@ -1,6 +1,6 @@
 /*
- * EncryptedOperationResponse.swift
- * Created by Kajetan Dąbrowski on 23/01/2018.
+ * BundleVersionAdapter.swift
+ * Created by Bartosz Kamiński on 26/01/2018.
  *
  * Straal SDK for iOS
  * Copyright 2020 Straal Sp. z o. o.
@@ -20,23 +20,20 @@
 
 import Foundation
 
-public enum Encrypted3DSOperationStatus {
-	case success
-	case failure
+protocol VersionAdapting {
+	var version: String? { get }
 }
 
-public struct Encrypted3DSOperationResponse: StraalResponse, Equatable {
-	public let requestId: String
-	public let status: Encrypted3DSOperationStatus
-
-	internal init(requestId: String, status: Encrypted3DSOperationStatus) {
-		self.requestId = requestId
-		self.status = status
+extension VersionAdapting where Self: InfoDictionaryAdapter {
+	var version: String? {
+		object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
 	}
 }
 
-extension Encrypted3DSOperationResponse: CustomDebugStringConvertible {
-	public var debugDescription: String {
-		return "STRAAL 3DS REQUEST [\(requestId)] (\(status))"
+extension Bundle: VersionAdapting { }
+
+final class VersionAdapter: VersionAdapting {
+	var version: String? {
+		Bundle(for: type(of: self)).version
 	}
 }

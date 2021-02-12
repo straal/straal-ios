@@ -1,9 +1,9 @@
 /*
- * SimpleCallable.swift
- * Created by Kajetan Dąbrowski on 23/01/2018.
+ * DeviceAdapter.swift
+ * Created by Michał Dąbrowski on 26/01/2021.
  *
  * Straal SDK for iOS
- * Copyright 2020 Straal Sp. z o. o.
+ * Copyright 2021 Straal Sp. z o. o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,23 +18,11 @@
  * limitations under the License.
  */
 
-import Foundation
+import UIKit
 
-class SimpleCallable<T>: Callable {
-	typealias ReturnType = T
-	private let value: T
-
-	init(_ value: T) {
-		self.value = value
-	}
-
-	func call() throws -> T {
-		return value
-	}
+protocol DeviceAdapter {
+	var model: String { get }
+	var systemVersion: String { get }
 }
 
-extension Callable {
-	static func of(_ value: ReturnType) -> SimpleCallable<ReturnType> {
-		return SimpleCallable(value)
-	}
-}
+extension UIDevice: DeviceAdapter {}

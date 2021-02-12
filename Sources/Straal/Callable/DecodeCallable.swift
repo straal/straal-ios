@@ -1,6 +1,6 @@
 /*
- * EncryptedOperationResponse.swift
- * Created by Kajetan Dąbrowski on 23/01/2018.
+ * DecodeCallable.swift
+ * Created by Kajetan Dąbrowski on 24/01/2018.
  *
  * Straal SDK for iOS
  * Copyright 2020 Straal Sp. z o. o.
@@ -20,23 +20,19 @@
 
 import Foundation
 
-public enum Encrypted3DSOperationStatus {
-	case success
-	case failure
-}
+class DecodeCallable<T: Decodable>: Callable {
+	typealias ReturnType = T
+	private let value: AnyCallable<Data>
 
-public struct Encrypted3DSOperationResponse: StraalResponse, Equatable {
-	public let requestId: String
-	public let status: Encrypted3DSOperationStatus
-
-	internal init(requestId: String, status: Encrypted3DSOperationStatus) {
-		self.requestId = requestId
-		self.status = status
+	init<O: Callable>(dataSource: O) where O.ReturnType == Data {
+		self.value = dataSource.asCallable()
 	}
-}
 
-extension Encrypted3DSOperationResponse: CustomDebugStringConvertible {
-	public var debugDescription: String {
-		return "STRAAL 3DS REQUEST [\(requestId)] (\(status))"
+	convenience init(data: Data) {
+		self.init(dataSource: SimpleCallable.of(data))
+	}
+
+	func call() throws -> T {
+		try JSONDecoder.default.decode(T.self, from: value.call())
 	}
 }

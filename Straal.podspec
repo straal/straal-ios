@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Straal"
-  s.version      = "0.6.1"
+  s.version      = "1.0.0"
   s.summary      = "A brilliant payment solution for disruptive businesses."
 
   s.description  =  <<-DESC

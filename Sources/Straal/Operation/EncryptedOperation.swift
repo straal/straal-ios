@@ -22,16 +22,22 @@ import Foundation
 
 internal protocol EncryptedOperation: StraalOperation {
 	var permission: CryptKeyPermission { get }
-	var card: Card { get }
+	associatedtype CryptKeyRequest: Encodable
+	associatedtype StraalRequest: Encodable
 
-	func cryptKeyPayload(configuration: StraalConfiguration) -> AnyCallable<Data>
-	var straalRequestPayload: AnyCallable<Data> { get }
+	func cryptKeyPayload(configuration: StraalConfiguration) -> CryptKeyRequest
+	func straalRequestPayload(configuration: StraalConfiguration) -> StraalRequest
+
 	func responseCallable(httpCallable: HttpCallable, configuration: StraalConfiguration) -> AnyCallable<Response>
 }
 
 extension EncryptedOperation {
-	var straalRequestPayload: AnyCallable<Data> {
-		return EncodeCallable(value: card).asCallable()
+	func cryptKeyData(configuration: StraalConfiguration) -> AnyCallable<Data> {
+		EncodeCallable(value: cryptKeyPayload(configuration: configuration)).asCallable()
+	}
+
+	func straalRequestData(configuration: StraalConfiguration) -> AnyCallable<Data> {
+		EncodeCallable(value: straalRequestPayload(configuration: configuration)).asCallable()
 	}
 }
 
@@ -39,7 +45,7 @@ extension EncryptedOperation {
 	public func perform(configuration: StraalConfiguration) throws -> Response {
 		let cryptkeyRequest = HttpCallable(
 			requestSource: PostRequestCallable(
-				body: cryptKeyPayload(configuration: configuration),
+				body: cryptKeyData(configuration: configuration),
 				url: BackendUrlCreator(configuration: configuration).url(for: .cryptKey),
 				headers: configuration.headers),
 			configuration: configuration
@@ -47,7 +53,7 @@ extension EncryptedOperation {
 		let createKey: DecodeCallable<CryptKey> = DecodeCallable(dataSource: ParseErrorCallable(response: cryptkeyRequest).map { $0.0 })
 		let encryption = EncryptCallable(
 			keySource: createKey,
-			messageSource: straalRequestPayload
+			messageSource: straalRequestData(configuration: configuration)
 		)
 		let encryptedRequest = HttpCallable(
 			requestSource: PostRequestCallable(

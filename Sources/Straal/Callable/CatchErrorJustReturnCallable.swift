@@ -1,9 +1,9 @@
 /*
- * EncryptedOperationResponse.swift
- * Created by Kajetan Dąbrowski on 23/01/2018.
+ * CatchErrorJustReturnCallable.swift
+ * Created by Michał Dąbrowski on 26/01/2021.
  *
  * Straal SDK for iOS
- * Copyright 2020 Straal Sp. z o. o.
+ * Copyright 2021 Straal Sp. z o. o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,16 +20,26 @@
 
 import Foundation
 
-public struct EncryptedOperationResponse: StraalResponse, Codable {
-	public let requestId: String
+struct CatchErrorJustReturnCallable<Wrapped: Callable>: Callable {
 
-	internal init(requestId: String) {
-		self.requestId = requestId
+	typealias ReturnType = Wrapped.ReturnType
+
+	private let wrapped: Wrapped
+	private let `default`: ReturnType
+
+	init(
+		_ wrapped: Wrapped,
+		default: ReturnType
+	) {
+		self.wrapped = wrapped
+		self.default = `default`
 	}
-}
 
-extension EncryptedOperationResponse: CustomDebugStringConvertible {
-	public var debugDescription: String {
-		return "STRAAL REQUEST [\(requestId)]"
+	func call() throws -> ReturnType {
+		do {
+			return try wrapped.call()
+		} catch {
+			return `default`
+		}
 	}
 }

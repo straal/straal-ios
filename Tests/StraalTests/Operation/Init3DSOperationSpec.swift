@@ -27,6 +27,7 @@ import Nimble
 
 @testable import Straal
 
+@available(*, deprecated)
 class Init3DSOperationSpec: QuickSpec {
 	override func spec() {
 
@@ -34,21 +35,21 @@ class Init3DSOperationSpec: QuickSpec {
 
 			var sut: Init3DSOperation!
 			var card: Card!
-			let defaultConfiguration: StraalConfiguration = StraalConfiguration(baseUrl: URL(string: "https://backend.com")!)
+			let defaultConfiguration: StraalConfiguration = .testConfiguration(baseUrl: URL(string: "https://backend.com")!, returnURLScheme: "com.straal.App.payments")
 
 			var cryptKeyJson: [String: Any] {
-				let data: Data = (try? sut.cryptKeyPayload(configuration: defaultConfiguration).call()) ?? Data()
+				let data: Data = (try? sut.cryptKeyData(configuration: defaultConfiguration).call()) ?? Data()
 				return ((try? JSONSerialization.jsonObject(with: data)) as? [String: Any]) ?? [:]
 			}
 
 			var straalRequestJson: [String: Any] {
-				let data: Data = (try? sut.straalRequestPayload.call()) ?? Data()
+				let data: Data = (try? sut.straalRequestData(configuration: defaultConfiguration).call()) ?? Data()
 				return ((try? JSONSerialization.jsonObject(with: data)) as? [String: Any]) ?? [:]
 			}
 
 			var present3DSViewControllerFactoryStub: PresentStraalViewControllerFactory!
 			var presentCallableFactoryCalled: Bool = false
-			var capturedRedirectURLs: Init3DSURLs?
+			var capturedRedirectURLs: ThreeDSURLs?
 
 			beforeEach {
 				presentCallableFactoryCalled = false
@@ -60,10 +61,10 @@ class Init3DSOperationSpec: QuickSpec {
 					cvv: CVV(rawValue: "000"),
 					expiry: Expiry(rawValue: (month: 2, year: 2099)))
 
-				present3DSViewControllerFactoryStub = { urls, present, dismiss, registration, _, _ in
+				present3DSViewControllerFactoryStub = { urls, _, _, _ in
 					presentCallableFactoryCalled = true
 					capturedRedirectURLs = try? urls.call()
-					return PresentStraalViewControllerCallable(urls: urls, present: present, dismiss: dismiss, notificationRegistration: registration)
+					return PresentStraalViewControllerCallableFake(status: .success)
 				}
 			}
 
@@ -128,11 +129,11 @@ class Init3DSOperationSpec: QuickSpec {
 						}
 
 						it("should have a correct success URL") {
-							expect(transaction["success_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/success"))
+							expect(transaction["success_url"] as? String).to(equal("com.straal.app.payments://sdk.straal.com/x-callback-url/ios/success"))
 						}
 
 						it("should have a correct failure URL") {
-							expect(transaction["failure_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/failure"))
+							expect(transaction["failure_url"] as? String).to(equal("com.straal.app.payments://sdk.straal.com/x-callback-url/ios/failure"))
 						}
 
 						it("should have four keys") {
@@ -163,17 +164,9 @@ class Init3DSOperationSpec: QuickSpec {
 					}
 				}
 
-				describe("Response callable") {
+				describe("Response callable with redirect") {
 					beforeEach {
-						let stubURL = URL(string: "https://backend.com/url")!
-						let redirectResponse = HTTPURLResponse(
-							url: stubURL,
-							statusCode: 200,
-							httpVersion: nil,
-							headerFields: ["Location": "https://straal.com/redirect"]
-						)!
-						let httpCallable = HttpCallableFake(response: (Data(), redirectResponse))
-						_ = sut.responseCallable(httpCallable: httpCallable, configuration: defaultConfiguration)
+						_ = sut.responseCallable(httpCallable: HttpCallableFake.straalResponse(location: "https://straal.com/redirect"), configuration: defaultConfiguration)
 					}
 
 					it("should call sf safari presentation callable factory") {
@@ -189,11 +182,11 @@ class Init3DSOperationSpec: QuickSpec {
 					}
 
 					it("should pass correct success url") {
-						expect(capturedRedirectURLs?.successURL.absoluteString).to(equal("https://backend.com/x-callback-url/straal/success"))
+						expect(capturedRedirectURLs?.successURL.absoluteString).to(equal("com.straal.app.payments://sdk.straal.com/x-callback-url/ios/success"))
 					}
 
 					it("should pass correct failure url") {
-						expect(capturedRedirectURLs?.failureURL.absoluteString).to(equal("https://backend.com/x-callback-url/straal/failure"))
+						expect(capturedRedirectURLs?.failureURL.absoluteString).to(equal("com.straal.app.payments://sdk.straal.com/x-callback-url/ios/failure"))
 					}
 				}
 			}
@@ -245,11 +238,11 @@ class Init3DSOperationSpec: QuickSpec {
 						}
 
 						it("should have a correct success URL") {
-							expect(transaction["success_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/success"))
+							expect(transaction["success_url"] as? String).to(equal("com.straal.app.payments://sdk.straal.com/x-callback-url/ios/success"))
 						}
 
 						it("should have a correct failure URL") {
-							expect(transaction["failure_url"] as? String).to(equal("https://backend.com/x-callback-url/straal/failure"))
+							expect(transaction["failure_url"] as? String).to(equal("com.straal.app.payments://sdk.straal.com/x-callback-url/ios/failure"))
 						}
 
 						it("should have five keys") {

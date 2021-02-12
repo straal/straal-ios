@@ -37,7 +37,7 @@ class BackendUrlCreatorSpec: QuickSpec {
 			context("when default crypt key path is used") {
 
 				beforeEach {
-					sut = BackendUrlCreator(configuration: StraalConfiguration(baseUrl: URL(string: "https://merchant.backend.com")!))
+					sut = BackendUrlCreator(configuration: .testConfiguration(baseUrl: URL(string: "https://merchant.backend.com")!))
 				}
 
 				it("should create correct url for crypt key endpoint") {
@@ -47,7 +47,7 @@ class BackendUrlCreatorSpec: QuickSpec {
 
 			context("when custom crypt key path is provided") {
 				beforeEach {
-					let configuration = StraalConfiguration(baseUrl: URL(string: "https://merchant.backend.com")!, cryptKeyPath: "crypto")
+					let configuration = StraalConfiguration.testConfiguration(baseUrl: URL(string: "https://merchant.backend.com")!, cryptKeyPath: "crypto")
 					sut = BackendUrlCreator(configuration: configuration)
 				}
 
@@ -58,7 +58,7 @@ class BackendUrlCreatorSpec: QuickSpec {
 
 			context("when custom crypt key path with leading slash is provided") {
 				beforeEach {
-					let configuration = StraalConfiguration(baseUrl: URL(string: "https://merchant.backend.com")!, cryptKeyPath: "/crypto/get")
+					let configuration = StraalConfiguration.testConfiguration(baseUrl: URL(string: "https://merchant.backend.com")!, cryptKeyPath: "/crypto/get")
 					sut = BackendUrlCreator(configuration: configuration)
 				}
 

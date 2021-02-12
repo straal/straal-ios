@@ -36,11 +36,8 @@ class StraalTests: XCTestCase {
 		operationContextContainerFake = .init()
 		urlSessionAdapterFake = .init()
 
-		configuration = .init(
-			baseUrl: URL(string: "https://example.com/")!,
-			headers: nil,
-			cryptKeyPath: nil,
-			urlSession: urlSessionAdapterFake,
+		configuration = .testConfiguration(
+			urlSession:urlSessionAdapterFake,
 			operationContextContainer: operationContextContainerFake
 		)
 

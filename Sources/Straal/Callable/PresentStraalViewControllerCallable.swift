@@ -25,31 +25,45 @@ import UIKit
 import SafariServices
 
 internal typealias PresentStraalViewControllerFactory = (
-	AnyCallable<Init3DSURLs>,
+	AnyCallable<ThreeDSURLs>,
 	@escaping (UIViewController) -> Void,
 	@escaping (UIViewController) -> Void,
-	AnyCallable<OpenURLContextRegistration>,
-	@escaping OpenURLHandlerFactory,
-	@escaping (URL) -> SFSafariViewController
+	AnyCallable<OpenURLContextRegistration>
 ) -> PresentStraalViewControllerCallable
 
-typealias OpenURLHandlerFactory = (Init3DSURLs, @escaping () -> Void, @escaping () -> Void) -> OpenURLContextHandler
+typealias OpenURLHandlerFactory = (ThreeDSURLs, @escaping () -> Void, @escaping () -> Void) -> OpenURLContextHandler
 
 class PresentStraalViewControllerCallable: Callable {
-	private let urlsCallable: AnyCallable<Init3DSURLs>
+	private let urlsCallable: AnyCallable<ThreeDSURLs>
 	private let present: (UIViewController) -> Void
 	private let dismiss: (UIViewController) -> Void
 	private let notificationRegistration: AnyCallable<OpenURLContextRegistration>
 	private let notificationHandlerFactory: OpenURLHandlerFactory
 	private let viewControllerFactory: (URL) -> SFSafariViewController
 
+	convenience init(
+		urls: AnyCallable<ThreeDSURLs>,
+		present: @escaping (UIViewController) -> Void,
+		dismiss: @escaping (UIViewController) -> Void,
+		notificationRegistration: AnyCallable<OpenURLContextRegistration>
+	) {
+		self.init(
+			urls: urls,
+			present: present,
+			dismiss: dismiss,
+			notificationRegistration: notificationRegistration,
+			notificationHandlerFactory: OpenURLContextParser.init,
+			viewControllerFactory: SFSafariViewController.init
+		)
+	}
+
 	init(
-		urls: AnyCallable<Init3DSURLs>,
+		urls: AnyCallable<ThreeDSURLs>,
 		present: @escaping (UIViewController) -> Void,
 		dismiss: @escaping (UIViewController) -> Void,
 		notificationRegistration: AnyCallable<OpenURLContextRegistration>,
-		notificationHandlerFactory: @escaping OpenURLHandlerFactory = OpenURLContextParser.init,
-		viewControllerFactory: @escaping (URL) -> SFSafariViewController = SFSafariViewController.init
+		notificationHandlerFactory: @escaping OpenURLHandlerFactory,
+		viewControllerFactory: @escaping (URL) -> SFSafariViewController
 	) {
 		self.urlsCallable = urls.asCallable()
 		self.present = present

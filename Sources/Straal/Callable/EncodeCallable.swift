@@ -1,7 +1,6 @@
-//
 /*
- * CacheValueCallable.swift
- * Created by Michał Dąbrowski on 18/10/2019.
+ * EncodeCallable.swift
+ * Created by Kajetan Dąbrowski on 24/01/2018.
  *
  * Straal SDK for iOS
  * Copyright 2020 Straal Sp. z o. o.
@@ -21,21 +20,19 @@
 
 import Foundation
 
-class CacheValueCallable<ReturnType>: Callable {
+class EncodeCallable<T: Encodable>: Callable {
+	typealias ReturnType = Data
+	private let value: AnyCallable<T>
 
-	private let wrapped: AnyCallable<ReturnType>
-	private var cached: ReturnType?
-
-	init<O: Callable>(_ wrapped: O) where O.ReturnType == ReturnType {
-		self.wrapped = wrapped.asCallable()
+	init<O: Callable>(valueSource: O) where O.ReturnType == T {
+		self.value = valueSource.asCallable()
 	}
 
-	func call() throws -> ReturnType {
-		objc_sync_enter(self)
-		defer { objc_sync_exit(self) }
-		if let cached = cached { return cached }
-		let cached = try wrapped.call()
-		self.cached = cached
-		return cached
+	convenience init(value: T) {
+		self.init(valueSource: SimpleCallable.of(value))
+	}
+
+	func call() throws -> Data {
+		return try JSONEncoder.default.encode(value.call())
 	}
 }

@@ -1,9 +1,9 @@
 /*
- * EncryptedOperationResponse.swift
- * Created by Kajetan Dąbrowski on 23/01/2018.
+ * Locale+Stub.swift
+ * Created by Michał Dąbrowski on 26/01/2021.
  *
  * Straal SDK for iOS
- * Copyright 2020 Straal Sp. z o. o.
+ * Copyright 2021 Straal Sp. z o. o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,16 +20,7 @@
 
 import Foundation
 
-public struct EncryptedOperationResponse: StraalResponse, Codable {
-	public let requestId: String
-
-	internal init(requestId: String) {
-		self.requestId = requestId
-	}
-}
-
-extension EncryptedOperationResponse: CustomDebugStringConvertible {
-	public var debugDescription: String {
-		return "STRAAL REQUEST [\(requestId)]"
-	}
+extension Locale {
+	static var english: Locale { .init(identifier: "en_US") }
+	static var polish: Locale { .init(identifier: "pl_PL") }
 }

@@ -20,12 +20,12 @@
 
 internal class OpenURLContextParser: OpenURLContextHandler {
 
-	let urls: Init3DSURLs
+	let urls: ThreeDSURLs
 	let onSuccess: () -> Void
 	let onFailure: () -> Void
 
 	init(
-		urls: Init3DSURLs,
+		urls: ThreeDSURLs,
 		onSuccess: @escaping () -> Void,
 		onFailure: @escaping () -> Void
 	) {

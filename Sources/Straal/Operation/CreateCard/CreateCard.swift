@@ -21,6 +21,7 @@
 import Foundation
 
 /// Creates a card
+@available(*, deprecated, message: "This operation is deprecated. Use CreateTransactionWithCard.")
 public final class CreateCard: EncryptedOperation {
 
 	public typealias Response = EncryptedOperationResponse
@@ -40,14 +41,24 @@ public final class CreateCard: EncryptedOperation {
 
 	func cryptKeyPayload(
 		configuration: StraalConfiguration
-	) -> AnyCallable<Data> {
-		EncodeCallable(value: permission).asCallable()
+	) -> CryptKeyPermission {
+		permission
+	}
+
+	func straalRequestPayload(
+		configuration: StraalConfiguration
+	) -> Card {
+		card
 	}
 
 	internal func responseCallable(
 		httpCallable: HttpCallable,
 		configuration: StraalConfiguration
 	) -> AnyCallable<EncryptedOperationResponse> {
-		DecodeCallable(dataSource: ParseErrorCallable(response: httpCallable).map { $0.0 }).asCallable()
+		DecodeCallable(
+			dataSource: ParseErrorCallable(
+				response: httpCallable
+			).map { $0.0 }
+		).asCallable()
 	}
 }

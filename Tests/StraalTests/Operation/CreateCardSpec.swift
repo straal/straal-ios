@@ -24,20 +24,21 @@ import Nimble
 
 @testable import Straal
 
+@available(*, deprecated)
 class CreateCardSpec: QuickSpec {
 	override func spec() {
 
 		describe("Create card") {
 
 			var sut: CreateCard!
-			let defaultConfiguration: StraalConfiguration = StraalConfiguration(baseUrl: URL(string: "https://backend.com")!)
+			let defaultConfiguration = StraalConfiguration.testConfiguration()
 			var cryptKeyJson: [String: Any] {
-				let data: Data = (try? sut.cryptKeyPayload(configuration: defaultConfiguration).call()) ?? Data()
+				let data: Data = (try? sut.cryptKeyData(configuration: defaultConfiguration).call()) ?? Data()
 				return ((try? JSONSerialization.jsonObject(with: data)) as? [String: Any]) ?? [:]
 			}
 
 			var straalRequestJson: [String: Any] {
-				let data: Data = (try? sut.straalRequestPayload.call()) ?? Data()
+				let data: Data = (try? sut.straalRequestData(configuration: defaultConfiguration).call()) ?? Data()
 				return ((try? JSONSerialization.jsonObject(with: data)) as? [String: Any]) ?? [:]
 			}
 

@@ -1,5 +1,5 @@
 /*
- * EncryptedOperationResponse.swift
+ * SimpleCallable.swift
  * Created by Kajetan Dąbrowski on 23/01/2018.
  *
  * Straal SDK for iOS
@@ -20,23 +20,29 @@
 
 import Foundation
 
-public enum Encrypted3DSOperationStatus {
-	case success
-	case failure
-}
+struct SimpleCallable<T>: Callable {
+	typealias ReturnType = T
+	private let value: (() throws -> T)
 
-public struct Encrypted3DSOperationResponse: StraalResponse, Equatable {
-	public let requestId: String
-	public let status: Encrypted3DSOperationStatus
+	init(_ value: T) {
+		self.value = { value }
+	}
 
-	internal init(requestId: String, status: Encrypted3DSOperationStatus) {
-		self.requestId = requestId
-		self.status = status
+	init(_ closure: @escaping (() throws -> T)) {
+		self.value = closure
+	}
+
+	func call() throws -> T {
+		return try value()
 	}
 }
 
-extension Encrypted3DSOperationResponse: CustomDebugStringConvertible {
-	public var debugDescription: String {
-		return "STRAAL 3DS REQUEST [\(requestId)] (\(status))"
+extension Callable {
+	static func of(_ value: ReturnType) -> SimpleCallable<ReturnType> {
+		return SimpleCallable(value)
+	}
+
+	static func just(_ value: ReturnType) -> SimpleCallable<ReturnType> {
+		return SimpleCallable(value)
 	}
 }

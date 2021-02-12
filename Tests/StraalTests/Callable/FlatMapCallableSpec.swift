@@ -1,10 +1,9 @@
-//
 /*
- * MapCallableSpec.swift
- * Created by Michał Dąbrowski on 18/10/2019.
+ * FlatMapCallableSpec.swift
+ * Created by Michał Dąbrowski on 26/01/2021.
  *
  * Straal SDK for iOS
- * Copyright 2020 Straal Sp. z o. o.
+ * Copyright 2021 Straal Sp. z o. o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,39 +23,53 @@ import Quick
 import Nimble
 @testable import Straal
 
-class MapCallableSpec: QuickSpec {
+class FlatMapCallableSpec: QuickSpec {
 	override func spec() {
-		describe("MapCallable") {
+		describe("FlatMapCallable") {
 
 			it("should correctly map simple callable") {
-				expect { try MapCallable(SimpleCallable.of(10)) { $0 * 2 }.call() }.to(equal(20))
+				expect { try FlatMapCallable(SimpleCallable.of(10)) { SimpleCallable.of($0 * 3 ) }.call() }.to(equal(30))
 			}
 
 			it("should not call the callable on creation") {
 				let spy = CallableSpy(1)
-				_ = MapCallable(spy) { $0 + 100 }
+				var flatCallCount = 0
+
+				_ = FlatMapCallable(spy) { value -> SimpleCallable<Int> in
+					flatCallCount += 1
+					return SimpleCallable.just(value + 1)
+				}
 				expect(spy.callCount).to(equal(0))
+				expect(flatCallCount).to(equal(0))
 			}
 
 			it("should call the callable after being called") {
 				let spy = CallableSpy(1)
-				_ = try? MapCallable(spy) { $0 + 100 }.call()
+				var flatCallCount = 0
+
+				_ = try? FlatMapCallable(spy) { value -> SimpleCallable<Int> in
+					flatCallCount += 1
+					return SimpleCallable.just(value + 100)
+				}.call()
 				expect(spy.callCount).to(equal(1))
+				expect(flatCallCount).to(equal(1))
 			}
 
 			it("should rethrow when map closure throws") {
-				let sut = MapCallable(SimpleCallable.of(1)) { _ in throw StraalError.unknown }
+				let sut = FlatMapCallable(SimpleCallable.of(1)) { _ -> SimpleCallable<Int> in
+					throw StraalError.unknown
+				}
 				expect { try sut.call() }.to(throwError(StraalError.unknown))
 			}
 		}
 
 		describe("Syntax sugar") {
 			it("should correctly map callable") {
-				expect { try SimpleCallable.of(15).map { $0 * 2 }.call() }.to(equal(30))
+				expect { try SimpleCallable.of(15).flatMap { SimpleCallable.just($0 * 2) }.call() }.to(equal(30))
 			}
 
 			it("should correctly rethrow error") {
-				expect { try SimpleCallable.of(15).map { _ in throw StraalError.unknown }.call() }.to(throwError(StraalError.unknown))
+				expect { try SimpleCallable.of(15).flatMap { _ -> AnyCallable<Int> in throw StraalError.unknown }.call() }.to(throwError(StraalError.unknown))
 			}
 		}
 	}

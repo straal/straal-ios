@@ -1,5 +1,5 @@
 /*
-* CreateTransactionWithCard.swift
+* Init3DSOperation.swift
 * Created by Hubert Kuczyński on 12/01/2018.
 *
 * Straal SDK for iOS
@@ -20,53 +20,30 @@
 
 import Foundation
 import UIKit
-import SafariServices
 
 /// Creates a card with the first transaction
+@available(*, deprecated, message: "Use CreateTransactionWithCard operation for 3DS v2")
 public final class Init3DSOperation: EncryptedOperation {
+
 	public typealias Response = Encrypted3DSOperationResponse
-	public typealias Context = Init3DSOperationContext
 
-	// swiftlint:disable nesting
-	private struct PermissionAndTransaction: Encodable {
-		let key: CryptKeyPermission
+	public typealias Context = ThreeDSOperationContext
 
-		let transaction: Transaction
-		let successURL: URL
-		let failureURL: URL
-
-		func encode(to encoder: Encoder) throws {
-			try key.encode(to: encoder)
-
-			var container = encoder.container(keyedBy: CodingKeys.self)
-
-			let superEncoder = container.superEncoder(forKey: .transaction)
-			try transaction.encode(to: superEncoder)
-
-			var urlsEncoder = superEncoder.container(keyedBy: URLCodingKeys.self.self)
-			try urlsEncoder.encode(successURL, forKey: .successURL)
-			try urlsEncoder.encode(failureURL, forKey: .failureURL)
-		}
-
-		enum CodingKeys: String, CodingKey {
-			case transaction
-		}
-
-		enum URLCodingKeys: String, CodingKey {
-			case successURL = "success_url"
-			case failureURL = "failure_url"
-		}
+	func cryptKeyPayload(
+		configuration: StraalConfiguration
+	) -> CryptKeyPayload {
+		.init(
+			key: permission,
+			transaction: transaction,
+			successURL: context.urlProvider.successURL(configuration: configuration),
+			failureURL: context.urlProvider.failureURL(configuration: configuration)
+		)
 	}
-	// swiftlint:enable nesting
 
-	func cryptKeyPayload(configuration: StraalConfiguration) -> AnyCallable<Data> {
-		return EncodeCallable(
-			value: PermissionAndTransaction(
-				key: permission,
-				transaction: transaction,
-				successURL: context.urlProvider.successURL(configuration: configuration),
-				failureURL: context.urlProvider.failureURL(configuration: configuration))
-		).asCallable()
+	func straalRequestPayload(
+		configuration: StraalConfiguration
+	) -> Card {
+		card
 	}
 
 	/// Straal card
@@ -75,7 +52,7 @@ public final class Init3DSOperation: EncryptedOperation {
 	/// Transaction
 	public let transaction: Transaction
 
-	public internal(set) var context: Init3DSOperationContext = Init3DSOperationContext()
+	public internal(set) var context: ThreeDSOperationContext = ThreeDSOperationContext()
 
 	internal var presentViewControllerFactory: PresentStraalViewControllerFactory = PresentStraalViewControllerCallable.init
 
@@ -94,7 +71,7 @@ public final class Init3DSOperation: EncryptedOperation {
 		let failureURL = context.urlProvider.failureURL(configuration: configuration)
 
 		let init3DSURLs = redirectURL
-			.map { Init3DSURLs(
+			.map { ThreeDSURLs(
 				redirectURL: $0,
 				successURL: successURL,
 				failureURL: failureURL
@@ -105,9 +82,7 @@ public final class Init3DSOperation: EncryptedOperation {
 			init3DSURLs.asCallable(),
 			present3DSViewController,
 			dismiss3DSViewController,
-			SimpleCallable(context.urlOpeningHandler).asCallable(),
-			OpenURLContextParser.init,
-			SFSafariViewController.init
+			SimpleCallable(context.urlOpeningHandler).asCallable()
 		)
 
 		let result = operationResponse.merge(showViewController).map { requestAndStatus in

@@ -30,7 +30,7 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 		describe("PresentStraalViewControllerCallable") {
 
 			var sut: PresentStraalViewControllerCallable!
-			var init3DSURLs: Init3DSURLs!
+			var init3DSURLs: ThreeDSURLs!
 			var presentCallCount: Int!
 			var dismissCallCount: Int!
 			var uniqueValue: UUID!
@@ -61,7 +61,7 @@ class PresentStraalViewControllerCallableSpec: QuickSpec {
 				capturedOnFailure = nil
 				urlRegistrationFake = .init()
 				urlContextHandlerFake = .init()
-				init3DSURLs = Init3DSURLs(
+				init3DSURLs = ThreeDSURLs(
 					redirectURL: URL(string: "https://sdk.straa.com/redirect")!,
 					successURL: URL(string: "https://sdk.straa.com/success")!,
 					failureURL: URL(string: "https://sdk.straa.com/failure")!
